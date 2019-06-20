@@ -36,8 +36,7 @@ namespace StealthTech.RayTracer.Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Canvas", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Canvas", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,21 +79,19 @@ namespace StealthTech.RayTracer.Specs
         [Xunit.FactAttribute(DisplayName="Creating a canvas")]
         [Xunit.TraitAttribute("FeatureTitle", "Canvas")]
         [Xunit.TraitAttribute("Description", "Creating a canvas")]
-        [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void CreatingACanvas()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating a canvas", null, new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating a canvas", null, ((string[])(null)));
+#line 3
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 8
+#line 4
  testRunner.Given("c <- Canvas(10, 20)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 5
  testRunner.Then("c.Width = 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 10
+#line 6
  testRunner.And("c.Height = 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
+#line 7
  testRunner.And("Every pixel of c is color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -106,16 +103,16 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void WritingPixelsToACanvas()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Writing pixels to a canvas", null, ((string[])(null)));
-#line 13
+#line 9
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
+#line 10
  testRunner.Given("c <- Canvas(10, 20)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 15
+#line 11
  testRunner.And("red ← Color(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+#line 12
  testRunner.When("write_pixel(c, 2, 3, red)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 13
  testRunner.Then("pixel_at(c, 2, 3) = red", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -127,15 +124,15 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ConstructingThePPMHeader()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Constructing the PPM header", null, ((string[])(null)));
-#line 19
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 20
+#line 16
  testRunner.Given("c <- Canvas(5, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
+#line 17
  testRunner.When("ppm <- canvas_to_ppm(c)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 18
  testRunner.Then("lines 1-3 of ppm are", "P3\r\n5 3\r\n255", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -147,27 +144,27 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ConstructingThePPmPixelData()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Constructing the PPm pixel data", null, ((string[])(null)));
-#line 29
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 30
+#line 26
  testRunner.Given("c <- Canvas(5, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
+#line 27
  testRunner.And("c1 <- Color(1,5, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
+#line 28
  testRunner.And("c2 <- Color(0, 0.5, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 33
+#line 29
  testRunner.And("c3 <- Color(-0.5, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 34
+#line 30
  testRunner.When("write_pixel(c, 0, 0, c1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 35
+#line 31
  testRunner.And("write_pixel(c, 2, 1, c2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
+#line 32
  testRunner.And("write_pixel(c, 4, 2, c3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
+#line 33
  testRunner.And("ppm <- canvas_to_ppm(c)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 38
+#line 34
  testRunner.Then("lines 4-6 of ppm are", "255 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 128 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0" +
                     " 0 0 0 0 0 0 255", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -180,17 +177,17 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SplittingLongLinesInPPMFiles()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Splitting long lines in PPM files", null, ((string[])(null)));
-#line 45
+#line 41
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 46
+#line 42
  testRunner.Given("c <- Canvas(10, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 47
+#line 43
  testRunner.When("every pixel of c is set to Color(1, 0.8, 0.6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 48
+#line 44
  testRunner.And("ppm <- canvas_to_ppm(c)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 49
+#line 45
  testRunner.Then("lines 4-7 of ppm are", "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\r\n153 255 204 " +
                     "153 255 204 153 255 204 153 255 204 153\r\n255 204 153 255 204 153 255 204 153 255" +
                     " 204 153 255 204 153 255 204\r\n153 255 204 153 255 204 153 255 204 153 255 204 15" +
@@ -205,14 +202,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void PPMFilesAreTerminatedByANewlineCharacter()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PPM files are terminated by a newline character", null, ((string[])(null)));
-#line 57
+#line 53
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 58
+#line 54
  testRunner.Given("c <- Canvas(5, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 59
+#line 55
  testRunner.When("ppm <- canvas_to_ppm(c)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 60
+#line 56
  testRunner.Then("ppm ends with a newline character", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

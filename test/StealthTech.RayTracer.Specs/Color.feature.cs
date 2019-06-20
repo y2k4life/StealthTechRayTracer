@@ -36,8 +36,7 @@ namespace StealthTech.RayTracer.Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Color", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Color", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,21 +79,19 @@ namespace StealthTech.RayTracer.Specs
         [Xunit.FactAttribute(DisplayName="Colors are (red, green, blue) tuples")]
         [Xunit.TraitAttribute("FeatureTitle", "Color")]
         [Xunit.TraitAttribute("Description", "Colors are (red, green, blue) tuples")]
-        [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void ColorsAreRedGreenBlueTuples()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Colors are (red, green, blue) tuples", null, new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Colors are (red, green, blue) tuples", null, ((string[])(null)));
+#line 3
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 8
+#line 4
  testRunner.Given("c <- Color(-0.5, 0.4, 1.7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 5
  testRunner.Then("c.Red = -0.5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 10
+#line 6
  testRunner.And("c.Green = 0.4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
+#line 7
  testRunner.And("c.Blue = 1.7", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -106,14 +103,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddingColors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding colors", null, ((string[])(null)));
-#line 13
+#line 9
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
+#line 10
  testRunner.Given("c1 <- Color(0.9, 0.6, 0.75)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 15
+#line 11
  testRunner.And("c2 <- Color(0.7, 0.1, 0.25)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+#line 12
  testRunner.Then("c1 + c2 = Color(1.6, 0.7, 1.0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -125,14 +122,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SubtractingColors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting colors", null, ((string[])(null)));
-#line 18
+#line 14
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 19
+#line 15
  testRunner.Given("c1 <- Color(0.9, 0.6, 0.75)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
+#line 16
  testRunner.And("c2 <- Color(0.7, 0.1, 0.25)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
+#line 17
  testRunner.Then("c1 - c2 = Color(0.2, 0.5, 0.5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -144,12 +141,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingAColorByAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a color by a scalar", null, ((string[])(null)));
-#line 23
+#line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 24
+#line 20
  testRunner.Given("c <- Color(0.2, 0.3, 0.4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
+#line 21
  testRunner.Then("c * 2 = Color(0.4, 0.6, 0.8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -161,14 +158,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingColors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying colors", null, ((string[])(null)));
-#line 27
+#line 23
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 28
+#line 24
  testRunner.Given("c1 <- Color(1, 0.2, 0.4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
+#line 25
  testRunner.And("c2 <- Color(0.9, 1, 0.1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 30
+#line 26
  testRunner.Then("c1 * c2 = Color(0.9, 0.2, 0.04)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

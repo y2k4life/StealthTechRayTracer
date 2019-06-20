@@ -36,7 +36,7 @@ namespace StealthTech.RayTracer.Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tuples", "\tTest RayTraceTuples with various methods, Create, Add, Subtract, etc.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tuples", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -79,27 +79,25 @@ namespace StealthTech.RayTracer.Specs
         [Xunit.FactAttribute(DisplayName="A tuple with w=1.0 is a point")]
         [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
         [Xunit.TraitAttribute("Description", "A tuple with w=1.0 is a point")]
-        [Xunit.TraitAttribute("Category", "tuple")]
         public virtual void ATupleWithW1_0IsAPoint()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A tuple with w=1.0 is a point", null, new string[] {
-                        "tuple"});
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A tuple with w=1.0 is a point", null, ((string[])(null)));
+#line 3
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 4
  testRunner.Given("a <- tuple(4.3, -4.2, 3.1, 1.0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 7
+#line 5
  testRunner.Then("a.X = 4.3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 8
+#line 6
  testRunner.And("a.Y = -4.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
+#line 7
  testRunner.And("a.Z = 3.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
+#line 8
  testRunner.And("a.W = 1.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
+#line 9
  testRunner.And("a is a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
+#line 10
  testRunner.And("a is not a vector", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -111,22 +109,22 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ATupleWithW0IsAVector()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A tuple with w=0 is a vector", null, ((string[])(null)));
-#line 14
+#line 12
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 15
+#line 13
  testRunner.Given("a <- tuple(4.3, -4.2, 3.1, 0.0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
+#line 14
  testRunner.Then("a.X = 4.3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 17
+#line 15
  testRunner.And("a.Y = -4.2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
+#line 16
  testRunner.And("a.Z = 3.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 19
+#line 17
  testRunner.And("a.W = 0.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
+#line 18
  testRunner.And("a is not a point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
+#line 19
  testRunner.And("a is a vector", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -138,12 +136,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void PointCreatesTuplesWithW1()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("point() creates tuples with w=1", null, ((string[])(null)));
-#line 23
+#line 21
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 24
+#line 22
  testRunner.Given("p <- point(4, -4, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
+#line 23
  testRunner.Then("p = tuple(4, -4, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -155,12 +153,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void VectorCreatesTuplesWithW0()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("vector() creates tuples with w=0", null, ((string[])(null)));
-#line 27
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 28
+#line 26
  testRunner.Given("v <- vector(4, -4, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
+#line 27
  testRunner.Then("v = tuple(4, -4, 3, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -172,14 +170,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddingTwoTuples()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding two tuples", null, ((string[])(null)));
-#line 31
+#line 29
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 32
+#line 30
  testRunner.Given("a1 <- tuple(3, -2, 5, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 33
+#line 31
  testRunner.And("a2 <- tuple(-2, 3, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 34
+#line 32
  testRunner.Then("a1 + a2 = tuple(1, 1, 6, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -191,14 +189,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SubtractingTwoPoints()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting two points", null, ((string[])(null)));
-#line 36
+#line 34
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 37
+#line 35
  testRunner.Given("p1 <- point(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 38
+#line 36
  testRunner.And("p2 <- point(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 39
+#line 37
  testRunner.Then("p1 - p2 = vector(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -210,14 +208,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SubtractingAVectorFromAPoint()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting a vector from a point", null, ((string[])(null)));
-#line 41
+#line 39
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 42
+#line 40
  testRunner.Given("p <- point(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 43
+#line 41
  testRunner.And("v <- vector(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 44
+#line 42
  testRunner.Then("p - v = point(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -229,14 +227,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SubtractingTwoVectors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting two vectors", null, ((string[])(null)));
-#line 46
+#line 44
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 47
+#line 45
  testRunner.Given("v1 <- vector(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 48
+#line 46
  testRunner.And("v2 <- vector(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 49
+#line 47
  testRunner.Then("v1 - v2 = vector(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -248,14 +246,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void SubtractingAVectorFromTheZeroVector()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting a vector from the zero vector", null, ((string[])(null)));
-#line 51
+#line 49
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 52
+#line 50
  testRunner.Given("zero <- vector(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 53
+#line 51
  testRunner.And("v <- vector(1, -2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 54
+#line 52
  testRunner.Then("zero - v = vector(-1, 2, -3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -267,12 +265,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void NegatingATuple()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negating a tuple", null, ((string[])(null)));
-#line 56
+#line 54
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 57
+#line 55
   testRunner.Given("a <- tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 58
+#line 56
   testRunner.Then("-a = tuple(-1, 2, -3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -284,14 +282,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingATumpleByAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tumple by a scalar", null, ((string[])(null)));
-#line 60
+#line 58
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 61
+#line 59
  testRunner.Given("a <- tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 62
+#line 60
  testRunner.Then("a * 3.5 = tuple(3.5, -7, 10.5, -14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 63
+#line 61
  testRunner.And("3.5 * a = tuple(3.5, -7, 10.5, -14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -303,12 +301,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingATumpleByAFraction()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tumple by a fraction", null, ((string[])(null)));
-#line 65
+#line 63
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 66
+#line 64
  testRunner.Given("a <- tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 67
+#line 65
  testRunner.Then("a * 0.5 = tuple(0.5, -1, 1.5, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -320,12 +318,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DividingATupleByAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dividing a tuple by a scalar", null, ((string[])(null)));
-#line 69
+#line 67
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 70
+#line 68
  testRunner.Given("a <- tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 71
+#line 69
  testRunner.Then("a / 2 = tuple(0.5, -1, 1.5, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -337,12 +335,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ComputingTheMagnitudeOfVector100()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(1, 0, 0)", null, ((string[])(null)));
-#line 73
+#line 71
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 74
+#line 72
  testRunner.Given("v <- vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 75
+#line 73
  testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -354,12 +352,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ComputingTheMagnitudeOfVector010()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(0, 1, 0)", null, ((string[])(null)));
-#line 77
+#line 75
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 78
+#line 76
  testRunner.Given("v <- vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
+#line 77
  testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -371,12 +369,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ComputingTheMagnitudeOfVector001()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(0, 0, 1)", null, ((string[])(null)));
-#line 81
+#line 79
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 82
+#line 80
  testRunner.Given("v <- vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 83
+#line 81
  testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -388,12 +386,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ComputingTheMagnitudeOfVector123()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(1, 2, 3)", null, ((string[])(null)));
-#line 85
+#line 83
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 86
+#line 84
  testRunner.Given("v <- vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 87
+#line 85
  testRunner.Then("magnitude(v) = 3.74165738677394", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -405,12 +403,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ComputingTheMagnitudeOfVector_1_2_3()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(-1, -2, -3)", null, ((string[])(null)));
-#line 89
+#line 87
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 90
+#line 88
  testRunner.Given("v <- vector(-1, -2, -3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 91
+#line 89
  testRunner.Then("magnitude(v) = 3.74165738677394", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -422,12 +420,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void NormalizingVector400Gives100()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Normalizing vector(4, 0, 0) gives (1, 0, 0)", null, ((string[])(null)));
-#line 93
+#line 91
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 94
+#line 92
  testRunner.Given("v <- vector(4, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 95
+#line 93
  testRunner.Then("normalize(v) = vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -439,12 +437,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void NormalizingVector123Gives0_267260_534520_80178()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Normalizing vector(1, 2, 3) gives (0.26726, 0.53452, 0.80178)", null, ((string[])(null)));
-#line 97
+#line 95
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 98
+#line 96
  testRunner.Given("v <- vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 99
+#line 97
  testRunner.Then("normalize(v) = approximately vector(0.26726, 0.53452, 0.80178)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -456,14 +454,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TheMagnitudeOfANormalizedVector()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The magnitude of a normalized vector", null, ((string[])(null)));
-#line 101
+#line 99
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 102
+#line 100
  testRunner.Given("v <- vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 103
+#line 101
  testRunner.When("norm <- normalize(v)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 104
+#line 102
  testRunner.Then("magnitude(norm) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -475,14 +473,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TheDotProductOfTwoVectors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The dot product of two vectors", null, ((string[])(null)));
-#line 106
+#line 104
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 107
+#line 105
  testRunner.Given("v1 <- vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 108
+#line 106
  testRunner.And("v2 <- vector(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 109
+#line 107
  testRunner.Then("dot(v1, v2) = 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -494,16 +492,16 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TheCrossProductOfTwoVectors()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The cross product of two vectors", null, ((string[])(null)));
-#line 111
+#line 109
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 112
+#line 110
  testRunner.Given("v1 <- vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 113
+#line 111
  testRunner.And("v2 <- vector(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 114
+#line 112
  testRunner.Then("cross(v1, v2) = vector(-1, 2, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 115
+#line 113
  testRunner.And("cross(v2, v1) = vector(1 -2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
