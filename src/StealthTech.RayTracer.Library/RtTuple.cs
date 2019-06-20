@@ -142,12 +142,12 @@ namespace StealthTech.RayTracer.Library
                 W * other.W;
         }
 
-        public RtTuple Cross(RtTuple v)
+        public RtTuple Cross(RtTuple other)
         {
             return new RtTuple(
-                Y * v.Z - Z * v.Y,
-                Z * v.X - X * v.Z,
-                X * v.Y - Y * v.X,
+                Y * other.Z - Z * other.Y,
+                Z * other.X - X * other.Z,
+                X * other.Y - Y * other.X,
                 0
             );
         }
