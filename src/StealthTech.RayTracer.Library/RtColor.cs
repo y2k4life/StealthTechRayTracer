@@ -12,11 +12,11 @@ namespace StealthTech.RayTracer.Library
     {
         public static readonly RtColor Black = new RtColor(0, 0, 0);
 
-        public RtColor(double r, double g, double b)
+        public RtColor(double red, double green, double blue)
         {
-            Red = r;
-            Green = g;
-            Blue = b;
+            Red = red;
+            Green = green;
+            Blue = blue;
         }
 
         public double Red { get; set; }
@@ -73,7 +73,7 @@ namespace StealthTech.RayTracer.Library
 
         public string[] ToRGBA()
         {
-            return new string[] {Normalize(Red).ToString(), Normalize(Green).ToString(), Normalize(Blue).ToString()};
+            return new string[] { Normalize(Red).ToString(), Normalize(Green).ToString(), Normalize(Blue).ToString() };
         }
 
         private int Normalize(double comp)
