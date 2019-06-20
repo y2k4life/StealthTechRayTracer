@@ -15,20 +15,17 @@ namespace StealthTech.RayTracer.Exercises
     {
         public void Run()
         {
-            var p = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1, 0).Normalized);
-            var e = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
+            var projectile = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1, 0).Normalized);
+            var environment = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
+
             int i = 0;
-            while (p.Position.Y >= 0)
+            while (projectile.Position.Y >= 0)
             {
                 i++;
-                Console.WriteLine($"{i} - {p}");
-                p = Update(p, e);
+                Console.WriteLine($"{i} - {projectile}");
+                projectile = new Projectile(projectile.Position + projectile.Velocity,
+                    projectile.Velocity + environment.Gravity + environment.Wind);
             }
-        }
-
-        public static Projectile Update(Projectile p, RtEnvironment e)
-        {
-            return new Projectile(p.Position + p.Velocity, p.Velocity + e.Gravity + e.Wind);
         }
     }
 }

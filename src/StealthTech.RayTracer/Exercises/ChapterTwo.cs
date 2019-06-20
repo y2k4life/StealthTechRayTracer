@@ -8,6 +8,7 @@
 using StealthTech.RayTracer.Exercise;
 using StealthTech.RayTracer.Library;
 using System;
+using System.IO;
 
 namespace StealthTech.RayTracer.Exercises
 {
@@ -15,20 +16,23 @@ namespace StealthTech.RayTracer.Exercises
     {
         public void Run()
         {
-            var p = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1.8, 0).Normalized * 11.3);
-            var e = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
-            var c = new Canvas(900, 550);
-            while (p.Position.Y >= 0)
+            var projectile = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1.8, 0).Normalized * 11.3);
+            var environment = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
+            var canvase = new Canvas(900, 550);
+
+            while (projectile.Position.Y >= 0)
             {
-                Draw(c, p.Position);
-                p = Tick(p, e);
+                Draw(canvase, projectile.Position);
+                projectile = Tick(projectile, environment);
             }
-            c.Save("file.ppm");
+
+            File.WriteAllText("file.ppm", canvase.GetPPMContent());
         }
 
-        private static Projectile Tick(Projectile p, RtEnvironment e)
+        private static Projectile Tick(Projectile projectile, RtEnvironment environment)
         {
-            return new Projectile(p.Position + p.Velocity, p.Velocity + e.Gravity + e.Wind);
+            return new Projectile(projectile.Position + projectile.Velocity, 
+                projectile.Velocity + environment.Gravity + environment.Wind);
         }
 
         private static void Draw(Canvas canvas, RtTuple position)
