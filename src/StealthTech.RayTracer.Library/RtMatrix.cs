@@ -13,22 +13,22 @@ namespace StealthTech.RayTracer.Library
     {
         private readonly double[,] _matrix;
 
-        public int Rows { get; }
+        public int RowCount { get; }
 
-        public int Columns { get; }
+        public int ColumnCount { get; }
 
         public RtMatrix(int rows, int columns)
         {
-            Rows = rows;
-            Columns = columns;
+            RowCount = rows;
+            ColumnCount = columns;
 
             _matrix = new double[rows, columns];
         }
 
-        public double[] GetRow (int rowIndex)
+        public double[] GetRow(int rowIndex)
         {
-            var row = new double[Columns];
-            for (int c = 0; c < Columns; c++)
+            var row = new double[ColumnCount];
+            for (int c = 0; c < ColumnCount; c++)
             {
                 row[c] = _matrix[rowIndex, c];
             }
@@ -38,8 +38,8 @@ namespace StealthTech.RayTracer.Library
 
         public double[] GetColumn(int columnIndex)
         {
-            var column = new double[Rows];
-            for (int r = 0; r < Rows; r++)
+            var column = new double[RowCount];
+            for (int r = 0; r < RowCount; r++)
             {
                 column[r] = _matrix[r, columnIndex];
             }
@@ -61,11 +61,11 @@ namespace StealthTech.RayTracer.Library
 
         public static RtMatrix operator *(RtMatrix left, RtMatrix right)
         {
-            int leftRowCount = left.Rows;
-            int rightColumnCount = right.Columns;
-            
+            int leftRowCount = left.RowCount;
+            int rightColumnCount = right.ColumnCount;
+
             var results = new RtMatrix(leftRowCount, rightColumnCount);
-            var columns = new double[right.Columns][];
+            var columns = new double[right.ColumnCount][];
 
             for (int r = 0; r < leftRowCount; r++)
             {
@@ -96,7 +96,7 @@ namespace StealthTech.RayTracer.Library
 
             double[] column = { right.X, right.Y, right.Z, right.W };
 
-            for (int r = 0; r < left.Rows; r++)
+            for (int r = 0; r < left.RowCount; r++)
             {
                 var row = left.GetRow(r);
                 double accumulator = 0;
