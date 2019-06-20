@@ -17,7 +17,6 @@ namespace StealthTech.RayTracer.Library
         public Canvas(int width, int height) 
             : this(width, height, RtColor.Black)
         {
-
         }
 
         public Canvas(int width, int height, RtColor background)
@@ -81,11 +80,6 @@ namespace StealthTech.RayTracer.Library
             }
 
             return builder.ToString();
-        }
-
-        public void Save(string filename)
-        {
-            File.WriteAllText(filename,GetPPMContent());
         }
 
         private void Clear(RtColor RtColor)
