@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StealthTech.RayTracer", "src\StealthTech.RayTracer\StealthTech.RayTracer.csproj", "{5B33D218-3CA8-4483-BCC8-A3110CA3AEF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StealthTech.RayTracer.Specs", "test\StealthTech.RayTracer.Specs\StealthTech.RayTracer.Specs.csproj", "{FD458489-D163-4A8D-873B-60218C0BA047}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StealthTech.RayTracer.Library", "src\StealthTech.RayTracer.Library\StealthTech.RayTracer.Library.csproj", "{33CFF155-AF49-44AB-9B21-550E23FB7FB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B33D218-3CA8-4483-BCC8-A3110CA3AEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B33D218-3CA8-4483-BCC8-A3110CA3AEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B33D218-3CA8-4483-BCC8-A3110CA3AEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B33D218-3CA8-4483-BCC8-A3110CA3AEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD458489-D163-4A8D-873B-60218C0BA047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD458489-D163-4A8D-873B-60218C0BA047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD458489-D163-4A8D-873B-60218C0BA047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD458489-D163-4A8D-873B-60218C0BA047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33CFF155-AF49-44AB-9B21-550E23FB7FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33CFF155-AF49-44AB-9B21-550E23FB7FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33CFF155-AF49-44AB-9B21-550E23FB7FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33CFF155-AF49-44AB-9B21-550E23FB7FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {957BBDE8-4F07-453D-9F38-B4300A38B6AD}
+	EndGlobalSection
+EndGlobal

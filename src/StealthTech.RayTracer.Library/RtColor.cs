@@ -1,0 +1,117 @@
+//-----------------------------------------------------------------------
+// <copyright file="RtColor.cs" company="StealthTech">
+//     Author: Guy Boicey
+//     Copyright (c) 2019 Guy Boicey
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace StealthTech.RayTracer.Library
+{
+    using System;
+    public class RtColor
+    {
+        public static readonly RtColor Black = new RtColor(0, 0, 0);
+
+        public RtColor(double r, double g, double b)
+        {
+            Red = r;
+            Green = g;
+            Blue = b;
+        }
+
+        public double Red { get; set; }
+        
+        public double Green { get; set; }
+        
+        public double Blue { get; set; }
+
+        static public RtColor operator +(RtColor left, RtColor right)
+        {
+            return new RtColor(
+                left.Red + right.Red,
+                left.Green + right.Green,
+                left.Blue + right.Blue
+            );
+        }
+
+        static public RtColor operator -(RtColor left, RtColor right)
+        {
+            return new RtColor(
+                left.Red - right.Red,
+                left.Green - right.Green,
+                left.Blue - right.Blue
+            );
+        }
+
+        static public RtColor operator *(RtColor left, RtColor right)
+        {
+            return new RtColor(
+                left.Red * right.Red,
+                left.Green * right.Green,
+                left.Blue * right.Blue
+            );
+        }
+
+        static public RtColor operator *(RtColor left, double multiplier)
+        {
+            return new RtColor(
+                left.Red * multiplier,
+                left.Green * multiplier,
+                left.Blue * multiplier
+            );
+        }
+
+        static public RtColor operator *(double multiplier, RtColor left)
+        {
+            return left * multiplier;
+        }
+
+        public string ToRGB()
+        {
+            return $"{Normalize(Red)} {Normalize(Green)} {Normalize(Blue)}";
+        }
+
+        public string[] ToRGBA()
+        {
+            return new string[] {Normalize(Red).ToString(), Normalize(Green).ToString(), Normalize(Blue).ToString()};
+        }
+
+        private int Normalize(double comp)
+        {
+            if (comp < 0) comp = 0;
+            if (comp > 1) comp = 1;
+
+            return (int)Math.Round(255*comp);
+        }
+
+        public override int GetHashCode()
+        {
+            return Red.GetHashCode() ^ Green.GetHashCode() ^ Blue.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            RtColor other = obj as RtColor;
+            return (other.Red.ApproximateEquals(Red)
+                && other.Green.ApproximateEquals(Green)
+                && other.Blue.ApproximateEquals(Blue));
+        }
+
+        public bool Equals(RtColor other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return (other.Red.ApproximateEquals(Red)
+                && other.Green.ApproximateEquals(Green)
+                && other.Blue.ApproximateEquals(Blue));
+        }
+    }
+}
