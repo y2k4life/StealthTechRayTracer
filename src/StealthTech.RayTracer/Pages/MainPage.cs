@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using StealthTech.RayTracer.EasyConsole;
+using System;
 
 namespace StealthTech.RayTracer.Pages
 {
@@ -16,6 +17,7 @@ namespace StealthTech.RayTracer.Pages
         {
             AddOption(new Option("Exercises", () => program.NavigateTo<ExercisePage>()));
             AddOption(new Option("Tuning", () => program.NavigateTo<TuningPage>()));
+            AddOption(new Option("Exit", () => Environment.Exit(0)));
         }
     }
 }
