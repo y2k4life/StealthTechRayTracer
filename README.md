@@ -11,3 +11,7 @@ I want to give a shout out to [The Morning Brew](http://blog.cwa.me.uk/) for hav
 **Naming Convention** For primitive objects that collide with .Net BCL will be prefixed with `Rt` (Ray Tracer). This started with `Color` and `Tuple`. Even though the BCL does not have a `Matrix` for consistency matrix will have `Rt` therefore it is  `RtMatrix`. Using `System` namespace can cause some issues.
 
 **Tools** [CodeRush](https://www.devexpress.com/Products/CodeRush/) for refactoring and code clean. [NCrunch](https://www.ncrunch.net/) to automate running test and to provide information relating to code coverage.
+
+## Resources
+
+* [Linear Algebra from MIT](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/) Quality is bad, but great videos and it is MIT need I say more. I pulled to test for Matrices from here.
