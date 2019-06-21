@@ -431,6 +431,194 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="Multiplying two matrices find E23")]
+        [Xunit.TraitAttribute("FeatureTitle", "Matrices")]
+        [Xunit.TraitAttribute("Description", "Multiplying two matrices find E23")]
+        public virtual void MultiplyingTwoMatricesFindE23()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying two matrices find E23", null, ((string[])(null)));
+#line 83
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3"});
+            table11.AddRow(new string[] {
+                        "1",
+                        "0",
+                        "0"});
+            table11.AddRow(new string[] {
+                        "-3",
+                        "1",
+                        "0"});
+            table11.AddRow(new string[] {
+                        "0",
+                        "0",
+                        "1"});
+#line 84
+ testRunner.Given("the following matrix A:", ((string)(null)), table11, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3"});
+            table12.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table12.AddRow(new string[] {
+                        "3",
+                        "8",
+                        "1"});
+            table12.AddRow(new string[] {
+                        "0",
+                        "4",
+                        "1"});
+#line 89
+ testRunner.And("the following matrix B:", ((string)(null)), table12, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3"});
+            table13.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table13.AddRow(new string[] {
+                        "0",
+                        "2",
+                        "-2"});
+            table13.AddRow(new string[] {
+                        "0",
+                        "4",
+                        "1"});
+#line 94
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table13, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Multiplying two matrices find E32")]
+        [Xunit.TraitAttribute("FeatureTitle", "Matrices")]
+        [Xunit.TraitAttribute("Description", "Multiplying two matrices find E32")]
+        public virtual void MultiplyingTwoMatricesFindE32()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying two matrices find E32", null, ((string[])(null)));
+#line 100
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3"});
+            table14.AddRow(new string[] {
+                        "1",
+                        "0",
+                        "0"});
+            table14.AddRow(new string[] {
+                        "0",
+                        "1",
+                        "0"});
+            table14.AddRow(new string[] {
+                        "0",
+                        "-2",
+                        "1"});
+#line 101
+ testRunner.Given("the following matrix A:", ((string)(null)), table14, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3"});
+            table15.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table15.AddRow(new string[] {
+                        "0",
+                        "2",
+                        "-2"});
+            table15.AddRow(new string[] {
+                        "0",
+                        "4",
+                        "1"});
+#line 106
+ testRunner.And("the following matrix B:", ((string)(null)), table15, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3"});
+            table16.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table16.AddRow(new string[] {
+                        "0",
+                        "2",
+                        "-2"});
+            table16.AddRow(new string[] {
+                        "0",
+                        "0",
+                        "5"});
+#line 111
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table16, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Multiplying column by row")]
+        [Xunit.TraitAttribute("FeatureTitle", "Matrices")]
+        [Xunit.TraitAttribute("Description", "Multiplying column by row")]
+        public virtual void MultiplyingColumnByRow()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying column by row", null, ((string[])(null)));
+#line 117
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1"});
+            table17.AddRow(new string[] {
+                        "2"});
+            table17.AddRow(new string[] {
+                        "3"});
+            table17.AddRow(new string[] {
+                        "4"});
+#line 118
+ testRunner.Given("the following matrix A:", ((string)(null)), table17, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2"});
+            table18.AddRow(new string[] {
+                        "1",
+                        "6"});
+#line 123
+ testRunner.And("the following matrix B:", ((string)(null)), table18, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2"});
+            table19.AddRow(new string[] {
+                        "2",
+                        "12"});
+            table19.AddRow(new string[] {
+                        "3",
+                        "18"});
+            table19.AddRow(new string[] {
+                        "4",
+                        "24"});
+#line 126
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table19, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -184,7 +184,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"magnitude\(v\) = (.*)")]
         public void Then_Magnitude_v(double expectedMagnitude)
         {
-            Assert.True(_tupleContext.Vector.Magnitude.ApproximateEquals(expectedMagnitude));
+            Assert.True(_tupleContext.Vector.Magnitude().ApproximateEquals(expectedMagnitude));
         }
 
         [Then(@"normalize\(v\) = vector\((.*), (.*), (.*)\)")]
@@ -192,7 +192,7 @@ namespace StealthTech.RayTracer.Specs
         {
             var expectedVector = RtTuple.Vector(x, y, z);
 
-            var actual = _tupleContext.Vector.Normalized;
+            var actual = _tupleContext.Vector.Normalized();
 
             Assert.Equal(expectedVector, actual);
         }
@@ -202,7 +202,7 @@ namespace StealthTech.RayTracer.Specs
         {
             var expectedVector = RtTuple.Vector(x, y, z);
 
-            var actual = _tupleContext.Vector.Normalized;
+            var actual = _tupleContext.Vector.Normalized();
 
             Assert.Equal(expectedVector, actual);
         }
@@ -210,13 +210,13 @@ namespace StealthTech.RayTracer.Specs
         [When(@"norm <- normalize\(v\)")]
         public void When_norm_Equals_Normalize_v()
         {
-            _tupleContext.NormalizedVector = _tupleContext.Vector.Normalized;
+            _tupleContext.NormalizedVector = _tupleContext.Vector.Normalized();
         }
 
         [Then(@"magnitude\(norm\) = (.*)")]
         public void Then_Magnitude_norm(double expectedNormal)
         {
-            Assert.Equal(expectedNormal, _tupleContext.NormalizedVector.Magnitude);
+            Assert.Equal(expectedNormal, _tupleContext.NormalizedVector.Magnitude());
         }
 
         [Given(@"v1 <- vector\((.*), (.*), (.*)\)")]

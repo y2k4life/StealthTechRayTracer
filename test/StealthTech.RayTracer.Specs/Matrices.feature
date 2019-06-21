@@ -49,6 +49,20 @@ Scenario: Matrix equality with different matrices
 		| 5    | 4    | 4    | 2    |
 	Then A != B
 
+Scenario: Multiplying two small matrices
+	Given the following matrix A:
+		| col1 | col2 |
+		| 1    | 2    |
+		| 3    | 4    |
+	And the following matrix B:
+		| col1 | col2 |
+		| 2    | 0    |
+		| 1    | 2    |
+	Then A * B is the following matrix:
+		| col1 | col2 |
+		| 4    | 4    |
+		| 10   | 8    |
+
 Scenario: Multiplying two matrices
 	Given the following matrix A:
 		| col1 | col2 | col3 | col4 |
@@ -79,3 +93,68 @@ Scenario: A matrix multiplied by a tuple
 	And b <- tuple(1, 2, 3, 1)
 	Then A * b = tuple(18, 24, 33, 1)
 	And b * A = tuple(18, 24, 33, 1)
+
+Scenario: Multiplying two matrices find E23
+	Given the following matrix A:
+		| col1 | col2 | col3 |
+		| 1    | 0    | 0    |
+		| -3   | 1    | 0    |
+		| 0    | 0    | 1    |
+	And the following matrix B:
+		| col1 | col2 | col3 |
+		| 1    | 2    | 1    |
+		| 3    | 8    | 1    |
+		| 0    | 4    | 1    |
+	Then A * B is the following matrix:
+		| col1 | col2 | col3 |
+		| 1    | 2    | 1    |
+		| 0    | 2    | -2   |
+		| 0    | 4    | 1    |
+
+Scenario: Multiplying two matrices find E32
+	Given the following matrix A:
+		| c1 | c2 | c3 |
+		| 1  | 0  | 0  |
+		| 0  | 1  | 0  |
+		| 0  | -2 | 1  |
+	And the following matrix B:
+		| c1 | c2 | c3 |
+		| 1  | 2  | 1  |
+		| 0  | 2  | -2 |
+		| 0  | 4  | 1  |
+	Then A * B is the following matrix:
+		| c1 | c2 | c3 |
+		| 1  | 2  | 1  |
+		| 0  | 2  | -2 |
+		| 0  | 0  | 5  |
+
+Scenario: Multiplying column by row
+	Given the following matrix A:
+		| c1 |
+		| 2  |
+		| 3  |
+		| 4  |
+	And the following matrix B:
+		| c1 | c2 |
+		| 1  | 6  |
+	Then A * B is the following matrix:
+		| c1 | c2 |
+		| 2  | 12 |
+		| 3  | 18 |
+		| 4  | 24 |
+
+Scenario: Multiplying irregular shape
+	Given the following matrix A:
+		| c1 | c2 |
+		| 2  | 7  |
+		| 3  | 8  |
+		| 4  | 9  |
+	And the following matrix B:
+		| c1 | c2 |
+		| 1  | 6  |
+		| 0  | 0  |
+	Then A * B is the following matrix:
+		| c1 | c2 |
+		| 2  | 12 |
+		| 3  | 18 |
+		| 4  | 24 |

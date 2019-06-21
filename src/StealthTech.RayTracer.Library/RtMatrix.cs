@@ -25,28 +25,6 @@ namespace StealthTech.RayTracer.Library
             _matrix = new double[rows, columns];
         }
 
-        public double[] GetRow(int rowIndex)
-        {
-            var row = new double[ColumnCount];
-            for (int c = 0; c < ColumnCount; c++)
-            {
-                row[c] = _matrix[rowIndex, c];
-            }
-
-            return row;
-        }
-
-        public double[] GetColumn(int columnIndex)
-        {
-            var column = new double[RowCount];
-            for (int r = 0; r < RowCount; r++)
-            {
-                column[r] = _matrix[r, columnIndex];
-            }
-
-            return column;
-        }
-
         public double this[int row, int column]
         {
             get
@@ -62,28 +40,25 @@ namespace StealthTech.RayTracer.Library
         public static RtMatrix operator *(RtMatrix left, RtMatrix right)
         {
             int leftRowCount = left.RowCount;
+            int leftColumnCount = left.ColumnCount;
+
             int rightColumnCount = right.ColumnCount;
 
             var results = new RtMatrix(leftRowCount, rightColumnCount);
-            var columns = new double[right.ColumnCount][];
 
-            for (int r = 0; r < leftRowCount; r++)
+            double accumulator = 0;
+
+            for (int li = 0; li < leftRowCount; li++)
             {
-                var row = left.GetRow(r);
-                for (int c = 0; c < rightColumnCount; c++)
+                for (int rj = 0; rj < rightColumnCount; rj++)
                 {
-                    if (columns[c] == null)
+                    for (int i1 = 0; i1 < leftColumnCount; i1++)
                     {
-                        columns[c] = right.GetColumn(c);
+                        accumulator += left[li, i1] * right[i1, rj];
                     }
 
-                    double accumulator = 0;
-                    for (int i = 0; i < leftRowCount; i++)
-                    {
-                        accumulator += row[i] * columns[c][i];
-                    }
-
-                    results[r, c] = accumulator;
+                    results[li, rj] = accumulator;
+                    accumulator = 0;
                 }
             }
 
@@ -98,11 +73,10 @@ namespace StealthTech.RayTracer.Library
 
             for (int r = 0; r < left.RowCount; r++)
             {
-                var row = left.GetRow(r);
                 double accumulator = 0;
                 for (int c = 0; c < 4; c++)
                 {
-                    accumulator += row[c] * column[c];
+                    accumulator += left[r, c] * column[c];
                 }
 
                 results[r] = accumulator;
