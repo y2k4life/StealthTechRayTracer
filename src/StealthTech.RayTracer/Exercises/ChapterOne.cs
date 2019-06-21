@@ -15,7 +15,7 @@ namespace StealthTech.RayTracer.Exercises
     {
         public void Run()
         {
-            var projectile = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1, 0).Normalized);
+            var projectile = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1, 0).Normalized());
             var environment = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
 
             int i = 0;

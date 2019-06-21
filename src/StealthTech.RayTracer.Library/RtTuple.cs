@@ -43,6 +43,39 @@ namespace StealthTech.RayTracer.Library
 
         public bool IsVector { get => W == 0; }
 
+        public RtTuple Negate()
+        {
+            return new RtTuple(
+                -X,
+                -Y,
+                -Z,
+                -W
+            );
+        }
+
+        public double Magnitude() => Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2) + Math.Pow(W, 2));
+
+        public RtTuple Normalized() => this / Magnitude();
+
+        public double Dot(RtTuple other)
+        {
+            return
+                X * other.X +
+                Y * other.Y +
+                Z * other.Z +
+                W * other.W;
+        }
+
+        public RtTuple Cross(RtTuple other)
+        {
+            return new RtTuple(
+                Y * other.Z - Z * other.Y,
+                Z * other.X - X * other.Z,
+                X * other.Y - Y * other.X,
+                0
+            );
+        }
+
         static public RtTuple operator +(RtTuple left, RtTuple right)
         {
             return new RtTuple(
@@ -63,16 +96,6 @@ namespace StealthTech.RayTracer.Library
             );
         }
 
-        public RtTuple Negate()
-        {
-            return new RtTuple(
-                -X,
-                -Y,
-                -Z,
-                -W
-            );
-        }
-
         static public RtTuple operator *(RtTuple tuple, double multiplier)
         {
             return new RtTuple(
@@ -82,6 +105,7 @@ namespace StealthTech.RayTracer.Library
                 tuple.W * multiplier
             );
         }
+
         static public RtTuple operator *(double multiplier, RtTuple tuple)
         {
             return tuple * multiplier;
@@ -115,41 +139,6 @@ namespace StealthTech.RayTracer.Library
         static public bool operator !=(RtTuple left, RtTuple right)
         {
             return !(left == right);
-        }
-
-        public double Magnitude
-        {
-            get
-            {
-                return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2) + Math.Pow(W, 2));
-            }
-        }
-
-        public RtTuple Normalized
-        {
-            get
-            {
-                return this / Magnitude;
-            }
-        }
-
-        public double Dot(RtTuple other)
-        {
-            return
-                X * other.X +
-                Y * other.Y +
-                Z * other.Z +
-                W * other.W;
-        }
-
-        public RtTuple Cross(RtTuple other)
-        {
-            return new RtTuple(
-                Y * other.Z - Z * other.Y,
-                Z * other.X - X * other.Z,
-                X * other.Y - Y * other.X,
-                0
-            );
         }
 
         public override string ToString()
