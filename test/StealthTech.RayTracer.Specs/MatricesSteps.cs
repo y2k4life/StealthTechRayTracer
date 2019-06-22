@@ -243,12 +243,10 @@ namespace StealthTech.RayTracer.Specs
         {
             var inverseOfB = _matrix2.Inverse();
 
-            var actualResults = inverseOfB * _matrix1;
+            var actualResults = _matrix3 * inverseOfB;
 
-            AssertDouble.Equals(inverseOfB, actualResults);
+            Assert.Equal(_matrix1, actualResults);
         }
-
-
 
         private static RtMatrix GetExpected(Table table)
         {
