@@ -24,7 +24,8 @@ namespace StealthTech.RayTracer.EasyConsole
         {
             for (int i = 0; i < Options.Count; i++)
             {
-                Console.WriteLine("{0}. {1}", i + 1, Options[i].Name);
+                Console.WriteLine($"\t{i + 1}. {Options[i].Name}");
+                Console.WriteLine();
             }
             int choice = Input.ReadInt("Choose an option:", min: 1, max: Options.Count);
 

@@ -91,7 +91,7 @@ namespace StealthTech.RayTracer.EasyConsole
 
             // select the new page
             if (!Pages.TryGetValue(pageType, out Page nextPage))
-                throw new KeyNotFoundException("The given page \"{0}\" was not present in the program".Format(pageType));
+                throw new KeyNotFoundException($"The given page {pageType} was not present in the program");
 
             // enter the new page
             History.Push(nextPage);

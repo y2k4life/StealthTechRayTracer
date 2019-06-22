@@ -5,7 +5,9 @@
 //     GitHub: https://github.com/splttingatms/EasyConsole
 // </copyright>
 //-----------------------------------------------------------------------
+
 using System;
+using System.Linq;
 
 namespace StealthTech.RayTracer.EasyConsole
 {
@@ -17,13 +19,27 @@ namespace StealthTech.RayTracer.EasyConsole
             return ReadInt(min, max);
         }
 
+        public static int ReadInt(string prompt, int[] ints)
+        {
+            Output.DisplayPrompt(prompt);
+            int value = ReadInt();
+
+            while (!ints.Contains(value))
+            {
+                Output.DisplayPrompt($"Please enter an integer");
+                value = ReadInt();
+            }
+
+            return value;
+        }
+
         public static int ReadInt(int min, int max)
         {
             int value = ReadInt();
 
             while (value < min || value > max)
             {
-                Output.DisplayPrompt("Please enter an integer between {0} and {1} (inclusive)", min, max);
+                Output.DisplayPrompt($"Please enter an integer between {min} and {max} (inclusive)");
                 value = ReadInt();
             }
 

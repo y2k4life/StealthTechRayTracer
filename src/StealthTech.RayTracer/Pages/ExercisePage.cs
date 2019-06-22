@@ -20,7 +20,7 @@ namespace StealthTech.RayTracer.Pages
                 var chapter = new ChapterOne();
                 chapter.Run();
                 Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateHome();
+                Program.NavigateTo<ExercisePage>();
             }));
 
             AddOption(new Option("Chapter Two", () =>
@@ -28,8 +28,10 @@ namespace StealthTech.RayTracer.Pages
                 var chapter = new ChapterTwo();
                 chapter.Run();
                 Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateHome();
+                Program.NavigateTo<ExercisePage>();
             }));
+
+            AddOption(new Option("Chapter Three", () => program.NavigateTo<ChapterThreePage>()));
         }
     }
 }

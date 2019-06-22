@@ -30,10 +30,10 @@ namespace StealthTech.RayTracer.EasyConsole
             Console.WriteLine(format, args);
         }
 
-        public static void DisplayPrompt(string format, params object[] args)
+        public static void DisplayPrompt(string format)
         {
             format = format.Trim() + " ";
-            Console.Write(format, args);
+            Console.Write(format);
         }
     }
 }
