@@ -8,7 +8,6 @@
 using StealthTech.RayTracer.Exercise;
 using StealthTech.RayTracer.Library;
 using System;
-using System.IO;
 
 namespace StealthTech.RayTracer.Exercises
 {
@@ -18,20 +17,20 @@ namespace StealthTech.RayTracer.Exercises
         {
             var projectile = new Projectile(RtTuple.Point(0, 1, 0), RtTuple.Vector(1, 1.8, 0).Normalized() * 11.3);
             var environment = new RtEnvironment(RtTuple.Vector(0, -0.1, 0), RtTuple.Vector(-0.01, 0, 0));
-            var canvase = new Canvas(900, 550);
+            var canvas = new Canvas(900, 550);
 
             while (projectile.Position.Y >= 0)
             {
-                Draw(canvase, projectile.Position);
+                Draw(canvas, projectile.Position);
                 projectile = Tick(projectile, environment);
             }
 
-            File.WriteAllText("file.ppm", canvase.GetPPMContent());
+            PpmOutput.WriteToFile("file.ppm", canvas.GetPPMContent());
         }
 
         private static Projectile Tick(Projectile projectile, RtEnvironment environment)
         {
-            return new Projectile(projectile.Position + projectile.Velocity, 
+            return new Projectile(projectile.Position + projectile.Velocity,
                 projectile.Velocity + environment.Gravity + environment.Wind);
         }
 

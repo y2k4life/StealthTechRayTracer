@@ -8,7 +8,7 @@ namespace StealthTech.RayTracer.Exercises
     {
         int left;
         int top;
-        int indent = 5;
+        private readonly int indent = 5;
 
         public ChapterThree()
         {
@@ -49,11 +49,9 @@ namespace StealthTech.RayTracer.Exercises
             m1 = m1.Identity();
             
             RtMatrix m2 = m1.Inverse();
-            var m2Width = TotalInsideWidth(m2) + 2;
             
             var m1Width = TotalInsideWidth(m1) + 2;
             var op1Indent = indent + m1Width + 1;
-            var op3Indent = indent + m1Width + m2Width + 4;
             var m2Indent = indent + m1Width + 3;
 
             PrintMatrix(m1, indent);
