@@ -23,6 +23,10 @@ namespace StealthTech.RayTracer.Specs
 
         public RtTuple Point2 { get; set; }
 
+        public RtTuple Point3 { get; set; }
+
+        public RtTuple Point4 { get; set; }
+        
         public RtTuple Vector { get; set; }
 
         public RtTuple Vector1 { get; set; }
@@ -32,5 +36,6 @@ namespace StealthTech.RayTracer.Specs
         public RtTuple NormalizedVector { get; set; }
 
         public RtTuple ZeroVector { get; set; }
+        
     }
 }
