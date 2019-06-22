@@ -5,10 +5,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace StealthTech.RayTracer.Library
 {
-    using System;
-
     public class RtTuple : IEquatable<RtTuple>
     {
         public static readonly RtTuple ZeroVector = new RtTuple(0, 0, 0, 0);
