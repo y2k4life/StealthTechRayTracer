@@ -276,12 +276,12 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="Multiplying a tumple by a scalar")]
+        [Xunit.FactAttribute(DisplayName="Multiplying a tuple by a scalar")]
         [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Multiplying a tumple by a scalar")]
-        public virtual void MultiplyingATumpleByAScalar()
+        [Xunit.TraitAttribute("Description", "Multiplying a tuple by a scalar")]
+        public virtual void MultiplyingATupleByAScalar()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tumple by a scalar", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tuple by a scalar", null, ((string[])(null)));
 #line 58
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -295,12 +295,12 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="Multiplying a tumple by a fraction")]
+        [Xunit.FactAttribute(DisplayName="Multiplying a tuple by a fraction")]
         [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Multiplying a tumple by a fraction")]
-        public virtual void MultiplyingATumpleByAFraction()
+        [Xunit.TraitAttribute("Description", "Multiplying a tuple by a fraction")]
+        public virtual void MultiplyingATupleByAFraction()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tumple by a fraction", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tuple by a fraction", null, ((string[])(null)));
 #line 63
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
