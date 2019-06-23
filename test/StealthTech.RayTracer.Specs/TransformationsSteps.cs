@@ -47,7 +47,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, actualPoint);
         }
 
-        [Given(@"inv <- inverse\(transform\)")]
+        [Given(@"inv ← inverse\(transform\)")]
         public void Given_Inv_Is_Inverse_Transform()
         {
             _inverseTransform = _transform.Inverse();
@@ -71,7 +71,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(_tupleContext.Vector, actualVector);
         }
 
-        [Given(@"transform <- scaling\((.*), (.*), (.*)\)")]
+        [Given(@"transform ← scaling\((.*), (.*), (.*)\)")]
         public void Given_Transform_Is_Scaling_x_y_z(int x, int y, int z)
         {
             _transform = new Transform().Scaling(x, y, z);
@@ -97,13 +97,13 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedVector, actualVector);
         }
 
-        [Given(@"half_quarter <- rotation_x\(π / 4\)")]
+        [Given(@"half_quarter ← rotation_x\(π / 4\)")]
         public void Given_Half_Quarter_Is_Rotation_On_X()
         {
             _halfQuarter = _transform.RotateX(Math.PI / 4);
         }
 
-        [Given(@"full_quarter <- rotation_x\(π / 2\)")]
+        [Given(@"full_quarter ← rotation_x\(π / 2\)")]
         public void Given_Full_Quarter_Is_Rotation_On_X()
         {
             _fullQuarter = _transform.RotateX(Math.PI / 2);
@@ -129,61 +129,61 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, actualPoint);
         }
 
-        [Given(@"inv <- inverse\(half_quarter\)")]
+        [Given(@"inv ← inverse\(half_quarter\)")]
         public void Given_Inverse_Is_Half_Quarter_Rotation()
         {
             _inverseTransform = _halfQuarter.Inverse();
         }
 
-        [Given(@"half_quarter <- rotation_y\(π / 4\)")]
+        [Given(@"half_quarter ← rotation_y\(π / 4\)")]
         public void Given_Half_Quarter_Is_Rotation_On_The_Y()
         {
             _halfQuarter = _transform.RotateY(Math.PI / 4);
         }
 
-        [Given(@"full_quarter <- rotation_y\(π / 2\)")]
+        [Given(@"full_quarter ← rotation_y\(π / 2\)")]
         public void Given_Full_Quarter_Is_Rotation_On_The_Y()
         {
             _fullQuarter = _transform.RotateY(Math.PI / 2);
         }
 
-        [Given(@"half_quarter <- rotation_z\(π / 4\)")]
+        [Given(@"half_quarter ← rotation_z\(π / 4\)")]
         public void Given_Half_Quarter_Is_Rotation_On_The_Z()
         {
             _halfQuarter = _transform.RotateZ(Math.PI / 4);
         }
 
-        [Given(@"full_quarter <- rotation_z\(π / 2\)")]
+        [Given(@"full_quarter ← rotation_z\(π / 2\)")]
         public void Given_Full_Quarter_Is_Rotation_On_Z()
         {
             _fullQuarter = _transform.RotateZ(Math.PI / 2);
         }
 
-        [Given(@"transform <- shearing\((.*), (.*), (.*), (.*), (.*), (.*)\)")]
+        [Given(@"transform ← shearing\((.*), (.*), (.*), (.*), (.*), (.*)\)")]
         public void Given_Transform_Shearing_xy_xz_yx_yz_zx_zy(double xy, double xz, double yx, double yz, double zx, double zy)
         {
             _transform = _transform.Shearing(xy, xz, yx, yz, zx, zy);
         }
 
-        [Given(@"A <- rotation_x\(π / 2\)")]
+        [Given(@"A ← rotation_x\(π / 2\)")]
         public void Given_Transform_A_Is_Rotation_On_Z()
         {
             _A = _transform.RotateX(Math.PI / 2);
         }
 
-        [Given(@"B <- scaling\((.*), (.*), (.*)\)")]
+        [Given(@"B ← scaling\((.*), (.*), (.*)\)")]
         public void Given_Transform_B_Scaling_x_y_z(int x, int y, int z)
         {
             _B = _transform.Scaling(x, y, z);
         }
 
-        [Given(@"C <- translation\((.*), (.*), (.*)\)")]
+        [Given(@"C ← translation\((.*), (.*), (.*)\)")]
         public void Given_Transform_C_Is_Translation_x_y_z(int x, int y, int z)
         {
             _C = _transform.Translation(x, y, z);
         }
 
-        [When(@"p2 <- A \* p")]
+        [When(@"p2 ← A \* p")]
         public void When_p2_Is_A_Multiplied_By_p()
         {
             _tupleContext.Point2 = _A * _tupleContext.Point;
@@ -197,7 +197,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, _tupleContext.Point2);
         }
 
-        [When(@"p3 <- B \* p2")]
+        [When(@"p3 ← B \* p2")]
         public void When_p3_Is_B_Multiplied_By_p2()
         {
             _tupleContext.Point3 = _B * _tupleContext.Point2;
@@ -211,7 +211,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, _tupleContext.Point3);
         }
 
-        [When(@"p4 <- C \* p3")]
+        [When(@"p4 ← C \* p3")]
         public void When_p4_Is_C_Multiplied_By_p3()
         {
             _tupleContext.Point4 = _C * _tupleContext.Point3;
@@ -225,7 +225,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, _tupleContext.Point4);
         }
 
-        [When(@"T <- C \* B \* A")]
+        [When(@"T ← C \* B \* A")]
         public void When_T_Is_C_Multiplied_By_B_Multiplied_By_A()
         {
             _T = _C * _B * _A;
@@ -241,7 +241,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedPoint, actualPoint);
         }
 
-        [When(@"T <- rotation_x\(π / 2\)\.scaling\((.*), (.*), (.*)\)\.translation\((.*), (.*), (.*)\)")]
+        [When(@"T ← rotation_x\(π / 2\)\.scaling\((.*), (.*), (.*)\)\.translation\((.*), (.*), (.*)\)")]
         public void When_T_Is_Rotation_X_Scaling_Translation(int sx, int sy, int sz, int tx, int ty, int tz)
         {
             _T = new Transform()

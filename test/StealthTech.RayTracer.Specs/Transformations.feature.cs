@@ -88,7 +88,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
  testRunner.Given("transform ← translation(5, -3, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.And("p <- point(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 6
  testRunner.Then("transform * p = point(2, 1, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -107,9 +107,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.Given("transform ← translation(5, -3, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.And("inv <- inverse(transform)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("inv ← inverse(transform)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("p <- point(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
  testRunner.Then("inv * p = point(-8, 7, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -128,7 +128,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
  testRunner.Given("transform ← translation(5, -3, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
- testRunner.And("v <- vector(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("v ← vector(-3, 4, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
  testRunner.Then("transform * v = v", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -145,9 +145,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 20
- testRunner.Given("transform <- scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 21
- testRunner.And("p <- point(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 22
  testRunner.Then("transform * p = point(-8, 18, 32)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -164,9 +164,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 25
- testRunner.Given("transform <- scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 26
- testRunner.And("v <- vector(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("v ← vector(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
  testRunner.Then("transform * v = vector(-8, 18, 32)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -183,11 +183,11 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 30
- testRunner.Given("transform <- scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← scaling(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 31
- testRunner.And("inv <- inverse(transform)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("inv ← inverse(transform)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 32
- testRunner.And("v <- vector(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("v ← vector(-4, 6, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 33
  testRunner.Then("inv * v = vector(-2, 2, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -204,11 +204,11 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 36
- testRunner.Given("p <- point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 37
- testRunner.And("half_quarter <- rotation_x(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("half_quarter ← rotation_x(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
- testRunner.And("full_quarter <- rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("full_quarter ← rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39
  testRunner.Then("half_quarter * p = point(0, √2/2, √2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 40
@@ -227,11 +227,11 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 43
- testRunner.Given("p <- point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 44
- testRunner.And("half_quarter <- rotation_x(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("half_quarter ← rotation_x(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 45
- testRunner.And("inv <- inverse(half_quarter)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("inv ← inverse(half_quarter)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 46
  testRunner.Then("inv * p = point(0, √2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -248,11 +248,11 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 49
- testRunner.Given("p <- point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 50
- testRunner.And("half_quarter <- rotation_y(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("half_quarter ← rotation_y(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 51
- testRunner.And("full_quarter <- rotation_y(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("full_quarter ← rotation_y(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 52
  testRunner.Then("half_quarter * p = point(√2/2, 0, √2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 53
@@ -271,11 +271,11 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 56
- testRunner.Given("p <- point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 57
- testRunner.And("half_quarter <- rotation_z(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("half_quarter ← rotation_z(π / 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 58
- testRunner.And("full_quarter <- rotation_z(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("full_quarter ← rotation_z(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 59
  testRunner.Then("half_quarter * p = point(-√2/2, √2/2, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 60
@@ -294,9 +294,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 63
- testRunner.Given("transform <- shearing(1, 0, 0, 0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← shearing(1, 0, 0, 0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 64
- testRunner.And("p <- point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 65
  testRunner.Then("transform * p = point(5, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -313,9 +313,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 68
- testRunner.Given("transform <- shearing(0, 0, 1, 0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← shearing(0, 0, 1, 0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 69
- testRunner.And("p <- point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 70
  testRunner.Then("transform * p = point(2, 5, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -332,9 +332,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 73
- testRunner.Given("transform <- shearing(0, 0, 0, 1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← shearing(0, 0, 0, 1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 74
- testRunner.And("p <- point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 75
  testRunner.Then("transform * p = point(2, 7, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -351,9 +351,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 78
- testRunner.Given("transform <- shearing(0, 0, 0, 0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← shearing(0, 0, 0, 0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 79
- testRunner.And("p <- point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 80
  testRunner.Then("transform * p = point(2, 3, 6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -370,9 +370,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 83
- testRunner.Given("transform <- shearing(0, 0, 0, 0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("transform ← shearing(0, 0, 0, 0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 84
- testRunner.And("p <- point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("p ← point(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 85
  testRunner.Then("transform * p = point(2, 3, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -389,23 +389,23 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 88
- testRunner.Given("p <- point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 89
- testRunner.And("A <- rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("A ← rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 90
- testRunner.And("B <- scaling(5, 5, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("B ← scaling(5, 5, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 91
- testRunner.And("C <- translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("C ← translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 93
- testRunner.When("p2 <- A * p", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("p2 ← A * p", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 94
  testRunner.Then("p2 = point(1, -1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 96
- testRunner.When("p3 <- B * p2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("p3 ← B * p2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 97
  testRunner.Then("p3 = point(5, -5, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 99
- testRunner.When("p4 <- C * p3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("p4 ← C * p3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 100
  testRunner.Then("p4 = point(15, 0, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -422,15 +422,15 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 103
- testRunner.Given("p <- point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 104
- testRunner.And("A <- rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("A ← rotation_x(π / 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 105
- testRunner.And("B <- scaling(5, 5, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("B ← scaling(5, 5, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 106
- testRunner.And("C <- translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("C ← translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 107
- testRunner.When("T <- C * B * A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("T ← C * B * A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 108
  testRunner.Then("T * p = point(15, 0, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -447,9 +447,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 111
- testRunner.Given("p <- point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("p ← point(1, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 112
- testRunner.When("T <- rotation_x(π / 2).scaling(5, 5, 5).translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("T ← rotation_x(π / 2).scaling(5, 5, 5).translation(10, 5, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 113
  testRunner.Then("T * p = point(15, 0, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
