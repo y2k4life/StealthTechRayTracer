@@ -90,7 +90,7 @@ Scenario: A matrix multiplied by a tuple
 		| 2    | 4    | 4    | 2    |
 		| 8    | 6    | 4    | 1    |
 		| 0    | 0    | 0    | 1    |
-	And b <- tuple(1, 2, 3, 1)
+	And b ← tuple(1, 2, 3, 1)
 	Then A * b = tuple(18, 24, 33, 1)
 	And b * A = tuple(18, 24, 33, 1)
 
@@ -183,7 +183,7 @@ Scenario: Multiplying a matrix by the identity matrix
 	Then A * identity_matrix = A
 
 Scenario: Multiplying the identity matrix by a tuple
-	Given a <- tuple(1, 2, 3, 4)
+	Given a ← tuple(1, 2, 3, 4)
 	And the following matrix A:
 		| c1 | c2 | c3 | c4 |
 		| 1  | 0  | 0  | 0  |
@@ -267,7 +267,7 @@ Scenario: Calculating a minor of a 3x3 matrix
 		| 3    | 5    | 0    |
 		| 2    | -1   | -7   |
 		| 6    | -1   | 5    |
-	And B <- submatrix(A, 1, 0)
+	And B ← submatrix(A, 1, 0)
 	Then determinant(B) = 25
 	And minor(A, 1, 0) = 25
 
@@ -333,7 +333,7 @@ Scenario: Calculating the inverse of a matrix
 		| 1    | -5   | 1    | 8    |
 		| 7    | 7    | -6   | -7   |
 		| 1    | -3   | 7    | 4    |
-	And B <- inverse(A)
+	And B ← inverse(A)
 	Then determinant(A) = 532
 	And cofactor(A, 2, 3) = -160
 	And B[3,2] = -160/532
@@ -387,7 +387,7 @@ Scenario: Multiplying a product by its inverse
 		| 3    | -1   | 7    | 0    |
 		| 7    | 0    | 5    | 4    |
 		| 6    | -2   | 0    | 5    |
-	And C <- A * B
+	And C ← A * B
 	Then C * inverse(B) = A
 
 Scenario: Calculating the inverse of a 2x2 matrix

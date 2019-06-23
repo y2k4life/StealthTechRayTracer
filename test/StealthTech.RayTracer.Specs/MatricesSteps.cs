@@ -151,7 +151,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedMatrix, actual);
         }
 
-        [Given(@"B <- submatrix\(A, (.*), (.*)\)")]
+        [Given(@"B ← submatrix\(A, (.*), (.*)\)")]
         public void GivenB_SubmatrixA(int row, int column)
         {
             _matrix2 = _matrix1.Remove(row, column);
@@ -197,7 +197,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.False(actualIsInvertible);
         }
 
-        [Given(@"B <- inverse\(A\)")]
+        [Given(@"B ← inverse\(A\)")]
         public void Given_B_Inverse_A()
         {
             _matrix2 = _matrix1.Inverse();
@@ -232,7 +232,7 @@ namespace StealthTech.RayTracer.Specs
 
         }
 
-        [Given(@"C <- A \* B")]
+        [Given(@"C ← A \* B")]
         public void Given_C_Equals_A_Multiplied_By_B()
         {
             _matrix3 = _matrix1 * _matrix2;
