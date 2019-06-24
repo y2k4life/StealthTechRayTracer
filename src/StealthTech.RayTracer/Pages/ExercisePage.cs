@@ -40,6 +40,8 @@ namespace StealthTech.RayTracer.Pages
                 Input.ReadString("Press [Enter] to navigate home");
                 Program.NavigateTo<ExercisePage>();
             }));
+
+            AddOption(new Option("Chapter Five", () => Program.NavigateTo<ChapterFivePage>()));
         }
     }
 }

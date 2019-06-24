@@ -41,5 +41,47 @@ namespace StealthTech.RayTracer.PerformanceTuning
 
             return matrix;
         }
+
+        public void BuildImageFromChapterFix()
+        {
+            var rayOrigin = RtTuple.Point(0, 0, -5);
+
+            var wallZ = 10;
+            var wallSize = 7.0;
+            var canvasSize = 800;
+
+            var canvas = new Canvas(canvasSize, canvasSize);
+
+            var pixelSize = wallSize / canvasSize;
+
+            var half = wallSize / 2;
+
+            var color = new RtColor(1, 0, 0);
+            var shape = new Sphere
+            {
+                Transform = new Transform()
+                    .Scaling(0.5, 1, 1)
+                    .Shearing(1, 0, 0, 0, 0, 0)
+            };
+
+            for (int y = 0; y < canvasSize; y++)
+            {
+                var worldY = half - pixelSize * y;
+                for (int x = 0; x < canvasSize; x++)
+                {
+                    var worldX = -half + pixelSize * x;
+
+                    var position = RtTuple.Point(worldX, worldY, wallZ);
+
+                    var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
+                    var intersections = new IntersectionList(shape.Intersect(ray));
+
+                    if (intersections.Hit() != null)
+                    {
+                        canvas[x, y] = color;
+                    }
+                }
+            }
+        }
     }
 }

@@ -21,6 +21,14 @@ namespace StealthTech.RayTracer.Pages
                 var tuning = new MatricesTuning();
                 tuning.Multiplication();
             }));
+
+            AddOption(new Option("Build Image from Chapter Five", () =>
+            {
+                var tuning = new MatricesTuning();
+                tuning.BuildImageFromChapterFix();
+                Input.ReadString("Press [Enter] to navigate home");
+                Program.NavigateTo<ExercisePage>();
+            }));
         }
     }
 }

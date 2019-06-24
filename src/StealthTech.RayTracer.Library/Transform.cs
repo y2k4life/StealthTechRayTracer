@@ -34,7 +34,7 @@ namespace StealthTech.RayTracer.Library
             return new Transform(results);
         }
 
-        public Transform Translation(int x, int y, int z)
+        public Transform Translation(double x, double y, double z)
         {
             var translation = new RtMatrix(4, 4).Identity();
             translation[0, 3] = x;
@@ -44,7 +44,7 @@ namespace StealthTech.RayTracer.Library
             return new Transform(translation * Matrix);
         }
 
-        public Transform Scaling(int x, int y, int z)
+        public Transform Scaling(double x, double y, double z)
         {
             var scaling = new RtMatrix(4, 4).Identity();
             scaling[0, 0] = x;

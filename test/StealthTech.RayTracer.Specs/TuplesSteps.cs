@@ -21,7 +21,7 @@ namespace StealthTech.RayTracer.Specs
             _tupleContext = tupleContext;
         }
 
-        [Given(@"a <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"a ← tuple\((.*), (.*), (.*), (.*)\)")]
         public void Given_a_Tuple(double x, double y, double z, double w)
         {
             _tupleContext.Tuple = new RtTuple(x, y, z, w);
@@ -75,13 +75,13 @@ namespace StealthTech.RayTracer.Specs
             Assert.True(_tupleContext.Tuple.IsVector);
         }
 
-        [Given(@"b <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"b ← tuple\((.*), (.*), (.*), (.*)\)")]
         public void Given_b_Tuple(double x, double y, double z, double w)
         {
             _tupleContext.Tuple2 = new RtTuple(x, y, z, w);
         }
 
-        [Given(@"p <- point\((.*), (.*), (.*)\)")]
+        [Given(@"p ← point\((.*), (.*), (.*)\)")]
         public void GivenP_Point(double x, double y, double z)
         {
             _tupleContext.Point = RtTuple.Point(x, y, z);
@@ -95,7 +95,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedTuple, _tupleContext.Point);
         }
 
-        [Given(@"v <- vector\((.*), (.*), (.*)\)")]
+        [Given(@"v ← vector\((.*), (.*), (.*)\)")]
         public void Given_v_Vector(double x, double y, double z)
         {
             _tupleContext.Vector = RtTuple.Vector(x, y, z);
@@ -109,13 +109,13 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedTuple, _tupleContext.Vector);
         }
 
-        [Given(@"a1 <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"a1 ← tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenA1_Tuple(double x, double y, double z, double w)
         {
             _tupleContext.Tuple1 = new RtTuple(x, y, z, w);
         }
 
-        [Given(@"a2 <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"a2 ← tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenA2_Tuple(double x, double y, double z, double w)
         {
             _tupleContext.Tuple2 = new RtTuple(x, y, z, w);
@@ -129,13 +129,13 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedTuple, _tupleContext.Tuple1 + _tupleContext.Tuple2);
         }
 
-        [Given(@"p1 <- point\((.*), (.*), (.*)\)")]
+        [Given(@"p1 ← point\((.*), (.*), (.*)\)")]
         public void GivenP1_Point(double x, double y, double z)
         {
             _tupleContext.Point1 = RtTuple.Point(x, y, z);
         }
 
-        [Given(@"p2 <- point\((.*), (.*), (.*)\)")]
+        [Given(@"p2 ← point\((.*), (.*), (.*)\)")]
         public void GivenP2_Point(double x, double y, double z)
         {
             _tupleContext.Point2 = RtTuple.Point(x, y, z);
@@ -207,7 +207,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedVector, actual);
         }
 
-        [When(@"norm <- normalize\(v\)")]
+        [When(@"norm ← normalize\(v\)")]
         public void When_norm_Equals_Normalize_v()
         {
             _tupleContext.NormalizedVector = _tupleContext.Vector.Normalized();
@@ -219,13 +219,13 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedNormal, _tupleContext.NormalizedVector.Magnitude());
         }
 
-        [Given(@"v1 <- vector\((.*), (.*), (.*)\)")]
+        [Given(@"v1 ← vector\((.*), (.*), (.*)\)")]
         public void Given_v1_Vector(double x, double y, double z)
         {
             _tupleContext.Vector1 = RtTuple.Vector(x, y, z);
         }
 
-        [Given(@"v2 <- vector\((.*), (.*), (.*)\)")]
+        [Given(@"v2 ← vector\((.*), (.*), (.*)\)")]
         public void Given_v2_Vector(double x, double y, double z)
         {
             _tupleContext.Vector2 = RtTuple.Vector(x, y, z);
@@ -261,7 +261,7 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedVector, _tupleContext.Vector1 - _tupleContext.Vector2);
         }
 
-        [Given(@"zero <- vector\(0, 0, 0\)")]
+        [Given(@"zero ← vector\(0, 0, 0\)")]
         public void Given_Zero_Vector()
         {
             _tupleContext.ZeroVector = RtTuple.ZeroVector;
@@ -287,5 +287,16 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedVector, actualVector);
         }
 
+        [Given(@"origin ← point\((.*), (.*), (.*)\)")]
+        public void Given_Origin_As_Point_x_y_z(double x, double y, double z)
+        {
+            _tupleContext.Origin = RtTuple.Point(x, y, z);
+        }
+
+        [Given(@"direction ← vector\((.*), (.*), (.*)\)")]
+        public void Given_Direction_As_Vector_x_y_z(double x, double y, double z)
+        {
+            _tupleContext.Direction = RtTuple.Vector(x, y, z);
+        }
     }
 }

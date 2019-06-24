@@ -36,6 +36,10 @@ namespace StealthTech.RayTracer.Specs
         public RtTuple NormalizedVector { get; set; }
 
         public RtTuple ZeroVector { get; set; }
+
+        public RtTuple Origin { get; set; }
         
+        public RtTuple Direction { get; set; }
+
     }
 }

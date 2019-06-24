@@ -471,7 +471,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 87
  testRunner.Given("the following matrix A:", ((string)(null)), table13, "Given ");
 #line 93
- testRunner.And("b <- tuple(1, 2, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("b ← tuple(1, 2, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 94
  testRunner.Then("A * b = tuple(18, 24, 33, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 95
@@ -845,7 +845,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 186
- testRunner.Given("a <- tuple(1, 2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a ← tuple(1, 2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
@@ -1215,7 +1215,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 265
  testRunner.Given("the following matrix A:", ((string)(null)), table41, "Given ");
 #line 270
- testRunner.And("B <- submatrix(A, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("B ← submatrix(A, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 271
  testRunner.Then("determinant(B) = 25", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 272
@@ -1483,7 +1483,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 330
  testRunner.Given("the following matrix A:", ((string)(null)), table47, "Given ");
 #line 336
- testRunner.And("B <- inverse(A)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("B ← inverse(A)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 337
  testRunner.Then("determinant(A) = 532", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 338
@@ -1730,7 +1730,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 384
  testRunner.And("the following matrix B:", ((string)(null)), table54, "And ");
 #line 390
- testRunner.And("C <- A * B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("C ← A * B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 391
  testRunner.Then("C * inverse(B) = A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
