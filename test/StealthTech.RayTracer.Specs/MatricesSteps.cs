@@ -85,15 +85,6 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedTuple, actual);
         }
 
-        [Then(@"b \* A = tuple\((.*), (.*), (.*), (.*)\)")]
-        public void Then_b_multiplied_by_A_Equals_Tuple(double x, double y, double z, double w)
-        {
-            var expectedTuple = new RtTuple(x, y, z, w);
-            var actual = _tupleContext.Tuple2 * _matrix1;
-
-            Assert.Equal(expectedTuple, actual);
-        }
-
         [Then(@"The identity of A is:")]
         public void ThenTheIdentityOfAIs(Table table)
         {

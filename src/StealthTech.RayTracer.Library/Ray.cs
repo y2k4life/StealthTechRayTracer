@@ -9,25 +9,25 @@ namespace StealthTech.RayTracer.Library
 {
     public class Ray
     {
-        public Ray(RtTuple origin, RtTuple direction)
+        public Ray(RtPoint origin, RtVector direction)
         {
             Origin = origin;
             Direction = direction;
         }
 
-        public RtTuple Origin { get; set; }
+        public RtPoint Origin { get; set; }
 
-        public RtTuple Direction { get; set; }
+        public RtVector Direction { get; set; }
 
-        public RtTuple Position(double time)
+        public RtPoint Position(double time)
         {
             return Origin + Direction * time;
         }
 
         public Ray Transform(RtMatrix tranformMatrix)
         {
-            var newOrigin = Origin * tranformMatrix;
-            var newDirection = Direction * tranformMatrix;
+            var newOrigin = new RtPoint(tranformMatrix * Origin);
+            var newDirection = new RtVector(tranformMatrix * Direction);
 
             return new Ray(newOrigin, newDirection);
         }

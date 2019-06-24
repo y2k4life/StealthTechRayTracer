@@ -45,15 +45,15 @@ namespace StealthTech.RayTracer.Specs
         [Given(@"r ← ray\(point\((.*), (.*), (.*)\), vector\((.*), (.*), (.*)\)\)")]
         public void Given_r_Is_Point_Vector(double pX, double pY, double pZ, double dX, double dY, double dZ)
         {
-            _rayContext.Ray = new Ray(RtTuple.Point(pX, pY, pZ), RtTuple.Vector(dX, dY, dZ));
+            _rayContext.Ray = new Ray(new RtPoint(pX, pY, pZ), new RtVector(dX, dY, dZ));
         }
 
         [Then(@"position\((.*)\) = point\((.*), (.*), (.*)\)")]
         public void Then_Position_p_Equals_Point_x_y_z(double p, double x, double y, double z)
         {
-            var expectedPosition = RtTuple.Point(x, y, z);
+            var expectedPosition = new RtPoint(x, y, z);
 
-            RtTuple actualPosition = _rayContext.Ray.Position(p);
+            RtPoint actualPosition = _rayContext.Ray.Position(p);
 
             Assert.Equal(expectedPosition, actualPosition);
         }
@@ -73,7 +73,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"r2\.origin = point\((.*), (.*), (.*)\)")]
         public void Then_r2_Origin_Equals_Point(double x, double y, double z)
         {
-            var expectedPoint = RtTuple.Point(x, y, z);
+            var expectedPoint = new RtPoint(x, y, z);
 
             Assert.Equal(_rayContext.Ray2.Origin, expectedPoint);
         }
@@ -81,7 +81,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"r2\.direction = vector\((.*), (.*), (.*)\)")]
         public void Then_r2_Direction_Equals_Vector(double x, double y, double z)
         {
-            var expectedVector = RtTuple.Vector(x, y, z);
+            var expectedVector = new RtVector(x, y, z);
 
             Assert.Equal(_rayContext.Ray2.Direction, expectedVector);
         }

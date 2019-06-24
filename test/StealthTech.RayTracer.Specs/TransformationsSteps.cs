@@ -40,7 +40,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"transform \* p = point\((.*), (.*), (.*)\)")]
         public void Then_Transform_Multiplied_By_p_Equals_Point_x_y_x(int x, int y, int z)
         {
-            var expectedPoint = RtTuple.Point(x, y, z);
+            var expectedPoint = new RtPoint(x, y, z);
 
             var actualPoint = _transform * _tupleContext.Point;
 
@@ -56,7 +56,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"inv \* p = point\((.*), (.*), (.*)\)")]
         public void Then_Inverse_Transform_Multiplied_By_p_Equals_Point_x_y_x(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             var actualPoint = _inverseTransform * _tupleContext.Point;
 
@@ -66,7 +66,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"transform \* v = v")]
         public void Then_Transform_Multiplied_By_v_Equals_v()
         {
-            var actualVector = _transform * _tupleContext.Vector;
+            RtVector actualVector = _transform * _tupleContext.Vector;
 
             Assert.Equal(_tupleContext.Vector, actualVector);
         }
@@ -80,7 +80,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"transform \* v = vector\((.*), (.*), (.*)\)")]
         public void Then_Transform_Multiplied_By_v_Equals_Vector_x_y_x(int x, int y, int z)
         {
-            var expectedVector = RtTuple.Vector(x, y, z);
+            var expectedVector = new RtVector(x, y, z);
 
             var actualVector = _transform * _tupleContext.Vector;
 
@@ -90,7 +90,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"inv \* v = vector\((.*), (.*), (.*)\)")]
         public void Then_Inverse_Transform_Multiplied_By_v_Equals_Vector_x_y_x(int x, int y, int z)
         {
-            var expectedVector = RtTuple.Vector(x, y, z);
+            var expectedVector = new RtVector(x, y, z);
             
             var actualVector = _inverseTransform * _tupleContext.Vector;
 
@@ -112,7 +112,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"half_quarter \* p = point\((.*), (.*), (.*)\)")]
         public void Then_Half_Quarter_Rotation_Multiplied_By_p_Equals_Point_x_y_x(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             var actualPoint = _halfQuarter * _tupleContext.Point;
 
@@ -122,7 +122,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"full_quarter \* p = point\((.*), (.*), (.*)\)")]
         public void Then_Full_Quarter_Rotation_Multiplied_By_p_Equals_Point_x_y_x(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             var actualPoint = _fullQuarter * _tupleContext.Point;
 
@@ -192,7 +192,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"p2 = point\((.*), (.*), (.*)\)")]
         public void Then_p2_Equals_Point(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             Assert.Equal(expectedPoint, _tupleContext.Point2);
         }
@@ -206,7 +206,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"p3 = point\((.*), (.*), (.*)\)")]
         public void Then_p3_Equals_Point_x_y_z(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             Assert.Equal(expectedPoint, _tupleContext.Point3);
         }
@@ -220,7 +220,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"p4 = point\((.*), (.*), (.*)\)")]
         public void Then_p4_Equals_Point_x_y_z(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             Assert.Equal(expectedPoint, _tupleContext.Point4);
         }
@@ -234,7 +234,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"T \* p = point\((.*), (.*), (.*)\)")]
         public void Then_T_Is_Multiplied_By_p_Equals_Point_x_y_z(string x, string y, string z)
         {
-            var expectedPoint = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedPoint = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             var actualPoint = _T * _tupleContext.Point;
 

@@ -18,7 +18,7 @@ namespace StealthTech.RayTracer.Library
         {
             var transformedRay = ray.Transform(Transform.Matrix.Inverse());
 
-            var saphereToRay = transformedRay.Origin - RtTuple.Point(0, 0, 0);
+            var saphereToRay = transformedRay.Origin - new RtPoint(0, 0, 0);
 
             var a = transformedRay.Direction.Dot(transformedRay.Direction);
             var b = 2 * transformedRay.Direction.Dot(saphereToRay);

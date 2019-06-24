@@ -11,14 +11,14 @@ namespace StealthTech.RayTracer.Exercise
 {
     public class RtEnvironment
     {
-        public RtEnvironment(RtTuple gravity, RtTuple wind)
+        public RtEnvironment(RtVector gravity, RtVector wind)
         {
             Gravity = gravity;
             Wind = wind;
         }
 
-        public RtTuple Gravity { get; set; }
+        public RtVector Gravity { get; set; }
 
-        public RtTuple Wind { get; set; }
+        public RtVector Wind { get; set; }
     }
 }

@@ -72,7 +72,7 @@ namespace StealthTech.RayTracer.Library
             return results;
         }
 
-        public static RtTuple operator *(RtMatrix left, RtTuple right)
+        public static RtTuple operator *(RtMatrix left, RtBaseTuple right)
         {
             var results = new double[4];
 
@@ -92,10 +92,10 @@ namespace StealthTech.RayTracer.Library
             return new RtTuple(results[0], results[1], results[2], results[3]);
         }
 
-        public static RtTuple operator *(RtTuple left, RtMatrix right)
-        {
-            return right * left;
-        }
+        //public static RtTuple operator *(RtTuple left, RtMatrix right)
+        //{
+        //    return right * left;
+        //}
 
         public override int GetHashCode()
         {

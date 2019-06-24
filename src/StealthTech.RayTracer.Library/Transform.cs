@@ -22,10 +22,16 @@ namespace StealthTech.RayTracer.Library
             Matrix = matrix;
         }
 
-        public static RtTuple operator *(Transform transform, RtTuple point)
+        public static RtPoint operator *(Transform transform, RtPoint point)
         {
-            var results = point * transform.Matrix;
-            return results;
+            var results = transform.Matrix * point;
+            return new RtPoint(results);
+        }
+
+        public static RtVector operator *(Transform transform, RtVector vector)
+        {
+            var results = transform.Matrix * vector;
+            return new RtVector(results);
         }
 
         public static Transform operator *(Transform right, Transform left)

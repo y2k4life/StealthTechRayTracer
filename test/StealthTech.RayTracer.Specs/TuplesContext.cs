@@ -17,29 +17,29 @@ namespace StealthTech.RayTracer.Specs
 
         public RtTuple Tuple2 { get; set; }
 
-        public RtTuple Point { get; set; }
+        public RtPoint Point { get; set; }
 
-        public RtTuple Point1 { get; set; }
+        public RtPoint Point1 { get; set; }
 
-        public RtTuple Point2 { get; set; }
+        public RtPoint Point2 { get; set; }
 
-        public RtTuple Point3 { get; set; }
+        public RtPoint Point3 { get; set; }
 
-        public RtTuple Point4 { get; set; }
+        public RtPoint Point4 { get; set; }
         
-        public RtTuple Vector { get; set; }
+        public RtVector Vector { get; set; }
 
-        public RtTuple Vector1 { get; set; }
+        public RtVector Vector1 { get; set; }
 
-        public RtTuple Vector2 { get; set; }
+        public RtVector Vector2 { get; set; }
 
-        public RtTuple NormalizedVector { get; set; }
+        public RtVector NormalizedVector { get; set; }
 
-        public RtTuple ZeroVector { get; set; }
+        public RtVector ZeroVector { get; set; }
 
-        public RtTuple Origin { get; set; }
+        public RtPoint Origin { get; set; }
         
-        public RtTuple Direction { get; set; }
+        public RtVector Direction { get; set; }
 
     }
 }

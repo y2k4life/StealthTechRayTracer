@@ -11,15 +11,15 @@ namespace StealthTech.RayTracer.Exercise
 {
     public class Projectile
     {
-        public Projectile(RtTuple position, RtTuple velocity)
+        public Projectile(RtPoint position, RtVector velocity)
         {
             Position = position;
             Velocity = velocity;
         }
 
-        public RtTuple Position { get; set; }
+        public RtPoint Position { get; set; }
 
-        public RtTuple Velocity { get; set; }
+        public RtVector Velocity { get; set; }
 
         public override string ToString()
         {

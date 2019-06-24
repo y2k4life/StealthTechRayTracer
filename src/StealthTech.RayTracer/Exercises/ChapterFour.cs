@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Exercises
 
         public void Run()
         {
-            var startingPoint = RtTuple.Point(0, 0, 1);
+            var startingPoint = new RtPoint(0, 0, 1);
             WriteToCanvas(startingPoint.X, startingPoint.Z);
 
             for (int i = 1; i < 12; i++)
@@ -24,7 +24,7 @@ namespace StealthTech.RayTracer.Exercises
             PpmOutput.WriteToFile("file.ppm", _canvas.GetPPMContent());
         }
 
-        public void WriteNumber(int number, RtTuple startingPoint)
+        public void WriteNumber(int number, RtPoint startingPoint)
         {
             var moveClock = new Transform()
                 .RotateY(number * Math.PI / 6);

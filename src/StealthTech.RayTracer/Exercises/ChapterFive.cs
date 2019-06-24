@@ -68,7 +68,7 @@ namespace StealthTech.RayTracer.Exercises
 
         public void Run(Sphere shape)
         {
-            var rayOrigin = RtTuple.Point(0, 0, -5);
+            var rayOrigin = new RtPoint(0, 0, -5);
             var wallZ = 10;
             var color = new RtColor(1, 0, 0);
 
@@ -88,7 +88,7 @@ namespace StealthTech.RayTracer.Exercises
                     var worldY = half - pixelSize * y;
                     var worldX = -half + pixelSize * x;
 
-                    var position = RtTuple.Point(worldX, worldY, wallZ);
+                    var position = new RtPoint(worldX, worldY, wallZ);
 
                     var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
 

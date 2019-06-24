@@ -44,7 +44,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
 
         public void BuildImageFromChapterFix()
         {
-            var rayOrigin = RtTuple.Point(0, 0, -5);
+            var rayOrigin = new RtPoint(0, 0, -5);
 
             var wallZ = 10;
             var wallSize = 7.0;
@@ -71,7 +71,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
                 {
                     var worldX = -half + pixelSize * x;
 
-                    var position = RtTuple.Point(worldX, worldY, wallZ);
+                    var position = new RtPoint(worldX, worldY, wallZ);
 
                     var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
                     var intersections = new IntersectionList(shape.Intersect(ray));

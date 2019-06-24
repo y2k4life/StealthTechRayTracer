@@ -92,7 +92,6 @@ Scenario: A matrix multiplied by a tuple
 		| 0    | 0    | 0    | 1    |
 	And b ← tuple(1, 2, 3, 1)
 	Then A * b = tuple(18, 24, 33, 1)
-	And b * A = tuple(18, 24, 33, 1)
 
 Scenario: Multiplying two matrices find E23
 	Given the following matrix A:

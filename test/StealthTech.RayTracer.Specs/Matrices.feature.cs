@@ -474,8 +474,6 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("b ← tuple(1, 2, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 94
  testRunner.Then("A * b = tuple(18, 24, 33, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 95
- testRunner.And("b * A = tuple(18, 24, 33, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -486,7 +484,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingTwoMatricesFindE23()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying two matrices find E23", null, ((string[])(null)));
-#line 97
+#line 96
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -506,7 +504,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
-#line 98
+#line 97
  testRunner.Given("the following matrix A:", ((string)(null)), table14, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -525,7 +523,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "4",
                         "1"});
-#line 103
+#line 102
  testRunner.And("the following matrix B:", ((string)(null)), table15, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -544,7 +542,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "4",
                         "1"});
-#line 108
+#line 107
  testRunner.Then("A * B is the following matrix:", ((string)(null)), table16, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -556,7 +554,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingTwoMatricesFindE32()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying two matrices find E32", null, ((string[])(null)));
-#line 114
+#line 113
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -576,7 +574,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "-2",
                         "1"});
-#line 115
+#line 114
  testRunner.Given("the following matrix A:", ((string)(null)), table17, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -595,7 +593,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "4",
                         "1"});
-#line 120
+#line 119
  testRunner.And("the following matrix B:", ((string)(null)), table18, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -614,7 +612,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "5"});
-#line 125
+#line 124
  testRunner.Then("A * B is the following matrix:", ((string)(null)), table19, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -626,7 +624,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingColumnByRow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying column by row", null, ((string[])(null)));
-#line 131
+#line 130
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -638,7 +636,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "3"});
             table20.AddRow(new string[] {
                         "4"});
-#line 132
+#line 131
  testRunner.Given("the following matrix A:", ((string)(null)), table20, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -647,7 +645,7 @@ this.ScenarioInitialize(scenarioInfo);
             table21.AddRow(new string[] {
                         "1",
                         "6"});
-#line 137
+#line 136
  testRunner.And("the following matrix B:", ((string)(null)), table21, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -662,7 +660,7 @@ this.ScenarioInitialize(scenarioInfo);
             table22.AddRow(new string[] {
                         "4",
                         "24"});
-#line 140
+#line 139
  testRunner.Then("A * B is the following matrix:", ((string)(null)), table22, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -674,7 +672,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingIrregularShape()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying irregular shape", null, ((string[])(null)));
-#line 146
+#line 145
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -690,7 +688,7 @@ this.ScenarioInitialize(scenarioInfo);
             table23.AddRow(new string[] {
                         "4",
                         "9"});
-#line 147
+#line 146
  testRunner.Given("the following matrix A:", ((string)(null)), table23, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -702,7 +700,7 @@ this.ScenarioInitialize(scenarioInfo);
             table24.AddRow(new string[] {
                         "0",
                         "0"});
-#line 152
+#line 151
  testRunner.And("the following matrix B:", ((string)(null)), table24, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -717,7 +715,7 @@ this.ScenarioInitialize(scenarioInfo);
             table25.AddRow(new string[] {
                         "4",
                         "24"});
-#line 156
+#line 155
  testRunner.Then("A * B is the following matrix:", ((string)(null)), table25, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -729,7 +727,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void IdentityMatrix4X4Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Identity matrix 4x4 matrix", null, ((string[])(null)));
-#line 162
+#line 161
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -758,7 +756,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "8",
                         "16",
                         "32"});
-#line 163
+#line 162
  testRunner.Given("the following matrix A:", ((string)(null)), table26, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -786,7 +784,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
-#line 169
+#line 168
  testRunner.Then("The identity of A is:", ((string)(null)), table27, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -798,7 +796,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingAMatrixByTheIdentityMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a matrix by the identity matrix", null, ((string[])(null)));
-#line 176
+#line 175
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -827,9 +825,9 @@ this.ScenarioInitialize(scenarioInfo);
                         "8",
                         "16",
                         "32"});
-#line 177
+#line 176
  testRunner.Given("the following matrix A:", ((string)(null)), table28, "Given ");
-#line 183
+#line 182
  testRunner.Then("A * identity_matrix = A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -841,10 +839,10 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingTheIdentityMatrixByATuple()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying the identity matrix by a tuple", null, ((string[])(null)));
-#line 185
+#line 184
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 186
+#line 185
  testRunner.Given("a ← tuple(1, 2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -872,9 +870,9 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
-#line 187
+#line 186
  testRunner.And("the following matrix A:", ((string)(null)), table29, "And ");
-#line 193
+#line 192
  testRunner.Then("identity_matrix * a = a", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -886,7 +884,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void IdentityMatrix2X2Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Identity matrix 2x2 matrix", null, ((string[])(null)));
-#line 195
+#line 194
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -899,7 +897,7 @@ this.ScenarioInitialize(scenarioInfo);
             table30.AddRow(new string[] {
                         "1",
                         "2"});
-#line 196
+#line 195
  testRunner.Given("the following matrix A:", ((string)(null)), table30, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -911,7 +909,7 @@ this.ScenarioInitialize(scenarioInfo);
             table31.AddRow(new string[] {
                         "0",
                         "1"});
-#line 200
+#line 199
  testRunner.Then("The identity of A is:", ((string)(null)), table31, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -923,7 +921,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TransposingAMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transposing a matrix", null, ((string[])(null)));
-#line 205
+#line 204
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -952,7 +950,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "5",
                         "8"});
-#line 206
+#line 205
  testRunner.Given("the following matrix A:", ((string)(null)), table32, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -980,7 +978,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "8",
                         "3",
                         "8"});
-#line 212
+#line 211
  testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table33, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -992,7 +990,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TransposingTheIdentityMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transposing the identity matrix", null, ((string[])(null)));
-#line 219
+#line 218
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1021,7 +1019,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
-#line 220
+#line 219
  testRunner.Given("the following matrix A:", ((string)(null)), table34, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1049,7 +1047,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
-#line 226
+#line 225
  testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table35, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1061,7 +1059,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheDeterminantOfA2X2Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the determinant of a 2x2 matrix", null, ((string[])(null)));
-#line 233
+#line 232
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1074,9 +1072,9 @@ this.ScenarioInitialize(scenarioInfo);
             table36.AddRow(new string[] {
                         "-3",
                         "2"});
-#line 234
+#line 233
  testRunner.Given("the following matrix A:", ((string)(null)), table36, "Given ");
-#line 238
+#line 237
  testRunner.Then("determinant(A) = 17", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1088,7 +1086,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ASubmatrixOfA3X3MatrixIsA2X2Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A submatrix of a 3x3 matrix is a 2x2 matrix", null, ((string[])(null)));
-#line 240
+#line 239
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1108,7 +1106,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "6",
                         "-3"});
-#line 241
+#line 240
  testRunner.Given("the following matrix A:", ((string)(null)), table37, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1120,7 +1118,7 @@ this.ScenarioInitialize(scenarioInfo);
             table38.AddRow(new string[] {
                         "0",
                         "6"});
-#line 246
+#line 245
  testRunner.Then("submatrix(A, 0, 2) is the following matrix:", ((string)(null)), table38, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1132,7 +1130,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ASubmatrixOfA4X4MatrixIsA3X3Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A submatrix of a 4x4 matrix is a 3x3 matrix", null, ((string[])(null)));
-#line 251
+#line 250
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1161,7 +1159,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "1",
                         "-1",
                         "1"});
-#line 252
+#line 251
  testRunner.Given("the following matrix A:", ((string)(null)), table39, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1180,7 +1178,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "-7",
                         "-1",
                         "1"});
-#line 258
+#line 257
  testRunner.Then("submatrix(A, 2, 1) is the following matrix:", ((string)(null)), table40, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1192,7 +1190,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingAMinorOfA3X3Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating a minor of a 3x3 matrix", null, ((string[])(null)));
-#line 264
+#line 263
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1212,13 +1210,13 @@ this.ScenarioInitialize(scenarioInfo);
                         "6",
                         "-1",
                         "5"});
-#line 265
+#line 264
  testRunner.Given("the following matrix A:", ((string)(null)), table41, "Given ");
-#line 270
+#line 269
  testRunner.And("B ← submatrix(A, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 271
+#line 270
  testRunner.Then("determinant(B) = 25", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 272
+#line 271
  testRunner.And("minor(A, 1, 0) = 25", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1230,7 +1228,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingACofactorOfA3X3Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating a cofactor of a 3x3 matrix", null, ((string[])(null)));
-#line 274
+#line 273
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1250,15 +1248,15 @@ this.ScenarioInitialize(scenarioInfo);
                         "6",
                         "-1",
                         "5"});
-#line 275
+#line 274
  testRunner.Given("the following matrix A:", ((string)(null)), table42, "Given ");
-#line 280
+#line 279
  testRunner.Then("minor(A, 0, 0) = -12", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 281
+#line 280
  testRunner.And("cofactor(A, 0, 0) = -12", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 282
+#line 281
  testRunner.And("minor(A, 1, 0) = 25", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 283
+#line 282
  testRunner.And("cofactor(A, 1, 0) = -25", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1270,7 +1268,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheDeterminantOfA3X3Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the determinant of a 3x3 matrix", null, ((string[])(null)));
-#line 285
+#line 284
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1290,15 +1288,15 @@ this.ScenarioInitialize(scenarioInfo);
                         "2",
                         "6",
                         "4"});
-#line 286
+#line 285
  testRunner.Given("the following matrix A:", ((string)(null)), table43, "Given ");
-#line 291
+#line 290
  testRunner.Then("cofactor(A, 0, 0) = 56", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 292
+#line 291
  testRunner.And("cofactor(A, 0, 1) = 12", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 293
+#line 292
  testRunner.And("cofactor(A, 0, 2) = -46", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 294
+#line 293
  testRunner.And("determinant(A) = -196", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1310,7 +1308,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheDeterminantOfA4X4Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the determinant of a 4x4 matrix", null, ((string[])(null)));
-#line 296
+#line 295
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1339,17 +1337,17 @@ this.ScenarioInitialize(scenarioInfo);
                         "7",
                         "7",
                         "-9"});
-#line 297
+#line 296
  testRunner.Given("the following matrix A:", ((string)(null)), table44, "Given ");
-#line 303
+#line 302
  testRunner.Then("cofactor(A, 0, 0) = 690", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 304
+#line 303
  testRunner.And("cofactor(A, 0, 1) = 447", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 305
+#line 304
  testRunner.And("cofactor(A, 0, 2) = 210", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 306
+#line 305
  testRunner.And("cofactor(A, 0, 3) = 51", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 307
+#line 306
  testRunner.And("determinant(A) = -4071", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1361,7 +1359,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TestingAnInvertibleMatrixForInvertibility()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Testing an invertible matrix for invertibility", null, ((string[])(null)));
-#line 309
+#line 308
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1390,11 +1388,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "1",
                         "7",
                         "-6"});
-#line 310
+#line 309
  testRunner.Given("the following matrix A:", ((string)(null)), table45, "Given ");
-#line 316
+#line 315
  testRunner.Then("determinant(A) = -2120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 317
+#line 316
  testRunner.And("A is invertible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1406,7 +1404,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void TestingANoninvertibleMatrixForInvertibility()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Testing a noninvertible matrix for invertibility", null, ((string[])(null)));
-#line 319
+#line 318
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1435,11 +1433,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "0"});
-#line 320
+#line 319
  testRunner.Given("the following matrix A:", ((string)(null)), table46, "Given ");
-#line 326
+#line 325
  testRunner.Then("determinant(A) = 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 327
+#line 326
  testRunner.And("A is not invertible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1451,7 +1449,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheInverseOfAMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the inverse of a matrix", null, ((string[])(null)));
-#line 329
+#line 328
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1480,19 +1478,19 @@ this.ScenarioInitialize(scenarioInfo);
                         "-3",
                         "7",
                         "4"});
-#line 330
+#line 329
  testRunner.Given("the following matrix A:", ((string)(null)), table47, "Given ");
-#line 336
+#line 335
  testRunner.And("B ← inverse(A)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 337
+#line 336
  testRunner.Then("determinant(A) = 532", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 338
+#line 337
  testRunner.And("cofactor(A, 2, 3) = -160", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 339
+#line 338
  testRunner.And("B[3,2] = -160/532", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 340
+#line 339
  testRunner.And("cofactor(A, 3, 2) = 105", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 341
+#line 340
  testRunner.And("B[2,3] = 105/532", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1520,7 +1518,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "-0.81391",
                         "-0.30075",
                         "0.30639"});
-#line 342
+#line 341
  testRunner.And("B is the following matrix:", ((string)(null)), table48, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -1532,7 +1530,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheInverseOfAnotherMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the inverse of another matrix", null, ((string[])(null)));
-#line 349
+#line 348
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1561,7 +1559,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "-9",
                         "-4"});
-#line 350
+#line 349
  testRunner.Given("the following matrix A:", ((string)(null)), table49, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1589,7 +1587,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "-0.69231",
                         "-0.76923",
                         "-1.92308"});
-#line 356
+#line 355
  testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table50, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1601,7 +1599,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheInverseOfAThirdMatrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the inverse of a third matrix", null, ((string[])(null)));
-#line 363
+#line 362
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1630,7 +1628,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "6",
                         "6",
                         "2"});
-#line 364
+#line 363
  testRunner.Given("the following matrix A:", ((string)(null)), table51, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1658,7 +1656,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "0.06667",
                         "-0.26667",
                         "0.33333"});
-#line 370
+#line 369
  testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table52, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1670,7 +1668,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingAProductByItsInverse()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a product by its inverse", null, ((string[])(null)));
-#line 377
+#line 376
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1699,7 +1697,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "5",
                         "-1",
                         "1"});
-#line 378
+#line 377
  testRunner.Given("the following matrix A:", ((string)(null)), table53, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1727,11 +1725,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "-2",
                         "0",
                         "5"});
-#line 384
+#line 383
  testRunner.And("the following matrix B:", ((string)(null)), table54, "And ");
-#line 390
+#line 389
  testRunner.And("C ← A * B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 391
+#line 390
  testRunner.Then("C * inverse(B) = A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1743,7 +1741,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CalculatingTheInverseOfA2X2Matrix()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculating the inverse of a 2x2 matrix", null, ((string[])(null)));
-#line 393
+#line 392
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -1756,7 +1754,7 @@ this.ScenarioInitialize(scenarioInfo);
             table55.AddRow(new string[] {
                         "2",
                         "6"});
-#line 394
+#line 393
  testRunner.Given("the following matrix A:", ((string)(null)), table55, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1768,7 +1766,7 @@ this.ScenarioInitialize(scenarioInfo);
             table56.AddRow(new string[] {
                         "-0.2",
                         "0.4"});
-#line 398
+#line 397
  testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table56, "Then ");
 #line hidden
             this.ScenarioCleanup();
