@@ -66,19 +66,19 @@ namespace StealthTech.RayTracer.Specs
         public void Given_EyeV_Vector(string x, string y, string z)
         {
             
-            _materialsContext.EyeVector = RtTuple.Vector(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            _materialsContext.EyeVector = new RtVector(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
         }
 
         [Given(@"normalVector ← vector\((.*), (.*), (.*)\)")]
         public void Given_NormalV_Is_Vector(double x, double y, double z)
         {
-            _materialsContext.NormalVector = RtTuple.Vector(x, y, z);
+            _materialsContext.NormalVector = new RtVector(x, y, z);
         }
 
         [Given(@"light ← point_light\(point\((.*), (.*), (.*)\), color\((.*), (.*), (.*)\)\)")]
         public void Given_Light_Is_A_Point_Light_With_Point_Color(double x, double y, double z, double red, double green, double blue)
         {
-            _materialsContext.Light = new PointLight(RtTuple.Point(x, y, z), new RtColor(red, green, blue));
+            _materialsContext.Light = new PointLight(new RtPoint(x, y, z), new RtColor(red, green, blue));
         }
 
         [When(@"result ← lighting\(m, light, position, eyeVector, normalVector\)")]

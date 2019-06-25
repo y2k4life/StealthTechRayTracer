@@ -9,7 +9,7 @@ namespace StealthTech.RayTracer.Library
 {
     public class PointLight
     {
-        public PointLight(RtTuple position, RtColor color)
+        public PointLight(RtPoint position, RtColor color)
         {
             Position = position;
             Intensity = color;
@@ -17,6 +17,6 @@ namespace StealthTech.RayTracer.Library
 
         public RtColor Intensity { get; set; }
         
-        public RtTuple Position { get; set; }
+        public RtPoint Position { get; set; }
     }
 }

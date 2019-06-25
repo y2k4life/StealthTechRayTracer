@@ -15,6 +15,6 @@ namespace StealthTech.RayTracer.Specs
         
         public Transform Transform { get; set; }
 
-        public RtTuple Normal { get; set; }
+        public RtVector Normal { get; set; }
     }
 }

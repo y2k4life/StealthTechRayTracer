@@ -82,14 +82,14 @@ namespace StealthTech.RayTracer.Specs
         [When(@"n ← normal_at\(s, point\((.*), (.*), (.*)\)\)")]
         public void When_n_Normal_At_Point(string x, string y, string z)
         {
-            var point = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var point = new RtPoint(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
             _sphereContext.Normal = _sphereContext.Sphere.NormalAt(point);
         }
 
         [Then(@"n = vector\((.*), (.*), (.*)\)")]
         public void Then_n_Equals_Vector(string x, string y, string z)
         {
-            var expectedVector = RtTuple.Vector(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            var expectedVector = new RtVector(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
 
             Assert.Equal(expectedVector, _sphereContext.Normal);
         }

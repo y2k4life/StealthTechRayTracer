@@ -200,7 +200,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line 37
- testRunner.Given("eyeVector ← vector(0, √2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("eyeVector ← vector(0, -√2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
  testRunner.And("normalVector ← vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 39

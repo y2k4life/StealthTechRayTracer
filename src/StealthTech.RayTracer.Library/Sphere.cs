@@ -44,12 +44,11 @@ namespace StealthTech.RayTracer.Library
             return results;
         }
 
-        public RtTuple NormalAt(RtTuple worldPoint)
+        public RtVector NormalAt(RtPoint worldPoint)
         {
-            var shapePoint = Transform.Matrix.Inverse() * worldPoint;
-            var shapeNormal = shapePoint - RtTuple.Point(0, 0, 0);
-            var worldNormal = Transform.Matrix.Inverse().Transpose() * shapeNormal;
-            worldNormal.W = 0;
+            var shapePoint = new RtPoint(Transform.Matrix.Inverse() * worldPoint);
+            var shapeNormal = shapePoint - new RtPoint(0, 0, 0);
+            var worldNormal = new RtVector(Transform.Matrix.Inverse().Transpose() * shapeNormal);
 
             return worldNormal.Normalized();
         }

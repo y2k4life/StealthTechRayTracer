@@ -13,9 +13,9 @@ namespace StealthTech.RayTracer.Specs
     {
         public Material Material { get; set; }
 
-        public RtTuple EyeVector { get; set; }
+        public RtVector EyeVector { get; set; }
 
-        public RtTuple NormalVector { get; set; }
+        public RtVector NormalVector { get; set; }
 
         public RtColor Results { get; set; }
 

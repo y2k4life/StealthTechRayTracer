@@ -309,7 +309,7 @@ namespace StealthTech.RayTracer.Specs
         [Given(@"n ← vector\((.*), (.*), (.*)\)")]
         public void Given_n_Vector(double x, double y, double z)
         {
-            _tupleContext.Normal = RtTuple.Vector(x, y, z);
+            _tupleContext.Normal = new RtVector(x, y, z);
         }
 
         [When(@"r ← reflect\(v, n\)")]
@@ -321,7 +321,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"r = vector\((.*), (.*), (.*)\)")]
         public void Then_r_Equals_Vector(double x, double y, double z)
         {
-            var expectedVector = RtTuple.Vector(x, y, z);
+            var expectedVector = new RtVector(x, y, z);
 
             Assert.Equal(_tupleContext.Reflect, expectedVector);
         }
@@ -329,7 +329,7 @@ namespace StealthTech.RayTracer.Specs
         [Given(@"position ← point\((.*), (.*), (.*)\)")]
         public void Given_Position_Point(double x, double y, double z)
         {
-            _tupleContext.Position = RtTuple.Point(x, y, z);
+            _tupleContext.Position = new RtPoint(x, y, z);
         }
     }
 }

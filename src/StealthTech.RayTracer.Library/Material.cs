@@ -60,7 +60,7 @@ namespace StealthTech.RayTracer.Library
                 && other.Shininess.ApproximateEquals(Shininess));
         }
 
-        public RtColor Lighting(PointLight light, RtTuple point, RtTuple eyeVector, RtTuple normalVector)
+        public RtColor Lighting(PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector)
         {
             var effectiveColor = Color * light.Intensity;
             var lightVector = (light.Position - point).Normalized();

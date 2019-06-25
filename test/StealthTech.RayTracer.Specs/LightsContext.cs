@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Specs
     {
         public RtColor Intensity { get; set; }
 
-        public RtTuple Position { get; set; }
+        public RtPoint Position { get; set; }
 
         public PointLight Light { get; set; }
     }

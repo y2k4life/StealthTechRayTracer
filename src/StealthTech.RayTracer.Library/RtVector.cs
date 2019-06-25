@@ -21,10 +21,19 @@ namespace StealthTech.RayTracer.Library
         {
         }
 
+        public RtVector Reflect(RtVector normal)
+        {
+            return this - normal * 2 * Dot(normal);
+        }
+
+
         public RtVector Normalized() => this / Magnitude();
 
         public RtVector Cross(RtVector other)
             => new RtVector(Y * other.Z - Z * other.Y, Z * other.X - X * other.Z, X * other.Y - Y * other.X);
+
+        public RtVector Negate()
+            => new RtVector(-X, -Y, -Z);
 
         static public RtVector operator +(RtVector left, RtVector right)
             => new RtVector(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
