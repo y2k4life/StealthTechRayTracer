@@ -16,9 +16,10 @@ namespace StealthTech.RayTracer.Library
 
         public Material Material { get; set; } = new Material();
 
-        public List<Intersection> Intersect(Ray ray)
+        public bool Intersect(Ray ray, out (double, double) results)
         {
-            var transformedRay = ray.Transform(Transform.Matrix.Inverse());
+            var transformInverse = Transform.Matrix.Inverse();
+            var transformedRay = ray.Transform(transformInverse);
 
             var saphereToRay = transformedRay.Origin - new RtPoint(0, 0, 0);
 
@@ -28,20 +29,17 @@ namespace StealthTech.RayTracer.Library
 
             var discriminatnt = Math.Pow(b, 2) - 4 * a * c;
 
-            var results = new List<Intersection>();
-
             if (discriminatnt < 0)
             {
-                return results;
+                results = (0, 0);
+                return false;
             }
 
             var t1 = ((b * -1) - Math.Sqrt(discriminatnt)) / (2 * a);
             var t2 = ((b * -1) + Math.Sqrt(discriminatnt)) / (2 * a);
 
-            results.Add(new Intersection(t1, this));
-            results.Add(new Intersection(t2, this));
-
-            return results;
+            results = (t1, t2);
+            return true;
         }
 
         public RtVector NormalAt(RtPoint worldPoint)

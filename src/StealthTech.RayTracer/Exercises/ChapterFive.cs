@@ -92,9 +92,7 @@ namespace StealthTech.RayTracer.Exercises
 
                     var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
 
-                    var intersections = new IntersectionList(shape.Intersect(ray));
-
-                    if (intersections.Hit() != null)
+                    if (shape.Intersect(ray, out (double, double) hits))
                     {
                         canvas[x, y] = color;
                     }

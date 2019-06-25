@@ -26,8 +26,8 @@ namespace StealthTech.RayTracer.Library
 
         public Ray Transform(RtMatrix tranformMatrix)
         {
-            var newOrigin = new RtPoint(tranformMatrix * Origin);
-            var newDirection = new RtVector(tranformMatrix * Direction);
+            var newOrigin = tranformMatrix * Origin;
+            var newDirection = tranformMatrix * Direction;
 
             return new Ray(newOrigin, newDirection);
         }

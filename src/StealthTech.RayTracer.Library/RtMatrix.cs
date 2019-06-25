@@ -92,6 +92,24 @@ namespace StealthTech.RayTracer.Library
             return new RtTuple(results[0], results[1], results[2], results[3]);
         }
 
+        public static RtVector operator *(RtMatrix left, RtVector right)
+        {
+            var c1 = (left[0, 0] * right.X) + (left[0, 1] * right.Y) + (left[0, 2] * right.Z) + (left[0, 3] * right.W);
+            var c2 = (left[1, 0] * right.X) + (left[1, 1] * right.Y) + (left[1, 2] * right.Z) + (left[1, 3] * right.W);
+            var c3 = (left[2, 0] * right.X) + (left[2, 1] * right.Y) + (left[2, 2] * right.Z) + (left[2, 3] * right.W);
+
+            return new RtVector(c1, c2, c3);
+        }
+
+        public static RtPoint operator *(RtMatrix left, RtPoint right)
+        {
+            var c1 = (left[0, 0] * right.X) + (left[0, 1] * right.Y) + (left[0, 2] * right.Z) + (left[0, 3] * right.W);
+            var c2 = (left[1, 0] * right.X) + (left[1, 1] * right.Y) + (left[1, 2] * right.Z) + (left[1, 3] * right.W);
+            var c3 = (left[2, 0] * right.X) + (left[2, 1] * right.Y) + (left[2, 2] * right.Z) + (left[2, 3] * right.W);
+
+            return new RtPoint(c1, c2, c3);
+        }
+
         //public static RtTuple operator *(RtTuple left, RtMatrix right)
         //{
         //    return right * left;
@@ -265,3 +283,4 @@ namespace StealthTech.RayTracer.Library
         }
     }
 }
+

@@ -16,10 +16,12 @@ namespace StealthTech.RayTracer.Exercises
     {
         public void NormalSphere()
         {
-            Run(new Sphere()
+            var canvas = Run(new Sphere()
             {
                 Material = new Material { Color = new RtColor(1, 0.2, 1) }
             });
+
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
 
         public void ShrinkAlongYAxis()
@@ -30,8 +32,9 @@ namespace StealthTech.RayTracer.Exercises
                     .Scaling(1, 0.5, 1),
                 Material = new Material { Color = new RtColor(1, 0.2, 1) }
             };
-
-            Run(shape);
+            
+            var canvas = Run(shape);
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
 
         public void ShrinkAlongXAxis()
@@ -43,9 +46,9 @@ namespace StealthTech.RayTracer.Exercises
                 Material = new Material { Color = new RtColor(1, 0.2, 1) }
             };
 
-            Run(shape);
+            var canvas = Run(shape);
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
-
 
         public void ShrinkAndRotate()
         {
@@ -57,7 +60,8 @@ namespace StealthTech.RayTracer.Exercises
                 Material = new Material { Color = new RtColor(1, 0.2, 1) }
             };
 
-            Run(shape);
+            var canvas = Run(shape);
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
 
         public void ShrinkAndSkew()
@@ -70,7 +74,8 @@ namespace StealthTech.RayTracer.Exercises
                 Material = new Material { Color = new RtColor(1, 0.2, 1) }
             };
 
-            Run(shape);
+            var canvas = Run(shape);
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
 
         public void Custom()
@@ -92,10 +97,11 @@ namespace StealthTech.RayTracer.Exercises
                 }
             };
 
-            Run(shape);
+            var canvas = Run(shape);
+            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
         }
 
-        public void Run(Sphere shape)
+        public Canvas Run(Sphere shape)
         {
             var light = new PointLight(new RtPoint(-10, 10, -10), new RtColor(1, 1, 1));
 
@@ -103,7 +109,7 @@ namespace StealthTech.RayTracer.Exercises
             var wallZ = 10;
 
             var wallSize = 7.0;
-            var canvasSize = 800;
+            var canvasSize = 100;
 
             var canvas = new Canvas(canvasSize, canvasSize);
 
@@ -122,21 +128,20 @@ namespace StealthTech.RayTracer.Exercises
 
                     var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
 
-                    var intersections = new IntersectionList(shape.Intersect(ray));
-                    var intersection = intersections.Hit();
-
-                    if (intersection != null)
+                    if (shape.Intersect(ray, out (double, double) hits))
                     {
-                        var point = ray.Position(intersection.Time);
-                        var normal = intersection.Shape.NormalAt(point);
+                        var hit = hits.Item1 < hits.Item2 ? hits.Item1 : hits.Item2;
+
+                        var point = ray.Position(hit);
+                        var normal = shape.NormalAt(point);
                         var eye = ray.Direction;
-                        var color = intersection.Shape.Material.Lighting(light, point, eye, normal);
+                        var color = shape.Material.Lighting(light, point, eye, normal);
                         canvas[x, y] = color;
                     }
                 }
             });
 
-            PpmOutput.WriteToFile("sphere.ppm", canvas.GetPPMContent());
+            return canvas;
         }
     }
 }

@@ -40,7 +40,11 @@ namespace StealthTech.RayTracer.Specs
         [When(@"xs ← intersect\(s, r\)")]
         public void When_xs_Intersect_r()
         {
-            _intersectionsContext.Intersections.AddRange(_sphereContext.Sphere.Intersect(_rayContext.Ray));
+            if (_sphereContext.Sphere.Intersect(_rayContext.Ray, out (double, double) hits))
+            {
+                _intersectionsContext.Intersections.Add(new Intersection(hits.Item1, _sphereContext.Sphere));
+                _intersectionsContext.Intersections.Add(new Intersection(hits.Item2, _sphereContext.Sphere));
+            }
         }
 
         [Then(@"s\.transform = identity_matrix")]

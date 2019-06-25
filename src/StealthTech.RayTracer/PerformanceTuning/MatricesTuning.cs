@@ -74,9 +74,8 @@ namespace StealthTech.RayTracer.PerformanceTuning
                     var position = new RtPoint(worldX, worldY, wallZ);
 
                     var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
-                    var intersections = new IntersectionList(shape.Intersect(ray));
 
-                    if (intersections.Hit() != null)
+                    if (shape.Intersect(ray, out (double, double) hits))
                     {
                         canvas[x, y] = color;
                     }
