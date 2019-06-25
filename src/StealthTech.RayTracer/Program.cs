@@ -17,6 +17,7 @@ namespace StealthTech.RayTracer
             {
                 var tuning = new RenderingTuning();
                 tuning.Run();
+                return;
             }
 
             var consoleApp = new RayTracerProgram();
