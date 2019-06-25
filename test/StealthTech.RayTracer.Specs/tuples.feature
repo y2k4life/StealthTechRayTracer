@@ -52,8 +52,8 @@ Scenario: Subtracting a vector from the zero vector
 	Then zero - v = vector(-1, 2, -3)
 
 Scenario: Negating a tuple
-  Given a ← tuple(1, -2, 3, -4)
-  Then -a = tuple(-1, 2, -3, 4)
+	Given a ← tuple(1, -2, 3, -4)
+	Then -a = tuple(-1, 2, -3, 4)
 
 Scenario: Multiplying a tuple by a scalar
 	Given a ← tuple(1, -2, 3, -4)
@@ -111,3 +111,15 @@ Scenario: The cross product of two vectors
 	And v2 ← vector(2, 3, 4)
 	Then cross(v1, v2) = vector(-1, 2, -1)
 	And cross(v2, v1) = vector(1 -2, 1)
+
+Scenario: Reflecting a vector approaching at 45°
+	Given v ← vector(1, -1, 0)
+	And n ← vector(0, 1, 0)
+	When r ← reflect(v, n)
+	Then r = vector(1, 1, 0)
+
+Scenario: Reflecting a vector off a slanted surface
+	Given v ← vector(0, -1, 0)
+	And n ← vector(0.707106, 0.707106, 0)
+	When r ← reflect(v, n)
+	Then r = vector(1, 0, 0)

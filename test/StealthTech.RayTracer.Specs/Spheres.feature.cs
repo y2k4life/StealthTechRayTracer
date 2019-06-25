@@ -310,6 +310,187 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="The normal on a sphere at a point on the x axis")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "The normal on a sphere at a point on the x axis")]
+        public virtual void TheNormalOnASphereAtAPointOnTheXAxis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal on a sphere at a point on the x axis", null, ((string[])(null)));
+#line 75
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 76
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 77
+ testRunner.When("n ← normal_at(s, point(1, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 78
+ testRunner.Then("n = vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The normal on a sphere at a point on the y axis")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "The normal on a sphere at a point on the y axis")]
+        public virtual void TheNormalOnASphereAtAPointOnTheYAxis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal on a sphere at a point on the y axis", null, ((string[])(null)));
+#line 80
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 81
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 82
+ testRunner.When("n ← normal_at(s, point(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 83
+ testRunner.Then("n = vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The normal on a sphere at a point on the z axis")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "The normal on a sphere at a point on the z axis")]
+        public virtual void TheNormalOnASphereAtAPointOnTheZAxis()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal on a sphere at a point on the z axis", null, ((string[])(null)));
+#line 85
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 86
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 87
+ testRunner.When("n ← normal_at(s, point(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 88
+ testRunner.Then("n = vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The normal on a sphere at a nonaxial point")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "The normal on a sphere at a nonaxial point")]
+        public virtual void TheNormalOnASphereAtANonaxialPoint()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal on a sphere at a nonaxial point", null, ((string[])(null)));
+#line 90
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 91
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 92
+ testRunner.When("n ← normal_at(s, point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 93
+ testRunner.Then("n = vector(√3/3, √3/3, √3/3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The normal is a normalized vector")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "The normal is a normalized vector")]
+        public virtual void TheNormalIsANormalizedVector()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal is a normalized vector", null, ((string[])(null)));
+#line 95
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 96
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 97
+ testRunner.When("n ← normal_at(s, point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 98
+ testRunner.Then("n = normalize(n)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Computing the normal on a translated sphere")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "Computing the normal on a translated sphere")]
+        public virtual void ComputingTheNormalOnATranslatedSphere()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the normal on a translated sphere", null, ((string[])(null)));
+#line 100
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 101
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 102
+ testRunner.And("set_transform(s, translation(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 103
+ testRunner.When("n ← normal_at(s, point(0, 1.70711, -0.70711))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 104
+ testRunner.Then("n = vector(0, 0.70711, -0.70711)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Computing the normal on a transformed sphere")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "Computing the normal on a transformed sphere")]
+        public virtual void ComputingTheNormalOnATransformedSphere()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the normal on a transformed sphere", null, ((string[])(null)));
+#line 106
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 107
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 108
+ testRunner.And("t ← scaling(1, 0.5, 1) and rotation_z(π/5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.And("set_transform(s, t)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.When("n ← normal_at(s, point(0, √2/2, -√2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 111
+ testRunner.Then("n = vector(0, 0.97014, -0.24254)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="A sphere has a default material")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "A sphere has a default material")]
+        public virtual void ASphereHasADefaultMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A sphere has a default material", null, ((string[])(null)));
+#line 113
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 114
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 115
+ testRunner.When("m ← s.material", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 116
+ testRunner.Then("m = material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="A sphere may be assigned a material")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "A sphere may be assigned a material")]
+        public virtual void ASphereMayBeAssignedAMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A sphere may be assigned a material", null, ((string[])(null)));
+#line 118
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 119
+ testRunner.Given("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 120
+ testRunner.And("m ← material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 121
+ testRunner.And("m.ambient ← 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 122
+ testRunner.When("s.material ← m", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 123
+ testRunner.Then("s.material = m", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

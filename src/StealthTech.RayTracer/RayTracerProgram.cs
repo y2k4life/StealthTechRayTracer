@@ -20,6 +20,7 @@ namespace StealthTech.RayTracer
             AddPage(new MainPage(this));
             AddPage(new ChapterThreePage(this));
             AddPage(new ChapterFivePage(this));
+            AddPage(new ChapterSixPage(this));
 
             SetPage<MainPage>();
         }

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="SphereContext.cs" company="StealthTech">
+// <copyright file="LightsContext.cs" company="StealthTech">
 //     Author: Guy Boicey
 //     Copyright (c) 2019 Guy Boicey
 // </copyright>
@@ -9,12 +9,12 @@ using StealthTech.RayTracer.Library;
 
 namespace StealthTech.RayTracer.Specs
 {
-    public class SphereContext
+    public class LightsContext
     {
-        public Sphere Sphere { get; set; }
-        
-        public Transform Transform { get; set; }
+        public RtColor Intensity { get; set; }
 
-        public RtTuple Normal { get; set; }
+        public RtTuple Position { get; set; }
+
+        public PointLight Light { get; set; }
     }
 }

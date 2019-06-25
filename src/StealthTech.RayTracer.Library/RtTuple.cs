@@ -113,5 +113,6 @@ namespace StealthTech.RayTracer.Library
                 && other.Z.ApproximateEquals(Z)
                 && other.W.ApproximateEquals(W));
         }
+        
     }
 }

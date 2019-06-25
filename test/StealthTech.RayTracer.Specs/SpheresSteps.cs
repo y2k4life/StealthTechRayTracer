@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using StealthTech.RayTracer.Library;
+using System;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -17,9 +18,14 @@ namespace StealthTech.RayTracer.Specs
         private readonly RayContext _rayContext;
         readonly SphereContext _sphereContext;
         readonly IntersectionsContext _intersectionsContext;
+        readonly MaterialsContext _materialsContext;
 
-        public SpheresSteps(SphereContext sphereContext, RayContext rayContext, IntersectionsContext intersectionsContext)
+        public SpheresSteps(SphereContext sphereContext, 
+            RayContext rayContext, 
+            IntersectionsContext intersectionsContext, 
+            MaterialsContext materialsContext)
         {
+            _materialsContext = materialsContext;
             _intersectionsContext = intersectionsContext;
             _sphereContext = sphereContext;
             _rayContext = rayContext;
@@ -72,5 +78,96 @@ namespace StealthTech.RayTracer.Specs
         {
             _sphereContext.Sphere.Transform = new Transform().Translation(x, y, z);
         }
+
+        [When(@"n ← normal_at\(s, point\((.*), (.*), (.*)\)\)")]
+        public void When_n_Normal_At_Point(string x, string y, string z)
+        {
+            var point = RtTuple.Point(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+            _sphereContext.Normal = _sphereContext.Sphere.NormalAt(point);
+        }
+
+        [Then(@"n = vector\((.*), (.*), (.*)\)")]
+        public void Then_n_Equals_Vector(string x, string y, string z)
+        {
+            var expectedVector = RtTuple.Vector(ConvertCoordinate(x), ConvertCoordinate(y), ConvertCoordinate(z));
+
+            Assert.Equal(expectedVector, _sphereContext.Normal);
+        }
+
+        [Then(@"n = normalize\(n\)")]
+        public void Then_n_Equals_Normalize_n()
+        {
+            Assert.Equal(_sphereContext.Normal, _sphereContext.Normal.Normalized());
+        }
+               
+        [Given(@"t ← scaling\((.*), (.*), (.*)\) and rotation_z\(π/(.*)\)")]
+        public void GivenMScaling(double x, double y, double z, double r)
+        {
+            _sphereContext.Transform = new Transform()
+                .Scaling(x, y, z)
+                .RotateZ(r);
+
+        }
+
+        [Given(@"set_transform\(s, translation\((.*), (.*), (.*)\)\)")]
+        public void GivenSet_TransformSTranslation(double x, double y, double z)
+        {
+            _sphereContext.Sphere.Transform = new Transform().Translation(x, y, z);
+        }
+
+        [Given(@"set_transform\(s, t\)")]
+        public void GivenSet_TransformST()
+        {
+            _sphereContext.Sphere.Transform = _sphereContext.Transform;
+        }
+
+        [When(@"m ← s\.material")]
+        public void WhenMS_Material()
+        {
+            _materialsContext.Material = _sphereContext.Sphere.Material;
+        }
+
+        [Then(@"m = material\(\)")]
+        public void Then_m_Equals_Material()
+        {
+            var expectedMaterial = new Material();
+
+            Assert.Equal(expectedMaterial, _materialsContext.Material);
+        }
+
+        [Given(@"m\.ambient ← (.*)")]
+        public void Given_m_Ambient(double ambient)
+        {
+            _materialsContext.Material.Ambient = ambient;
+        }
+
+        [When(@"s\.material ← m")]
+        public void When_s_Material_Is_m()
+        {
+            _sphereContext.Sphere.Material = _materialsContext.Material;
+        }
+
+        [Then(@"s\.material = m")]
+        public void Then_s_Material_Equals_m()
+        {
+            Assert.Equal(_materialsContext.Material, _sphereContext.Sphere.Material);
+        }
+
+
+
+        private double ConvertCoordinate(string coordiante)
+        {
+            if (coordiante.Length == 5)
+            {
+                return (Math.Sqrt(3) / 3) * -1;
+            }
+            else if (coordiante.Length == 4)
+            {
+                return (Math.Sqrt(3) / 3);
+            }
+
+            return Convert.ToDouble(coordiante);
+        }
+
     }
 }

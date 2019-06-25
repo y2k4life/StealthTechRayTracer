@@ -269,9 +269,9 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 55
-  testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 56
-  testRunner.Then("-a = tuple(-1, 2, -3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("-a = tuple(-1, 2, -3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -503,6 +503,48 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("cross(v1, v2) = vector(-1, 2, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 113
  testRunner.And("cross(v2, v1) = vector(1 -2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Reflecting a vector approaching at 45°")]
+        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
+        [Xunit.TraitAttribute("Description", "Reflecting a vector approaching at 45°")]
+        public virtual void ReflectingAVectorApproachingAt45()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reflecting a vector approaching at 45°", null, ((string[])(null)));
+#line 115
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 116
+ testRunner.Given("v ← vector(1, -1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 117
+ testRunner.And("n ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
+ testRunner.When("r ← reflect(v, n)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 119
+ testRunner.Then("r = vector(1, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Reflecting a vector off a slanted surface")]
+        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
+        [Xunit.TraitAttribute("Description", "Reflecting a vector off a slanted surface")]
+        public virtual void ReflectingAVectorOffASlantedSurface()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reflecting a vector off a slanted surface", null, ((string[])(null)));
+#line 121
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 122
+ testRunner.Given("v ← vector(0, -1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 123
+ testRunner.And("n ← vector(0.707106, 0.707106, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
+ testRunner.When("r ← reflect(v, n)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 125
+ testRunner.Then("r = vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
