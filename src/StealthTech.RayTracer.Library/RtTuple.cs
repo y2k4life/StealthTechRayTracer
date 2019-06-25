@@ -65,6 +65,10 @@ namespace StealthTech.RayTracer.Library
                 Z * other.Z +
                 W * other.W;
         }
+        public RtTuple Reflect(RtTuple normal)
+        {
+            return this - normal * 2 * Dot(normal);
+        }
 
         public RtTuple Cross(RtTuple other)
         {
@@ -141,6 +145,7 @@ namespace StealthTech.RayTracer.Library
             return !(left == right);
         }
 
+
         public override string ToString()
         {
             return $"[{X}, {Y}, {Z}],({W})";
@@ -177,5 +182,6 @@ namespace StealthTech.RayTracer.Library
                 && other.Z.ApproximateEquals(Z)
                 && other.W.ApproximateEquals(W));
         }
+        
     }
 }

@@ -88,6 +88,10 @@ namespace StealthTech.RayTracer.Library
         {
             return Red.GetHashCode() ^ Green.GetHashCode() ^ Blue.GetHashCode();
         }
+        public override string ToString()
+        {
+            return $"{Normalize(Red)}, {Normalize(Green)}, {Normalize(Blue)}";
+        }
 
         public override bool Equals(object obj)
         {

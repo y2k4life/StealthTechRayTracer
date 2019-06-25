@@ -60,6 +60,21 @@ namespace StealthTech.RayTracer.EasyConsole
             return value;
         }
 
+        public static double ReadDouble(string prompt)
+        {
+            Output.DisplayPrompt(prompt);
+            string input = Console.ReadLine();
+            double value;
+
+            while (!double.TryParse(input, out value))
+            {
+                Output.DisplayPrompt("Please enter an float");
+                input = Console.ReadLine();
+            }
+
+            return value;
+        }
+
         public static string ReadString(string prompt)
         {
             Output.DisplayPrompt(prompt);
@@ -83,5 +98,6 @@ namespace StealthTech.RayTracer.EasyConsole
 
             return choice;
         }
+
     }
 }

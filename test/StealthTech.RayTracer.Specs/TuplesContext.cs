@@ -41,5 +41,11 @@ namespace StealthTech.RayTracer.Specs
         
         public RtTuple Direction { get; set; }
 
+        public RtTuple Normal { get; set; }
+
+        public RtTuple Reflect { get; set; }
+
+        public RtTuple Position { get; set; }
+
     }
 }

@@ -14,6 +14,8 @@ namespace StealthTech.RayTracer.Library
     {
         public Transform Transform { get; set; } = new Transform();
 
+        public Material Material { get; set; } = new Material();
+
         public List<Intersection> Intersect(Ray ray)
         {
             var transformedRay = ray.Transform(Transform.Matrix.Inverse());
@@ -40,6 +42,16 @@ namespace StealthTech.RayTracer.Library
             results.Add(new Intersection(t2, this));
 
             return results;
+        }
+
+        public RtTuple NormalAt(RtTuple worldPoint)
+        {
+            var shapePoint = Transform.Matrix.Inverse() * worldPoint;
+            var shapeNormal = shapePoint - RtTuple.Point(0, 0, 0);
+            var worldNormal = Transform.Matrix.Inverse().Transpose() * shapeNormal;
+            worldNormal.W = 0;
+
+            return worldNormal.Normalized();
         }
     }
 }

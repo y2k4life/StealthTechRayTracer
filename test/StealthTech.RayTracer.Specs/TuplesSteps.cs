@@ -298,5 +298,31 @@ namespace StealthTech.RayTracer.Specs
         {
             _tupleContext.Direction = RtTuple.Vector(x, y, z);
         }
+
+        [Given(@"n ← vector\((.*), (.*), (.*)\)")]
+        public void Given_n_Vector(double x, double y, double z)
+        {
+            _tupleContext.Normal = RtTuple.Vector(x, y, z);
+        }
+
+        [When(@"r ← reflect\(v, n\)")]
+        public void When_r_Reflect_n()
+        {
+            _tupleContext.Reflect = _tupleContext.Vector.Reflect(_tupleContext.Normal);
+        }
+
+        [Then(@"r = vector\((.*), (.*), (.*)\)")]
+        public void Then_r_Equals_Vector(double x, double y, double z)
+        {
+            var expectedVector = RtTuple.Vector(x, y, z);
+
+            Assert.Equal(_tupleContext.Reflect, expectedVector);
+        }
+
+        [Given(@"position ← point\((.*), (.*), (.*)\)")]
+        public void Given_Position_Point(double x, double y, double z)
+        {
+            _tupleContext.Position = RtTuple.Point(x, y, z);
+        }
     }
 }

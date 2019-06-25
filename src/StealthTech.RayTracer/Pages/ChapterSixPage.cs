@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ChapterFivePage.cs" company="StealthTech">
+// <copyright file="ChapterSixPage.cs" company="StealthTech">
 //     Author: Guy Boicey
 //     Copyright (c) 2019 Guy Boicey
 // </copyright>
@@ -10,49 +10,51 @@ using StealthTech.RayTracer.Exercises;
 
 namespace StealthTech.RayTracer.Pages
 {
-    class ChapterFivePage : MenuPage
+    class ChapterSixPage : MenuPage
     {
-        public ChapterFivePage(ConsoleProgram program)
-            : base("Chapter Five", program)
+        public ChapterSixPage(ConsoleProgram program)
+            : base("Chapter Six", program)
         {
             AddOption(new Option("Regular", () =>
             {
-                var chapter = new ChapterFive();
+                var chapter = new ChapterSix();
                 chapter.NormalSphere();
-                Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateTo<ChapterFivePage>();
+                Program.NavigateTo<ChapterSixPage>();
+            }));
+
+            AddOption(new Option("Custom", () =>
+            {
+                var chapter = new ChapterSix();
+                chapter.Custom();
+                Program.NavigateTo<ChapterSixPage>();
             }));
 
             AddOption(new Option("Shrink it along the y axis", () =>
             {
-                var chapter = new ChapterFive();
+                var chapter = new ChapterSix();
                 chapter.ShrinkAlongYAxis();
-                Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateTo<ChapterFivePage>();
+                Program.NavigateTo<ChapterSixPage>();
             }));
 
             AddOption(new Option("Shrink it along the x axis", () =>
             {
-                var chapter = new ChapterFive();
+                var chapter = new ChapterSix();
                 chapter.ShrinkAlongXAxis();
-                Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateTo<ChapterFivePage>();
+                Program.NavigateTo<ChapterSixPage>();
             }));
 
             AddOption(new Option("Shrink and Rotate", () =>
             {
-                var chapter = new ChapterFive();
+                var chapter = new ChapterSix();
                 chapter.ShrinkAndRotate();
-                Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateTo<ChapterFivePage>();
+                Program.NavigateTo<ChapterSixPage>();
             }));
 
             AddOption(new Option("Shrink and skew", () =>
             {
-                var chapter = new ChapterFive();
+                var chapter = new ChapterSix();
                 chapter.ShrinkAndSkew();
-                Input.ReadString("Press [Enter] to navigate home");
-                Program.NavigateTo<ChapterFivePage>();
+                Program.NavigateTo<ChapterSixPage>();
             }));
         }
     }
