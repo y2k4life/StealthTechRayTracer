@@ -15,3 +15,7 @@ I want to give a shout out to [The Morning Brew](http://blog.cwa.me.uk/) for hav
 ## Resources
 
 * [Linear Algebra from MIT](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/) Quality is bad, but great videos and it is MIT need I say more. I pulled to test for Matrices from here.
+
+## Images
+
+![alt text](https://github.com/y2k4life/StealthTechRayTracer/Images/multi-lights.png "Chapter 7 & 8 With Multi-Lights")
