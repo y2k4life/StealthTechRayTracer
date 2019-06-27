@@ -5,9 +5,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace StealthTech.RayTracer.Library
 {
-    public class RtVector : RtBaseTuple
+    public class RtVector : RtBaseTuple, IEquatable<RtVector>
     {
         public static readonly RtVector ZeroVector = new RtVector(0, 0, 0);
 

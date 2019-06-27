@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
-    public class Sphere
+    public class Sphere : IEquatable<Sphere>
     {
         public Transform Transform { get; set; } = new Transform();
 
@@ -49,6 +49,32 @@ namespace StealthTech.RayTracer.Library
             var worldNormal = new RtVector(Transform.Matrix.Inverse().Transpose() * shapeNormal);
 
             return worldNormal.Normalized();
+        }
+
+        public override int GetHashCode()
+        {
+            return Transform.GetHashCode() ^ Material.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            Sphere other = obj as Sphere;
+            return Equals(other);
+        }
+
+        public bool Equals(Sphere other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return (Transform.Equals(other.Transform) && Material.Equals(other.Material));
         }
     }
 }

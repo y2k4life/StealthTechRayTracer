@@ -5,9 +5,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace StealthTech.RayTracer.Library
 {
-    public class RtPoint : RtBaseTuple
+    public class RtPoint : RtBaseTuple, IEquatable<RtPoint>
     {
         public RtPoint(RtBaseTuple tuple)
             : base(tuple.X, tuple.Y, tuple.Z, 1)

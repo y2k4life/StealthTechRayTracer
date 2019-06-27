@@ -9,9 +9,9 @@ using System;
 
 namespace StealthTech.RayTracer.Library
 {
-    public class Transform
+    public class Transform : IEquatable<Transform>
     {
-        public RtMatrix Matrix { get; private set; } = new RtMatrix(4, 4).Identity();
+        public RtMatrix Matrix { get; protected set; } = new RtMatrix(4, 4).Identity();
 
         public Transform()
         {
@@ -79,7 +79,7 @@ namespace StealthTech.RayTracer.Library
             rotateY[2, 0] = Math.Sin(radians) * -1;
             rotateY[2, 2] = Math.Cos(radians);
 
-            return new Transform(Matrix * rotateY);
+            return new Transform(rotateY * Matrix);
         }
 
         public Transform RotateZ(double radians)
@@ -111,6 +111,32 @@ namespace StealthTech.RayTracer.Library
             Matrix = Matrix.Inverse();
 
             return this;
+        }
+
+        public override int GetHashCode()
+        {
+            return Matrix.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            Transform other = obj as Transform;
+            return Equals(other);
+        }
+
+        public bool Equals(Transform other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return Matrix.Equals(other.Matrix);
         }
     }
 }

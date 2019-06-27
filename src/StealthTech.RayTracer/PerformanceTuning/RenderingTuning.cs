@@ -1,6 +1,5 @@
 ﻿using StealthTech.RayTracer.Exercises;
 using StealthTech.RayTracer.Library;
-using System.Threading.Tasks;
 
 namespace StealthTech.RayTracer.PerformanceTuning
 {
@@ -9,7 +8,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
         public void Run()
         {
             var test = new ChapterSix();
-            
+
             var shape = new Sphere()
             {
                 Transform = new Transform()
@@ -19,6 +18,13 @@ namespace StealthTech.RayTracer.PerformanceTuning
             };
 
             test.Run(shape);
+        }
+
+        public void RunChapter7()
+        {
+            var test = new ChapterSeven();
+
+            test.Render(false);
         }
     }
 }

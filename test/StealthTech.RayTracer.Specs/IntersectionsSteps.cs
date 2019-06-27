@@ -17,9 +17,16 @@ namespace StealthTech.RayTracer.Specs
     {
         private readonly SphereContext _sphereContext;
         readonly IntersectionsContext _intersectionsContext;
+        readonly WorldContext _worldContext;
+        readonly RayContext _rayContext;
 
-        public IntersectionsSteps(IntersectionsContext intersectionsContext, SphereContext sphereContext)
+        public IntersectionsSteps(IntersectionsContext intersectionsContext, 
+            SphereContext sphereContext, 
+            WorldContext worldContext,
+            RayContext rayContext)
         {
+            _rayContext = rayContext;
+            _worldContext = worldContext;
             _intersectionsContext = intersectionsContext;
             _sphereContext = sphereContext;
         }
@@ -145,6 +152,83 @@ namespace StealthTech.RayTracer.Specs
             Assert.Null(_intersectionsContext.Hit);
         }
 
+        [When(@"xs ← intersect_world\(w, r\)")]
+        public void When_xs_Intersect_World_w_With_R()
+        {
+            _intersectionsContext.Intersections.AddRange(_worldContext.World.Intersect(_rayContext.Ray));
+        }
+
+        [When(@"comps ← prepare_computations\(i, r\)")]
+        public void When_Comps_Is_Intersections_Prepare_Computations_For_r()
+        {
+            _intersectionsContext.Computations = _intersectionsContext.Intersection1.PrepareComputations(_rayContext.Ray);
+        }
+
+        [Then(@"comps\.Time = i\.Time")]
+        public void Then_comps_Time_Equals_i_Time()
+        {
+            var expectedTime = _intersectionsContext.Intersection1.Time;
+
+            var actualTime = _intersectionsContext.Computations.Time;
+
+            Assert.Equal(expectedTime, actualTime);
+        }
+
+        [Then(@"comps\.Shape = i\.Shape")]
+        public void Then_comps_Shape_Equals_i_Shape()
+        {
+            var expectedTime = _intersectionsContext.Intersection1.Shape;
+
+            var actualTime = _intersectionsContext.Computations.Shape;
+
+            Assert.Equal(expectedTime, actualTime);
+        }
+
+        [Then(@"comps\.point = point\((.*), (.*), (.*)\)")]
+        public void ThenComps_PointPoint(double x, double y, double z)
+        {
+            var expectedPoint = new RtPoint(x, y, z);
+
+            var actualPoint = _intersectionsContext.Computations.Point;
+
+            Assert.Equal(expectedPoint, actualPoint);
+        }
+
+        [Then(@"comps\.eyev = vector\((.*), (.*), (.*)\)")]
+        public void Then_comps_EyeVector_Equals_Vector(double x, double y, double z)
+        {
+            var expectedPoint = new RtVector(x, y, z);
+
+            var actualPoint = _intersectionsContext.Computations.EyeVector;
+
+            Assert.Equal(expectedPoint, actualPoint);
+        }
+
+        [Then(@"comps\.normalv = vector\((.*), (.*), (.*)\)")]
+        public void Then_comps_NormalVector_Equals_Vector(double x, double y, double z)
+        {
+            var expectedPoint = new RtVector(x, y, z);
+
+            var actualPoint = _intersectionsContext.Computations.NormalVector;
+
+            Assert.Equal(expectedPoint, actualPoint);
+        }
+
+        [Then(@"comps\.inside = false")]
+        public void Then_comps_Inside_Equals_False()
+        {
+            var actualInside = _intersectionsContext.Computations.Inside;
+
+            Assert.False(actualInside);
+        }
+
+        [Then(@"comps\.inside = true")]
+        public void Then_comps_Inside_Equals_True()
+        {
+            var actualInside = _intersectionsContext.Computations.Inside;
+
+            Assert.True(actualInside);
+        }
 
     }
 }

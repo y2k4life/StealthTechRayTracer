@@ -15,4 +15,8 @@
     <ProjectReference Include="..\StealthTech.RayTracer.Library\StealthTech.RayTracer.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

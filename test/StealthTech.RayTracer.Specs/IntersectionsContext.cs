@@ -24,5 +24,7 @@ namespace StealthTech.RayTracer.Specs
         public Intersection Intersection4 { get; set; }
         
         public Intersection Hit { get; set; }
+
+        public Computations Computations { get; set; }
     }
 }

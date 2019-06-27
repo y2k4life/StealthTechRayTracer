@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------
 
 using StealthTech.RayTracer.Library;
-using System;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -30,7 +29,7 @@ namespace StealthTech.RayTracer.Specs
         public void GivenTheFollowingMatrixM(int rows, int columns, Table table)
         {
             _matrix1 = new RtMatrix(rows, columns);
-            FillMatrix(table, _matrix1);
+            table.ToMatrix(_matrix1);
         }
 
         [Then(@"M\[(.*),(.*)] = (.*)")]
@@ -42,15 +41,13 @@ namespace StealthTech.RayTracer.Specs
         [Given(@"the following matrix A:")]
         public void GivenTheFollowingMatrixA(Table table)
         {
-            _matrix1 = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, _matrix1);
+            _matrix1 = table.ToMatrix();
         }
 
         [Given(@"the following matrix B:")]
         public void GivenTheFollowingMatrixB(Table table)
         {
-            _matrix2 = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, _matrix2);
+            _matrix2 = table.ToMatrix();
         }
 
         [Then(@"A = B")]
@@ -68,9 +65,8 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"A \* B is the following matrix:")]
         public void ThenABIsTheFollowingMatrix(Table table)
         {
-            var expectedMatrix = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, expectedMatrix);
-            
+            var expectedMatrix = table.ToMatrix();
+
             var actual = _matrix1 * _matrix2;
 
             Assert.Equal(expectedMatrix, actual);
@@ -88,8 +84,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"The identity of A is:")]
         public void ThenTheIdentityOfAIs(Table table)
         {
-            var expectedMatrix = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, expectedMatrix);
+            var expectedMatrix = table.ToMatrix();
 
             var identity = _matrix1.Identity();
             Assert.Equal(expectedMatrix, identity);
@@ -116,8 +111,7 @@ namespace StealthTech.RayTracer.Specs
         [Then(@"transpose\(A\) is the following matrix:")]
         public void Then_Transpose_A_Is_The_Following_Matrix(Table table)
         {
-            var expectedMatrix = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, expectedMatrix);
+            var expectedMatrix = table.ToMatrix();
 
             var actual = _matrix1.Transpose();
 
@@ -212,6 +206,14 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(expectedMatrix, _matrix2);
         }
 
+        [Then(@"A is the following matrix:")]
+        public void Then_AB_Is_The_Following_Matrix(Table table)
+        {
+            var expectedMatrix = GetExpected(table);
+
+            Assert.Equal(expectedMatrix, _matrix2);
+        }
+
         [Then(@"inverse\(A\) is the following matrix:")]
         public void Then_The_Inverse_A_Is_The_Following_Matrix(Table table)
         {
@@ -241,22 +243,9 @@ namespace StealthTech.RayTracer.Specs
 
         private static RtMatrix GetExpected(Table table)
         {
-            var expectedMatrix = new RtMatrix(table.RowCount, table.Rows[0].Count);
-            FillMatrix(table, expectedMatrix);
+            var expectedMatrix = table.ToMatrix();
+
             return expectedMatrix;
         }
-
-        private static void FillMatrix(Table table, RtMatrix matrix)
-        {
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                for (int j = 0; j < table.Rows[i].Count; j++)
-                {
-                    matrix[i, j] = Convert.ToDouble(table.Rows[i][j]);
-                }
-            }
-        }
     }
-
-
 }

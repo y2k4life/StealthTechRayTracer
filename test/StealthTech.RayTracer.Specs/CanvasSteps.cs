@@ -132,6 +132,5 @@ namespace StealthTech.RayTracer.Specs
 
             Assert.Equal("\r\n", last);
         }
-
     }
 }

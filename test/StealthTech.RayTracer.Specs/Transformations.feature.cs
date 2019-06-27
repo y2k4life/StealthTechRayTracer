@@ -456,6 +456,119 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="The transformation matrix for the default orientation")]
+        [Xunit.TraitAttribute("FeatureTitle", "Transformations")]
+        [Xunit.TraitAttribute("Description", "The transformation matrix for the default orientation")]
+        public virtual void TheTransformationMatrixForTheDefaultOrientation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The transformation matrix for the default orientation", null, ((string[])(null)));
+#line 115
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 116
+ testRunner.Given("from ← point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 117
+ testRunner.And("to ← point(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
+ testRunner.And("up ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 119
+ testRunner.When("t ← view_transform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 120
+ testRunner.Then("t = identity_matrix", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="A view transformation matrix looking in positive z direction")]
+        [Xunit.TraitAttribute("FeatureTitle", "Transformations")]
+        [Xunit.TraitAttribute("Description", "A view transformation matrix looking in positive z direction")]
+        public virtual void AViewTransformationMatrixLookingInPositiveZDirection()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A view transformation matrix looking in positive z direction", null, ((string[])(null)));
+#line 122
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 123
+ testRunner.Given("from ← point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 124
+ testRunner.And("to ← point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 125
+ testRunner.And("up ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 126
+ testRunner.When("t ← view_transform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 127
+ testRunner.Then("t = scaling(-1, 1, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The view transformation moves the world")]
+        [Xunit.TraitAttribute("FeatureTitle", "Transformations")]
+        [Xunit.TraitAttribute("Description", "The view transformation moves the world")]
+        public virtual void TheViewTransformationMovesTheWorld()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The view transformation moves the world", null, ((string[])(null)));
+#line 129
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 130
+ testRunner.Given("from ← point(0, 0, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 131
+ testRunner.And("to ← point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
+ testRunner.And("up ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 133
+ testRunner.When("t ← view_transform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 134
+ testRunner.Then("t = translation(0, 0, -8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="An arbitrary view transformation")]
+        [Xunit.TraitAttribute("FeatureTitle", "Transformations")]
+        [Xunit.TraitAttribute("Description", "An arbitrary view transformation")]
+        public virtual void AnArbitraryViewTransformation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("An arbitrary view transformation", null, ((string[])(null)));
+#line 136
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 137
+ testRunner.Given("from ← point(1, 3, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 138
+ testRunner.And("to ← point(4, -2, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 139
+ testRunner.And("up ← vector(1, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 140
+ testRunner.When("t ← view_transform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+                        "-0.50709",
+                        "0.50709",
+                        "0.67612",
+                        "-2.36643"});
+            table57.AddRow(new string[] {
+                        "0.76772",
+                        "0.60609",
+                        "0.12122",
+                        "-2.82843"});
+            table57.AddRow(new string[] {
+                        "-0.35857",
+                        "0.59761",
+                        "-0.71714",
+                        "0.00000"});
+            table57.AddRow(new string[] {
+                        "0.00000",
+                        "0.00000",
+                        "0.00000",
+                        "1.00000"});
+#line 141
+ testRunner.Then("t is the following matrix:", ((string)(null)), table57, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

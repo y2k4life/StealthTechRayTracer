@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="SphereContext.cs" company="StealthTech">
+// <copyright file="CameraContext.cs" company="StealthTech">
 //     Author: Guy Boicey
 //     Copyright (c) 2019 Guy Boicey
 // </copyright>
@@ -9,16 +9,16 @@ using StealthTech.RayTracer.Library;
 
 namespace StealthTech.RayTracer.Specs
 {
-    public class SphereContext
+    public class CameraContext
     {
-        public Sphere Sphere { get; set; }
-        
-        public Transform Transform { get; set; }
+        public int HorizontalSize { get; set; }
 
-        public RtVector Normal { get; set; }
+        public int VerticalSize { get; set; }
 
-        public Sphere Sphere1 { get; set; }
+        public double FieldOfView { get; set; }
 
-        public Sphere Sphere2 { get; set; }
+        public Camera Camera { get; set; }
+
+        public Canvas Image { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using StealthTech.RayTracer.Library;
 using System;
 using TechTalk.SpecFlow;
 using Xunit;
+using TechTalk.SpecFlow.Assist;
 
 namespace StealthTech.RayTracer.Specs
 {
@@ -157,7 +158,68 @@ namespace StealthTech.RayTracer.Specs
             Assert.Equal(_materialsContext.Material, _sphereContext.Sphere.Material);
         }
 
+        [Given(@"s1 ← sphere\(\) with:")]
+        public void GivenSSphereWith(Table table)
+        {
+            _sphereContext.Sphere1 = CreateSphereFromTableWith(table);
+        }
 
+        [Given(@"s2 ← sphere\(\) with:")]
+        public void Given_s2_Is_A_Sphere_With(Table table)
+        {
+            _sphereContext.Sphere2 = CreateSphereFromTableWith(table);
+        }
+
+        public Sphere CreateSphereFromTableWith(Table table)
+        {
+            var sphere = new Sphere();
+            
+            var properties = table.ToDictionary();
+            foreach(var kv in properties)
+            {
+                var property = kv.Key;
+                var subproperty = "";
+                if (kv.Key.Contains('.'))
+                {
+                    property = kv.Key.Split('.')[0];
+                    subproperty = kv.Key.Split('.')[1];
+                }
+
+                switch(property)
+                {
+                    case "material":
+                        switch(subproperty)
+                        {
+                            case "color":
+                                string[] colorValues = kv.Value
+                                    .Replace('(', ' ')
+                                    .Replace(')', ' ')
+                                    .Split(',');
+                                sphere.Material.Color = new RtColor(Convert.ToDouble(colorValues[0]), Convert.ToDouble(colorValues[1]), Convert.ToDouble(colorValues[2]));
+                                break;
+                            case "diffuse":
+                                sphere.Material.Diffuse = Convert.ToDouble(kv.Value);
+                                break;
+                            case "specular":
+                                sphere.Material.Specular = Convert.ToDouble(kv.Value);
+                                break;
+                        }
+                        break;
+                    case "transform":
+                        string transform = kv.Value.Substring(0, kv.Value.IndexOf('('));
+                        string[] values = kv.Value.Substring(kv.Value.IndexOf('(') + 1, kv.Value.Length - kv.Value.IndexOf('(') - 2).Split(',');
+                        switch(transform)
+                        {
+                            case "scaling":
+                                sphere.Transform *= new Transform().Scaling(Convert.ToDouble(values[0]), Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
+                                break;
+                        }
+                        break;
+                }
+            }
+
+            return sphere;
+        }
 
         private double ConvertCoordinate(string coordiante)
         {
@@ -172,6 +234,8 @@ namespace StealthTech.RayTracer.Specs
 
             return Convert.ToDouble(coordiante);
         }
+
+
 
     }
 }

@@ -175,7 +175,7 @@ namespace StealthTech.RayTracer.Library
         {
             var results = new RtMatrix(ColumnCount, RowCount);
 
-            for(int i=0; i < RowCount; i++)
+            for (int i=0; i < RowCount; i++)
             {
                 for(int j = 0; j < ColumnCount; j++)
                 {

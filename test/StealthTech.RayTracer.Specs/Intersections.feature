@@ -48,3 +48,32 @@ Scenario: The hit is always the lowest nonnegative intersection
 	And xs ← intersections(i1, i2, i3, i4)
 	When i ← hit(xs)
 	Then i = i4
+
+Scenario: Precomputing the state of an intersection
+	Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+	And s ← sphere()
+	And i1 ← intersection(4, s)
+	When comps ← prepare_computations(i, r)
+	Then comps.Time = i.Time
+	And comps.Shape = i.Shape
+	And comps.point = point(0, 0, -1)
+	And comps.eyev = vector(0, 0, -1)
+	And comps.normalv = vector(0, 0, -1)
+
+Scenario: The hit, when an intersection occurs on the outside
+	Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+	And s ← sphere()
+	And i1 ← intersection(4, s)
+	When comps ← prepare_computations(i, r)
+	Then comps.inside = false
+
+Scenario: The hit, when an intersection occurs on the inside
+	Given r ← ray(point(0, 0, 0), vector(0, 0, 1))
+	And s ← sphere()
+	And i1 ← intersection(1, s)
+	When comps ← prepare_computations(i, r)
+	Then comps.point = point(0, 0, 1)
+	And comps.eyev = vector(0, 0, -1)
+	And comps.inside = true
+	# normal would have been (0, 0, 1), but is inverted!
+	And comps.normalv = vector(0, 0, -1)

@@ -17,9 +17,11 @@ namespace StealthTech.RayTracer.Specs
     {
         private readonly TuplesContext _tupleContext;
         readonly RayContext _rayContext;
+        readonly CameraContext _cameraContext;
 
-        public RaysSteps(TuplesContext tupleContext, RayContext rayContext)
+        public RaysSteps(TuplesContext tupleContext, RayContext rayContext, CameraContext cameraContext)
         {
+            _cameraContext = cameraContext;
             _rayContext = rayContext;
             _tupleContext = tupleContext;
         }
@@ -90,6 +92,32 @@ namespace StealthTech.RayTracer.Specs
         public void GivenMScaling(double x, double y, double z)
         {
             _rayContext.M = new Transform().Scaling(x, y, z);
+        }
+
+        [When(@"r ← ray_for_pixel\(c, (.*), (.*)\)")]
+        public void When_r_Ray_For_Pixel(double x, double y)
+        {
+            _rayContext.Ray = _cameraContext.Camera.RayForPixel(x, y);
+        }
+
+        [Then(@"r\.origin = point\((.*), (.*), (.*)\)")]
+        public void Then_r_Origin_Equals_Point(double x, double y, double z)
+        {
+            var expectedOrigin = new RtPoint(x, y, z);
+
+            var actualOrigin = _rayContext.Ray.Origin;
+
+            Assert.Equal(expectedOrigin, actualOrigin);
+        }
+
+        [Then(@"r\.direction = vector\((.*), (.*), (.*)\)")]
+        public void Then_r_Direction_Equals_Vector(double x, double y, double z)
+        {
+            var expectedDirection = new RtVector(x, y, z);
+
+            var actualDirection = _rayContext.Ray.Direction;
+
+            Assert.Equal(expectedDirection, actualDirection);
         }
 
     }

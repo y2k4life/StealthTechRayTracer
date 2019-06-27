@@ -8,7 +8,7 @@
 namespace StealthTech.RayTracer.Library
 {
     using System;
-    public class RtColor
+    public class RtColor : IEquatable<RtColor>
     {
         public static readonly RtColor Black = new RtColor(0, 0, 0);
 
@@ -84,13 +84,14 @@ namespace StealthTech.RayTracer.Library
             return (int)Math.Round(255*comp);
         }
 
-        public override int GetHashCode()
-        {
-            return Red.GetHashCode() ^ Green.GetHashCode() ^ Blue.GetHashCode();
-        }
         public override string ToString()
         {
             return $"{Normalize(Red)}, {Normalize(Green)}, {Normalize(Blue)}";
+        }
+
+        public override int GetHashCode()
+        {
+            return Red.GetHashCode() ^ Green.GetHashCode() ^ Blue.GetHashCode();
         }
 
         public override bool Equals(object obj)

@@ -228,6 +228,89 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="Precomputing the state of an intersection")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "Precomputing the state of an intersection")]
+        public virtual void PrecomputingTheStateOfAnIntersection()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Precomputing the state of an intersection", null, ((string[])(null)));
+#line 52
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 53
+ testRunner.Given("r ← ray(point(0, 0, -5), vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+ testRunner.And("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+ testRunner.And("i1 ← intersection(4, s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 56
+ testRunner.When("comps ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 57
+ testRunner.Then("comps.Time = i.Time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 58
+ testRunner.And("comps.Shape = i.Shape", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 59
+ testRunner.And("comps.point = point(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 60
+ testRunner.And("comps.eyev = vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 61
+ testRunner.And("comps.normalv = vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The hit, when an intersection occurs on the outside")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The hit, when an intersection occurs on the outside")]
+        public virtual void TheHitWhenAnIntersectionOccursOnTheOutside()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The hit, when an intersection occurs on the outside", null, ((string[])(null)));
+#line 63
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 64
+ testRunner.Given("r ← ray(point(0, 0, -5), vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 65
+ testRunner.And("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 66
+ testRunner.And("i1 ← intersection(4, s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 67
+ testRunner.When("comps ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 68
+ testRunner.Then("comps.inside = false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The hit, when an intersection occurs on the inside")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The hit, when an intersection occurs on the inside")]
+        public virtual void TheHitWhenAnIntersectionOccursOnTheInside()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The hit, when an intersection occurs on the inside", null, ((string[])(null)));
+#line 70
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 71
+ testRunner.Given("r ← ray(point(0, 0, 0), vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 72
+ testRunner.And("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 73
+ testRunner.And("i1 ← intersection(1, s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 74
+ testRunner.When("comps ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 75
+ testRunner.Then("comps.point = point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 76
+ testRunner.And("comps.eyev = vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 77
+ testRunner.And("comps.inside = true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 79
+ testRunner.And("comps.normalv = vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable
