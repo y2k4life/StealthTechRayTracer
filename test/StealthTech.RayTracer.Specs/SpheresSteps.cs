@@ -21,9 +21,9 @@ namespace StealthTech.RayTracer.Specs
         readonly IntersectionsContext _intersectionsContext;
         readonly MaterialsContext _materialsContext;
 
-        public SpheresSteps(SphereContext sphereContext, 
-            RayContext rayContext, 
-            IntersectionsContext intersectionsContext, 
+        public SpheresSteps(SphereContext sphereContext,
+            RayContext rayContext,
+            IntersectionsContext intersectionsContext,
             MaterialsContext materialsContext)
         {
             _materialsContext = materialsContext;
@@ -104,7 +104,7 @@ namespace StealthTech.RayTracer.Specs
         {
             Assert.Equal(_sphereContext.Normal, _sphereContext.Normal.Normalized());
         }
-               
+
         [Given(@"t ← scaling\((.*), (.*), (.*)\) and rotation_z\(π/(.*)\)")]
         public void GivenMScaling(double x, double y, double z, double r)
         {
@@ -173,9 +173,9 @@ namespace StealthTech.RayTracer.Specs
         public Sphere CreateSphereFromTableWith(Table table)
         {
             var sphere = new Sphere();
-            
+
             var properties = table.ToDictionary();
-            foreach(var kv in properties)
+            foreach (var kv in properties)
             {
                 var property = kv.Key;
                 var subproperty = "";
@@ -185,10 +185,10 @@ namespace StealthTech.RayTracer.Specs
                     subproperty = kv.Key.Split('.')[1];
                 }
 
-                switch(property)
+                switch (property)
                 {
                     case "material":
-                        switch(subproperty)
+                        switch (subproperty)
                         {
                             case "color":
                                 string[] colorValues = kv.Value
@@ -208,10 +208,13 @@ namespace StealthTech.RayTracer.Specs
                     case "transform":
                         string transform = kv.Value.Substring(0, kv.Value.IndexOf('('));
                         string[] values = kv.Value.Substring(kv.Value.IndexOf('(') + 1, kv.Value.Length - kv.Value.IndexOf('(') - 2).Split(',');
-                        switch(transform)
+                        switch (transform)
                         {
                             case "scaling":
                                 sphere.Transform *= new Transform().Scaling(Convert.ToDouble(values[0]), Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
+                                break;
+                            case "translation":
+                                sphere.Transform *= new Transform().Translation(Convert.ToDouble(values[0]), Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
                                 break;
                         }
                         break;

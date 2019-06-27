@@ -46,3 +46,11 @@ Scenario: Lighting with the light behind the surface
 	And light ← point_light(point(0, 0, 10), color(1, 1, 1))
 	When result ← lighting(m, light, position, eyeVector, normalVector)
 	Then result = color(0.1, 0.1, 0.1)
+
+Scenario: Lighting with the surface in shadow
+	Given eyeVector ← vector(0, 0, -1)
+	And normalVector ← vector(0, 0, -1)
+	And light ← point_light(point(0, 0, -10), color(1, 1, 1))
+	And inShadow ← true
+	When result ← lighting(m, light, position, eyeVector, normalVector, inShadow)
+	Then result = color(0.1, 0.1, 0.1)

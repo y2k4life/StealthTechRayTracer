@@ -14,16 +14,11 @@ namespace StealthTech.RayTracer.Library
 {
     public class IntersectionList
     {
-        private readonly List<Intersection> _intersections;
+        private List<Intersection> _intersections;
 
         public IntersectionList()
         {
             _intersections = new List<Intersection>();
-        }
-
-        public IntersectionList(List<Intersection> list)
-        {
-            _intersections = list;
         }
 
         public int Count => _intersections.Count;
@@ -31,11 +26,7 @@ namespace StealthTech.RayTracer.Library
         public void Add(Intersection intersection)
         {
             _intersections.Add(intersection);
-        }
-
-        public void AddRange(List<Intersection> intersections)
-        {
-            _intersections.AddRange(intersections);
+            _intersections = _intersections.OrderBy(i => i.Time).ToList();
         }
 
         public Intersection Hit()

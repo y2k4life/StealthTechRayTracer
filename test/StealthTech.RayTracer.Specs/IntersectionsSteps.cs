@@ -37,6 +37,12 @@ namespace StealthTech.RayTracer.Specs
             _intersectionsContext.Intersection = new Intersection(time, _sphereContext.Sphere);
         }
 
+        [Given(@"i ← intersection\((.*), s2\)")]
+        public void Given_i_Is_Intersection_of_Sphere2(double time)
+        {
+            _intersectionsContext.Intersection1 = new Intersection(time, _sphereContext.Sphere2);
+        }
+
         [Then(@"i\.Time = (.*)")]
         public void Then_i_Time_Equals(Double expectedTime)
         {
@@ -155,7 +161,7 @@ namespace StealthTech.RayTracer.Specs
         [When(@"xs ← intersect_world\(w, r\)")]
         public void When_xs_Intersect_World_w_With_R()
         {
-            _intersectionsContext.Intersections.AddRange(_worldContext.World.Intersect(_rayContext.Ray));
+            _intersectionsContext.Intersections = _worldContext.World.Intersect(_rayContext.Ray);
         }
 
         [When(@"comps ← prepare_computations\(i, r\)")]
@@ -228,6 +234,18 @@ namespace StealthTech.RayTracer.Specs
             var actualInside = _intersectionsContext.Computations.Inside;
 
             Assert.True(actualInside);
+        }
+
+        [Then(@"comps\.over_point\.z < -EPSILON/2")]
+        public void Then_Comps_Over_Point_Z_Less_Than_EPSILON()
+        {
+            Assert.True(_intersectionsContext.Computations.OverPoint.Z < (-DoubleExtensions.EPSILON / 2.0));
+        }
+
+        [Then(@"comps\.point\.z > comps\.over_point\.z")]
+        public void Then_Comps_Point_ZComps_Over_Point_Z()
+        {
+            Assert.True(_intersectionsContext.Computations.Point.Z > _intersectionsContext.Computations.OverPoint.Z);
         }
 
     }

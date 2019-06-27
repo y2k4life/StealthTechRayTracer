@@ -20,14 +20,18 @@ namespace StealthTech.RayTracer.Specs
         readonly RayContext _rayContext;
         readonly IntersectionsContext _intersectionsContext;
         readonly ColorContext _colorContext;
+        readonly TuplesContext _tuplesContext;
 
         public WorldSteps(WorldContext worldContext,
             SphereContext sphereContext,
             MaterialsContext materialsContext,
             RayContext rayContext,
             IntersectionsContext intersectionsContext,
-            ColorContext colorContext)
+            ColorContext colorContext,
+            TuplesContext tuplesContext)
+
         {
+            _tuplesContext = tuplesContext;
             _colorContext = colorContext;
             _intersectionsContext = intersectionsContext;
             _rayContext = rayContext;
@@ -172,6 +176,34 @@ namespace StealthTech.RayTracer.Specs
         public void Then_c_Inner_Material_Color()
         {
             _colorContext.Color1 = _worldContext.Inner.Material.Color;
+        }
+
+        [Then(@"is_shadowed\(w, p\) is false")]
+        public void Then_Is_Shadowed_Point_Is_False()
+        {
+            var actualResults = _worldContext.World.IsShadowed(_tuplesContext.Point, _worldContext.World.Lights[0]);
+
+            Assert.False(actualResults);
+        }
+
+        [Then(@"is_shadowed\(w, p\) is true")]
+        public void Then_Is_Shadowed_Point_Is_True()
+        {
+            var actualResults = _worldContext.World.IsShadowed(_tuplesContext.Point, _worldContext.World.Lights[0]);
+
+            Assert.True(actualResults);
+        }
+
+        [Given(@"s is added to w")]
+        public void Given_s_Is_Added_To_w()
+        {
+            _worldContext.World.Shapes.Add(_sphereContext.Sphere);
+        }
+
+        [Given(@"s2 is added to w")]
+        public void Given_s2_Is_Added_To_w()
+        {
+            _worldContext.World.Shapes.Add(_sphereContext.Sphere2);
         }
 
     }

@@ -107,23 +107,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.Given("light ← point_light(point(-10, 10, -10), color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.color",
                         "(0.8, 1.0, 0.6)"});
-            table58.AddRow(new string[] {
+            table59.AddRow(new string[] {
                         "material.diffuse",
                         "0.7"});
-            table58.AddRow(new string[] {
+            table59.AddRow(new string[] {
                         "material.specular",
                         "0.2"});
 #line 10
- testRunner.And("s1 ← sphere() with:", ((string)(null)), table58, "And ");
+ testRunner.And("s1 ← sphere() with:", ((string)(null)), table59, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "scaling(0.5, 0.5, 0.5)"});
 #line 14
- testRunner.And("s2 ← sphere() with:", ((string)(null)), table59, "And ");
+ testRunner.And("s2 ← sphere() with:", ((string)(null)), table60, "And ");
 #line 16
  testRunner.When("w ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
@@ -288,6 +288,121 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("c ← color_at(w, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 70
  testRunner.Then("c = inner.material.color", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="There is no shadow when nothing is collinear with point and light")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "There is no shadow when nothing is collinear with point and light")]
+        public virtual void ThereIsNoShadowWhenNothingIsCollinearWithPointAndLight()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when nothing is collinear with point and light", null, ((string[])(null)));
+#line 72
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 73
+ testRunner.Given("w ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 74
+ testRunner.And("p ← point(0, 10, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 75
+ testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The shadow when an object is between the point and the light")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The shadow when an object is between the point and the light")]
+        public virtual void TheShadowWhenAnObjectIsBetweenThePointAndTheLight()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The shadow when an object is between the point and the light", null, ((string[])(null)));
+#line 77
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 78
+ testRunner.Given("w ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 79
+ testRunner.And("p ← point(10, -10, 10)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 80
+ testRunner.Then("is_shadowed(w, p) is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the light")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the light")]
+        public virtual void ThereIsNoShadowWhenAnObjectIsBehindTheLight()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the light", null, ((string[])(null)));
+#line 82
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 83
+ testRunner.Given("w ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 84
+ testRunner.And("p ← point(-20, 20, -20)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 85
+ testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the point")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the point")]
+        public virtual void ThereIsNoShadowWhenAnObjectIsBehindThePoint()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the point", null, ((string[])(null)));
+#line 87
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 88
+ testRunner.Given("w ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 89
+ testRunner.And("p ← point(-2, 2, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 90
+ testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="shade_hit() is given an intersection in shadow")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "shade_hit() is given an intersection in shadow")]
+        public virtual void Shade_HitIsGivenAnIntersectionInShadow()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("shade_hit() is given an intersection in shadow", null, ((string[])(null)));
+#line 92
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 93
+ testRunner.Given("w ← world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 94
+ testRunner.And("w.light ← point_light(point(0, 0, -10), color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+ testRunner.And("s ← sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 96
+ testRunner.And("s is added to w", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, 0, 10)"});
+#line 97
+ testRunner.And("s2 ← sphere() with:", ((string)(null)), table61, "And ");
+#line 99
+ testRunner.And("s2 is added to w", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 100
+ testRunner.And("r ← ray(point(0, 0, 5), vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 101
+ testRunner.And("i ← intersection(4, s2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 102
+ testRunner.When("comps ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 103
+ testRunner.And("c ← shade_hit(w, comps)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 104
+ testRunner.Then("c = color(0.1, 0.1, 0.1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

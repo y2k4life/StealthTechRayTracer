@@ -84,10 +84,12 @@ namespace StealthTech.RayTracer.Specs
         [When(@"result ← lighting\(m, light, position, eyeVector, normalVector\)")]
         public void When_Result_Lighting_Light_Position_EyeV_NormalV()
         {
-            _materialsContext.Results = _materialsContext.Material.Lighting(_materialsContext.Light,
+            _materialsContext.Results = _materialsContext.Material.Lighting(
+                _materialsContext.Light,
                 _tuplesContext.Position,
                 _materialsContext.EyeVector,
-                _materialsContext.NormalVector);
+                _materialsContext.NormalVector,
+                _materialsContext.InShadow);
         }
 
         [Then(@"result = color\((.*), (.*), (.*)\)")]
@@ -96,6 +98,25 @@ namespace StealthTech.RayTracer.Specs
             var expectedColor = new RtColor(red, green, blue);
             Assert.Equal(expectedColor, _materialsContext.Results);
         }
+
+        [Given(@"inShadow ← true")]
+        public void GivenInShadowTrue()
+        {
+            _materialsContext.InShadow = true;
+        }
+
+        [When(@"result ← lighting\(m, light, position, eyeVector, normalVector, inShadow\)")]
+        public void When_Result_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow()
+        {
+            _materialsContext.Results = _materialsContext.Material.Lighting(
+                _materialsContext.Light,
+                _tuplesContext.Position,
+                _materialsContext.EyeVector,
+                _materialsContext.NormalVector,
+                _materialsContext.InShadow);
+        }
+
+
 
 
         private double ConvertCoordinate(string coordiante)

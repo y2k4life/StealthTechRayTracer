@@ -60,7 +60,7 @@ namespace StealthTech.RayTracer.Library
                 && other.Shininess.ApproximateEquals(Shininess));
         }
 
-        public RtColor Lighting(PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector)
+        public RtColor Lighting(PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector, bool inShadow = false)
         {
             var effectiveColor = Color * light.Intensity;
             var lightVector = (light.Position - point).Normalized();
@@ -71,7 +71,7 @@ namespace StealthTech.RayTracer.Library
             RtColor diffuse;
             RtColor specular;
 
-            if (lightDotNormal < 0)
+            if (lightDotNormal < 0 || inShadow)
             {
                 diffuse = RtColor.Black;
                 specular = RtColor.Black;
@@ -82,7 +82,7 @@ namespace StealthTech.RayTracer.Library
 
                 var reflectVector = lightVector.Negate().Reflect(normalVector);
                 var reflectDotEye = reflectVector.Dot(eyeVector);
-                if (reflectDotEye < -1)
+                if (reflectDotEye <= 0)
                 {
                     specular = RtColor.Black;
                 }

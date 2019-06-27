@@ -11,7 +11,7 @@ namespace StealthTech.RayTracer.Specs
 {
     public class IntersectionsContext
     {
-        public IntersectionList Intersections { get; } = new IntersectionList();
+        public IntersectionList Intersections { get; set; } = new IntersectionList();
 
         public Intersection Intersection { get; set; }
 

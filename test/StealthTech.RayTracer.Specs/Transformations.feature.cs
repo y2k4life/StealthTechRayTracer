@@ -543,28 +543,28 @@ this.ScenarioInitialize(scenarioInfo);
 #line 140
  testRunner.When("t ← view_transform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table58 = new TechTalk.SpecFlow.Table(new string[] {
                         "-0.50709",
                         "0.50709",
                         "0.67612",
                         "-2.36643"});
-            table57.AddRow(new string[] {
+            table58.AddRow(new string[] {
                         "0.76772",
                         "0.60609",
                         "0.12122",
                         "-2.82843"});
-            table57.AddRow(new string[] {
+            table58.AddRow(new string[] {
                         "-0.35857",
                         "0.59761",
                         "-0.71714",
                         "0.00000"});
-            table57.AddRow(new string[] {
+            table58.AddRow(new string[] {
                         "0.00000",
                         "0.00000",
                         "0.00000",
                         "1.00000"});
 #line 141
- testRunner.Then("t is the following matrix:", ((string)(null)), table57, "Then ");
+ testRunner.Then("t is the following matrix:", ((string)(null)), table58, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

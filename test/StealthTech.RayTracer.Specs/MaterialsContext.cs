@@ -20,5 +20,7 @@ namespace StealthTech.RayTracer.Specs
         public RtColor Results { get; set; }
 
         public PointLight Light { get; set; }
+
+        public bool InShadow { get; set; }
     }
 }

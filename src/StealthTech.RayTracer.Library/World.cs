@@ -5,6 +5,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,9 +37,9 @@ namespace StealthTech.RayTracer.Library
 
             return defaultWorld;
         }
-        public List<Intersection> Intersect(Ray ray)
+        public IntersectionList Intersect(Ray ray)
         {
-            var intersections = new List<Intersection>();
+            var intersections = new IntersectionList();
             foreach (var shape in Shapes)
             {
                 if (shape.Intersect(ray, out (double, double) hits))
@@ -48,18 +49,21 @@ namespace StealthTech.RayTracer.Library
                 }
             }
 
-            return intersections.OrderBy(i => i.Time).ToList();
+            return intersections;
         }
 
         public RtColor ShadeHit(Computations computations)
         {
             var colorTotal = RtColor.Black;
+            
             foreach (var light in Lights)
             {
+                var inShadow = IsShadowed(computations.OverPoint, light);
                 var lighting = computations.Shape.Material.Lighting(light,
-                                   computations.Point,
-                                   computations.EyeVector,
-                                   computations.NormalVector);
+                                    computations.Point,
+                                    computations.EyeVector,
+                                    computations.NormalVector,
+                                    inShadow);
 
                 colorTotal += lighting;
             }
@@ -78,6 +82,26 @@ namespace StealthTech.RayTracer.Library
             var hit = intersections[0];
             var computations = hit.PrepareComputations(ray);
             return ShadeHit(computations);
+        }
+
+        public bool IsShadowed(RtPoint point, PointLight light)
+        {
+            var vector = light.Position - point;
+            var distance = vector.Magnitude();
+            var direction = vector.Normalized();
+
+            var ray = new Ray(point, direction);
+            var intersetions = Intersect(ray);
+
+            var hit = intersetions.Hit();
+            if (hit != null && hit.Time < distance)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Sphere> Shapes { get; } = new List<Sphere>();

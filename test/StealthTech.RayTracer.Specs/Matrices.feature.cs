@@ -86,17 +86,17 @@ namespace StealthTech.RayTracer.Specs
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
-            table1.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "-3",
                         "5"});
-            table1.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "1",
                         "-2"});
 #line 4
- testRunner.Given("the following 2x2 matrix M:", ((string)(null)), table1, "Given ");
+ testRunner.Given("the following 2x2 matrix M:", ((string)(null)), table2, "Given ");
 #line 8
  testRunner.Then("M[0,0] = -3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 9
@@ -119,24 +119,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "-3",
                         "5",
                         "0"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "1",
                         "-2",
                         "-7"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "0",
                         "1",
                         "1"});
 #line 14
- testRunner.Given("the following 3x3 matrix M:", ((string)(null)), table2, "Given ");
+ testRunner.Given("the following 3x3 matrix M:", ((string)(null)), table3, "Given ");
 #line 19
  testRunner.Then("M[1,1] = -2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 20
@@ -154,34 +154,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 22
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4"});
-            table3.AddRow(new string[] {
-                        "1",
-                        "2",
-                        "3",
-                        "4"});
-            table3.AddRow(new string[] {
-                        "5",
-                        "6",
-                        "7",
-                        "8"});
-            table3.AddRow(new string[] {
-                        "9",
-                        "8",
-                        "7",
-                        "6"});
-            table3.AddRow(new string[] {
-                        "5",
-                        "4",
-                        "3",
-                        "2"});
-#line 23
- testRunner.Given("the following matrix A:", ((string)(null)), table3, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
@@ -208,23 +180,8 @@ this.ScenarioInitialize(scenarioInfo);
                         "4",
                         "3",
                         "2"});
-#line 29
- testRunner.And("the following matrix B:", ((string)(null)), table4, "And ");
-#line 35
- testRunner.Then("A = B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Matrix equality with different matrices")]
-        [Xunit.TraitAttribute("FeatureTitle", "Matrices")]
-        [Xunit.TraitAttribute("Description", "Matrix equality with different matrices")]
-        public virtual void MatrixEqualityWithDifferentMatrices()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Matrix equality with different matrices", null, ((string[])(null)));
-#line 37
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
+#line 23
+ testRunner.Given("the following matrix A:", ((string)(null)), table4, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
@@ -251,8 +208,23 @@ this.ScenarioInitialize(scenarioInfo);
                         "4",
                         "3",
                         "2"});
-#line 38
- testRunner.Given("the following matrix A:", ((string)(null)), table5, "Given ");
+#line 29
+ testRunner.And("the following matrix B:", ((string)(null)), table5, "And ");
+#line 35
+ testRunner.Then("A = B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Matrix equality with different matrices")]
+        [Xunit.TraitAttribute("FeatureTitle", "Matrices")]
+        [Xunit.TraitAttribute("Description", "Matrix equality with different matrices")]
+        public virtual void MatrixEqualityWithDifferentMatrices()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Matrix equality with different matrices", null, ((string[])(null)));
+#line 37
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
@@ -277,10 +249,38 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "5",
                         "4",
+                        "3",
+                        "2"});
+#line 38
+ testRunner.Given("the following matrix A:", ((string)(null)), table6, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3",
+                        "col4"});
+            table7.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "3",
+                        "4"});
+            table7.AddRow(new string[] {
+                        "5",
+                        "6",
+                        "7",
+                        "8"});
+            table7.AddRow(new string[] {
+                        "9",
+                        "8",
+                        "7",
+                        "6"});
+            table7.AddRow(new string[] {
+                        "5",
+                        "4",
                         "4",
                         "2"});
 #line 44
- testRunner.And("the following matrix B:", ((string)(null)), table6, "And ");
+ testRunner.And("the following matrix B:", ((string)(null)), table7, "And ");
 #line 50
  testRunner.Then("A != B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -297,41 +297,41 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2"});
-            table7.AddRow(new string[] {
-                        "1",
-                        "2"});
-            table7.AddRow(new string[] {
-                        "3",
-                        "4"});
-#line 53
- testRunner.Given("the following matrix A:", ((string)(null)), table7, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
             table8.AddRow(new string[] {
-                        "2",
-                        "0"});
-            table8.AddRow(new string[] {
                         "1",
                         "2"});
-#line 57
- testRunner.And("the following matrix B:", ((string)(null)), table8, "And ");
+            table8.AddRow(new string[] {
+                        "3",
+                        "4"});
+#line 53
+ testRunner.Given("the following matrix A:", ((string)(null)), table8, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
             table9.AddRow(new string[] {
+                        "2",
+                        "0"});
+            table9.AddRow(new string[] {
+                        "1",
+                        "2"});
+#line 57
+ testRunner.And("the following matrix B:", ((string)(null)), table9, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2"});
+            table10.AddRow(new string[] {
                         "4",
                         "4"});
-            table9.AddRow(new string[] {
+            table10.AddRow(new string[] {
                         "10",
                         "8"});
 #line 61
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table9, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table10, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -346,61 +346,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4"});
-            table10.AddRow(new string[] {
-                        "1",
-                        "2",
-                        "3",
-                        "4"});
-            table10.AddRow(new string[] {
-                        "5",
-                        "6",
-                        "7",
-                        "8"});
-            table10.AddRow(new string[] {
-                        "9",
-                        "8",
-                        "7",
-                        "6"});
-            table10.AddRow(new string[] {
-                        "5",
-                        "4",
-                        "3",
-                        "2"});
-#line 67
- testRunner.Given("the following matrix A:", ((string)(null)), table10, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
             table11.AddRow(new string[] {
-                        "-2",
                         "1",
                         "2",
-                        "3"});
-            table11.AddRow(new string[] {
                         "3",
-                        "2",
-                        "1",
-                        "-1"});
+                        "4"});
             table11.AddRow(new string[] {
-                        "4",
-                        "3",
+                        "5",
                         "6",
-                        "5"});
-            table11.AddRow(new string[] {
-                        "1",
-                        "2",
                         "7",
                         "8"});
-#line 73
- testRunner.And("the following matrix B:", ((string)(null)), table11, "And ");
+            table11.AddRow(new string[] {
+                        "9",
+                        "8",
+                        "7",
+                        "6"});
+            table11.AddRow(new string[] {
+                        "5",
+                        "4",
+                        "3",
+                        "2"});
+#line 67
+ testRunner.Given("the following matrix A:", ((string)(null)), table11, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
@@ -408,27 +380,55 @@ this.ScenarioInitialize(scenarioInfo);
                         "col3",
                         "col4"});
             table12.AddRow(new string[] {
+                        "-2",
+                        "1",
+                        "2",
+                        "3"});
+            table12.AddRow(new string[] {
+                        "3",
+                        "2",
+                        "1",
+                        "-1"});
+            table12.AddRow(new string[] {
+                        "4",
+                        "3",
+                        "6",
+                        "5"});
+            table12.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "7",
+                        "8"});
+#line 73
+ testRunner.And("the following matrix B:", ((string)(null)), table12, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3",
+                        "col4"});
+            table13.AddRow(new string[] {
                         "20",
                         "22",
                         "50",
                         "48"});
-            table12.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "44",
                         "54",
                         "114",
                         "108"});
-            table12.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "40",
                         "58",
                         "110",
                         "102"});
-            table12.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "16",
                         "26",
                         "46",
                         "42"});
 #line 79
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table12, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table13, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -443,33 +443,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table13.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "1",
                         "2",
                         "3",
                         "4"});
-            table13.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "2",
                         "4",
                         "4",
                         "2"});
-            table13.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "8",
                         "6",
                         "4",
                         "1"});
-            table13.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         "0",
                         "0",
                         "0",
                         "1"});
 #line 87
- testRunner.Given("the following matrix A:", ((string)(null)), table13, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table14, "Given ");
 #line 93
  testRunner.And("b ← tuple(1, 2, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 94
@@ -488,43 +488,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3"});
-            table14.AddRow(new string[] {
-                        "1",
-                        "0",
-                        "0"});
-            table14.AddRow(new string[] {
-                        "-3",
-                        "1",
-                        "0"});
-            table14.AddRow(new string[] {
-                        "0",
-                        "0",
-                        "1"});
-#line 97
- testRunner.Given("the following matrix A:", ((string)(null)), table14, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
             table15.AddRow(new string[] {
                         "1",
-                        "2",
-                        "1"});
+                        "0",
+                        "0"});
             table15.AddRow(new string[] {
-                        "3",
-                        "8",
-                        "1"});
+                        "-3",
+                        "1",
+                        "0"});
             table15.AddRow(new string[] {
                         "0",
-                        "4",
+                        "0",
                         "1"});
-#line 102
- testRunner.And("the following matrix B:", ((string)(null)), table15, "And ");
+#line 97
+ testRunner.Given("the following matrix A:", ((string)(null)), table15, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
@@ -535,15 +516,34 @@ this.ScenarioInitialize(scenarioInfo);
                         "2",
                         "1"});
             table16.AddRow(new string[] {
-                        "0",
-                        "2",
-                        "-2"});
+                        "3",
+                        "8",
+                        "1"});
             table16.AddRow(new string[] {
                         "0",
                         "4",
                         "1"});
+#line 102
+ testRunner.And("the following matrix B:", ((string)(null)), table16, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3"});
+            table17.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table17.AddRow(new string[] {
+                        "0",
+                        "2",
+                        "-2"});
+            table17.AddRow(new string[] {
+                        "0",
+                        "4",
+                        "1"});
 #line 107
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table16, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table17, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -558,43 +558,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2",
-                        "c3"});
-            table17.AddRow(new string[] {
-                        "1",
-                        "0",
-                        "0"});
-            table17.AddRow(new string[] {
-                        "0",
-                        "1",
-                        "0"});
-            table17.AddRow(new string[] {
-                        "0",
-                        "-2",
-                        "1"});
-#line 114
- testRunner.Given("the following matrix A:", ((string)(null)), table17, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2",
                         "c3"});
             table18.AddRow(new string[] {
                         "1",
-                        "2",
-                        "1"});
+                        "0",
+                        "0"});
             table18.AddRow(new string[] {
                         "0",
-                        "2",
-                        "-2"});
+                        "1",
+                        "0"});
             table18.AddRow(new string[] {
                         "0",
-                        "4",
+                        "-2",
                         "1"});
-#line 119
- testRunner.And("the following matrix B:", ((string)(null)), table18, "And ");
+#line 114
+ testRunner.Given("the following matrix A:", ((string)(null)), table18, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
@@ -610,10 +591,29 @@ this.ScenarioInitialize(scenarioInfo);
                         "-2"});
             table19.AddRow(new string[] {
                         "0",
+                        "4",
+                        "1"});
+#line 119
+ testRunner.And("the following matrix B:", ((string)(null)), table19, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3"});
+            table20.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "1"});
+            table20.AddRow(new string[] {
+                        "0",
+                        "2",
+                        "-2"});
+            table20.AddRow(new string[] {
+                        "0",
                         "0",
                         "5"});
 #line 124
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table19, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table20, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -628,40 +628,40 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1"});
-            table20.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "2"});
-            table20.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "3"});
-            table20.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "4"});
 #line 131
- testRunner.Given("the following matrix A:", ((string)(null)), table20, "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2"});
-            table21.AddRow(new string[] {
-                        "1",
-                        "6"});
-#line 136
- testRunner.And("the following matrix B:", ((string)(null)), table21, "And ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table21, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2"});
             table22.AddRow(new string[] {
+                        "1",
+                        "6"});
+#line 136
+ testRunner.And("the following matrix B:", ((string)(null)), table22, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2"});
+            table23.AddRow(new string[] {
                         "2",
                         "12"});
-            table22.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "3",
                         "18"});
-            table22.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "4",
                         "24"});
 #line 139
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table22, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table23, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -676,47 +676,47 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2"});
-            table23.AddRow(new string[] {
-                        "2",
-                        "7"});
-            table23.AddRow(new string[] {
-                        "3",
-                        "8"});
-            table23.AddRow(new string[] {
-                        "4",
-                        "9"});
-#line 146
- testRunner.Given("the following matrix A:", ((string)(null)), table23, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2"});
             table24.AddRow(new string[] {
-                        "1",
-                        "6"});
+                        "2",
+                        "7"});
             table24.AddRow(new string[] {
-                        "0",
-                        "0"});
-#line 151
- testRunner.And("the following matrix B:", ((string)(null)), table24, "And ");
+                        "3",
+                        "8"});
+            table24.AddRow(new string[] {
+                        "4",
+                        "9"});
+#line 146
+ testRunner.Given("the following matrix A:", ((string)(null)), table24, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2"});
             table25.AddRow(new string[] {
+                        "1",
+                        "6"});
+            table25.AddRow(new string[] {
+                        "0",
+                        "0"});
+#line 151
+ testRunner.And("the following matrix B:", ((string)(null)), table25, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2"});
+            table26.AddRow(new string[] {
                         "2",
                         "12"});
-            table25.AddRow(new string[] {
+            table26.AddRow(new string[] {
                         "3",
                         "18"});
-            table25.AddRow(new string[] {
+            table26.AddRow(new string[] {
                         "4",
                         "24"});
 #line 155
- testRunner.Then("A * B is the following matrix:", ((string)(null)), table25, "Then ");
+ testRunner.Then("A * B is the following matrix:", ((string)(null)), table26, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -731,61 +731,61 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2",
-                        "c3",
-                        "c4"});
-            table26.AddRow(new string[] {
-                        "0",
-                        "1",
-                        "2",
-                        "4"});
-            table26.AddRow(new string[] {
-                        "1",
-                        "2",
-                        "4",
-                        "8"});
-            table26.AddRow(new string[] {
-                        "2",
-                        "4",
-                        "8",
-                        "16"});
-            table26.AddRow(new string[] {
-                        "4",
-                        "8",
-                        "16",
-                        "32"});
-#line 162
- testRunner.Given("the following matrix A:", ((string)(null)), table26, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2",
                         "c3",
                         "c4"});
             table27.AddRow(new string[] {
+                        "0",
+                        "1",
+                        "2",
+                        "4"});
+            table27.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "4",
+                        "8"});
+            table27.AddRow(new string[] {
+                        "2",
+                        "4",
+                        "8",
+                        "16"});
+            table27.AddRow(new string[] {
+                        "4",
+                        "8",
+                        "16",
+                        "32"});
+#line 162
+ testRunner.Given("the following matrix A:", ((string)(null)), table27, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3",
+                        "c4"});
+            table28.AddRow(new string[] {
                         "1",
                         "0",
                         "0",
                         "0"});
-            table27.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "0",
                         "1",
                         "0",
                         "0"});
-            table27.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "0",
                         "0",
                         "1",
                         "0"});
-            table27.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "0",
                         "0",
                         "0",
                         "1"});
 #line 168
- testRunner.Then("The identity of A is:", ((string)(null)), table27, "Then ");
+ testRunner.Then("The identity of A is:", ((string)(null)), table28, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -800,33 +800,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2",
                         "c3",
                         "c4"});
-            table28.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "0",
                         "1",
                         "2",
                         "4"});
-            table28.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "1",
                         "2",
                         "4",
                         "8"});
-            table28.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "2",
                         "4",
                         "8",
                         "16"});
-            table28.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "4",
                         "8",
                         "16",
                         "32"});
 #line 176
- testRunner.Given("the following matrix A:", ((string)(null)), table28, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table29, "Given ");
 #line 182
  testRunner.Then("A * identity_matrix = A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -845,33 +845,33 @@ this.ScenarioInitialize(scenarioInfo);
 #line 185
  testRunner.Given("a ← tuple(1, 2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2",
                         "c3",
                         "c4"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "1",
                         "0",
                         "0",
                         "0"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "0",
                         "1",
                         "0",
                         "0"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "0",
                         "0",
                         "1",
                         "0"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "0",
                         "0",
                         "0",
                         "1"});
 #line 186
- testRunner.And("the following matrix A:", ((string)(null)), table29, "And ");
+ testRunner.And("the following matrix A:", ((string)(null)), table30, "And ");
 #line 192
  testRunner.Then("identity_matrix * a = a", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -888,29 +888,29 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2"});
-            table30.AddRow(new string[] {
-                        "0",
-                        "1"});
-            table30.AddRow(new string[] {
-                        "1",
-                        "2"});
-#line 195
- testRunner.Given("the following matrix A:", ((string)(null)), table30, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2"});
             table31.AddRow(new string[] {
+                        "0",
+                        "1"});
+            table31.AddRow(new string[] {
+                        "1",
+                        "2"});
+#line 195
+ testRunner.Given("the following matrix A:", ((string)(null)), table31, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2"});
+            table32.AddRow(new string[] {
                         "1",
                         "0"});
-            table31.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         "0",
                         "1"});
 #line 199
- testRunner.Then("The identity of A is:", ((string)(null)), table31, "Then ");
+ testRunner.Then("The identity of A is:", ((string)(null)), table32, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -925,34 +925,6 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2",
-                        "c3",
-                        "c4"});
-            table32.AddRow(new string[] {
-                        "0",
-                        "9",
-                        "3",
-                        "0"});
-            table32.AddRow(new string[] {
-                        "9",
-                        "8",
-                        "0",
-                        "8"});
-            table32.AddRow(new string[] {
-                        "1",
-                        "8",
-                        "5",
-                        "3"});
-            table32.AddRow(new string[] {
-                        "0",
-                        "0",
-                        "5",
-                        "8"});
-#line 205
- testRunner.Given("the following matrix A:", ((string)(null)), table32, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
                         "c2",
@@ -961,25 +933,53 @@ this.ScenarioInitialize(scenarioInfo);
             table33.AddRow(new string[] {
                         "0",
                         "9",
-                        "1",
+                        "3",
                         "0"});
             table33.AddRow(new string[] {
                         "9",
                         "8",
+                        "0",
+                        "8"});
+            table33.AddRow(new string[] {
+                        "1",
+                        "8",
+                        "5",
+                        "3"});
+            table33.AddRow(new string[] {
+                        "0",
+                        "0",
+                        "5",
+                        "8"});
+#line 205
+ testRunner.Given("the following matrix A:", ((string)(null)), table33, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3",
+                        "c4"});
+            table34.AddRow(new string[] {
+                        "0",
+                        "9",
+                        "1",
+                        "0"});
+            table34.AddRow(new string[] {
+                        "9",
+                        "8",
                         "8",
                         "0"});
-            table33.AddRow(new string[] {
+            table34.AddRow(new string[] {
                         "3",
                         "0",
                         "5",
                         "5"});
-            table33.AddRow(new string[] {
+            table34.AddRow(new string[] {
                         "0",
                         "8",
                         "3",
                         "8"});
 #line 211
- testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table33, "Then ");
+ testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table34, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -993,34 +993,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 218
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line hidden
-            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
-                        "c1",
-                        "c2",
-                        "c3",
-                        "c4"});
-            table34.AddRow(new string[] {
-                        "1",
-                        "0",
-                        "0",
-                        "0"});
-            table34.AddRow(new string[] {
-                        "0",
-                        "1",
-                        "0",
-                        "0"});
-            table34.AddRow(new string[] {
-                        "0",
-                        "0",
-                        "1",
-                        "0"});
-            table34.AddRow(new string[] {
-                        "0",
-                        "0",
-                        "0",
-                        "1"});
-#line 219
- testRunner.Given("the following matrix A:", ((string)(null)), table34, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "c1",
@@ -1047,8 +1019,36 @@ this.ScenarioInitialize(scenarioInfo);
                         "0",
                         "0",
                         "1"});
+#line 219
+ testRunner.Given("the following matrix A:", ((string)(null)), table35, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+                        "c1",
+                        "c2",
+                        "c3",
+                        "c4"});
+            table36.AddRow(new string[] {
+                        "1",
+                        "0",
+                        "0",
+                        "0"});
+            table36.AddRow(new string[] {
+                        "0",
+                        "1",
+                        "0",
+                        "0"});
+            table36.AddRow(new string[] {
+                        "0",
+                        "0",
+                        "1",
+                        "0"});
+            table36.AddRow(new string[] {
+                        "0",
+                        "0",
+                        "0",
+                        "1"});
 #line 225
- testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table35, "Then ");
+ testRunner.Then("transpose(A) is the following matrix:", ((string)(null)), table36, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1063,17 +1063,17 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
-            table36.AddRow(new string[] {
+            table37.AddRow(new string[] {
                         "1",
                         "5"});
-            table36.AddRow(new string[] {
+            table37.AddRow(new string[] {
                         "-3",
                         "2"});
 #line 233
- testRunner.Given("the following matrix A:", ((string)(null)), table36, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table37, "Given ");
 #line 237
  testRunner.Then("determinant(A) = 17", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1090,36 +1090,36 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table37.AddRow(new string[] {
+            table38.AddRow(new string[] {
                         "1",
                         "5",
                         "0"});
-            table37.AddRow(new string[] {
+            table38.AddRow(new string[] {
                         "-3",
                         "2",
                         "7"});
-            table37.AddRow(new string[] {
+            table38.AddRow(new string[] {
                         "0",
                         "6",
                         "-3"});
 #line 240
- testRunner.Given("the following matrix A:", ((string)(null)), table37, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table38, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
-            table38.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "-3",
                         "2"});
-            table38.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "0",
                         "6"});
 #line 245
- testRunner.Then("submatrix(A, 0, 2) is the following matrix:", ((string)(null)), table38, "Then ");
+ testRunner.Then("submatrix(A, 0, 2) is the following matrix:", ((string)(null)), table39, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1134,52 +1134,52 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table39.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         "-6",
                         "1",
                         "1",
                         "6"});
-            table39.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         "-8",
                         "5",
                         "8",
                         "6"});
-            table39.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         "-1",
                         "0",
                         "8",
                         "2"});
-            table39.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         "-7",
                         "1",
                         "-1",
                         "1"});
 #line 251
- testRunner.Given("the following matrix A:", ((string)(null)), table39, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table40, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table40.AddRow(new string[] {
+            table41.AddRow(new string[] {
                         "-6",
                         "1",
                         "6"});
-            table40.AddRow(new string[] {
+            table41.AddRow(new string[] {
                         "-8",
                         "8",
                         "6"});
-            table40.AddRow(new string[] {
+            table41.AddRow(new string[] {
                         "-7",
                         "-1",
                         "1"});
 #line 257
- testRunner.Then("submatrix(A, 2, 1) is the following matrix:", ((string)(null)), table40, "Then ");
+ testRunner.Then("submatrix(A, 2, 1) is the following matrix:", ((string)(null)), table41, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1194,24 +1194,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table41.AddRow(new string[] {
+            table42.AddRow(new string[] {
                         "3",
                         "5",
                         "0"});
-            table41.AddRow(new string[] {
+            table42.AddRow(new string[] {
                         "2",
                         "-1",
                         "-7"});
-            table41.AddRow(new string[] {
+            table42.AddRow(new string[] {
                         "6",
                         "-1",
                         "5"});
 #line 264
- testRunner.Given("the following matrix A:", ((string)(null)), table41, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table42, "Given ");
 #line 269
  testRunner.And("B ← submatrix(A, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 270
@@ -1232,24 +1232,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table42.AddRow(new string[] {
+            table43.AddRow(new string[] {
                         "3",
                         "5",
                         "0"});
-            table42.AddRow(new string[] {
+            table43.AddRow(new string[] {
                         "2",
                         "-1",
                         "-7"});
-            table42.AddRow(new string[] {
+            table43.AddRow(new string[] {
                         "6",
                         "-1",
                         "5"});
 #line 274
- testRunner.Given("the following matrix A:", ((string)(null)), table42, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table43, "Given ");
 #line 279
  testRunner.Then("minor(A, 0, 0) = -12", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 280
@@ -1272,24 +1272,24 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3"});
-            table43.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "1",
                         "2",
                         "6"});
-            table43.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "-5",
                         "8",
                         "-4"});
-            table43.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "2",
                         "6",
                         "4"});
 #line 285
- testRunner.Given("the following matrix A:", ((string)(null)), table43, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table44, "Given ");
 #line 290
  testRunner.Then("cofactor(A, 0, 0) = 56", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 291
@@ -1312,33 +1312,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table44.AddRow(new string[] {
+            table45.AddRow(new string[] {
                         "-2",
                         "-8",
                         "3",
                         "5"});
-            table44.AddRow(new string[] {
+            table45.AddRow(new string[] {
                         "-3",
                         "1",
                         "7",
                         "3"});
-            table44.AddRow(new string[] {
+            table45.AddRow(new string[] {
                         "1",
                         "2",
                         "-9",
                         "6"});
-            table44.AddRow(new string[] {
+            table45.AddRow(new string[] {
                         "-6",
                         "7",
                         "7",
                         "-9"});
 #line 296
- testRunner.Given("the following matrix A:", ((string)(null)), table44, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table45, "Given ");
 #line 302
  testRunner.Then("cofactor(A, 0, 0) = 690", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 303
@@ -1363,33 +1363,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table45.AddRow(new string[] {
+            table46.AddRow(new string[] {
                         "6",
                         "4",
                         "4",
                         "4"});
-            table45.AddRow(new string[] {
+            table46.AddRow(new string[] {
                         "5",
                         "5",
                         "7",
                         "6"});
-            table45.AddRow(new string[] {
+            table46.AddRow(new string[] {
                         "4",
                         "-9",
                         "3",
                         "-7"});
-            table45.AddRow(new string[] {
+            table46.AddRow(new string[] {
                         "9",
                         "1",
                         "7",
                         "-6"});
 #line 309
- testRunner.Given("the following matrix A:", ((string)(null)), table45, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table46, "Given ");
 #line 315
  testRunner.Then("determinant(A) = -2120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 316
@@ -1408,33 +1408,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table46.AddRow(new string[] {
+            table47.AddRow(new string[] {
                         "-4",
                         "2",
                         "-2",
                         "-3"});
-            table46.AddRow(new string[] {
+            table47.AddRow(new string[] {
                         "9",
                         "6",
                         "2",
                         "6"});
-            table46.AddRow(new string[] {
+            table47.AddRow(new string[] {
                         "0",
                         "-5",
                         "1",
                         "-5"});
-            table46.AddRow(new string[] {
+            table47.AddRow(new string[] {
                         "0",
                         "0",
                         "0",
                         "0"});
 #line 319
- testRunner.Given("the following matrix A:", ((string)(null)), table46, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table47, "Given ");
 #line 325
  testRunner.Then("determinant(A) = 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 326
@@ -1453,33 +1453,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table47.AddRow(new string[] {
+            table48.AddRow(new string[] {
                         "-5",
                         "2",
                         "6",
                         "-8"});
-            table47.AddRow(new string[] {
+            table48.AddRow(new string[] {
                         "1",
                         "-5",
                         "1",
                         "8"});
-            table47.AddRow(new string[] {
+            table48.AddRow(new string[] {
                         "7",
                         "7",
                         "-6",
                         "-7"});
-            table47.AddRow(new string[] {
+            table48.AddRow(new string[] {
                         "1",
                         "-3",
                         "7",
                         "4"});
 #line 329
- testRunner.Given("the following matrix A:", ((string)(null)), table47, "Given ");
+ testRunner.Given("the following matrix A:", ((string)(null)), table48, "Given ");
 #line 335
  testRunner.And("B ← inverse(A)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 336
@@ -1493,33 +1493,33 @@ this.ScenarioInitialize(scenarioInfo);
 #line 340
  testRunner.And("B[2,3] = 105/532", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
-            table48.AddRow(new string[] {
+            table49.AddRow(new string[] {
                         "0.21805",
                         "0.45113",
                         "0.24060",
                         "-0.04511"});
-            table48.AddRow(new string[] {
+            table49.AddRow(new string[] {
                         "-0.80827",
                         "-1.45677",
                         "-0.44361",
                         "0.52068"});
-            table48.AddRow(new string[] {
+            table49.AddRow(new string[] {
                         "-0.07895",
                         "-0.22368",
                         "-0.05263",
                         "0.19737"});
-            table48.AddRow(new string[] {
+            table49.AddRow(new string[] {
                         "-0.52256",
                         "-0.81391",
                         "-0.30075",
                         "0.30639"});
 #line 341
- testRunner.And("B is the following matrix:", ((string)(null)), table48, "And ");
+ testRunner.And("B is the following matrix:", ((string)(null)), table49, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1534,61 +1534,61 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4"});
-            table49.AddRow(new string[] {
-                        "8",
-                        "-5",
-                        "9",
-                        "2"});
-            table49.AddRow(new string[] {
-                        "7",
-                        "5",
-                        "6",
-                        "1"});
-            table49.AddRow(new string[] {
-                        "-6",
-                        "0",
-                        "9",
-                        "6"});
-            table49.AddRow(new string[] {
-                        "-3",
-                        "0",
-                        "-9",
-                        "-4"});
-#line 349
- testRunner.Given("the following matrix A:", ((string)(null)), table49, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
             table50.AddRow(new string[] {
+                        "8",
+                        "-5",
+                        "9",
+                        "2"});
+            table50.AddRow(new string[] {
+                        "7",
+                        "5",
+                        "6",
+                        "1"});
+            table50.AddRow(new string[] {
+                        "-6",
+                        "0",
+                        "9",
+                        "6"});
+            table50.AddRow(new string[] {
+                        "-3",
+                        "0",
+                        "-9",
+                        "-4"});
+#line 349
+ testRunner.Given("the following matrix A:", ((string)(null)), table50, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3",
+                        "col4"});
+            table51.AddRow(new string[] {
                         "-0.15385",
                         "-0.15385",
                         "-0.28205",
                         "-0.53846"});
-            table50.AddRow(new string[] {
+            table51.AddRow(new string[] {
                         "-0.07692",
                         "0.12308",
                         "0.02564",
                         "0.03077"});
-            table50.AddRow(new string[] {
+            table51.AddRow(new string[] {
                         "0.35897",
                         "0.35897",
                         "0.43590",
                         "0.92308"});
-            table50.AddRow(new string[] {
+            table51.AddRow(new string[] {
                         "-0.69231",
                         "-0.69231",
                         "-0.76923",
                         "-1.92308"});
 #line 355
- testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table50, "Then ");
+ testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table51, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1603,61 +1603,61 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4"});
-            table51.AddRow(new string[] {
-                        "9",
-                        "3",
-                        "0",
-                        "9"});
-            table51.AddRow(new string[] {
-                        "-5",
-                        "-2",
-                        "-6",
-                        "-3"});
-            table51.AddRow(new string[] {
-                        "-4",
-                        "9",
-                        "6",
-                        "4"});
-            table51.AddRow(new string[] {
-                        "-7",
-                        "6",
-                        "6",
-                        "2"});
-#line 363
- testRunner.Given("the following matrix A:", ((string)(null)), table51, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
             table52.AddRow(new string[] {
+                        "9",
+                        "3",
+                        "0",
+                        "9"});
+            table52.AddRow(new string[] {
+                        "-5",
+                        "-2",
+                        "-6",
+                        "-3"});
+            table52.AddRow(new string[] {
+                        "-4",
+                        "9",
+                        "6",
+                        "4"});
+            table52.AddRow(new string[] {
+                        "-7",
+                        "6",
+                        "6",
+                        "2"});
+#line 363
+ testRunner.Given("the following matrix A:", ((string)(null)), table52, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3",
+                        "col4"});
+            table53.AddRow(new string[] {
                         "-0.04074",
                         "-0.07778",
                         "0.14444",
                         "-0.22222"});
-            table52.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "-0.07778",
                         "0.03333",
                         "0.36667",
                         "-0.33333"});
-            table52.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "-0.02901",
                         "-0.14630",
                         "-0.10926",
                         "0.12963"});
-            table52.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "0.17778",
                         "0.06667",
                         "-0.26667",
                         "0.33333"});
 #line 369
- testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table52, "Then ");
+ testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table53, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1672,61 +1672,61 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2",
-                        "col3",
-                        "col4"});
-            table53.AddRow(new string[] {
-                        "3",
-                        "-9",
-                        "7",
-                        "3"});
-            table53.AddRow(new string[] {
-                        "3",
-                        "-8",
-                        "2",
-                        "-9"});
-            table53.AddRow(new string[] {
-                        "-4",
-                        "4",
-                        "4",
-                        "1"});
-            table53.AddRow(new string[] {
-                        "-6",
-                        "5",
-                        "-1",
-                        "1"});
-#line 377
- testRunner.Given("the following matrix A:", ((string)(null)), table53, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table54 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2",
                         "col3",
                         "col4"});
             table54.AddRow(new string[] {
+                        "3",
+                        "-9",
+                        "7",
+                        "3"});
+            table54.AddRow(new string[] {
+                        "3",
+                        "-8",
+                        "2",
+                        "-9"});
+            table54.AddRow(new string[] {
+                        "-4",
+                        "4",
+                        "4",
+                        "1"});
+            table54.AddRow(new string[] {
+                        "-6",
+                        "5",
+                        "-1",
+                        "1"});
+#line 377
+ testRunner.Given("the following matrix A:", ((string)(null)), table54, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2",
+                        "col3",
+                        "col4"});
+            table55.AddRow(new string[] {
                         "8",
                         "2",
                         "2",
                         "2"});
-            table54.AddRow(new string[] {
+            table55.AddRow(new string[] {
                         "3",
                         "-1",
                         "7",
                         "0"});
-            table54.AddRow(new string[] {
+            table55.AddRow(new string[] {
                         "7",
                         "0",
                         "5",
                         "4"});
-            table54.AddRow(new string[] {
+            table55.AddRow(new string[] {
                         "6",
                         "-2",
                         "0",
                         "5"});
 #line 383
- testRunner.And("the following matrix B:", ((string)(null)), table54, "And ");
+ testRunner.And("the following matrix B:", ((string)(null)), table55, "And ");
 #line 389
  testRunner.And("C ← A * B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 390
@@ -1745,29 +1745,29 @@ this.ScenarioInitialize(scenarioInfo);
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table55 = new TechTalk.SpecFlow.Table(new string[] {
-                        "col1",
-                        "col2"});
-            table55.AddRow(new string[] {
-                        "4",
-                        "7"});
-            table55.AddRow(new string[] {
-                        "2",
-                        "6"});
-#line 393
- testRunner.Given("the following matrix A:", ((string)(null)), table55, "Given ");
-#line hidden
             TechTalk.SpecFlow.Table table56 = new TechTalk.SpecFlow.Table(new string[] {
                         "col1",
                         "col2"});
             table56.AddRow(new string[] {
+                        "4",
+                        "7"});
+            table56.AddRow(new string[] {
+                        "2",
+                        "6"});
+#line 393
+ testRunner.Given("the following matrix A:", ((string)(null)), table56, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table57 = new TechTalk.SpecFlow.Table(new string[] {
+                        "col1",
+                        "col2"});
+            table57.AddRow(new string[] {
                         "0.6",
                         "-0.7"});
-            table56.AddRow(new string[] {
+            table57.AddRow(new string[] {
                         "-0.2",
                         "0.4"});
 #line 397
- testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table56, "Then ");
+ testRunner.Then("inverse(A) is the following matrix:", ((string)(null)), table57, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

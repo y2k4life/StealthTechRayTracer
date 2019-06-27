@@ -77,3 +77,12 @@ Scenario: The hit, when an intersection occurs on the inside
 	And comps.inside = true
 	# normal would have been (0, 0, 1), but is inverted!
 	And comps.normalv = vector(0, 0, -1)
+
+Scenario: The hit should offset the point
+	Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
+	And s2 ← sphere() with:
+		| transform | translation(0, 0, 1) |
+	And i ← intersection(5, s2)
+	When comps ← prepare_computations(i, r)
+	Then comps.over_point.z < -EPSILON/2
+	And comps.point.z > comps.over_point.z

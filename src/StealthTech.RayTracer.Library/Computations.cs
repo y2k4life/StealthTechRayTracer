@@ -21,6 +21,16 @@ namespace StealthTech.RayTracer.Library
         
         public RtVector NormalVector { get; set; }
 
+        public RtPoint OverPoint
+        {
+            get
+            {
+                return Point + NormalVector * DoubleExtensions.EPSILON;
+            }
+        }
+
         public bool Inside { get; set; }
+
+
     }
 }

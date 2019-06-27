@@ -108,8 +108,9 @@ namespace StealthTech.RayTracer.Exercises
 
             world.Shapes.Add(left);
 
-            world.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(1, 1, 1)));
-            world.Lights.Add(new PointLight(new RtPoint(0, 0, 0), new RtColor(.25, .25, .25)));
+            world.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(.25, .25, .25)));
+            world.Lights.Add(new PointLight(new RtPoint(10, 10, -10), new RtColor(.25, .25, .25)));
+            world.Lights.Add(new PointLight(new RtPoint(0, 10, -10), new RtColor(.75, .75, .75)));
 
             var camera = new Camera(800, 400, Math.PI / 2)
             {
