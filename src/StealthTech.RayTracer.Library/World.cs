@@ -42,11 +42,7 @@ namespace StealthTech.RayTracer.Library
             var intersections = new IntersectionList();
             foreach (var shape in Shapes)
             {
-                if (shape.Intersect(ray, out (double, double) hits))
-                {
-                    intersections.Add(new Intersection(hits.Item1, shape));
-                    intersections.Add(new Intersection(hits.Item2, shape));
-                }
+                intersections.AddRange(shape.Intersect(ray));
             }
 
             return intersections;

@@ -5,7 +5,6 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using StealthTech.RayTracer.Exercise;
 using StealthTech.RayTracer.Library;
 using System;
 
@@ -117,7 +116,7 @@ namespace StealthTech.RayTracer.Exercises
                 ViewTransform = new ViewTransform(
                 new RtPoint(0, 1.5, -5),
                 new RtPoint(0, 1, 0),
-                new RtVector(0, 1, 0))
+                new RtVector(.5, 1, 0))
             };
 
             return camera.Render(world, parallel);

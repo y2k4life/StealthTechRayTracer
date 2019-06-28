@@ -6,6 +6,8 @@
     <Company>StealthTech</Company>
     <Product>StealthTech RayTracer</Product>
     <Copyright>Copyright (c) 2019 Guy Boicey</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
 </Project>

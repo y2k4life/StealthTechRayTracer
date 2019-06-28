@@ -44,7 +44,7 @@ namespace StealthTech.RayTracer.Library
 
         public override string ToString()
         {
-            return $"[{X}, {Y}, {Z}],({W})";
+            return $"({X.ToString("#####0.000")}, {Y.ToString("#####0.000")}, {Z.ToString("#####0.000")}, {W})";
         }
 
         public override int GetHashCode()

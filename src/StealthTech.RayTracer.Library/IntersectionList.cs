@@ -16,6 +16,14 @@ namespace StealthTech.RayTracer.Library
     {
         private List<Intersection> _intersections;
 
+        public IEnumerable<Intersection> Intersections
+        {
+            get
+            {
+                return _intersections;
+            }
+        }
+
         public IntersectionList()
         {
             _intersections = new List<Intersection>();
@@ -26,6 +34,15 @@ namespace StealthTech.RayTracer.Library
         public void Add(Intersection intersection)
         {
             _intersections.Add(intersection);
+            _intersections = _intersections.OrderBy(i => i.Time).ToList();
+        }
+
+        public void AddRange(IntersectionList intersectionList)
+        {
+            foreach (var intersection in intersectionList.Intersections)
+            {
+                _intersections.Add(intersection);
+            }
             _intersections = _intersections.OrderBy(i => i.Time).ToList();
         }
 
@@ -51,5 +68,7 @@ namespace StealthTech.RayTracer.Library
                 return _intersections[index];
             }
         }
+
+        public bool HasHit => _intersections.Where(i => i.Time > 0).Count() > 0;
     }
 }

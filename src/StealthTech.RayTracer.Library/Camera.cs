@@ -63,7 +63,7 @@ namespace StealthTech.RayTracer.Library
             return new Ray(origin, direction);
         }
 
-        public Canvas Render(World world, bool parallel = true)
+        public Canvas Render(World world, bool parallel = true, Action<int, int, int[]> output = null)
         {
             var image = new Canvas(HorizontalSize, VerticalSize);
             if (parallel)
@@ -75,6 +75,7 @@ namespace StealthTech.RayTracer.Library
                         var ray = RayForPixel(x, y);
                         var color = world.ColorAt(ray);
                         image[x, y] = color;
+                        output?.Invoke(x, y, color.ToARGB());
                     });
                 });
             }
@@ -87,6 +88,7 @@ namespace StealthTech.RayTracer.Library
                         var ray = RayForPixel(x, y);
                         var color = world.ColorAt(ray);
                         image[x, y] = color;
+                        output?.Invoke(x, y, color.ToARGB());
                     }
                 }
             }

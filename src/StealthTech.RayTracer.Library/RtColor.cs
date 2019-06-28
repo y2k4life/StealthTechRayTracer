@@ -76,6 +76,11 @@ namespace StealthTech.RayTracer.Library
             return new string[] { Normalize(Red).ToString(), Normalize(Green).ToString(), Normalize(Blue).ToString() };
         }
 
+        public int[] ToARGB()
+        {
+            return new int[] { Normalize(Red), Normalize(Green), Normalize(Blue) };
+        }
+
         private int Normalize(double comp)
         {
             if (comp < 0) comp = 0;

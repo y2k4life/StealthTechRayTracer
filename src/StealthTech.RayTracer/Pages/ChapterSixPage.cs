@@ -18,7 +18,8 @@ namespace StealthTech.RayTracer.Pages
             AddOption(new Option("Regular", () =>
             {
                 var chapter = new ChapterSix();
-                chapter.NormalSphere();
+                chapter.Complete();
+                Input.ReadString("Press [Enter] to navigate home");
                 Program.NavigateTo<ChapterSixPage>();
             }));
 
