@@ -21,5 +21,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\StealthTech.RayTracer.Library\StealthTech.RayTracer.Library.csproj" />
   </ItemGroup>
-
 </Project>

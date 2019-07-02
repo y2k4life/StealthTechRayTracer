@@ -15,44 +15,43 @@ namespace StealthTech.RayTracer.Specs
 {
     public static class SpecExtentions
     {
-        public static RtMatrix ToMatrix(this Table table, bool ignoreHeader = false)
+        public static RtMatrix ToMatrix(this Table table)
         {
-            var rowCount = ignoreHeader ? table.RowCount + 1 : table.RowCount;
-            var results = new RtMatrix(rowCount, table.Rows[0].Count);
-
-            table.ToMatrix(results, ignoreHeader);
-
-            return results;
-        }
-
-        public static void ToMatrix(this Table table, RtMatrix matrix, bool ignoreHeader = false)
-        {
-            if (ignoreHeader)
+            RtMatrix matrix = new RtMatrix(table.RowCount + 1, table.Header.Count);
+            var rowCount = table.RowCount + 1;
+            int j = 0;
+            foreach (var header in table.Header)
             {
-                var rowCount = ignoreHeader ? table.RowCount + 1 : table.RowCount;
-                int j = 0;
-                foreach (var header in table.Header)
-                {
-                    matrix[0, j] = Convert.ToDouble(header);
-                    j++;
-                }
-
-                for (int i = 1; i < rowCount; i++)
-                {
-                    for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
-                    {
-                        matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
-                    }
-                }
-
-                return;
+                matrix[0, j] = Convert.ToDouble(header);
+                j++;
             }
 
-            for (int i = 0; i < table.Rows.Count; i++)
+            for (int i = 1; i < rowCount; i++)
             {
-                for (int j = 0; j < table.Rows[i].Count; j++)
+                for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
                 {
-                    matrix[i, j] = Convert.ToDouble(table.Rows[i][j]);
+                    matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
+                }
+            }
+
+            return matrix;
+        }
+
+        public static void FillMatrix(this Table table, RtMatrix matrix)
+        {
+            var rowCount = table.RowCount + 1;
+            int j = 0;
+            foreach (var header in table.Header)
+            {
+                matrix[0, j] = Convert.ToDouble(header);
+                j++;
+            }
+
+            for (int i = 1; i < rowCount; i++)
+            {
+                for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
+                {
+                    matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
                 }
             }
         }

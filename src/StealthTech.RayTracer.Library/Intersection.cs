@@ -11,7 +11,7 @@ namespace StealthTech.RayTracer.Library
 {
     public class Intersection
     {
-        public Intersection(double time, Sphere item)
+        public Intersection(double time, Shape item)
         {
             Shape = item;
             Time = time;
@@ -19,7 +19,7 @@ namespace StealthTech.RayTracer.Library
 
         public double Time { get; set; }
 
-        public Sphere Shape { get; set; }
+        public Shape Shape { get; set; }
 
         public Computations PrepareComputations(Ray ray)
         {

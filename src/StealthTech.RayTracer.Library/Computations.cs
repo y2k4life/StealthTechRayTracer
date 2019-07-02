@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Library
     {
         public double Time { get; set; }
 
-        public Sphere Shape { get; set; }
+        public Shape Shape { get; set; }
 
         public RtPoint Point { get; set;  }
         

@@ -24,7 +24,7 @@ namespace StealthTech.RayTracer.Specs
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "tuples.feature"
+#line 1 "Tuples.feature"
 #line hidden
         
         public TuplesFeature(TuplesFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
@@ -130,131 +130,21 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="point() creates tuples with w=1")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "point() creates tuples with w=1")]
-        public virtual void PointCreatesTuplesWithW1()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("point() creates tuples with w=1", null, ((string[])(null)));
-#line 21
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 22
- testRunner.Given("p ← point(4, -4, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 23
- testRunner.Then("p = tuple(4, -4, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="vector() creates tuples with w=0")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "vector() creates tuples with w=0")]
-        public virtual void VectorCreatesTuplesWithW0()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("vector() creates tuples with w=0", null, ((string[])(null)));
-#line 25
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 26
- testRunner.Given("v ← vector(4, -4, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
- testRunner.Then("v = tuple(4, -4, 3, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
         [Xunit.FactAttribute(DisplayName="Adding two tuples")]
         [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
         [Xunit.TraitAttribute("Description", "Adding two tuples")]
         public virtual void AddingTwoTuples()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding two tuples", null, ((string[])(null)));
-#line 29
+#line 21
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 30
+#line 22
  testRunner.Given("a1 ← tuple(3, -2, 5, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 31
+#line 23
  testRunner.And("a2 ← tuple(-2, 3, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
+#line 24
  testRunner.Then("a1 + a2 = tuple(1, 1, 6, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Subtracting two points")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Subtracting two points")]
-        public virtual void SubtractingTwoPoints()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting two points", null, ((string[])(null)));
-#line 34
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 35
- testRunner.Given("p1 ← point(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 36
- testRunner.And("p2 ← point(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 37
- testRunner.Then("p1 - p2 = vector(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Subtracting a vector from a point")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Subtracting a vector from a point")]
-        public virtual void SubtractingAVectorFromAPoint()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting a vector from a point", null, ((string[])(null)));
-#line 39
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 40
- testRunner.Given("p ← point(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 41
- testRunner.And("v ← vector(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
- testRunner.Then("p - v = point(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Subtracting two vectors")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Subtracting two vectors")]
-        public virtual void SubtractingTwoVectors()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting two vectors", null, ((string[])(null)));
-#line 44
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 45
- testRunner.Given("v1 ← vector(3, 2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 46
- testRunner.And("v2 ← vector(5, 6, 7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 47
- testRunner.Then("v1 - v2 = vector(-2, -4, -6)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Subtracting a vector from the zero vector")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Subtracting a vector from the zero vector")]
-        public virtual void SubtractingAVectorFromTheZeroVector()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtracting a vector from the zero vector", null, ((string[])(null)));
-#line 49
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 50
- testRunner.Given("zero ← vector(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 51
- testRunner.And("v ← vector(1, -2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
- testRunner.Then("zero - v = vector(-1, 2, -3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -265,12 +155,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void NegatingATuple()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negating a tuple", null, ((string[])(null)));
-#line 54
+#line 26
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 55
+#line 27
  testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 56
+#line 28
  testRunner.Then("-a = tuple(-1, 2, -3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -282,14 +172,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingATupleByAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tuple by a scalar", null, ((string[])(null)));
-#line 58
+#line 30
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 59
+#line 31
  testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 60
+#line 32
  testRunner.Then("a * 3.5 = tuple(3.5, -7, 10.5, -14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 61
+#line 33
  testRunner.And("3.5 * a = tuple(3.5, -7, 10.5, -14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -301,12 +191,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void MultiplyingATupleByAFraction()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a tuple by a fraction", null, ((string[])(null)));
-#line 63
+#line 35
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 64
+#line 36
  testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 65
+#line 37
  testRunner.Then("a * 0.5 = tuple(0.5, -1, 1.5, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -318,233 +208,13 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DividingATupleByAScalar()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dividing a tuple by a scalar", null, ((string[])(null)));
-#line 67
+#line 39
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 68
+#line 40
  testRunner.Given("a ← tuple(1, -2, 3, -4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 69
+#line 41
  testRunner.Then("a / 2 = tuple(0.5, -1, 1.5, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Computing the magnitude of vector(1, 0, 0)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Computing the magnitude of vector(1, 0, 0)")]
-        public virtual void ComputingTheMagnitudeOfVector100()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(1, 0, 0)", null, ((string[])(null)));
-#line 71
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 72
- testRunner.Given("v ← vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 73
- testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Computing the magnitude of vector(0, 1, 0)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Computing the magnitude of vector(0, 1, 0)")]
-        public virtual void ComputingTheMagnitudeOfVector010()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(0, 1, 0)", null, ((string[])(null)));
-#line 75
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 76
- testRunner.Given("v ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 77
- testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Computing the magnitude of vector(0, 0, 1)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Computing the magnitude of vector(0, 0, 1)")]
-        public virtual void ComputingTheMagnitudeOfVector001()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(0, 0, 1)", null, ((string[])(null)));
-#line 79
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 80
- testRunner.Given("v ← vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 81
- testRunner.Then("magnitude(v) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Computing the magnitude of vector(1, 2, 3)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Computing the magnitude of vector(1, 2, 3)")]
-        public virtual void ComputingTheMagnitudeOfVector123()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(1, 2, 3)", null, ((string[])(null)));
-#line 83
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 84
- testRunner.Given("v ← vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 85
- testRunner.Then("magnitude(v) = 3.74165738677394", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Computing the magnitude of vector(-1, -2, -3)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Computing the magnitude of vector(-1, -2, -3)")]
-        public virtual void ComputingTheMagnitudeOfVector_1_2_3()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of vector(-1, -2, -3)", null, ((string[])(null)));
-#line 87
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 88
- testRunner.Given("v ← vector(-1, -2, -3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 89
- testRunner.Then("magnitude(v) = 3.74165738677394", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Normalizing vector(4, 0, 0) gives (1, 0, 0)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Normalizing vector(4, 0, 0) gives (1, 0, 0)")]
-        public virtual void NormalizingVector400Gives100()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Normalizing vector(4, 0, 0) gives (1, 0, 0)", null, ((string[])(null)));
-#line 91
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 92
- testRunner.Given("v ← vector(4, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 93
- testRunner.Then("normalize(v) = vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Normalizing vector(1, 2, 3) gives (0.26726, 0.53452, 0.80178)")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Normalizing vector(1, 2, 3) gives (0.26726, 0.53452, 0.80178)")]
-        public virtual void NormalizingVector123Gives0_267260_534520_80178()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Normalizing vector(1, 2, 3) gives (0.26726, 0.53452, 0.80178)", null, ((string[])(null)));
-#line 95
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 96
- testRunner.Given("v ← vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 97
- testRunner.Then("normalize(v) = approximately vector(0.26726, 0.53452, 0.80178)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="The magnitude of a normalized vector")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "The magnitude of a normalized vector")]
-        public virtual void TheMagnitudeOfANormalizedVector()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The magnitude of a normalized vector", null, ((string[])(null)));
-#line 99
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 100
- testRunner.Given("v ← vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 101
- testRunner.When("norm ← normalize(v)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 102
- testRunner.Then("magnitude(norm) = 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="The dot product of two vectors")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "The dot product of two vectors")]
-        public virtual void TheDotProductOfTwoVectors()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The dot product of two vectors", null, ((string[])(null)));
-#line 104
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 105
- testRunner.Given("v1 ← vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 106
- testRunner.And("v2 ← vector(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 107
- testRunner.Then("dot(v1, v2) = 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="The cross product of two vectors")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "The cross product of two vectors")]
-        public virtual void TheCrossProductOfTwoVectors()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The cross product of two vectors", null, ((string[])(null)));
-#line 109
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 110
- testRunner.Given("v1 ← vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 111
- testRunner.And("v2 ← vector(2, 3, 4)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 112
- testRunner.Then("cross(v1, v2) = vector(-1, 2, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 113
- testRunner.And("cross(v2, v1) = vector(1 -2, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Reflecting a vector approaching at 45°")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Reflecting a vector approaching at 45°")]
-        public virtual void ReflectingAVectorApproachingAt45()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reflecting a vector approaching at 45°", null, ((string[])(null)));
-#line 115
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 116
- testRunner.Given("v ← vector(1, -1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 117
- testRunner.And("n ← vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 118
- testRunner.When("r ← reflect(v, n)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 119
- testRunner.Then("r = vector(1, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="Reflecting a vector off a slanted surface")]
-        [Xunit.TraitAttribute("FeatureTitle", "Tuples")]
-        [Xunit.TraitAttribute("Description", "Reflecting a vector off a slanted surface")]
-        public virtual void ReflectingAVectorOffASlantedSurface()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reflecting a vector off a slanted surface", null, ((string[])(null)));
-#line 121
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 122
- testRunner.Given("v ← vector(0, -1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 123
- testRunner.And("n ← vector(0.707106, 0.707106, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 124
- testRunner.When("r ← reflect(v, n)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 125
- testRunner.Then("r = vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

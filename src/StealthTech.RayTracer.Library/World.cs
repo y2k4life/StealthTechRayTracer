@@ -70,12 +70,13 @@ namespace StealthTech.RayTracer.Library
         public RtColor ColorAt(Ray ray)
         {
             var intersections = Intersect(ray);
-            if (intersections.Count == 0)
+
+            var hit = intersections.Hit();
+            if (hit == null)
             {
                 return RtColor.Black;
             }
-
-            var hit = intersections[0];
+            
             var computations = hit.PrepareComputations(ray);
             return ShadeHit(computations);
         }
@@ -84,7 +85,7 @@ namespace StealthTech.RayTracer.Library
         {
             var vector = light.Position - point;
             var distance = vector.Magnitude();
-            var direction = vector.Normalized();
+            var direction = vector.Normalize();
 
             var ray = new Ray(point, direction);
             var intersetions = Intersect(ray);
@@ -100,7 +101,7 @@ namespace StealthTech.RayTracer.Library
             }
         }
 
-        public List<Sphere> Shapes { get; } = new List<Sphere>();
+        public List<Shape> Shapes { get; } = new List<Shape>();
 
         public List<PointLight> Lights { get; } = new List<PointLight>();
     }

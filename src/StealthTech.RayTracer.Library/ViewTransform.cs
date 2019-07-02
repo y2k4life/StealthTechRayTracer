@@ -19,8 +19,8 @@ namespace StealthTech.RayTracer.Library
             To = to;
             From = from;
 
-            Forward = (To - From).Normalized();
-            var upNormalized = Up.Normalized();
+            Forward = (To - From).Normalize();
+            var upNormalized = Up.Normalize();
             Left = Forward.Cross(upNormalized);
             var trueUp = Left.Cross(Forward);
             var orientation = new RtMatrix(4, 4).Identity();

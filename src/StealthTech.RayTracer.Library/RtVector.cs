@@ -29,7 +29,7 @@ namespace StealthTech.RayTracer.Library
         }
 
 
-        public RtVector Normalized() => this / Magnitude();
+        public RtVector Normalize() => this / Magnitude();
 
         public RtVector Cross(RtVector other)
             => new RtVector(Y * other.Z - Z * other.Y, Z * other.X - X * other.Z, X * other.Y - Y * other.X);

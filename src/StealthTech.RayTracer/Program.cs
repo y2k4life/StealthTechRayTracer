@@ -13,10 +13,10 @@ namespace StealthTech.RayTracer
     {
         static void Main(string[] args)
         {
-            if(args.Length > 0 && args[0] == "-t")
+            if (args.Length > 0 && args[0] == "-t")
             {
                 var tuning = new RenderingTuning();
-                tuning.RunChapter7();
+                tuning.RunChapterNine();
                 return;
             }
 

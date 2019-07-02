@@ -1,5 +1,6 @@
 ﻿using StealthTech.RayTracer.Exercises;
 using StealthTech.RayTracer.Library;
+using System;
 
 namespace StealthTech.RayTracer.PerformanceTuning
 {
@@ -25,6 +26,21 @@ namespace StealthTech.RayTracer.PerformanceTuning
             var test = new ChapterSeven();
 
             test.Render(false);
+        }
+
+        public void RunChapterNine()
+        {
+            var tuning = new ChapterNine();
+
+            //for (int x = 0; x < 6; x++)
+            //{
+            //    var canvas = tuning.Reference(((x + 1) * -1.1) + x);
+            //    PpmOutput.WriteToFile($"world{x}.ppm", canvas.GetPPMContent());
+            //}
+
+            var canvas = tuning.Reference(-Math.PI / 2);
+            PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
+
         }
     }
 }

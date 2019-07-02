@@ -88,7 +88,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
  testRunner.Given("intensity ← color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.And("position ← point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("position ← Point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 6
  testRunner.When("light ← point_light(position, intensity)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7

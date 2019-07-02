@@ -90,7 +90,7 @@ namespace StealthTech.RayTracer.Exercises
 
                     var position = new RtPoint(worldX, worldY, wallZ);
 
-                    var ray = new Ray(rayOrigin, (position - rayOrigin).Normalized());
+                    var ray = new Ray(rayOrigin, (position - rayOrigin).Normalize());
 
                     if (shape.Intersect(ray).Count > 0)
                     {

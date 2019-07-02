@@ -58,9 +58,30 @@ namespace StealthTech.RayTracer.Library
 
             var pixel = ViewTransform.Matrix.Inverse() * new RtPoint(worldX, worldY, -1);
             var origin = ViewTransform.Matrix.Inverse() * new RtPoint(0, 0, 0);
-            var direction = (pixel - origin).Normalized();
+            var direction = (pixel - origin).Normalize();
 
             return new Ray(origin, direction);
+        }
+
+        public Canvas Render(World world, RtPoint topCorner, RtPoint bottomCorner)
+        {
+            var startY = Convert.ToInt32(topCorner.Y);
+            var startX = Convert.ToInt32(topCorner.X);
+            var endY = Convert.ToInt32(topCorner.Y + bottomCorner.Y - topCorner.Y + 1);
+            var endX = Convert.ToInt32(topCorner.X + bottomCorner.X - topCorner.X + 1);
+            var image = new Canvas(HorizontalSize, VerticalSize);
+
+            for (int y = startY; y < endY; y++)
+            {
+                for (int x = startX; x < endX; x++)
+                {
+                    var ray = RayForPixel(x, y);
+                    var color = world.ColorAt(ray);
+                    image[x, y] = color;
+                }
+            }
+
+            return image;
         }
 
         public Canvas Render(World world, bool parallel = true, Action<int, int, int[]> output = null)

@@ -12,6 +12,7 @@ namespace StealthTech.RayTracer.Exercises
 {
     public class ChapterSeven
     {
+        
         public void Run()
         {
             var canvas = Render();
@@ -107,16 +108,14 @@ namespace StealthTech.RayTracer.Exercises
 
             world.Shapes.Add(left);
 
-            world.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(.25, .25, .25)));
-            world.Lights.Add(new PointLight(new RtPoint(10, 10, -10), new RtColor(.25, .25, .25)));
-            world.Lights.Add(new PointLight(new RtPoint(0, 10, -10), new RtColor(.75, .75, .75)));
+            world.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(1, 1, 1)));
 
             var camera = new Camera(800, 400, Math.PI / 2)
             {
                 ViewTransform = new ViewTransform(
                 new RtPoint(0, 1.5, -5),
                 new RtPoint(0, 1, 0),
-                new RtVector(.5, 1, 0))
+                new RtVector(0, 1, 0))
             };
 
             return camera.Render(world, parallel);

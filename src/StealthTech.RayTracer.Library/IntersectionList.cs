@@ -31,6 +31,8 @@ namespace StealthTech.RayTracer.Library
 
         public int Count => _intersections.Count;
 
+        public bool IsEmpty => _intersections.Count == 0;
+
         public void Add(Intersection intersection)
         {
             _intersections.Add(intersection);
@@ -69,6 +71,12 @@ namespace StealthTech.RayTracer.Library
             }
         }
 
-        public bool HasHit => _intersections.Where(i => i.Time > 0).Count() > 0;
+        public bool HasHit()
+        {
+            if (_intersections == null)
+                return false;
+
+            return _intersections.Where(i => i.Time > 0).Count() > 0;
+        }
     }
 }
