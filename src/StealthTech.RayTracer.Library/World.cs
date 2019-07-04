@@ -37,12 +37,14 @@ namespace StealthTech.RayTracer.Library
 
             return defaultWorld;
         }
+
         public IntersectionList Intersect(Ray ray)
         {
             var intersections = new IntersectionList();
             foreach (var shape in Shapes)
             {
-                intersections.AddRange(shape.Intersect(ray));
+                var shapsesIntersections = shape.Intersect(ray);
+                intersections.AddRange(shapsesIntersections);
             }
 
             return intersections;
@@ -55,11 +57,13 @@ namespace StealthTech.RayTracer.Library
             foreach (var light in Lights)
             {
                 var inShadow = IsShadowed(computations.OverPoint, light);
-                var lighting = computations.Shape.Material.Lighting(light,
-                                    computations.Point,
-                                    computations.EyeVector,
-                                    computations.NormalVector,
-                                    inShadow);
+                var lighting = computations.Shape.Material.Lighting(
+                    computations.Shape,
+                    light,
+                    computations.Point,
+                    computations.EyeVector,
+                    computations.NormalVector,
+                    inShadow);
 
                 colorTotal += lighting;
             }

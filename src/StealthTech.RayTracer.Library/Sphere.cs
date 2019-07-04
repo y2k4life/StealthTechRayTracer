@@ -15,7 +15,8 @@ namespace StealthTech.RayTracer.Library
         {
             var intersections = new IntersectionList();
 
-            var shapeToRay = ray.Origin - new RtPoint(0, 0, 0);
+            //var shapeToRay = ray.Origin - new RtPoint(0, 0, 0);
+            var shapeToRay = ray.Origin.DistanceFromZero();
 
             var a = ray.Direction.Dot(ray.Direction);
             var b = 2 * ray.Direction.Dot(shapeToRay);
@@ -39,7 +40,7 @@ namespace StealthTech.RayTracer.Library
 
         public override RtVector LocalNormalAt(RtPoint shapePoint)
         {
-            return shapePoint - new RtPoint(0, 0, 0);
+            return shapePoint.DistanceFromZero();
         }
 
         public override int GetHashCode()

@@ -54,3 +54,16 @@ Scenario: Lighting with the surface in shadow
 	And inShadow ← true
 	When result ← lighting(m, light, position, eyeVector, normalVector, inShadow)
 	Then result = Color(0.1, 0.1, 0.1)
+
+Scenario: Lighting with a pattern applied
+  Given material.Pattern ← StripePattern(color(1, 1, 1), color(0, 0, 0))
+    And material.Ambient ← 1
+    And material.Diffuse ← 0
+    And material.Specular ← 0
+    And eyeVector ← Vector(0, 0, -1)
+    And normalVector ← Vector(0, 0, -1)
+    And light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))
+  When color1 ← lighting(m, light, Point(0.9, 0, 0), eyeVector, normalVector, false)
+    And color2 ← lighting(m, light, Point(1.1, 0, 0), eyeVector, normalVector, false)
+  Then color1 = Color(1, 1, 1)
+    And color2 = Color(0, 0, 0)

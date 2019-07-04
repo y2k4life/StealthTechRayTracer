@@ -265,6 +265,43 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="Lighting with a pattern applied")]
+        [Xunit.TraitAttribute("FeatureTitle", "Materials")]
+        [Xunit.TraitAttribute("Description", "Lighting with a pattern applied")]
+        public virtual void LightingWithAPatternApplied()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with a pattern applied", null, ((string[])(null)));
+#line 58
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 59
+  testRunner.Given("material.Pattern ← StripePattern(color(1, 1, 1), color(0, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 60
+    testRunner.And("material.Ambient ← 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 61
+    testRunner.And("material.Diffuse ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 62
+    testRunner.And("material.Specular ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 63
+    testRunner.And("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+    testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 65
+    testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 66
+  testRunner.When("color1 ← lighting(m, light, Point(0.9, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 67
+    testRunner.And("color2 ← lighting(m, light, Point(1.1, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 68
+  testRunner.Then("color1 = Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 69
+    testRunner.And("color2 = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -20,7 +20,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly SphereContext _sphereContext;
         readonly RayContext _rayContext;
         readonly IntersectionsContext _intersectionsContext;
-        readonly ColorContext _colorContext;
+        readonly ColorsContext _colorContext;
         readonly PointsContext _pointsContext;
         readonly LightsContext _lightsContext;
 
@@ -29,7 +29,7 @@ namespace StealthTech.RayTracer.Specs.Steps
             MaterialsContext materialsContext,
             RayContext rayContext,
             IntersectionsContext intersectionsContext,
-            ColorContext colorContext,
+            ColorsContext colorContext,
             PointsContext pointsContext,
             LightsContext lightsContext)
 

@@ -16,10 +16,10 @@ namespace StealthTech.RayTracer.Specs.Steps
     public class CanvasSteps
     {
         private Canvas _canvas;
-        readonly ColorContext _colorContext;
+        readonly ColorsContext _colorContext;
         private string _ppm;
 
-        public CanvasSteps(ColorContext colorContext)
+        public CanvasSteps(ColorsContext colorContext)
         {
             _colorContext = colorContext;
         }

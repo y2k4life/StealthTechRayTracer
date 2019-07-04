@@ -9,7 +9,7 @@ using StealthTech.RayTracer.Library;
 
 namespace StealthTech.RayTracer.Specs.Contexts
 {
-    public class ColorContext
+    public class ColorsContext
     {
         public RtColor Color { get; set; }
         
@@ -20,5 +20,9 @@ namespace StealthTech.RayTracer.Specs.Contexts
         public RtColor Color3 { get; set; }
 
         public RtColor Red { get; set; }
+
+        public RtColor Black { get; set; }
+
+        public RtColor White { get; set; }
     }
 }

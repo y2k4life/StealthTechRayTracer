@@ -58,6 +58,12 @@ namespace StealthTech.RayTracer.Specs.Steps
             _sphereContext.Sphere = CreateSphereFromTableWith(table);
         }
 
+        [Given(@"sphere\.Transform ← scaling\((.*), (.*), (.*)\)")]
+        public void Given_Transform_Of_sphere_Is_Scaling(double x, double y, double z)
+        {
+            _sphereContext.Sphere.Transform = new Transform().Scaling(x, y, z);
+        }
+
         [When(@"intersections ← intersect\(sphere, r\)")]
         public void When_xs_Is_Intersect_r()
         {

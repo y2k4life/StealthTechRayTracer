@@ -14,7 +14,7 @@ namespace StealthTech.RayTracer.Exercises
     {
         public void Run()
         {
-            var canvas = Reference(2);
+            var canvas = Render();
 
             PpmOutput.WriteToFile("world.ppm", canvas.GetPPMContent());
         }
@@ -26,9 +26,10 @@ namespace StealthTech.RayTracer.Exercises
             int width = 400;
             int height = 200;
 
-            Camera camera = TopDownCamera(width, height);
+            Camera camera = DefaultCamera(width, height);
 
-            return camera.Render(world, parallel);
+            return camera.Render(world, false);
+            // return camera.Render(world, 41, 39, 2, 2);
         }
 
         private static Camera DefaultCamera(int width, int height)
@@ -61,12 +62,42 @@ namespace StealthTech.RayTracer.Exercises
             {
                 Material = new Material()
                 {
-                    Color = new RtColor(1, .9, .9),
-                    Specular = 100
+                    Pattern = new StripePattern(new RtColor(1, 0, 0), new RtColor(1, 1, 1)),
+                    Specular = 10,
                 }
             };
 
             world.Shapes.Add(floor);
+
+            var leftWall = new Plane()
+            {
+                Transform = new Transform()
+                    .RotateX(Math.PI / 2)
+                    .RotateY(-Math.PI / 4)
+                    .Translation(0, 0, 5),
+                Material = new Material()
+                {
+                    Pattern = new PerturbedStripePattern(new RtColor(1, 0, 0), new RtColor(1, 1, 1)),
+                    Specular = 0
+                }
+            };
+
+            world.Shapes.Add(leftWall);
+
+            var rightWall = new Plane()
+            {
+                Transform = new Transform()
+                    .RotateX(Math.PI / 2)
+                    .RotateY(Math.PI / 4)
+                    .Translation(0, 0, 5),
+                Material = new Material()
+                {
+                    Pattern = new PerturbedStripePattern(new RtColor(1, 0, 0), new RtColor(1, 1, 1)),
+                    Specular = 0
+                }
+            };
+
+            world.Shapes.Add(rightWall);
 
             var middle = new Sphere()
             {

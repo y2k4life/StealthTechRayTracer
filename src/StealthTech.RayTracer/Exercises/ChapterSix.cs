@@ -137,7 +137,7 @@ namespace StealthTech.RayTracer.Exercises
                         var point = ray.Position(intersection.Time);
                         var normal = shape.NormalAt(point);
                         var eye = ray.Direction.Negate();
-                        var color = shape.Material.Lighting(light, point, eye, normal);
+                        var color = shape.Material.Lighting(intersection.Shape, light, point, eye, normal);
                         canvas[x, y] = color;
                     }
                 }

@@ -6,16 +6,15 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
     public class RtMatrix : IEquatable<RtMatrix>
     {
         private readonly double[,] _matrix;
-
+        
         private RtMatrix _invertatedMatrix;
-
+        
         public int RowCount { get; }
 
         public int ColumnCount { get; }
@@ -110,10 +109,15 @@ namespace StealthTech.RayTracer.Library
             return new RtPoint(c1, c2, c3);
         }
 
-        //public static RtTuple operator *(RtTuple left, RtMatrix right)
-        //{
-        //    return right * left;
-        //}
+        public RtPoint MultipliedByPointOrigin()
+        {
+            var c1 = (_matrix[0, 0] * 0) + (_matrix[0, 1] * 0) + (_matrix[0, 2] * 0) + (_matrix[0, 3] * 1);
+            var c2 = (_matrix[1, 0] * 0) + (_matrix[1, 1] * 0) + (_matrix[1, 2] * 0) + (_matrix[1, 3] * 1);
+            var c3 = (_matrix[2, 0] * 0) + (_matrix[2, 1] * 0) + (_matrix[2, 2] * 0) + (_matrix[2, 3] * 1);
+
+            return new RtPoint(c1, c2, c3);
+        }
+
 
         public override int GetHashCode()
         {

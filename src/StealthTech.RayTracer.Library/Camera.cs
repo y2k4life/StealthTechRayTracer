@@ -57,23 +57,19 @@ namespace StealthTech.RayTracer.Library
             var worldY = HalfHeight - offsetY;
 
             var pixel = ViewTransform.Matrix.Inverse() * new RtPoint(worldX, worldY, -1);
-            var origin = ViewTransform.Matrix.Inverse() * new RtPoint(0, 0, 0);
+            var origin = ViewTransform.Matrix.Inverse().MultipliedByPointOrigin();
             var direction = (pixel - origin).Normalize();
 
             return new Ray(origin, direction);
         }
 
-        public Canvas Render(World world, RtPoint topCorner, RtPoint bottomCorner)
+        public Canvas Render(World world, int topX, int topY, int width, int heigth)
         {
-            var startY = Convert.ToInt32(topCorner.Y);
-            var startX = Convert.ToInt32(topCorner.X);
-            var endY = Convert.ToInt32(topCorner.Y + bottomCorner.Y - topCorner.Y + 1);
-            var endX = Convert.ToInt32(topCorner.X + bottomCorner.X - topCorner.X + 1);
             var image = new Canvas(HorizontalSize, VerticalSize);
 
-            for (int y = startY; y < endY; y++)
+            for (int y = topY; y < topY + heigth; y++)
             {
-                for (int x = startX; x < endX; x++)
+                for (int x = topX; x < topX + width; x++)
                 {
                     var ray = RayForPixel(x, y);
                     var color = world.ColorAt(ray);
@@ -84,7 +80,7 @@ namespace StealthTech.RayTracer.Library
             return image;
         }
 
-        public Canvas Render(World world, bool parallel = true, Action<int, int, int[]> output = null)
+        public Canvas Render(World world, bool parallel = true)
         {
             var image = new Canvas(HorizontalSize, VerticalSize);
             if (parallel)
@@ -96,7 +92,6 @@ namespace StealthTech.RayTracer.Library
                         var ray = RayForPixel(x, y);
                         var color = world.ColorAt(ray);
                         image[x, y] = color;
-                        output?.Invoke(x, y, color.ToARGB());
                     });
                 });
             }
@@ -109,7 +104,7 @@ namespace StealthTech.RayTracer.Library
                         var ray = RayForPixel(x, y);
                         var color = world.ColorAt(ray);
                         image[x, y] = color;
-                        output?.Invoke(x, y, color.ToARGB());
+                        //output?.Invoke(x, y, color.ToARGB());
                     }
                 }
             }

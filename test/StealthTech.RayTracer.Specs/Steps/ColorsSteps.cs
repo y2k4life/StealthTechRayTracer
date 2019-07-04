@@ -15,9 +15,9 @@ namespace StealthTech.RayTracer.Specs.Steps
     [Binding]
     public class ColorsSteps
     {
-        readonly ColorContext _colorContext;
+        readonly ColorsContext _colorContext;
 
-        public ColorsSteps(ColorContext colorContext)
+        public ColorsSteps(ColorsContext colorContext)
         {
             _colorContext = colorContext;
         }
@@ -50,6 +50,18 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void Given_red_Is_A_Color(double red, double green, double blue)
         {
             _colorContext.Red = new RtColor(red, green, blue);
+        }
+
+        [Given(@"black ← Color\(0, 0, 0\)")]
+        public void Given_black_Is_Color()
+        {
+            _colorContext.Black = new RtColor(0, 0, 0);
+        }
+
+        [Given(@"white ← Color\(1, 1, 1\)")]
+        public void Given_white_Is_Color()
+        {
+            _colorContext.White = new RtColor(1, 1, 1);
         }
 
         [Then(@"color \* (.*) = Color\((.*), (.*), (.*)\)")]
@@ -119,5 +131,32 @@ namespace StealthTech.RayTracer.Specs.Steps
 
             Assert.Equal(expectedColor, actualColor);
         }
+
+        [Then(@"color1 = Color\((.*), (.*), (.*)\)")]
+        public void Then_color1_Should_Equal_Color(double red, double green, double blue)
+        {
+            var expectedColor = new RtColor(red, green, blue);
+
+            var actualColor = _colorContext.Color1;
+
+            Assert.Equal(expectedColor, actualColor);
+        }
+
+        [Then(@"color2 = Color\((.*), (.*), (.*)\)")]
+        public void Then_color2_Should_Equal_Color(double red, double green, double blue)
+        {
+            var expectedColor = new RtColor(red, green, blue);
+
+            var actualColor = _colorContext.Color2;
+
+            Assert.Equal(expectedColor, actualColor);
+        }
+
+        [Then(@"color = white")]
+        public void Then_color_should_equal_white()
+        {
+            Assert.Equal(_colorContext.White, _colorContext.Color);
+        }
+
     }
 }

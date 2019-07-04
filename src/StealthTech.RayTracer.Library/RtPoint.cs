@@ -26,6 +26,11 @@ namespace StealthTech.RayTracer.Library
         public RtPoint Cross(RtPoint other)
             => new RtPoint(Y * other.Z - Z * other.Y, Z * other.X - X * other.Z, X * other.Y - Y * other.X);
 
+        public RtVector DistanceFromZero()
+        {
+            return new RtVector(X - 0, Y - 0, Z - 0);
+        }
+
         static public RtPoint operator +(RtPoint left, RtVector right)
             => new RtPoint(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
 
@@ -34,6 +39,13 @@ namespace StealthTech.RayTracer.Library
 
         static public RtPoint operator -(RtPoint left, RtVector right)
             => new RtPoint(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+
+        static public RtPoint operator +(RtPoint tuple, double factor)
+            => new RtPoint(tuple.X + factor, tuple.Y + factor, tuple.Z + factor);
+
+        static public RtPoint operator *(RtPoint tuple, double factor)
+            => new RtPoint(tuple.X * factor, tuple.Y * factor, tuple.Z * factor);
+
 
         static public RtPoint operator /(RtPoint tuple, double divisor)
             => new RtPoint(tuple.X / divisor, tuple.Y / divisor, tuple.Z / divisor);

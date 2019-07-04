@@ -30,6 +30,8 @@ namespace StealthTech.RayTracer.Library
 
         public double Shininess { get; set; }
 
+        public Pattern Pattern { get; set; }
+
         public override int GetHashCode()
         {
             return Color.GetHashCode() ^ Ambient.GetHashCode() ^ Diffuse.GetHashCode() ^ Specular.GetHashCode() ^ Shininess.GetHashCode();
@@ -60,9 +62,16 @@ namespace StealthTech.RayTracer.Library
                 && other.Shininess.ApproximateEquals(Shininess));
         }
 
-        public RtColor Lighting(PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector, bool inShadow = false)
+        public RtColor Lighting(Shape shape, PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector, bool inShadow = false)
         {
-            var effectiveColor = Color * light.Intensity;
+            var color = Color;
+
+            if (Pattern !=null)
+            {
+                color = Pattern.PatternAtShape(shape, point);
+            }
+            
+            var effectiveColor = color * light.Intensity;
             var lightVector = (light.Position - point).Normalize();
             
             var lightDotNormal = lightVector.Dot(normalVector);
