@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
@@ -32,9 +33,24 @@ namespace StealthTech.RayTracer.Library
 
         public Pattern Pattern { get; set; }
 
+        public double Reflective { get; set;  }
+
+        public double Transparency { get; set; }
+
+        public double RefractiveIndex { get; set; } = 1.0;
+
         public override int GetHashCode()
         {
-            return Color.GetHashCode() ^ Ambient.GetHashCode() ^ Diffuse.GetHashCode() ^ Specular.GetHashCode() ^ Shininess.GetHashCode();
+            return
+                Color.GetHashCode() ^
+                Ambient.GetHashCode() ^
+                Diffuse.GetHashCode() ^
+                Specular.GetHashCode() ^
+                Shininess.GetHashCode() ^
+                Pattern.GetHashCode() ^
+                Reflective.GetHashCode() ^
+                Transparency.GetHashCode() ^
+                RefractiveIndex.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -59,22 +75,25 @@ namespace StealthTech.RayTracer.Library
                 && other.Ambient.ApproximateEquals(Ambient)
                 && other.Diffuse.ApproximateEquals(Diffuse)
                 && other.Specular.ApproximateEquals(Specular)
-                && other.Shininess.ApproximateEquals(Shininess));
+                && other.Shininess.ApproximateEquals(Shininess)
+                && other.Reflective.ApproximateEquals(Reflective)
+                && other.RefractiveIndex.ApproximateEquals(RefractiveIndex)
+                && other.Transparency.ApproximateEquals(Transparency));
         }
 
-        public RtColor Lighting(Shape shape, PointLight light, RtPoint point, RtVector eyeVector, RtVector normalVector, bool inShadow = false)
+        public RtColor Lighting(Computations computations, PointLight light, bool inShadow = false)
         {
             var color = Color;
 
             if (Pattern !=null)
             {
-                color = Pattern.PatternAtShape(shape, point);
+                color = Pattern.PatternAtShape(computations.Shape, computations.OverPosition);
             }
             
             var effectiveColor = color * light.Intensity;
-            var lightVector = (light.Position - point).Normalize();
+            var lightVector = (light.Position - computations.Position).Normalize();
             
-            var lightDotNormal = lightVector.Dot(normalVector);
+            var lightDotNormal = lightVector.Dot(computations.NormalVector);
 
             var ambient = effectiveColor * Ambient;
 
@@ -90,8 +109,8 @@ namespace StealthTech.RayTracer.Library
             {
                 diffuse = effectiveColor * Diffuse * lightDotNormal;
 
-                var reflectVector = lightVector.Negate().Reflect(normalVector);
-                var reflectDotEye = reflectVector.Dot(eyeVector);
+                var reflectVector = lightVector.Negate().Reflect(computations.NormalVector);
+                var reflectDotEye = reflectVector.Dot(computations.EyeVector);
                 
                 if (reflectDotEye <= 0)
                 {

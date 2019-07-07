@@ -17,9 +17,11 @@ namespace StealthTech.RayTracer.Specs.Steps
     public class VectorsSteps
     {
         readonly VectorsContext _vectorsContext;
+        readonly ComputationsContext _computationsContext;
 
-        public VectorsSteps(VectorsContext vectorContext)
+        public VectorsSteps(VectorsContext vectorContext, ComputationsContext computationsContext)
         {
+            _computationsContext = computationsContext;
             _vectorsContext = vectorContext;
         }
 
@@ -29,14 +31,8 @@ namespace StealthTech.RayTracer.Specs.Steps
             _vectorsContext.Director = new RtVector(x, y, z);
         }
 
-        [Given(@"eyeVector ← Vector\((.*), (.*), (.*)\)")]
-        public void Given_EyeVector_Is_Vector(string x, string y, string z)
-        {
-            _vectorsContext.EyeVector = new RtVector(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
-        }
-
         [Given(@"normalVector ← Vector\((.*), (.*), (.*)\)")]
-        public void Given_normalVector_Is_A_Vector(double x, double y, double z)
+        public void Given_normalVector_Is_Vector(double x, double y, double z)
         {
             _vectorsContext.NormalVector = new RtVector(x, y, z);
         }

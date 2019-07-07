@@ -8,6 +8,10 @@ namespace StealthTech.RayTracer.Library
 
         public Material Material { get; set; } = new Material();
 
+        public bool CastShadow { get; set; } = true;
+        
+        public string Name { get; set; } = string.Empty;
+
         public IntersectionList Intersect(Ray ray)
         {
             var transformInverse = Transform.Matrix.Inverse();
@@ -28,6 +32,11 @@ namespace StealthTech.RayTracer.Library
         public abstract IntersectionList LocalIntersect(Ray ray);
 
         public abstract RtVector LocalNormalAt(RtPoint point);
+
+        public override string ToString()
+        {
+            return Name;
+        }
 
         public override int GetHashCode()
         {

@@ -12,6 +12,8 @@ namespace StealthTech.RayTracer.Library
     {
         public static readonly RtColor Black = new RtColor(0, 0, 0);
 
+        public static readonly RtColor White = new RtColor(1, 1, 1);
+
         public RtColor(double red, double green, double blue)
         {
             Red = red;
@@ -24,6 +26,7 @@ namespace StealthTech.RayTracer.Library
         public double Green { get; set; }
         
         public double Blue { get; set; }
+        
 
         static public RtColor operator +(RtColor left, RtColor right)
         {

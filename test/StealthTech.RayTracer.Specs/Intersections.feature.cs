@@ -244,13 +244,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 55
  testRunner.And("intersection ← Intersection(4, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 56
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 57
  testRunner.Then("computations.Time = intersection.Time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 58
  testRunner.And("computations.Shape = intersection.Shape", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 59
- testRunner.And("computations.Point = Point(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.Position = Point(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 60
  testRunner.And("computations.EyeVector = Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 61
@@ -275,7 +275,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 66
  testRunner.And("intersection ← Intersection(4, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 68
  testRunner.Then("computations.Inside = false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -298,9 +298,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 73
  testRunner.And("intersection ← Intersection(1, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 74
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 75
- testRunner.Then("computations.Point = Point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("computations.Position = Point(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 76
  testRunner.And("computations.EyeVector = Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 77
@@ -331,11 +331,210 @@ this.ScenarioInitialize(scenarioInfo);
 #line 85
  testRunner.And("intersection ← Intersection(5, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 86
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 87
  testRunner.Then("computations.OverPoint.Z < -EPSILON/2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 88
  testRunner.And("computations.Point.Z > computations.OverPoint.Z", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Precomputing the reflection vector")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "Precomputing the reflection vector")]
+        public virtual void PrecomputingTheReflectionVector()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Precomputing the reflection vector", null, ((string[])(null)));
+#line 90
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 91
+ testRunner.Given("plane ← Plane()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 92
+ testRunner.And("ray ← Ray(Point(0, 1, -1), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 93
+ testRunner.And("intersection ← Intersection(√2, plane)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 95
+ testRunner.Then("computations.ReflectVector = Vector(0, √2/2, √2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="Finding n1 and n2 at various intersections")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "Finding n1 and n2 at various intersections")]
+        [Xunit.InlineDataAttribute("0", "1.0", "1.5", new string[0])]
+        [Xunit.InlineDataAttribute("1", "1.5", "2.0", new string[0])]
+        [Xunit.InlineDataAttribute("2", "2.0", "2.5", new string[0])]
+        [Xunit.InlineDataAttribute("3", "2.5", "2.5", new string[0])]
+        [Xunit.InlineDataAttribute("4", "2.5", "1.5", new string[0])]
+        [Xunit.InlineDataAttribute("5", "1.5", "1.0", new string[0])]
+        public virtual void FindingN1AndN2AtVariousIntersections(string index, string n1, string n2, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Finding n1 and n2 at various intersections", null, exampleTags);
+#line 97
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "scaling(2, 2, 2)"});
+            table2.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 98
+ testRunner.Given("sphere1 ← GlassSphere() with:", ((string)(null)), table2, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, 0, -0.25)"});
+            table3.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "2.0"});
+#line 101
+ testRunner.And("sphere2 ← GlassSphere() with:", ((string)(null)), table3, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, 0, 0.25)"});
+            table4.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "2.5"});
+#line 104
+ testRunner.And("sphere3 ← GlassSphere() with:", ((string)(null)), table4, "And ");
+#line 107
+ testRunner.And("ray ← Ray(Point(0, 0, -4), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 108
+ testRunner.And("intersections ← Add(2, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.And("intersections ← Add(2.75, sphere2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.And("intersections ← Add(3.25, sphere3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 111
+ testRunner.And("intersections ← Add(4.75, sphere2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.And("intersections ← Add(5.25, sphere3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 113
+ testRunner.And("intersections ← Add(6, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 114
+ testRunner.When(string.Format("computations ← intersections[{0}].PrepareComputations(ray, intersections)", index), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 115
+ testRunner.Then(string.Format("computations.n1 = {0}", n1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 116
+ testRunner.And(string.Format("computations.n2 = {0}", n2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The under point is offset below the surface")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The under point is offset below the surface")]
+        public virtual void TheUnderPointIsOffsetBelowTheSurface()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The under point is offset below the surface", null, ((string[])(null)));
+#line 127
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 128
+ testRunner.Given("ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, 0, 1)"});
+#line 129
+ testRunner.And("sphere ← GlassSphere() with:", ((string)(null)), table5, "And ");
+#line 131
+ testRunner.And("intersection ← Intersection(5, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
+ testRunner.And("intersections ← Add(intersection)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 133
+ testRunner.When("computations ← intersections.PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 134
+ testRunner.Then("computations.UnderPoint.Z > EPSILON/2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 135
+ testRunner.And("computations.Position.Z < computations.UnderPoint.Z", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The Schlick approximation under total internal reflection")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The Schlick approximation under total internal reflection")]
+        public virtual void TheSchlickApproximationUnderTotalInternalReflection()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The Schlick approximation under total internal reflection", null, ((string[])(null)));
+#line 137
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 138
+ testRunner.Given("sphere1 ← GlassSphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 139
+ testRunner.And("ray ← Ray(Point(0, 0, √2/2), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 140
+ testRunner.And("intersections ← Add(-√2/2, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 141
+ testRunner.And("intersections ← Add(√2/2, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 142
+ testRunner.When("computations ← intersections[1].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 143
+ testRunner.And("reflectance ← computations.Schlick()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 144
+ testRunner.Then("reflectance = 1.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The Schlick approximation with a perpendicular viewing angle")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The Schlick approximation with a perpendicular viewing angle")]
+        public virtual void TheSchlickApproximationWithAPerpendicularViewingAngle()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The Schlick approximation with a perpendicular viewing angle", null, ((string[])(null)));
+#line 146
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 147
+ testRunner.Given("sphere1 ← GlassSphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 148
+ testRunner.And("ray ← Ray(Point(0, 0, 0), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 149
+ testRunner.And("intersections ← Add(-1, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 150
+ testRunner.And("intersections ← Add(1, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 151
+ testRunner.When("computations ← intersections[1].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 152
+ testRunner.And("reflectance ← computations.Schlick()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 153
+ testRunner.Then("reflectance = 0.04", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The Schlick approximation with small angle and n2 > n1")]
+        [Xunit.TraitAttribute("FeatureTitle", "Intersections")]
+        [Xunit.TraitAttribute("Description", "The Schlick approximation with small angle and n2 > n1")]
+        public virtual void TheSchlickApproximationWithSmallAngleAndN2N1()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The Schlick approximation with small angle and n2 > n1", null, ((string[])(null)));
+#line 155
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 156
+ testRunner.Given("sphere1 ← GlassSphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 157
+ testRunner.And("ray ← Ray(Point(0, 0.99, -2), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 158
+ testRunner.And("intersections ← Add(1.8589, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 159
+ testRunner.When("computations ← intersections[0].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 160
+ testRunner.And("reflectance ← computations.Schlick()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 161
+ testRunner.Then("reflectance = 0.48873", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

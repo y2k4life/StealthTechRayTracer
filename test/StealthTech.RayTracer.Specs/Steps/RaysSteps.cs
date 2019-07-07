@@ -37,9 +37,11 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"ray ← Ray\(Point\((.*), (.*), (.*)\), Vector\((.*), (.*), (.*)\)\)")]
-        public void Given_ray_Is_Ray(double pX, double pY, double pZ, double dX, double dY, double dZ)
+        public void Given_ray_Is_Ray(string pX, string pY, string pZ, string dX, string dY, string dZ)
         {
-            _rayContext.Ray = new Ray(new RtPoint(pX, pY, pZ), new RtVector(dX, dY, dZ));
+            _rayContext.Ray = new Ray(
+                new RtPoint(pX.EvaluateExpression(), pY.EvaluateExpression(), pZ.EvaluateExpression()), 
+                new RtVector(dX.EvaluateExpression(), dY.EvaluateExpression(), dZ.EvaluateExpression()));
         }
 
           [Then(@"ray\.Origin = origin")]

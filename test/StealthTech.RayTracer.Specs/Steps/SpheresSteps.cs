@@ -9,6 +9,7 @@ using StealthTech.RayTracer.Library;
 using StealthTech.RayTracer.Specs.Contexts;
 using System;
 using TechTalk.SpecFlow;
+using Xunit;
 
 namespace StealthTech.RayTracer.Specs.Steps
 {
@@ -43,19 +44,22 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Given(@"sphere1 ← sphere\(\) with:")]
         public void GivenSSphereWith(Table table)
         {
-            _sphereContext.Sphere1 = CreateSphereFromTableWith(table);
+            _sphereContext.Sphere1 = new Sphere();
+            table.SetShapePropertiesFromTable(_sphereContext.Sphere1);
         }
 
         [Given(@"sphere2 ← sphere\(\) with:")]
         public void Given_s2_Is_A_Sphere_With(Table table)
         {
-            _sphereContext.Sphere2 = CreateSphereFromTableWith(table);
+            _sphereContext.Sphere2 = new Sphere();
+            table.SetShapePropertiesFromTable(_sphereContext.Sphere2);
         }
 
         [Given(@"sphere ← Sphere\(\) with:")]
         public void Given_sphere_Is_A_Sphere_With(Table table)
         {
-            _sphereContext.Sphere = CreateSphereFromTableWith(table);
+            _sphereContext.Sphere = new Sphere();
+            table.SetShapePropertiesFromTable(_sphereContext.Sphere);
         }
 
         [Given(@"sphere\.Transform ← scaling\((.*), (.*), (.*)\)")]
@@ -63,6 +67,50 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _sphereContext.Sphere.Transform = new Transform().Scaling(x, y, z);
         }
+
+        [Given(@"sphere\.Material\.Ambient ← (.*)")]
+        public void Given_Ambient_Of_Material_Of_sphere_Is(double ambient)
+        {
+            _sphereContext.Sphere.Material.Ambient = ambient;
+        }
+
+        [Given(@"sphere ← GlassSphere\(\)")]
+        public void Given_sphere_Is_GlassSphere()
+        {
+            _sphereContext.Sphere = new GlassSphere();
+        }
+
+        [Given(@"sphere(.*) ← GlassSphere\(\) with:")]
+        public void Given_sphere_Is_GlassSphere_With(int index, Table table)
+        {
+            var sphere = new GlassSphere();
+            sphere.Name = index.ToString();
+            table.SetShapePropertiesFromTable(sphere);
+            _sphereContext.Spheres[index] = sphere;
+        }
+
+        [Given(@"sphere ← GlassSphere\(\) with:")]
+        public void Given_sphere_Is_GlassSphere_With(Table table)
+        {
+            var sphere = new GlassSphere();
+            table.SetShapePropertiesFromTable(sphere);
+            _sphereContext.Sphere = sphere;
+        }
+
+
+        [Given(@"sphere(.*) has:")]
+        public void GivenSphereHas(int index, Table table)
+        {
+            _sphereContext.Spheres[index].Name = index.ToString();
+            table.SetShapePropertiesFromTable(_sphereContext.Spheres[index]);
+        }
+
+        [Given(@"sphere(.*) ← GlassSphere\(\)")]
+        public void Given_sphere_Is_GlassSphere(int index)
+        {
+            _sphereContext.Spheres[index] = new GlassSphere();
+        }
+
 
         [When(@"intersections ← intersect\(sphere, r\)")]
         public void When_xs_Is_Intersect_r()
@@ -78,58 +126,26 @@ namespace StealthTech.RayTracer.Specs.Steps
                                                                                  z.EvaluateExpression()));
         }
 
-        public Sphere CreateSphereFromTableWith(Table table)
+        [Then(@"sphere\.Transform = identityMatrix")]
+        public void Then_Transform_Of_sphere_Should_Equal_identityMatrix()
         {
-            var sphere = new Sphere();
+            var expectedMatrix = new RtMatrix(4, 4).Identity();
 
-            var properties = table.ToDictionary();
-            foreach (var kv in properties)
-            {
-                var property = kv.Key;
-                var subproperty = "";
-                if (kv.Key.Contains('.'))
-                {
-                    property = kv.Key.Split('.')[0];
-                    subproperty = kv.Key.Split('.')[1];
-                }
-
-                switch (property)
-                {
-                    case "material":
-                        switch (subproperty)
-                        {
-                            case "color":
-                                string[] colorValues = kv.Value
-                                    .Replace('(', ' ')
-                                    .Replace(')', ' ')
-                                    .Split(',');
-                                sphere.Material.Color = new RtColor(Convert.ToDouble(colorValues[0]), Convert.ToDouble(colorValues[1]), Convert.ToDouble(colorValues[2]));
-                                break;
-                            case "diffuse":
-                                sphere.Material.Diffuse = Convert.ToDouble(kv.Value);
-                                break;
-                            case "specular":
-                                sphere.Material.Specular = Convert.ToDouble(kv.Value);
-                                break;
-                        }
-                        break;
-                    case "transform":
-                        string transform = kv.Value.Substring(0, kv.Value.IndexOf('('));
-                        string[] values = kv.Value.Substring(kv.Value.IndexOf('(') + 1, kv.Value.Length - kv.Value.IndexOf('(') - 2).Split(',');
-                        switch (transform)
-                        {
-                            case "scaling":
-                                sphere.Transform *= new Transform().Scaling(Convert.ToDouble(values[0]), Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
-                                break;
-                            case "translation":
-                                sphere.Transform *= new Transform().Translation(Convert.ToDouble(values[0]), Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
-                                break;
-                        }
-                        break;
-                }
-            }
-
-            return sphere;
+            Assert.Equal(expectedMatrix, _sphereContext.Sphere.Transform.Matrix);
         }
+
+        [Then(@"sphere\.Material\.Transparency = (.*)")]
+        public void Then_Transparency_Of_Material_Of_Sphere_Should_Equal(double expectedTransparency)
+        {
+            Assert.Equal(expectedTransparency, _sphereContext.Sphere.Material.Transparency);
+        }
+
+        [Then(@"sphere\.Material\.RefractiveIndex = (.*)")]
+        public void Then_RefractiveIndex_Of_Material_Of_Sphere_Should_Equal(double expectedRefractiveIndex)
+        {
+            Assert.Equal(expectedRefractiveIndex, _sphereContext.Sphere.Material.RefractiveIndex);
+        }
+
+
     }
 }

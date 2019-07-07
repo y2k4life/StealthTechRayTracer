@@ -107,23 +107,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.Given("light ← PointLight(Point(-10, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table59 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.color",
                         "(0.8, 1.0, 0.6)"});
-            table59.AddRow(new string[] {
+            table63.AddRow(new string[] {
                         "material.diffuse",
                         "0.7"});
-            table59.AddRow(new string[] {
+            table63.AddRow(new string[] {
                         "material.specular",
                         "0.2"});
 #line 10
- testRunner.And("sphere1 ← sphere() with:", ((string)(null)), table59, "And ");
+ testRunner.And("sphere1 ← sphere() with:", ((string)(null)), table63, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table60 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "scaling(0.5, 0.5, 0.5)"});
 #line 14
- testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table60, "And ");
+ testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table64, "And ");
 #line 16
  testRunner.When("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
@@ -183,9 +183,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 35
  testRunner.And("intersection ← Intersection(4, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 36
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 37
- testRunner.And("color ← shade_hit(w, computations)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
  testRunner.Then("color = Color(0.38066, 0.47583, 0.2855)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -212,9 +212,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 45
  testRunner.And("intersection ← Intersection(0.5, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 46
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 47
- testRunner.And("color ← shade_hit(w, computations)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 48
  testRunner.Then("color = Color(0.90498, 0.90498, 0.90498)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -386,11 +386,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 96
  testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table61 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "translation(0, 0, 10)"});
 #line 97
- testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table61, "And ");
+ testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table65, "And ");
 #line 99
  testRunner.And("sphere2 is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 100
@@ -398,11 +398,458 @@ this.ScenarioInitialize(scenarioInfo);
 #line 101
  testRunner.And("intersection ← Intersection(4, sphere2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 102
- testRunner.When("computations ← prepare_computations(i, r)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 103
- testRunner.And("color ← shade_hit(w, computations)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 104
  testRunner.Then("color = Color(0.1, 0.1, 0.1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The reflected color for a nonreflective material")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The reflected color for a nonreflective material")]
+        public virtual void TheReflectedColorForANonreflectiveMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The reflected color for a nonreflective material", null, ((string[])(null)));
+#line 106
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 107
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 108
+ testRunner.And("ray ← Ray(Point(0, 0, 0), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.And("sphere ← the second shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.And("sphere.Material.Ambient ← 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 111
+ testRunner.And("intersection ← Intersection(1, sphere)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 113
+ testRunner.And("color ← world.ReflectedColor(computations)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 114
+ testRunner.Then("color = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The reflected color for a reflective material")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The reflected color for a reflective material")]
+        public virtual void TheReflectedColorForAReflectiveMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The reflected color for a reflective material", null, ((string[])(null)));
+#line 116
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 117
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.reflective",
+                        "0.5"});
+            table66.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+#line 118
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table66, "And ");
+#line 121
+ testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 122
+ testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 123
+ testRunner.And("intersection ← Intersection(√2, plane)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 125
+ testRunner.And("color ← world.ReflectedColor(computations)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 126
+ testRunner.Then("color = Color(0.19032, 0.2379, 0.14274)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="shade_hit() with a reflective material")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "shade_hit() with a reflective material")]
+        public virtual void Shade_HitWithAReflectiveMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("shade_hit() with a reflective material", null, ((string[])(null)));
+#line 128
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 129
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.reflective",
+                        "0.5"});
+            table67.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+#line 130
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table67, "And ");
+#line 133
+ testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 134
+ testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 135
+ testRunner.And("intersection ← Intersection(√2, plane)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 136
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 137
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 138
+ testRunner.Then("color = Color(0.87677, 0.92436, 0.82918)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="color_at() with mutually reflective surfaces")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "color_at() with mutually reflective surfaces")]
+        public virtual void Color_AtWithMutuallyReflectiveSurfaces()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("color_at() with mutually reflective surfaces", null, ((string[])(null)));
+#line 140
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 141
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 142
+ testRunner.And("light ← PointLight(Point(0, 0, 0), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.reflective",
+                        "1"});
+            table68.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+#line 143
+ testRunner.And("lowerPlane ← Plane() with:", ((string)(null)), table68, "And ");
+#line 146
+ testRunner.And("lowerPlane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.reflective",
+                        "1"});
+            table69.AddRow(new string[] {
+                        "transform",
+                        "translation(0, 1, 0)"});
+#line 147
+ testRunner.And("upperPlane ← Plane() with:", ((string)(null)), table69, "And ");
+#line 150
+ testRunner.And("upperPlane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 151
+ testRunner.And("ray ← Ray(Point(0, 0, 0), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 152
+ testRunner.Then("world.ColorAt(ray) should terminate successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The reflected color at the maximum recursive depth")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The reflected color at the maximum recursive depth")]
+        public virtual void TheReflectedColorAtTheMaximumRecursiveDepth()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The reflected color at the maximum recursive depth", null, ((string[])(null)));
+#line 154
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 155
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.reflective",
+                        "0.5"});
+            table70.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+#line 156
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table70, "And ");
+#line 159
+ testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 160
+ testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 161
+ testRunner.And("intersection ← Intersection(√2, plane)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 162
+ testRunner.When("computations ← intersection.PrepareComputations(ray)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 163
+ testRunner.And("color ← world.ReflectedColor(computations, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 164
+ testRunner.Then("color = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The refracted color with an opaque surface")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The refracted color with an opaque surface")]
+        public virtual void TheRefractedColorWithAnOpaqueSurface()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The refracted color with an opaque surface", null, ((string[])(null)));
+#line 166
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 167
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 168
+ testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 169
+ testRunner.And("ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 170
+ testRunner.And("intersections ← Add(4, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 171
+ testRunner.And("intersections ← Add(6, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 172
+ testRunner.When("computations ← intersections[0].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 173
+ testRunner.And("color ← world.RefractedColor(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 174
+ testRunner.Then("color = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The refracted color at the maximum recursive depth")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The refracted color at the maximum recursive depth")]
+        public virtual void TheRefractedColorAtTheMaximumRecursiveDepth()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The refracted color at the maximum recursive depth", null, ((string[])(null)));
+#line 176
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 177
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 178
+ testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.transparency",
+                        "1.0"});
+            table71.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 179
+ testRunner.And("sphere1 has:", ((string)(null)), table71, "And ");
+#line 182
+ testRunner.And("ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 183
+ testRunner.And("intersections ← Add(4, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 184
+ testRunner.And("intersections ← Add(6, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 185
+ testRunner.When("computations ← intersections[0].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 186
+ testRunner.And("color ← world.RefractedColor(computations, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 187
+ testRunner.Then("color = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The refracted color under total internal reflection")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The refracted color under total internal reflection")]
+        public virtual void TheRefractedColorUnderTotalInternalReflection()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The refracted color under total internal reflection", null, ((string[])(null)));
+#line 189
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 190
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 191
+ testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.transparency",
+                        "1.0"});
+            table72.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 192
+ testRunner.And("sphere1 has:", ((string)(null)), table72, "And ");
+#line 195
+ testRunner.And("ray ← Ray(Point(0, 0, √2/2), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 196
+ testRunner.And("intersections ← Add(-√2/2, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 197
+ testRunner.And("intersections ← Add(√2/2, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 200
+ testRunner.When("computations ← intersections[1].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 201
+ testRunner.And("color ← world.RefractedColor(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 202
+ testRunner.Then("color = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="The refracted color with a refracted ray")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "The refracted color with a refracted ray")]
+        public virtual void TheRefractedColorWithARefractedRay()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The refracted color with a refracted ray", null, ((string[])(null)));
+#line 204
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 205
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 206
+ testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.pattern",
+                        "TestPatter()"});
+            table73.AddRow(new string[] {
+                        "material.Ambient",
+                        "1.0"});
+#line 207
+ testRunner.And("sphere1 has:", ((string)(null)), table73, "And ");
+#line 210
+ testRunner.And("sphere2 ← the second shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.Transparency",
+                        "1.0"});
+            table74.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 211
+ testRunner.And("sphere2 has:", ((string)(null)), table74, "And ");
+#line 214
+ testRunner.And("ray ← Ray(Point(0, 0, 0.1), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 215
+ testRunner.And("intersections ← Add(-0.9899, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 216
+ testRunner.And("intersections ← Add(-0.4899, sphere2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 217
+ testRunner.And("intersections ← Add(0.4899, sphere2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 218
+ testRunner.And("intersections ← Add(0.9899, sphere1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 219
+ testRunner.When("computations ← intersections[2].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 220
+ testRunner.And("color ← world.RefractedColor(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 221
+ testRunner.Then("color = Color(0, 0.99888, 0.04725)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="shade_hit() with a transparent material")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "shade_hit() with a transparent material")]
+        public virtual void Shade_HitWithATransparentMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("shade_hit() with a transparent material", null, ((string[])(null)));
+#line 223
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 224
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+            table75.AddRow(new string[] {
+                        "material.Transparency",
+                        "0.5"});
+            table75.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 225
+ testRunner.And("floor ← Plane() with:", ((string)(null)), table75, "And ");
+#line 229
+ testRunner.And("floor is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.color",
+                        "(1, 0, 0)"});
+            table76.AddRow(new string[] {
+                        "material.Ambient",
+                        "0.5"});
+            table76.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -3.5, -0.5)"});
+#line 230
+ testRunner.And("sphere ← Sphere() with:", ((string)(null)), table76, "And ");
+#line 234
+ testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 235
+ testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 236
+ testRunner.And("intersections ← Add(√2, floor)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 237
+ testRunner.When("computations ← intersections[0].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 238
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 239
+ testRunner.Then("color = Color(0.93642, 0.68642, 0.68642)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="shade_hit() with a reflective, transparent material")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "shade_hit() with a reflective, transparent material")]
+        public virtual void Shade_HitWithAReflectiveTransparentMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("shade_hit() with a reflective, transparent material", null, ((string[])(null)));
+#line 241
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 242
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 243
+ testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
+                        "transform",
+                        "translation(0, -1, 0)"});
+            table77.AddRow(new string[] {
+                        "material.reflective",
+                        "0.5"});
+            table77.AddRow(new string[] {
+                        "material.Transparency",
+                        "0.5"});
+            table77.AddRow(new string[] {
+                        "material.RefractiveIndex",
+                        "1.5"});
+#line 244
+ testRunner.And("floor ← Plane() with:", ((string)(null)), table77, "And ");
+#line 249
+ testRunner.And("floor is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
+                        "material.color",
+                        "(1, 0, 0)"});
+            table78.AddRow(new string[] {
+                        "material.Ambient",
+                        "0.5"});
+            table78.AddRow(new string[] {
+                        "transform",
+                        "translation(0, -3.5, -0.5)"});
+#line 250
+ testRunner.And("sphere ← Sphere() with:", ((string)(null)), table78, "And ");
+#line 254
+ testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 255
+ testRunner.And("intersections ← Add(√2, floor)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 256
+ testRunner.When("computations ← intersections[0].PrepareComputations(ray, intersections)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 257
+ testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 258
+ testRunner.Then("color = Color(0.93391, 0.69643, 0.69243)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

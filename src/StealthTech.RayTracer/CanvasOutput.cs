@@ -5,16 +5,19 @@ namespace StealthTech.RayTracer
 {
     public class PpmOutput
     {
-        public static void WriteToFile(string fileName, string ppmContent)
+        public static void WriteToFile(string fileName, string ppmContent, bool showAfter = true)
         {
             File.WriteAllText(fileName, ppmContent);
-            new Process
+            if (showAfter)
             {
-                StartInfo = new ProcessStartInfo(fileName)
+                new Process
                 {
-                    UseShellExecute = true
-                }
-            }.Start();
+                    StartInfo = new ProcessStartInfo(fileName)
+                    {
+                        UseShellExecute = true
+                    }
+                }.Start();
+            }
         }
     }
 }

@@ -70,3 +70,9 @@ Scenario: The normal is a normalized vector
 	Given sphere ← Sphere()
 	When normalVector ← normal_at(sphere, Point(√3/3, √3/3, √3/3))
 	Then normalVector = normalize(normalVector)
+
+Scenario: A helper for producing a sphere with a glassy material
+	Given sphere ← GlassSphere()
+	Then sphere.Transform = identityMatrix
+	And sphere.Material.Transparency = 1.0
+	And sphere.Material.RefractiveIndex = 1.5

@@ -21,8 +21,6 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtVector NormalizedVector { get; set; }
 
-        public RtVector NormalVector { get; set; }
-
         public RtVector NormalVector1 { get; set; }
 
         public RtVector NormalVector2 { get; set; }
@@ -37,6 +35,6 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtVector Direction { get; }
 
-        public RtVector EyeVector { get; set; }
+        public RtVector NormalVector { get; set; }
     }
 }

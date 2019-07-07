@@ -37,7 +37,36 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _planesContext.Plane = new Plane();
         }
-        
+
+        [Given(@"plane ← Plane\(\) with:")]
+        public void Given_plane_Is_Plane_With(Table table)
+        {
+            _planesContext.Plane = new Plane();
+            table.SetShapePropertiesFromTable(_planesContext.Plane);
+        }
+
+        [Given(@"upperPlane ← Plane\(\) with:")]
+        public void Given_upperPlane_Is_Plane_With(Table table)
+        {
+            _planesContext.upperPlane = new Plane();
+            table.SetShapePropertiesFromTable(_planesContext.upperPlane);
+        }
+
+        [Given(@"lowerPlane ← Plane\(\) with:")]
+        public void Given_lowerPlane_Is_Plane_With(Table table)
+        {
+            _planesContext.lowerPlane = new Plane();
+            table.SetShapePropertiesFromTable(_planesContext.lowerPlane);
+        }
+
+        [Given(@"floor ← Plane\(\) with:")]
+        public void Given_floor_Is_Plane_With(Table table)
+        {
+            _planesContext.Floor = new Plane();
+            table.SetShapePropertiesFromTable(_planesContext.Floor);
+        }
+
+
         [When(@"normalVector1 ← plane\.LocalNormalAt\(point\((.*), (.*), (.*)\)\)")]
         public void When_normal1_Is_The_Results_Of_plane_LocalNormalAt(double x, double y, double z)
         {
@@ -61,7 +90,5 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _intersectionsContext.Intersections = _planesContext.Plane.LocalIntersect(_rayContext.Ray);
         }
-
-
     }
 }

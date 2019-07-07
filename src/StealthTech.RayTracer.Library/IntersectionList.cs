@@ -16,12 +16,12 @@ namespace StealthTech.RayTracer.Library
     {
         private List<Intersection> _intersections;
         private bool _sorted = false;
-        
-        public IEnumerable<Intersection> Intersections
+
+        public IEnumerable<Intersection> Items
         {
             get
             {
-                return _intersections;
+                return _intersections.OrderBy(i => i.Time);
             }
         }
 
@@ -42,10 +42,7 @@ namespace StealthTech.RayTracer.Library
 
         public void AddRange(IntersectionList intersectionList)
         {
-            foreach (var intersection in intersectionList.Intersections)
-            {
-                _intersections.Add(intersection);
-            }
+            _intersections.AddRange(intersectionList._intersections);
             _sorted = false;
         }
 
@@ -65,11 +62,27 @@ namespace StealthTech.RayTracer.Library
             return intersectionsGreaterThanZero.FirstOrDefault(i => i.Time == minTime);
         }
 
+        public Intersection ShadowHit()
+        {
+            var intersectionsGreaterThanZero = _intersections
+                .Where(i => i.Time > 0 && i.Shape.CastShadow)
+                .ToList();
+
+            if (intersectionsGreaterThanZero == null || intersectionsGreaterThanZero.Count == 0)
+            {
+                return null;
+            }
+
+            var minTime = intersectionsGreaterThanZero.Min(i => i.Time);
+
+            return intersectionsGreaterThanZero.FirstOrDefault(i => i.Time == minTime);
+        }
+
         public Intersection this[int index]
         {
             get
             {
-                if(!_sorted)
+                if (!_sorted)
                 {
                     _intersections = _intersections.OrderBy(i => i.Time).ToList();
                 }

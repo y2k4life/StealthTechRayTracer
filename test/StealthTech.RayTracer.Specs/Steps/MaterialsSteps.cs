@@ -20,13 +20,16 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly VectorsContext _vectorsContext;
         readonly LightsContext _lightsContext;
         readonly ColorsContext _colorsContext;
+        readonly ComputationsContext _computationsContext;
 
         public MaterialsSteps(MaterialsContext materialsContext, 
             PointsContext pointsContext, 
             VectorsContext vectorsContext,
             LightsContext lightsContext,
-            ColorsContext colorContext)
+            ColorsContext colorContext,
+            ComputationsContext computationsContext)
         {
+            _computationsContext = computationsContext;
             _colorsContext = colorContext;
             _lightsContext = lightsContext;
             _vectorsContext = vectorsContext;
@@ -73,39 +76,45 @@ namespace StealthTech.RayTracer.Specs.Steps
                 new RtColor(colorBRed, colorBGreen, colorBBlue));
         }
 
+        [Then(@"material\.Transparency = (.*)")]
+        public void Then_Transparency_Of_Material_Should_Equal(double expectedTransparency)
+        {
+            Assert.Equal(expectedTransparency, _materialsContext.Material.Transparency);
+        }
+
+        [Then(@"material\.RefractiveIndex = (.*)")]
+        public void Then_RefractiveIndex_Of_Material_Should_Equal(double expectedRefractiveIndex)
+        {
+            Assert.Equal(expectedRefractiveIndex, _materialsContext.Material.RefractiveIndex);
+        }
+
+
         [When(@"result ← lighting\(m, light, position, eyeVector, normalVector, inShadow\)")]
         public void When_Result_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow()
         {
             _materialsContext.Results = _materialsContext.Material.Lighting(
-                new Sphere(),
+                _computationsContext.Computations,
                 _lightsContext.Light,
-                _pointsContext.Position,
-                _vectorsContext.EyeVector,
-                _vectorsContext.NormalVector,
                 _materialsContext.InShadow);
         }
 
         [When(@"color1 ← lighting\(m, light, Point\((.*), (.*), (.*)\), eyeVector, normalVector, false\)")]
         public void When_color1_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(double x, double y, double z)
         {
+            _computationsContext.Computations.Position = new RtPoint(x, y, z);
             _colorsContext.Color1 = _materialsContext.Material.Lighting(
-                new Sphere(),
+                _computationsContext.Computations,
                 _lightsContext.Light,
-                new RtPoint(x, y, z),
-                _vectorsContext.EyeVector,
-                _vectorsContext.NormalVector,
                 _materialsContext.InShadow);
         }
 
         [When(@"color2 ← lighting\(m, light, Point\((.*), (.*), (.*)\), eyeVector, normalVector, false\)")]
         public void When_color2_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(double x, double y, double z)
         {
+            _computationsContext.Computations.Position = new RtPoint(x, y, z);
             _colorsContext.Color2 = _materialsContext.Material.Lighting(
-                new Sphere(),
+                _computationsContext.Computations,
                 _lightsContext.Light,
-                new RtPoint(x, y, z),
-                _vectorsContext.EyeVector,
-                _vectorsContext.NormalVector,
                 _materialsContext.InShadow);
         }
 
@@ -113,11 +122,8 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void When_Result_Lighting_Light_Position_EyeV_NormalV()
         {
             _materialsContext.Results = _materialsContext.Material.Lighting(
-                new Sphere(),
+                _computationsContext.Computations,
                 _lightsContext.Light,
-                _pointsContext.Position,
-                _vectorsContext.EyeVector,
-                _vectorsContext.NormalVector,
                 _materialsContext.InShadow);
         }
 
@@ -170,6 +176,10 @@ namespace StealthTech.RayTracer.Specs.Steps
             Assert.Equal(expectedColor, _materialsContext.Results);
         }
 
-
+        [Then(@"material\.Reflective = (.*)")]
+        public void Then_Reflective_Of_material_Should_Equal(double expectedReflective)
+        {
+            Assert.Equal(expectedReflective, _materialsContext.Material.Reflective);
+        }
     }
 }

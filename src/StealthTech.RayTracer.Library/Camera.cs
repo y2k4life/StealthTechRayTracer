@@ -72,7 +72,7 @@ namespace StealthTech.RayTracer.Library
                 for (int x = topX; x < topX + width; x++)
                 {
                     var ray = RayForPixel(x, y);
-                    var color = world.ColorAt(ray);
+                    var color = world.ColorAt(ray, 4);
                     image[x, y] = color;
                 }
             }
@@ -90,7 +90,7 @@ namespace StealthTech.RayTracer.Library
                     Parallel.For(0, HorizontalSize, x =>
                     {
                         var ray = RayForPixel(x, y);
-                        var color = world.ColorAt(ray);
+                        var color = world.ColorAt(ray, 4);
                         image[x, y] = color;
                     });
                 });
@@ -102,7 +102,7 @@ namespace StealthTech.RayTracer.Library
                     for (int x = 0; x < HorizontalSize; x++)
                     {
                         var ray = RayForPixel(x, y);
-                        var color = world.ColorAt(ray);
+                        var color = world.ColorAt(ray, 4);
                         image[x, y] = color;
                         //output?.Invoke(x, y, color.ToARGB());
                     }

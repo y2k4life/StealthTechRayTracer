@@ -133,11 +133,15 @@ namespace StealthTech.RayTracer.Exercises
                     var intersections = shape.Intersect(ray);
                     if (intersections.HasHit())
                     {
+                        var computations = new Computations();
                         var intersection = intersections.Hit();
-                        var point = ray.Position(intersection.Time);
-                        var normal = shape.NormalAt(point);
-                        var eye = ray.Direction.Negate();
-                        var color = shape.Material.Lighting(intersection.Shape, light, point, eye, normal);
+
+                        computations.Shape = intersection.Shape;
+                        computations.Position = ray.Position(intersection.Time);
+                        computations.NormalVector = shape.NormalAt(computations.Position);
+                        computations.EyeVector = ray.Direction.Negate();
+                        
+                        var color = shape.Material.Lighting(computations, light);
                         canvas[x, y] = color;
                     }
                 }

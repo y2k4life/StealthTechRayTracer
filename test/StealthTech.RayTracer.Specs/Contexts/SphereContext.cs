@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using StealthTech.RayTracer.Library;
+using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Specs.Contexts
 {
@@ -20,5 +21,9 @@ namespace StealthTech.RayTracer.Specs.Contexts
         public Sphere Sphere1 { get; set; }
 
         public Sphere Sphere2 { get; set; }
+
+        public Sphere Sphere3 { get; set; }
+
+        public Sphere[] Spheres { get; } = new Sphere[5];
     }
 }

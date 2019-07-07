@@ -317,6 +317,27 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="A helper for producing a sphere with a glassy material")]
+        [Xunit.TraitAttribute("FeatureTitle", "Spheres")]
+        [Xunit.TraitAttribute("Description", "A helper for producing a sphere with a glassy material")]
+        public virtual void AHelperForProducingASphereWithAGlassyMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A helper for producing a sphere with a glassy material", null, ((string[])(null)));
+#line 74
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 75
+ testRunner.Given("sphere ← GlassSphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 76
+ testRunner.Then("sphere.Transform = identityMatrix", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 77
+ testRunner.And("sphere.Material.Transparency = 1.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 78
+ testRunner.And("sphere.Material.RefractiveIndex = 1.5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

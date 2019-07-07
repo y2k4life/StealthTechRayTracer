@@ -30,16 +30,25 @@ namespace StealthTech.RayTracer.PerformanceTuning
 
         public void RunChapterNine()
         {
-            var tuning = new ChapterNine();
+            var animation = new Animation()
+            {
+                FrameCount = 300,
+                StartFrame = 1
+            };
+                        
+            var tuning = new ChapterNine(animation);
 
-            //for (int x = 0; x < 6; x++)
-            //{
-            //    var canvas = tuning.Reference(((x + 1) * -1.1) + x);
-            //    PpmOutput.WriteToFile($"world{x}.ppm", canvas.GetPPMContent());
-            //}
 
-            var canvas = tuning.Reference(-Math.PI / 2);
-            PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
+            for (int x = animation.StartFrame; x < animation.FrameCount + 1; x++)
+            {
+                animation.CurrentFrame = x;
+                var canvas = tuning.Render();
+
+                PpmOutput.WriteToFile($"world{x}.ppm", canvas.GetPPMContent(), false);
+            }
+
+            //var canvas = tuning.Reference(-Math.PI / 2);
+            //PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
 
         }
     }

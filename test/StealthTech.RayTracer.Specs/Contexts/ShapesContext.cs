@@ -12,5 +12,7 @@ namespace StealthTech.RayTracer.Specs.Contexts
     public class ShapesContext
     {
         public TestShape TestShape { get; set; }
+
+        public Shape Shape { get; set; }
     }
 }

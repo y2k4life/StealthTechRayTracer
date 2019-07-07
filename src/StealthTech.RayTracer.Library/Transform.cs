@@ -44,6 +44,7 @@ namespace StealthTech.RayTracer.Library
         {
             return Translation(location.X, location.Y, location.Z);
         }
+
         public Transform Translation(double x, double y, double z)
         {
             var translation = new RtMatrix(4, 4).Identity();

@@ -53,10 +53,10 @@ Scenario: Precomputing the state of an intersection
 	Given ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))
 	And sphere ← Sphere()
 	And intersection ← Intersection(4, sphere)
-	When computations ← prepare_computations(i, r)
+	When computations ← intersection.PrepareComputations(ray)
 	Then computations.Time = intersection.Time
 	And computations.Shape = intersection.Shape
-	And computations.Point = Point(0, 0, -1)
+	And computations.Position = Point(0, 0, -1)
 	And computations.EyeVector = Vector(0, 0, -1)
 	And computations.NormalVector = Vector(0, 0, -1)
 
@@ -64,15 +64,15 @@ Scenario: The hit, when an intersection occurs on the outside
 	Given ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))
 	And sphere ← Sphere()
 	And intersection ← Intersection(4, sphere)
-	When computations ← prepare_computations(i, r)
+	When computations ← intersection.PrepareComputations(ray)
 	Then computations.Inside = false
 
 Scenario: The hit, when an intersection occurs on the inside
 	Given ray ← Ray(Point(0, 0, 0), Vector(0, 0, 1))
 	And sphere ← Sphere()
 	And intersection ← Intersection(1, sphere)
-	When computations ← prepare_computations(i, r)
-	Then computations.Point = Point(0, 0, 1)
+	When computations ← intersection.PrepareComputations(ray)
+	Then computations.Position = Point(0, 0, 1)
 	And computations.EyeVector = Vector(0, 0, -1)
 	And computations.Inside = true
 	# normal would have been (0, 0, 1), but is inverted!
@@ -83,6 +83,79 @@ Scenario: The hit should offset the point
 	And sphere ← Sphere() with:
 		| transform | translation(0, 0, 1) |
 	And intersection ← Intersection(5, sphere)
-	When computations ← prepare_computations(i, r)
+	When computations ← intersection.PrepareComputations(ray)
 	Then computations.OverPoint.Z < -EPSILON/2
 	And computations.Point.Z > computations.OverPoint.Z
+
+Scenario: Precomputing the reflection vector
+	Given plane ← Plane()
+	And ray ← Ray(Point(0, 1, -1), Vector(0, -√2/2, √2/2))
+	And intersection ← Intersection(√2, plane)
+	When computations ← intersection.PrepareComputations(ray)
+	Then computations.ReflectVector = Vector(0, √2/2, √2/2)
+
+Scenario Outline: Finding n1 and n2 at various intersections
+	Given sphere1 ← GlassSphere() with:
+		| transform                | scaling(2, 2, 2) |
+		| material.RefractiveIndex | 1.5              |
+	And sphere2 ← GlassSphere() with:
+		| transform                | translation(0, 0, -0.25) |
+		| material.RefractiveIndex | 2.0                      |
+	And sphere3 ← GlassSphere() with:
+		| transform                | translation(0, 0, 0.25) |
+		| material.RefractiveIndex | 2.5                     |
+	And ray ← Ray(Point(0, 0, -4), Vector(0, 0, 1))
+	And intersections ← Add(2, sphere1)
+	And intersections ← Add(2.75, sphere2)
+	And intersections ← Add(3.25, sphere3)
+	And intersections ← Add(4.75, sphere2)
+	And intersections ← Add(5.25, sphere3)
+	And intersections ← Add(6, sphere1)
+	When computations ← intersections[<index>].PrepareComputations(ray, intersections)
+	Then computations.n1 = <n1>
+	And computations.n2 = <n2>
+
+	Examples:
+		| index | n1  | n2  |
+		| 0     | 1.0 | 1.5 |
+		| 1     | 1.5 | 2.0 |
+		| 2     | 2.0 | 2.5 |
+		| 3     | 2.5 | 2.5 |
+		| 4     | 2.5 | 1.5 |
+		| 5     | 1.5 | 1.0 |
+
+Scenario: The under point is offset below the surface
+	Given ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))
+	And sphere ← GlassSphere() with:
+		| transform | translation(0, 0, 1) |
+	And intersection ← Intersection(5, sphere)
+	And intersections ← Add(intersection)
+	When computations ← intersections.PrepareComputations(ray, intersections)
+	Then computations.UnderPoint.Z > EPSILON/2
+	And computations.Position.Z < computations.UnderPoint.Z
+
+Scenario: The Schlick approximation under total internal reflection
+	Given sphere1 ← GlassSphere()
+	And ray ← Ray(Point(0, 0, √2/2), Vector(0, 1, 0))
+	And intersections ← Add(-√2/2, sphere1)
+	And intersections ← Add(√2/2, sphere1)
+	When computations ← intersections[1].PrepareComputations(ray, intersections)
+	And reflectance ← computations.Schlick()
+	Then reflectance = 1.0
+
+Scenario: The Schlick approximation with a perpendicular viewing angle
+	Given sphere1 ← GlassSphere()
+	And ray ← Ray(Point(0, 0, 0), Vector(0, 1, 0))
+	And intersections ← Add(-1, sphere1)
+	And intersections ← Add(1, sphere1)
+	When computations ← intersections[1].PrepareComputations(ray, intersections)
+	And reflectance ← computations.Schlick()
+	Then reflectance = 0.04
+
+Scenario: The Schlick approximation with small angle and n2 > n1
+	Given sphere1 ← GlassSphere()
+	And ray ← Ray(Point(0, 0.99, -2), Vector(0, 0, 1))
+	And intersections ← Add(1.8589, sphere1)
+	When computations ← intersections[0].PrepareComputations(ray, intersections)
+	And reflectance ← computations.Schlick()
+	Then reflectance = 0.48873

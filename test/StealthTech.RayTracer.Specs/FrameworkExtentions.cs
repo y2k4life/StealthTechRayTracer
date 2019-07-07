@@ -26,6 +26,10 @@ namespace StealthTech.RayTracer.Specs
 
                     return Math.Sqrt(Convert.ToDouble(left)) / Convert.ToDouble(right);
                 }
+                else
+                {
+                    return Math.Sqrt(Convert.ToDouble(expression));
+                }
             }
 
             return Convert.ToDouble(expression);

@@ -77,7 +77,9 @@ namespace StealthTech.RayTracer.Specs
 #line 4
  testRunner.Given("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
- testRunner.And("position ← Point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations ← Computations()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 6
+ testRunner.And("computations.Shape = Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -92,22 +94,22 @@ namespace StealthTech.RayTracer.Specs
         public virtual void TheDefaultMaterial()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The default material", null, ((string[])(null)));
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 8
- testRunner.Given("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.Then("material.Color = Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.And("material.Ambient = 0.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("material.Color = Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
- testRunner.And("material.Diffuse = 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("material.Ambient = 0.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("material.Specular = 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("material.Diffuse = 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
+ testRunner.And("material.Specular = 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
  testRunner.And("material.Shininess = 200.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -119,20 +121,20 @@ this.FeatureBackground();
         public virtual void LightingWithTheEyeBetweenTheLightAndTheSurface()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with the eye between the light and the surface", null, ((string[])(null)));
-#line 15
+#line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 16
- testRunner.Given("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
- testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
  testRunner.Then("result = Color(1.9, 1.9, 1.9)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -144,20 +146,20 @@ this.FeatureBackground();
         public virtual void LightingWithTheEyeBetweenLightAndSurfaceEyeOffset45()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with the eye between light and surface, eye offset 45°", null, ((string[])(null)));
-#line 22
+#line 23
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 23
- testRunner.Given("eyeVector ← Vector(0, √2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, √2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 25
- testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 26
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
  testRunner.Then("result = Color(1.0, 1.0, 1.0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -169,20 +171,20 @@ this.FeatureBackground();
         public virtual void LightingWithEyeOppositeSurfaceLightOffset45()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with eye opposite surface, light offset 45°", null, ((string[])(null)));
-#line 29
+#line 30
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 30
- testRunner.Given("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 31
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
- testRunner.And("light ← PointLight(Point(0, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 33
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 34
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 35
  testRunner.Then("result = Color(0.7364, 0.7364, 0.7364)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -194,20 +196,20 @@ this.FeatureBackground();
         public virtual void LightingWithEyeInThePathOfTheReflectionVector()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with eye in the path of the reflection vector", null, ((string[])(null)));
-#line 36
+#line 37
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 37
- testRunner.Given("eyeVector ← Vector(0, -√2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, -√2/2, -√2/2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 39
- testRunner.And("light ← PointLight(Point(0, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 40
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 41
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 42
  testRunner.Then("result = Color(1.6364, 1.6364, 1.6364)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -219,20 +221,20 @@ this.FeatureBackground();
         public virtual void LightingWithTheLightBehindTheSurface()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with the light behind the surface", null, ((string[])(null)));
-#line 43
+#line 44
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 44
- testRunner.Given("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 46
- testRunner.And("light ← PointLight(Point(0, 0, 10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 47
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 0, 10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 48
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 49
  testRunner.Then("result = Color(0.1, 0.1, 0.1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -244,22 +246,22 @@ this.FeatureBackground();
         public virtual void LightingWithTheSurfaceInShadow()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with the surface in shadow", null, ((string[])(null)));
-#line 50
+#line 51
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 51
- testRunner.Given("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 52
- testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 53
- testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 54
- testRunner.And("inShadow ← true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 55
- testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector, inShadow)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("inShadow ← true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 56
+ testRunner.When("result ← lighting(m, light, position, eyeVector, normalVector, inShadow)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 57
  testRunner.Then("result = Color(0.1, 0.1, 0.1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -271,33 +273,73 @@ this.FeatureBackground();
         public virtual void LightingWithAPatternApplied()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lighting with a pattern applied", null, ((string[])(null)));
-#line 58
+#line 59
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 3
 this.FeatureBackground();
-#line 59
-  testRunner.Given("material.Pattern ← StripePattern(color(1, 1, 1), color(0, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 60
-    testRunner.And("material.Ambient ← 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("material.Pattern ← StripePattern(color(1, 1, 1), color(0, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 61
-    testRunner.And("material.Diffuse ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("material.Ambient ← 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 62
-    testRunner.And("material.Specular ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("material.Diffuse ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 63
-    testRunner.And("eyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("material.Specular ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 64
-    testRunner.And("normalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 65
-    testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 66
-  testRunner.When("color1 ← lighting(m, light, Point(0.9, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67
-    testRunner.And("color2 ← lighting(m, light, Point(1.1, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("color1 ← lighting(m, light, Point(0.9, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 68
-  testRunner.Then("color1 = Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("color2 ← lighting(m, light, Point(1.1, 0, 0), eyeVector, normalVector, false)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 69
-    testRunner.And("color2 = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("color1 = Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 70
+ testRunner.And("color2 = Color(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Reflectivity for the default material")]
+        [Xunit.TraitAttribute("FeatureTitle", "Materials")]
+        [Xunit.TraitAttribute("Description", "Reflectivity for the default material")]
+        public virtual void ReflectivityForTheDefaultMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reflectivity for the default material", null, ((string[])(null)));
+#line 72
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 73
+ testRunner.Given("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 74
+ testRunner.Then("material.Reflective = 0.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Transparency and Refractive Index for the default material")]
+        [Xunit.TraitAttribute("FeatureTitle", "Materials")]
+        [Xunit.TraitAttribute("Description", "Transparency and Refractive Index for the default material")]
+        public virtual void TransparencyAndRefractiveIndexForTheDefaultMaterial()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transparency and Refractive Index for the default material", null, ((string[])(null)));
+#line 76
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 77
+ testRunner.Given("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 78
+ testRunner.Then("material.Transparency = 0.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 79
+ testRunner.And("material.RefractiveIndex = 1.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

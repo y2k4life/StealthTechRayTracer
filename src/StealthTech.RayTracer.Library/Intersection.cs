@@ -6,10 +6,12 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StealthTech.RayTracer.Library
 {
-    public class Intersection
+    public class Intersection : IEquatable<Intersection>
     {
         public Intersection(double time, Shape item)
         {
@@ -21,17 +23,17 @@ namespace StealthTech.RayTracer.Library
 
         public Shape Shape { get; set; }
 
-        public Computations PrepareComputations(Ray ray)
+        public Computations PrepareComputations(Ray ray, IntersectionList intersections)
         {
             var computations = new Computations()
             {
                 Time = Time,
                 Shape = Shape,
-                Point = ray.Position(Time),
+                Position = ray.Position(Time),
                 EyeVector = ray.Direction.Negate(),
             };
 
-            computations.NormalVector = Shape.NormalAt(computations.Point);
+            computations.NormalVector = Shape.NormalAt(computations.Position);
 
             if(computations.NormalVector.Dot(computations.EyeVector) < 0)
             {
@@ -43,7 +45,69 @@ namespace StealthTech.RayTracer.Library
                 computations.Inside = false;
             }
 
+            computations.ReflectVector = ray.Direction.Reflect(computations.NormalVector);
+
+            List<Shape> container = new List<Shape>();
+
+            if(intersections != null && intersections.Count > 0)
+            {
+                foreach (var intersection in intersections.Items)
+                {
+                    if (intersection == this)
+                    {
+                        if (container.Count == 0)
+                        {
+                            computations.n1 = 1.0;
+                        }
+                        else
+                        {
+                            computations.n1 = container.Last().Material.RefractiveIndex;
+                        }
+                    }
+
+                    if (container.Contains(intersection.Shape))
+                    {
+                        container.Remove(intersection.Shape);
+                    }
+                    else
+                    {
+                        container.Add(intersection.Shape);
+                    }
+
+                    if (intersection == this)
+                    {
+                        if (container.Count == 0)
+                        {
+                            computations.n2 = 1.0;
+                        }
+                        else
+                        {
+                            computations.n2 = container.Last().Material.RefractiveIndex;
+                        }
+
+                        break;
+                    }
+                }
+            }
+
             return computations;
         }
+
+        public override string ToString()
+        {
+            return $"{Shape.Name} : {Time}";
+        }
+
+        public override int GetHashCode()
+        {
+            return Time.GetHashCode() ^ Shape.GetHashCode();
+        }
+
+        public bool Equals(Intersection other)
+        {
+            return Time.Equals(other.Time) &&
+                 Shape.Equals(other.Shape);
+        }
+
     }
 }
