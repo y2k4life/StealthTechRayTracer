@@ -34,6 +34,11 @@ namespace StealthTech.RayTracer.Library
 
         public bool IsEmpty => _intersections.Count == 0;
 
+        public void Add(double time, Shape shape)
+        {
+            Add(new Intersection(time, shape));
+        }
+
         public void Add(Intersection intersection)
         {
             _intersections.Add(intersection);
@@ -98,5 +103,6 @@ namespace StealthTech.RayTracer.Library
 
             return _intersections.Where(i => i.Time > 0).Count() > 0;
         }
+
     }
 }

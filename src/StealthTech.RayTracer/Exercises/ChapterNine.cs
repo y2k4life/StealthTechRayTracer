@@ -234,7 +234,7 @@ namespace StealthTech.RayTracer.Exercises
                 }
             };
 
-            if (_animation.CurrentFrame < 98)
+            if (_animation.CurrentFrame < 295)
             {
                 world.Shapes.Add(water);
             }
