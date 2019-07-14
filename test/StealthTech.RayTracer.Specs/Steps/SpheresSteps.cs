@@ -21,13 +21,19 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly IntersectionsContext _intersectionsContext;
         readonly MaterialsContext _materialsContext;
         readonly VectorsContext _vectorsContext;
+        readonly ComputationsContext _computationsContext;
+        readonly WorldContext _worldContext;
 
         public SpheresSteps(SphereContext sphereContext,
             RayContext rayContext,
             IntersectionsContext intersectionsContext,
             MaterialsContext materialsContext,
-            VectorsContext vectorsContext)
+            VectorsContext vectorsContext,
+            ComputationsContext computationsContext,
+            WorldContext worldContext)
         {
+            _worldContext = worldContext;
+            _computationsContext = computationsContext;
             _vectorsContext = vectorsContext;
             _materialsContext = materialsContext;
             _intersectionsContext = intersectionsContext;
@@ -73,6 +79,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _sphereContext.Sphere.Material.Ambient = ambient;
         }
+
 
         [Given(@"sphere ← GlassSphere\(\)")]
         public void Given_sphere_Is_GlassSphere()
@@ -145,6 +152,8 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             Assert.Equal(expectedRefractiveIndex, _sphereContext.Sphere.Material.RefractiveIndex);
         }
+
+
 
 
     }

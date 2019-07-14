@@ -12,53 +12,64 @@ namespace StealthTech.RayTracer.Library
 {
     public class Cube : Shape
     {
-        public Cube()
+        private static void SwapNum(ref double x, ref double y)
         {
+
+            double tempswap = x;
+            x = y;
+            y = tempswap;
         }
 
-        (double timeMin, double timeMax) CheckAxis(double origin, double direction)
-        {
-            var timeMinNumerator = -1 - origin;
-            var timeMaxNumerator = 1 - origin;
+        private bool CheckAxis(Ray ray, out double tmin, out double tmax)
+        {           
+            tmin = (-1 - ray.Origin.X) / ray.Direction.X;
+            tmax = (1 - ray.Origin.X) / ray.Direction.X;
 
-            double timeMin = 0;
-            double timeMax = 0;
+            if (tmin > tmax)
+                SwapNum(ref tmin, ref tmax);
 
-            timeMin = timeMinNumerator / direction;
-            timeMax = timeMaxNumerator / direction;
+            var tymin = (-1 - ray.Origin.Y) / ray.Direction.Y;
+            var tymax = (1 - ray.Origin.Y) / ray.Direction.Y;
 
-            if (timeMin > timeMax)
-            {
-                var temp = timeMin;
-                timeMin = timeMax;
-                timeMax = temp;
-            }
+            if (tymin > tymax)
+                SwapNum(ref tymin, ref tymax);
 
-            return (timeMin, timeMax);
+            if ((tmin > tymax) || (tymin > tmax))
+                return false;
+
+            tmin = tymin > tmin ? tymin : tmin;
+            tmax = tymax < tmax ? tymax : tmax;
+
+            var tzmin = (-1 - ray.Origin.Z) / ray.Direction.Z;
+            var tzmax = (1 - ray.Origin.Z) / ray.Direction.Z;
+
+            if (tzmin > tzmax)
+                SwapNum(ref tzmin, ref tzmax);
+
+            if ((tmin > tzmax) || (tzmin > tmax))
+                return false;
+
+            tmin = tzmin > tmin ? tzmin : tmin;
+            tmax = tzmax < tmax ? tzmax : tmax;
+
+            return true;
         }
 
         public override IntersectionList LocalIntersect(Ray ray)
         {
             var intersections = new IntersectionList();
 
-            (double xTimeMin, double xTimeMax) = CheckAxis(ray.Origin.X, ray.Direction.X);
-            (double yTimeMin, double yTimeMax) = CheckAxis(ray.Origin.Y, ray.Direction.Y);
-            (double zTimeMin, double zTimeMax) = CheckAxis(ray.Origin.Z, ray.Direction.Z);
-
-            var mins = new double[] { xTimeMin, yTimeMin, zTimeMin };
-            var timeMin = mins.Max();
-            var timeMax = (new double[] { xTimeMax, yTimeMax, zTimeMax }).Min();
-
-            if (timeMin > timeMax)
+            if (!CheckAxis(ray, out double tmin, out double tmax))
             {
                 return intersections;
             }
 
-            intersections.Add(timeMin, this);
-            intersections.Add(timeMax, this);
+            intersections.Add(tmin, this);
+            intersections.Add(tmax, this);
 
             return intersections;
         }
+
 
         public override RtVector LocalNormalAt(RtPoint point)
         {

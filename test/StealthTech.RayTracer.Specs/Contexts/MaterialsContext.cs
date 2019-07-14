@@ -15,6 +15,6 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtColor Results { get; set; }
 
-        public bool InShadow { get; set; }
+        public double Intensity { get; set; }
     }
 }

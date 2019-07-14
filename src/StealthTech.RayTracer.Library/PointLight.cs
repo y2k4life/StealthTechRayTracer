@@ -9,17 +9,13 @@ using System;
 
 namespace StealthTech.RayTracer.Library
 {
-    public class PointLight : IEquatable<PointLight>
+    public class PointLight : Light, IEquatable<PointLight>
     {
         public PointLight(RtPoint position, RtColor color)
         {
             Position = position;
             Intensity = color;
         }
-
-        public RtColor Intensity { get; set; }
-        
-        public RtPoint Position { get; set; }
 
         public override int GetHashCode()
         {
@@ -45,6 +41,18 @@ namespace StealthTech.RayTracer.Library
             }
 
             return (Position.Equals(other.Position) && Intensity.Equals(other.Intensity));
+        }
+
+        public override double IntensityAt(RtPoint point, World world)
+        {
+            if(world.IsShadowed(Position, point))
+            {
+                return 0.0;
+            }
+            else
+            {
+                return 1.0;
+            }
         }
     }
 }

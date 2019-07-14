@@ -7,6 +7,7 @@
 
 using StealthTech.RayTracer.EasyConsole;
 using StealthTech.RayTracer.Exercises;
+using StealthTech.RayTracer.Library;
 
 namespace StealthTech.RayTracer.Pages
 {
@@ -55,9 +56,25 @@ namespace StealthTech.RayTracer.Pages
 
             AddOption(new Option("Chapter Nine", () =>
             {
-                var chapter = new ChapterNine();
+                var animation = new Animation()
+                {
+                    FrameCount = 13,
+                    StartFrame = 1
+                };
+                
+                var chapter = new ChapterNine(animation);
                 chapter.Run();
                 Input.ReadString("Press [Enter] to navigate home");
+                Program.NavigateTo<ExercisePage>();
+            }));
+
+            AddOption(new Option("Bonus - Area Light", () =>
+            {
+                var bonus = new BonusAreaLight();
+
+                var canvas = bonus.Run();
+                PpmOutput.WriteToFile("world.ppm", canvas.GetPPMContent());
+
                 Program.NavigateTo<ExercisePage>();
             }));
         }

@@ -30,7 +30,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"computations.NormalVector ← Vector\((.*), (.*), (.*)\)")]
-        public void Given_normalVector_Is_A_Vector(double x, double y, double z)
+        public void Given_normalVector_Is_A_Vector(float x, float y, float z)
         {
             _computationsContext.Computations.NormalVector = new RtVector(x, y, z);
         }
@@ -47,6 +47,13 @@ namespace StealthTech.RayTracer.Specs.Steps
             _computationsContext.Computations.Shape = new Sphere();
         }
 
+        [Given(@"computations\.Position ← Point\((.*), (.*), (.*)\)")]
+        public void Given_Position_Of_Computations_Is_Point(float x, float y, float z)
+        {
+            _computationsContext.Computations.Position = new RtPoint(x, y, z);
+        }
+
+
         [When(@"reflectance ← computations.Schlick\(\)")]
         public void When_reflectance_Is_The_Results_Of_computations_Schlick()
         {
@@ -54,7 +61,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"computations\.EyeVector = Vector\((.*), (.*), (.*)\)")]
-        public void Then_EyeVector_Of_computations_Should_Equal_Vector(double x, double y, double z)
+        public void Then_EyeVector_Of_computations_Should_Equal_Vector(float x, float y, float z)
         {
             var expectedPoint = new RtVector(x, y, z);
 
@@ -64,7 +71,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"computations\.NormalVector = Vector\((.*), (.*), (.*)\)")]
-        public void Then_NormalVector_Of_computations_Should_Equal_Vector(double x, double y, double z)
+        public void Then_NormalVector_Of_computations_Should_Equal_Vector(float x, float y, float z)
         {
             var expectedPoint = new RtVector(x, y, z);
 
@@ -74,7 +81,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"computations\.Position = Point\((.*), (.*), (.*)\)")]
-        public void Then_Point_of_computations_Should_Equal_Point(double x, double y, double z)
+        public void Then_Point_of_computations_Should_Equal_Point(float x, float y, float z)
         {
             var expectedPoint = new RtPoint(x, y, z);
 
@@ -84,9 +91,9 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"reflectance = (.*)")]
-        public void Then_reflectance_Should_Equal(double expectedReflectance)
+        public void Then_reflectance_Should_Equal(float expectedReflectance)
         {
-            AssertDouble.ApproximateEquals(expectedReflectance, _computationsContext.Reflectance);
+            Assertfloat.ApproximateEquals(expectedReflectance, _computationsContext.Reflectance);
         }
     }
 }

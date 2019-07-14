@@ -28,5 +28,9 @@ namespace StealthTech.RayTracer.Specs.Contexts
         public RtPoint From { get; set; }
 
         public RtPoint To { get; set; }
+
+        public RtPoint LightPosition { get; set; }
+
+        public RtPoint Corner { get; set; }
     }
 }

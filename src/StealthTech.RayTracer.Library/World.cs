@@ -70,11 +70,12 @@ namespace StealthTech.RayTracer.Library
 
             foreach (var light in Lights)
             {
-                var inShadow = IsShadowed(computations.OverPosition, Lights[0]);
+                // var inShadow = IsShadowed(light.Position, computations.OverPosition);
+                var intensity = light.IntensityAt(computations.OverPosition, this);
                 var surface = computations.Shape.Material.Lighting(
                     computations,
                     Lights[0],
-                    inShadow);
+                    intensity);
 
                 var reflected = ReflectedColor(computations, remaining);
                 var refracted = RefractedColor(computations, remaining);
@@ -107,9 +108,9 @@ namespace StealthTech.RayTracer.Library
             return reflectColor * computations.Shape.Material.Reflective;
         }
 
-        public bool IsShadowed(RtPoint point, PointLight light)
+        public bool IsShadowed(RtPoint lightPosition, RtPoint point)
         {
-            var vector = light.Position - point;
+            var vector = lightPosition - point;
             var distance = vector.Magnitude();
             var direction = vector.Normalize();
 
@@ -154,6 +155,6 @@ namespace StealthTech.RayTracer.Library
 
         public List<Shape> Shapes { get; } = new List<Shape>();
 
-        public List<PointLight> Lights { get; } = new List<PointLight>();
+        public List<Light> Lights { get; } = new List<Light>();
     }
 }

@@ -16,7 +16,7 @@ namespace StealthTech.RayTracer
             if (args.Length > 0 && args[0] == "-t")
             {
                 var tuning = new RenderingTuning();
-                tuning.RunChapterNine();
+                tuning.RunChapterTwelve();
                 return;
             }
 

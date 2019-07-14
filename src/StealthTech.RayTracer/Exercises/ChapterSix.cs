@@ -141,7 +141,7 @@ namespace StealthTech.RayTracer.Exercises
                         computations.NormalVector = shape.NormalAt(computations.Position);
                         computations.EyeVector = ray.Direction.Negate();
                         
-                        var color = shape.Material.Lighting(computations, light);
+                        var color = shape.Material.Lighting(computations, light, 1);
                         canvas[x, y] = color;
                     }
                 }

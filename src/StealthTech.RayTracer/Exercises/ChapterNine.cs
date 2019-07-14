@@ -18,9 +18,9 @@ namespace StealthTech.RayTracer.Exercises
             _animation = animation;
         }
 
-        public ChapterNine()
-        {
-        }
+        //public ChapterNine()
+        //{
+        //}
 
         public void Run()
         {
@@ -47,7 +47,7 @@ namespace StealthTech.RayTracer.Exercises
             //int width = 400;
             //int height = 200;
 
-            Camera camera = InTheGroundCameraAnim(width, height);
+            Camera camera = DefaultCamera(width, height);
 
             return camera.Render(world, true);
             // return camera.Render(world, 319, 138, 4, 4);
@@ -214,30 +214,30 @@ namespace StealthTech.RayTracer.Exercises
         {
             var world = new World();
 
-            var waterY = _animation.Offset(120, 300, 1.75, .1);
+            //var waterY = _animation.Offset(120, 300, 1.75, .1);
 
-            var water = new Plane()
-            {
-                Transform = new Transform()
-                    .Translation(0, waterY, 0),
-                CastShadow = false,
-                Material = new Material()
-                {
-                    Color = new RtColor(0, 0, 1),
-                    Reflective = 1.2,
-                    Transparency = 1,
-                    RefractiveIndex = 1.3333,
-                    Diffuse = .2,
-                    Ambient = .1,
-                    Specular = 1,
-                    Shininess = 200
-                }
-            };
+            //var water = new Plane()
+            //{
+            //    Transform = new Transform()
+            //        .Translation(0, waterY, 0),
+            //    CastShadow = false,
+            //    Material = new Material()
+            //    {
+            //        Color = new RtColor(0, 0, 1),
+            //        Reflective = 1.2,
+            //        Transparency = 1,
+            //        RefractiveIndex = 1.3333,
+            //        Diffuse = .2,
+            //        Ambient = .1,
+            //        Specular = 1,
+            //        Shininess = 200
+            //    }
+            //};
 
-            if (_animation.CurrentFrame < 295)
-            {
-                world.Shapes.Add(water);
-            }
+            //if (_animation.CurrentFrame < 295)
+            //{
+            //    world.Shapes.Add(water);
+            //}
 
             // Floor
             world.Shapes.Add(new Plane()
@@ -357,7 +357,15 @@ namespace StealthTech.RayTracer.Exercises
                 }
             });
 
-            world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            // world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            world.Lights.Add(new AreaLight(
+                new RtPoint(-1, 2, 4),
+                new RtVector(2, 0, 0),
+                10,
+                new RtVector(0, 2, 0),
+                10,
+                new RtColor(1.5, 1.5, 1.5)));
+
             return world;
         }
 

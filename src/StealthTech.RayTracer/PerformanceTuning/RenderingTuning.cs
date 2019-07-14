@@ -51,5 +51,28 @@ namespace StealthTech.RayTracer.PerformanceTuning
             //PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
 
         }
+
+        public void RunChapterTwelve()
+        {
+            var animation = new Animation()
+            {
+                FrameCount = 13,
+                StartFrame = 1
+            };
+
+            var tuning = new ChapterTwelve(animation);
+
+            for (int x = animation.StartFrame; x < animation.FrameCount + 1; x++)
+            {
+                animation.CurrentFrame = x;
+                var canvas = tuning.Render();
+
+                PpmOutput.WriteToFile($"world-twelve{x}.ppm", canvas.GetPPMContent(), true);
+            }
+
+            //var canvas = tuning.Reference(-Math.PI / 2);
+            //PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
+
+        }
     }
 }

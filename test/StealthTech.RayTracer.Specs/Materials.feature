@@ -77,3 +77,23 @@ Scenario: Transparency and Refractive Index for the default material
 	Given material ← Material()
 	Then material.Transparency = 0.0
 	And material.RefractiveIndex = 1.0
+
+Scenario Outline: lighting() uses light intensity to attenuate color
+	Given light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))
+	And material ← Material()
+	And material.Ambient ← 0.1
+	And material.Diffuse ← 0.9
+	And material.Specular ← 0
+	And material.Color ← Color(1, 1, 1)
+	And computations.Position ← Point(0, 0, -1)
+	And computations.EyeVector ← Vector(0, 0, -1)
+	And computations.NormalVector ← Vector(0, 0, -1)
+	When result ← material.lighting(computations, light, <intensity>)
+	Then result = <result>
+
+	Examples:
+		| intensity | result                  |
+		| 1.0       | Color(1, 1, 1)          |
+		| 0.5       | Color(0.55, 0.55, 0.55) |
+		| 0.0       | Color(0.1, 0.1, 0.1)    |
+

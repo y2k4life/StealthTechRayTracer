@@ -292,82 +292,6 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="There is no shadow when nothing is collinear with point and light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when nothing is collinear with point and light")]
-        public virtual void ThereIsNoShadowWhenNothingIsCollinearWithPointAndLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when nothing is collinear with point and light", null, ((string[])(null)));
-#line 72
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 73
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 74
- testRunner.And("point ← Point(0, 10, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 75
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="The shadow when an object is between the point and the light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "The shadow when an object is between the point and the light")]
-        public virtual void TheShadowWhenAnObjectIsBetweenThePointAndTheLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The shadow when an object is between the point and the light", null, ((string[])(null)));
-#line 77
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 78
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
- testRunner.And("point ← Point(10, -10, 10)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 80
- testRunner.Then("is_shadowed(w, p) is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the light")]
-        public virtual void ThereIsNoShadowWhenAnObjectIsBehindTheLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the light", null, ((string[])(null)));
-#line 82
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 83
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 84
- testRunner.And("point ← Point(-20, 20, -20)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 85
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the point")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the point")]
-        public virtual void ThereIsNoShadowWhenAnObjectIsBehindThePoint()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the point", null, ((string[])(null)));
-#line 87
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 88
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 89
- testRunner.And("point ← Point(-2, 2, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 90
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
         [Xunit.FactAttribute(DisplayName="shade_hit() is given an intersection in shadow")]
         [Xunit.TraitAttribute("FeatureTitle", "world")]
         [Xunit.TraitAttribute("Description", "shade_hit() is given an intersection in shadow")]
@@ -850,6 +774,31 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 258
  testRunner.Then("color = Color(0.93391, 0.69643, 0.69243)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="is_shadow tests for occlusion between two points")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "is_shadow tests for occlusion between two points")]
+        [Xunit.InlineDataAttribute("Point(-10, -10, 10)", "false", new string[0])]
+        [Xunit.InlineDataAttribute("Point(10, 10, 10)", "true", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-20, -20, -20)", "false", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-5, -5, -5)", "false", new string[0])]
+        public virtual void Is_ShadowTestsForOcclusionBetweenTwoPoints(string point, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("is_shadow tests for occlusion between two points", null, exampleTags);
+#line 260
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 261
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 262
+ testRunner.And("light_position ← Point(-10, -10, -10)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 263
+ testRunner.And(string.Format("point ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 264
+ testRunner.Then(string.Format("is_shadowed(w, light_position, point) is {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
