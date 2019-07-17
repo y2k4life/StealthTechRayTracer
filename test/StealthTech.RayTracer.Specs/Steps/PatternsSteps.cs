@@ -119,7 +119,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"pattern\.Transform = identityMatrix")]
         public void Then_Transform_Of_Pattern_Should_Equal_identityMatrix()
         {
-            var expectedMatrix = new RtMatrix(4, 4).Identity();
+            var expectedMatrix = RtMatrix.Identity;
 
             Assert.Equal(expectedMatrix, _patternsContext.Pattern.Transform.Matrix);
         }

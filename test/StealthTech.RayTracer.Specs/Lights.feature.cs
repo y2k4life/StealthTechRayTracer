@@ -194,6 +194,40 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.TheoryAttribute(DisplayName="The area light intensity function")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lights")]
+        [Xunit.TraitAttribute("Description", "The area light intensity function")]
+        [Xunit.InlineDataAttribute("Point(0, 0, 2)", "0.0", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1, -1, 2)", "0.25", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1.5, 0, 2)", "0.5", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1.25, 1.25, 3)", "0.75", new string[0])]
+        [Xunit.InlineDataAttribute("Point(0, 0, -2)", "1.0", new string[0])]
+        public virtual void TheAreaLightIntensityFunction(string point, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The area light intensity function", null, exampleTags);
+#line 56
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 57
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 58
+ testRunner.And("corner ← Point(-0.5, -0.5, -5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 59
+ testRunner.And("vector1 ← Vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 60
+ testRunner.And("vector2 ← Vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 61
+ testRunner.And("light ← AreaLight(corner, vector1, 2, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 62
+ testRunner.And(string.Format("point ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 63
+ testRunner.When("intensityAt ← light.IntensityAt(point, world)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 64
+ testRunner.Then(string.Format("intensityAt = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -118,6 +118,7 @@ namespace StealthTech.RayTracer.Library
             var intersetions = Intersect(ray);
 
             var hit = intersetions.ShadowHit();
+
             if (hit != null && hit.Time < distance)
             {
                 return true;

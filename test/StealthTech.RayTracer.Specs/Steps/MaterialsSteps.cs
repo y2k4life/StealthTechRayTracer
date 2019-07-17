@@ -145,7 +145,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"material\.Ambient = (.*)")]
         public void Then_Ambient_Of_material_Should_Equal(float expectedAmbient)
         {
-            Assert.Equal(expectedAmbient, _materialsContext.Material.Ambient);
+            AssertDouble.ApproximateEquals(expectedAmbient, _materialsContext.Material.Ambient);
         }
 
         [Then(@"material\.Color = Color\((.*), (.*), (.*)\)")]
@@ -159,7 +159,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"material\.Diffuse = (.*)")]
         public void Then_Diffuse_Of_Material_Should_Equal(float expectedDiffuse)
         {
-            Assert.Equal(expectedDiffuse, _materialsContext.Material.Diffuse);
+            AssertDouble.ApproximateEquals(expectedDiffuse, _materialsContext.Material.Diffuse);
         }
 
         [Then(@"material = Material\(\)")]
@@ -181,7 +181,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"material\.Specular = (.*)")]
         public void Then_Specular_Of_material_Should_Equal(float expectedSpecular)
         {
-            Assert.Equal(expectedSpecular, _materialsContext.Material.Specular);
+            AssertDouble.ApproximateEquals(expectedSpecular, _materialsContext.Material.Specular);
         }
 
         [Then(@"result = Color\((.*), (.*), (.*)\)")]

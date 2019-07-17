@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace StealthTech.RayTracer.Library
 {
@@ -22,9 +23,9 @@ namespace StealthTech.RayTracer.Library
 
         public RtVector NormalAt(RtPoint worldPoint)
         {
-            var shapePoint = new RtPoint(Transform.Matrix.Inverse() * worldPoint);
+            var shapePoint = Transform.Matrix.Inverse() * worldPoint;
             var shapeNormal = LocalNormalAt(shapePoint);
-            var worldNormal = new RtVector(Transform.Matrix.Inverse().Transpose() * shapeNormal);
+            var worldNormal = RtMatrix.Transpose(Transform.Matrix.Inverse()) * shapeNormal;
 
             return worldNormal.Normalize();
         }
@@ -32,11 +33,6 @@ namespace StealthTech.RayTracer.Library
         public abstract IntersectionList LocalIntersect(Ray ray);
 
         public abstract RtVector LocalNormalAt(RtPoint point);
-
-        public override string ToString()
-        {
-            return Name;
-        }
 
         public override int GetHashCode()
         {
@@ -62,6 +58,21 @@ namespace StealthTech.RayTracer.Library
             }
 
             return (Transform.Equals(other.Transform) && Material.Equals(other.Material));
+        }
+
+        public override string ToString()
+        {
+            var buffer = new StringBuilder();
+            buffer.AppendLine($"Shape {Name}");
+
+            buffer.AppendLine($"Transform");
+            buffer.AppendLine(Transform.ToString());
+
+            var transformInverse = Transform.Matrix.Inverse();
+            buffer.AppendLine($"Inverse Transform");
+            buffer.AppendLine(transformInverse.ToString());
+
+            return buffer.ToString();
         }
     }
 }

@@ -111,7 +111,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"camera\.Transform = identityMatrix")]
         public void Then_Transform_Of_camera_Should_Equal_identityMatrix()
         {
-            var expectedTransform = new RtMatrix(4, 4).Identity();
+            var expectedTransform = RtMatrix.Identity;
 
             var actualTransform = _cameraContext.Camera.ViewTransform.Matrix;
 

@@ -43,9 +43,9 @@ namespace StealthTech.RayTracer.Library
         public Transform ViewTransform { get; set; } = new ViewTransform();
 
         public double HalfWidth { get; }
-        
+
         public double HalfHeight { get; }
-        
+
         public double PixelSize { get; }
 
         public Ray RayForPixel(double px, double py)
@@ -73,6 +73,7 @@ namespace StealthTech.RayTracer.Library
                 {
                     var ray = RayForPixel(x, y);
                     var color = world.ColorAt(ray, 4);
+
                     image[x, y] = color;
                 }
             }
@@ -97,7 +98,7 @@ namespace StealthTech.RayTracer.Library
             }
             else
             {
-                for(int y = 0; y < VerticalSize; y++)
+                for (int y = 0; y < VerticalSize; y++)
                 {
                     for (int x = 0; x < HorizontalSize; x++)
                     {

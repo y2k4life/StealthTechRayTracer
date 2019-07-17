@@ -17,44 +17,50 @@ namespace StealthTech.RayTracer.Specs
     {
         public static RtMatrix ToMatrix(this Table table)
         {
-            RtMatrix matrix = new RtMatrix(table.RowCount + 1, table.Header.Count);
-            var rowCount = table.RowCount + 1;
-            int j = 0;
-            foreach (var header in table.Header)
-            {
-                matrix[0, j] = Convert.ToDouble(header);
-                j++;
-            }
+            var matrix = new RtMatrix();
+            var header = table.Header.ToList();
 
-            for (int i = 1; i < rowCount; i++)
-            {
-                for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
-                {
-                    matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
-                }
-            }
+            matrix.M11 = Convert.ToSingle(header[0]);
+            matrix.M12 = Convert.ToSingle(header[1]);
+            matrix.M13 = Convert.ToSingle(header[2]);
+            matrix.M14 = Convert.ToSingle(header[3]);
+
+            matrix.M21 = Convert.ToSingle(table.Rows[0][0]);
+            matrix.M22 = Convert.ToSingle(table.Rows[0][1]);
+            matrix.M23 = Convert.ToSingle(table.Rows[0][2]);
+            matrix.M24 = Convert.ToSingle(table.Rows[0][3]);
+
+            matrix.M31 = Convert.ToSingle(table.Rows[1][0]);
+            matrix.M32 = Convert.ToSingle(table.Rows[1][1]);
+            matrix.M33 = Convert.ToSingle(table.Rows[1][2]);
+            matrix.M34 = Convert.ToSingle(table.Rows[1][3]);
+
+            matrix.M41 = Convert.ToSingle(table.Rows[2][0]);
+            matrix.M42 = Convert.ToSingle(table.Rows[2][1]);
+            matrix.M43 = Convert.ToSingle(table.Rows[2][2]);
+            matrix.M44 = Convert.ToSingle(table.Rows[2][3]);
 
             return matrix;
         }
 
-        public static void FillMatrix(this Table table, RtMatrix matrix)
-        {
-            var rowCount = table.RowCount + 1;
-            int j = 0;
-            foreach (var header in table.Header)
-            {
-                matrix[0, j] = Convert.ToDouble(header);
-                j++;
-            }
+        //public static void FillMatrix(this Table table, RtMatrix matrix)
+        //{
+        //    var rowCount = table.RowCount + 1;
+        //    int j = 0;
+        //    foreach (var header in table.Header)
+        //    {
+        //        matrix[0, j] = Convert.ToDouble(header);
+        //        j++;
+        //    }
 
-            for (int i = 1; i < rowCount; i++)
-            {
-                for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
-                {
-                    matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
-                }
-            }
-        }
+        //    for (int i = 1; i < rowCount; i++)
+        //    {
+        //        for (int j1 = 0; j1 < table.Rows[0].Count; j1++)
+        //        {
+        //            matrix[i, j1] = Convert.ToDouble(table.Rows[i - 1][j1]);
+        //        }
+        //    }
+        //}
 
         public static Dictionary<string, string> ToDictionary(this Table table)
         {

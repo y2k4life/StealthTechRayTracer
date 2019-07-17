@@ -136,7 +136,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"sphere\.Transform = identityMatrix")]
         public void Then_Transform_Of_sphere_Should_Equal_identityMatrix()
         {
-            var expectedMatrix = new RtMatrix(4, 4).Identity();
+            var expectedMatrix = RtMatrix.Identity;
 
             Assert.Equal(expectedMatrix, _sphereContext.Sphere.Transform.Matrix);
         }

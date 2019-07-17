@@ -25,7 +25,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
         {
             var test = new ChapterSeven();
 
-            test.Render(false);
+            test.Render(true);
         }
 
         public void RunChapterNine()

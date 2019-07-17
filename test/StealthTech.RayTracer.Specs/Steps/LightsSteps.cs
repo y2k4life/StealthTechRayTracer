@@ -113,7 +113,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"intensityAt = (.*)")]
         public void Then_Intensity_Should_Equal(float expectedIntensity)
         {
-            Assertfloat.ApproximateEquals(expectedIntensity, _lightsContext.IntensityAt);
+            AssertDouble.ApproximateEquals(expectedIntensity, _lightsContext.IntensityAt);
         }
 
         [Then(@"areaLight\.Corner = corner")]

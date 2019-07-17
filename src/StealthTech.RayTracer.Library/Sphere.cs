@@ -22,15 +22,15 @@ namespace StealthTech.RayTracer.Library
             var b = 2 * ray.Direction.Dot(shapeToRay);
             var c = shapeToRay.Dot(shapeToRay) - 1;
 
-            var discriminatnt = Math.Pow(b, 2) - 4 * a * c;
+            var discriminant = Math.Pow(b, 2) - 4 * a * c;
 
-            if (discriminatnt < 0)
+            if (discriminant < 0)
             {
                 return intersections;
             }
 
-            var t1 = (-b - Math.Sqrt(discriminatnt)) / (2 * a);
-            var t2 = (-b + Math.Sqrt(discriminatnt)) / (2 * a);
+            var t1 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+            var t2 = (-b + Math.Sqrt(discriminant)) / (2 * a);
 
             intersections.Add(new Intersection(t1, this));
             intersections.Add(new Intersection(t2, this));

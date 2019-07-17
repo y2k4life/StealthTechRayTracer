@@ -357,14 +357,14 @@ namespace StealthTech.RayTracer.Exercises
                 }
             });
 
-            // world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
-            world.Lights.Add(new AreaLight(
-                new RtPoint(-1, 2, 4),
-                new RtVector(2, 0, 0),
-                10,
-                new RtVector(0, 2, 0),
-                10,
-                new RtColor(1.5, 1.5, 1.5)));
+            world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            //world.Lights.Add(new AreaLight(
+            //    new RtPoint(-1, 2, 4),
+            //    new RtVector(2, 0, 0),
+            //    10,
+            //    new RtVector(0, 2, 0),
+            //    10,
+            //    new RtColor(1.5, 1.5, 1.5)));
 
             return world;
         }

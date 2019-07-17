@@ -16,11 +16,11 @@ namespace StealthTech.RayTracer.Pages
         public TuningPage(ConsoleProgram program)
             : base("Tuning", program)
         {
-            AddOption(new Option("Matrix Multiplication", () =>
-            {
-                var tuning = new MatricesTuning();
-                tuning.Multiplication();
-            }));
+            //AddOption(new Option("Matrix Multiplication", () =>
+            //{
+            //    var tuning = new MatricesTuning();
+            //    tuning.Multiplication();
+            //}));
 
             AddOption(new Option("Build Image from Chapter Five", () =>
             {

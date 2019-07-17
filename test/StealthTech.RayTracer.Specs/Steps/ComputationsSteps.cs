@@ -93,7 +93,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"reflectance = (.*)")]
         public void Then_reflectance_Should_Equal(float expectedReflectance)
         {
-            Assertfloat.ApproximateEquals(expectedReflectance, _computationsContext.Reflectance);
+            AssertDouble.ApproximateEquals(expectedReflectance, _computationsContext.Reflectance);
         }
     }
 }

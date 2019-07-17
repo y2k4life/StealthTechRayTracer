@@ -5,7 +5,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using StealthTech.RayTracer.Library;
 using StealthTech.RayTracer.PerformanceTuning;
+using System.Runtime.Intrinsics.X86;
 
 namespace StealthTech.RayTracer
 {
@@ -16,7 +18,7 @@ namespace StealthTech.RayTracer
             if (args.Length > 0 && args[0] == "-t")
             {
                 var tuning = new RenderingTuning();
-                tuning.RunChapterTwelve();
+                tuning.RunChapter7();
                 return;
             }
 
