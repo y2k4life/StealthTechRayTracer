@@ -135,6 +135,35 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.TheoryAttribute(DisplayName="The normal on the surface of a cube")]
+        [Xunit.TraitAttribute("FeatureTitle", "Cubes")]
+        [Xunit.TraitAttribute("Description", "The normal on the surface of a cube")]
+        [Xunit.InlineDataAttribute("Point(1, 0.5, -0.8)", "Vector(1, 0, 0)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-1, -0.2, 0.9)", "Vector(-1, 0, 0)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-0.4, 1, -0.1)", "Vector(0, 1, 0)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(0.3, -1, -0.7)", "Vector(0, -1, 0)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-0.6, 0.3, 1)", "Vector(0, 0, 1)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(0.4, 0.4, -1)", "Vector(0, 0, -1)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1, 1, 1)", "Vector(1, 0, 0)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-1, -1, -1)", "Vector(-1, 0, 0)", new string[0])]
+        public virtual void TheNormalOnTheSurfaceOfACube(string point, string normal, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The normal on the surface of a cube", null, exampleTags);
+#line 36
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 37
+ testRunner.Given("cube ← Cube()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 38
+ testRunner.And(string.Format("point ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 39
+ testRunner.When("normalVector ← cube.LocalNormalAt(point)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 40
+ testRunner.Then(string.Format("normalVector = {0}", normal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable
