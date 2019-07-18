@@ -145,7 +145,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 30
  testRunner.And("vector2 ← Vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
- testRunner.When("areaLight ← AreaLight(corner, vector1, 4, vector2, 2, color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("areaLight ← AreaLight(corner, vector1, 4, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 32
  testRunner.Then("areaLight.Corner = corner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 33
@@ -185,7 +185,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 43
  testRunner.And("vector2 ← Vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 44
- testRunner.And("areaLight ← AreaLight(corner, vector1, 4, vector2, 2, color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("areaLight ← AreaLight(corner, vector1, 4, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 45
  testRunner.When(string.Format("point ← areaLight.PointOnLight({0}, {1})", u, v), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 46
@@ -223,6 +223,74 @@ this.ScenarioInitialize(scenarioInfo);
 #line 63
  testRunner.When("intensityAt ← light.IntensityAt(point, world)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 64
+ testRunner.Then(string.Format("intensityAt = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="Finding a single point on a jittered area light")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lights")]
+        [Xunit.TraitAttribute("Description", "Finding a single point on a jittered area light")]
+        [Xunit.InlineDataAttribute("0", "0", "Point(0.15, 0, 0.35)", new string[0])]
+        [Xunit.InlineDataAttribute("1", "0", "Point(0.65, 0, 0.35)", new string[0])]
+        [Xunit.InlineDataAttribute("0", "1", "Point(0.15, 0, 0.85)", new string[0])]
+        [Xunit.InlineDataAttribute("2", "0", "Point(1.15, 0, 0.35)", new string[0])]
+        [Xunit.InlineDataAttribute("3", "1", "Point(1.65, 0, 0.85)", new string[0])]
+        public virtual void FindingASinglePointOnAJitteredAreaLight(string u, string v, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Finding a single point on a jittered area light", null, exampleTags);
+#line 74
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 75
+ testRunner.Given("corner ← Point(0, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 76
+ testRunner.And("vector1 ← Vector(2, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 77
+ testRunner.And("vector2 ← Vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 78
+ testRunner.And("areaLight ← AreaLight(corner, vector1, 4, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 79
+ testRunner.And("areaLight.JitterBy ← Sequence(0.3, 0.7)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 80
+ testRunner.When(string.Format("point ← areaLight.PointOnLight({0}, {1})", u, v), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 81
+ testRunner.Then(string.Format("point = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="The area light with jittered samples")]
+        [Xunit.TraitAttribute("FeatureTitle", "Lights")]
+        [Xunit.TraitAttribute("Description", "The area light with jittered samples")]
+        [Xunit.InlineDataAttribute("Point(0, 0, 2)", "0.0", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1, -1, 2)", "0.5", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1.5, 0, 2)", "0.75", new string[0])]
+        [Xunit.InlineDataAttribute("Point(1.25, 1.25, 3)", "0.75", new string[0])]
+        [Xunit.InlineDataAttribute("Point(0, 0, -2)", "1.0", new string[0])]
+        public virtual void TheAreaLightWithJitteredSamples(string point, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The area light with jittered samples", null, exampleTags);
+#line 91
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 92
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 93
+ testRunner.And("corner ← Point(-0.5, -0.5, -5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+ testRunner.And("vector1 ← Vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+ testRunner.And("vector2 ← Vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 96
+ testRunner.And("areaLight ← AreaLight(corner, vector1, 2, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 97
+ testRunner.And("areaLight.JitterBy ← Sequence(0.7, 0.3, 0.9, 0.1, 0.5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 98
+ testRunner.And(string.Format("point ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 99
+ testRunner.When("intensityAt ← areaLight.IntensityAt(point, world)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 100
  testRunner.Then(string.Format("intensityAt = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -12,10 +12,11 @@ namespace StealthTech.RayTracer.Exercises
 {
     public class ChapterNine
     {
-        readonly Animation _animation;
+        //readonly Animation _animation;
+
         public ChapterNine(Animation animation)
         {
-            _animation = animation;
+            //_animation = animation;
         }
 
         //public ChapterNine()
@@ -35,11 +36,11 @@ namespace StealthTech.RayTracer.Exercises
 
             // var world = World.DefaultWorld();
 
-            //int width = 1920;
-            //int height = 1080;
+            int width = 640;
+            int height = 480;
 
-            int width = 960;
-            int height = 540;
+            //int width = 960;
+            //int height = 540;
 
             //int width = 200;
             //int height = 100;
@@ -47,7 +48,7 @@ namespace StealthTech.RayTracer.Exercises
             //int width = 400;
             //int height = 200;
 
-            Camera camera = DefaultCamera(width, height);
+            Camera camera = InTheGroundCamera(width, height);
 
             return camera.Render(world, true);
             // return camera.Render(world, 319, 138, 4, 4);
@@ -55,14 +56,14 @@ namespace StealthTech.RayTracer.Exercises
 
         private Camera InTheGroundCameraAnim(int width, int height)
         {
-            var camerYValue = _animation.Offset(1, 300, .25, 0.7457627118644068);
+            //var camerYValue = _animation.Offset(1, 300, .25, 0.7457627118644068);
 
-            var camerYPoint = _animation.Offset(1, 210, 1.0, 1.5);
+            //var camerYPoint = _animation.Offset(1, 210, 1.0, 1.5);
 
             return new Camera(width, height, Math.PI / 2)
             {
                 ViewTransform = new ViewTransform(
-                new RtPoint(.5, camerYValue, -4),
+                new RtPoint(.5, 0.7457627118644068, -4),
                 new RtPoint(-.25, 1.5, 0),
                 new RtVector(0, 1, 0))
             };
@@ -70,10 +71,6 @@ namespace StealthTech.RayTracer.Exercises
 
         private Camera InTheGroundCamera(int width, int height)
         {
-            var camerYValue = _animation.Offset(1, 100, 0, 0.7457627118644068);
-
-            var camerYPoint = _animation.Offset(1, 70, 1.0, 1.5);
-
             return new Camera(width, height, Math.PI / 2)
             {
                 ViewTransform = new ViewTransform(
@@ -216,27 +213,29 @@ namespace StealthTech.RayTracer.Exercises
 
             //var waterY = _animation.Offset(120, 300, 1.75, .1);
 
-            //var water = new Plane()
-            //{
-            //    Transform = new Transform()
-            //        .Translation(0, waterY, 0),
-            //    CastShadow = false,
-            //    Material = new Material()
-            //    {
-            //        Color = new RtColor(0, 0, 1),
-            //        Reflective = 1.2,
-            //        Transparency = 1,
-            //        RefractiveIndex = 1.3333,
-            //        Diffuse = .2,
-            //        Ambient = .1,
-            //        Specular = 1,
-            //        Shininess = 200
-            //    }
-            //};
+            var water = new Plane()
+            {
+                Transform = new Transform()
+                    .Translation(0, .5, 0),
+                CastShadow = false,
+                Material = new Material()
+                {
+                    Color = new RtColor(0, 0, 1),
+                    Reflective = 1.2,
+                    Transparency = 1,
+                    RefractiveIndex = 1.3333,
+                    Diffuse = .2,
+                    Ambient = .1,
+                    Specular = 1,
+                    Shininess = 200
+                }
+            };
+
+            world.Shapes.Add(water);
 
             //if (_animation.CurrentFrame < 295)
             //{
-            //    world.Shapes.Add(water);
+            //
             //}
 
             // Floor
@@ -357,14 +356,14 @@ namespace StealthTech.RayTracer.Exercises
                 }
             });
 
-            world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
-            //world.Lights.Add(new AreaLight(
-            //    new RtPoint(-1, 2, 4),
-            //    new RtVector(2, 0, 0),
-            //    10,
-            //    new RtVector(0, 2, 0),
-            //    10,
-            //    new RtColor(1.5, 1.5, 1.5)));
+            //world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            world.Lights.Add(new AreaLight(
+                new RtPoint(-15, 30, -15),
+                new RtVector(2, 0, 0),
+                10,
+                new RtVector(0, 2, 0),
+                10,
+                new RtColor(1.5, 1.5, 1.5)));
 
             return world;
         }

@@ -97,3 +97,24 @@ Scenario Outline: lighting() uses light intensity to attenuate color
 		| 0.5       | Color(0.55, 0.55, 0.55) |
 		| 0.0       | Color(0.1, 0.1, 0.1)    |
 
+Scenario Outline: lighting() samples the area light
+	Given corner ← Point(-0.5, -0.5, -5)
+	And vector1 ← Vector(1, 0, 0)
+	And vector2 ← Vector(0, 1, 0)
+	And areaLight ← AreaLight(corner, vector1, 2, vector2, 2, Color(1, 1, 1))
+	And sphere ← Sphere()
+	And sphere.Material.Ambient ← 0.1
+	And sphere.Material.Diffuse ← 0.9
+	And sphere.Material.Specular ← 0
+	And sphere.Material.Color ← Color(1, 1, 1)
+	And eye ← Point(0, 0, -5)
+	And computations.Position ← <point>
+	And computations.EyeVector ← Normalize(eye - pt)
+	And computations.NormalVector ← Vector(computations.Position.X, computations.Position.Y, computations.Position.Z)
+	When result ← sphere.Material.lighting(computations, areaLight, 1.0)
+	Then result = <result>
+
+	Examples:
+		| point                     | result                        |
+		| Point(0, 0, -1)           | Color(0.9965, 0.9965, 0.9965) |
+		| Point(0, 0.7071, -0.7071) | Color(0.6232, 0.6232, 0.6232) |

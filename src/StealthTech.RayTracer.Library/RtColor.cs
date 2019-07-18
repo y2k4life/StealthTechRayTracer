@@ -68,6 +68,11 @@ namespace StealthTech.RayTracer.Library
             return left * multiplier;
         }
 
+        static public RtColor operator /(RtColor left, int divisor)
+        {
+            return new RtColor(left.Red / divisor, left.Green / divisor, left.Blue / divisor);
+        }
+
         public string ToRGB()
         {
             return $"{Normalize(Red)} {Normalize(Green)} {Normalize(Blue)}";
@@ -103,12 +108,7 @@ namespace StealthTech.RayTracer.Library
 
         public override bool Equals(object obj)
         {
-            if (obj is null)
-            {
-                return false;
-            }
-
-            RtColor other = obj as RtColor;
+            RtColor other = (RtColor)obj;
             return (other.Red.ApproximateEquals(Red)
                 && other.Green.ApproximateEquals(Green)
                 && other.Blue.ApproximateEquals(Blue));
@@ -116,11 +116,6 @@ namespace StealthTech.RayTracer.Library
 
         public bool Equals(RtColor other)
         {
-            if (other is null)
-            {
-                return false;
-            }
-
             return (other.Red.ApproximateEquals(Red)
                 && other.Green.ApproximateEquals(Green)
                 && other.Blue.ApproximateEquals(Blue));

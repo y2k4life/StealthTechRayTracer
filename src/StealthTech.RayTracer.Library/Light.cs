@@ -5,6 +5,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace StealthTech.RayTracer.Library
 {
     public abstract class Light
@@ -13,6 +15,10 @@ namespace StealthTech.RayTracer.Library
 
         public RtColor Intensity { get; set; }
 
+        public int Samples { get; protected set; }
+
         public abstract double IntensityAt(RtPoint point, World world);
+
+        public abstract IEnumerable<RtPoint> GetSamples();
     }
 }

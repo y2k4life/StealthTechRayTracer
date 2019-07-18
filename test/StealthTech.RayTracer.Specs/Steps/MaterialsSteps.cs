@@ -21,15 +21,18 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly LightsContext _lightsContext;
         readonly ColorsContext _colorsContext;
         readonly ComputationsContext _computationsContext;
+        public SphereContext _sphereContext;
 
         public MaterialsSteps(MaterialsContext materialsContext, 
             PointsContext pointsContext, 
             VectorsContext vectorsContext,
             LightsContext lightsContext,
             ColorsContext colorContext,
-            ComputationsContext computationsContext)
+            ComputationsContext computationsContext,
+            SphereContext sphereContext)
         {
             _computationsContext = computationsContext;
+            _sphereContext = sphereContext;
             _colorsContext = colorContext;
             _lightsContext = lightsContext;
             _vectorsContext = vectorsContext;
@@ -141,6 +144,25 @@ namespace StealthTech.RayTracer.Specs.Steps
                 _lightsContext.Light,
                 intensity);
         }
+
+        [When(@"result ← material\.lighting\(computations, areaLight, 1.0\)")]
+        public void WhenResultMaterial_LightingComputationsAreaLight()
+        {
+            _materialsContext.Results = _materialsContext.Material.Lighting(
+                _computationsContext.Computations,
+                _lightsContext.AreaLight,
+                1.0);
+        }
+
+        [When(@"result ← sphere\.Material\.lighting\(computations, areaLight, 1.0\)")]
+        public void WhenResultSphere_Material_LightingComputationsAreaLight()
+        {
+            _materialsContext.Results = _sphereContext.Sphere.Material.Lighting(
+                _computationsContext.Computations,
+                _lightsContext.AreaLight,
+                1.0);
+        }
+
 
         [Then(@"material\.Ambient = (.*)")]
         public void Then_Ambient_Of_material_Should_Equal(float expectedAmbient)

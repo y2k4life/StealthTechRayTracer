@@ -80,6 +80,24 @@ namespace StealthTech.RayTracer.Specs.Steps
             _sphereContext.Sphere.Material.Ambient = ambient;
         }
 
+        [Given(@"sphere\.Material\.Diffuse ← (.*)")]
+        public void Given_Diffuse_Of_Material_Of_sphere_Is(double diffuse)
+        {
+            _sphereContext.Sphere.Material.Diffuse = diffuse;
+        }
+
+        [Given(@"sphere\.Material\.Specular ← (.*)")]
+        public void Given_Specular_Of_Material_Of_sphere_Is(double specular)
+        {
+            _sphereContext.Sphere.Material.Specular = specular;
+        }
+
+        [Given(@"sphere\.Material\.Color ← Color\((.*), (.*), (.*)\)")]
+        public void Given_Color_Of_Material_Sphere_Is_Color(double red, double green, double blue)
+        {
+            _sphereContext.Sphere.Material.Color = new RtColor(red, green, blue);
+        }
+
 
         [Given(@"sphere ← GlassSphere\(\)")]
         public void Given_sphere_Is_GlassSphere()

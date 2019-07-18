@@ -16,11 +16,14 @@ namespace StealthTech.RayTracer.Specs.Steps
     [Binding]
     public class ComputationsSteps
     {
-        readonly ComputationsContext _computationsContext;
+        private readonly ComputationsContext _computationsContext;
 
-        public ComputationsSteps(ComputationsContext computationsContext)
+        private readonly PointsContext _pointsContext;
+
+        public ComputationsSteps(ComputationsContext computationsContext, PointsContext pointsContext)
         {
             _computationsContext = computationsContext;
+            _pointsContext = pointsContext;
         }
 
         [Given(@"computations ← Computations\(\)")]
@@ -33,6 +36,15 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void Given_normalVector_Is_A_Vector(float x, float y, float z)
         {
             _computationsContext.Computations.NormalVector = new RtVector(x, y, z);
+        }
+
+        [Given(@"computations.NormalVector ← Vector\(computations\.Position\.X, computations\.Position\.Y, computations\.Position\.Z\)")]
+        public void Given_normalVector_Is_A_Vector_Of_Position()
+        {
+            _computationsContext.Computations.NormalVector = new RtVector(
+                _computationsContext.Computations.Position.X,
+                _computationsContext.Computations.Position.Y,
+                _computationsContext.Computations.Position.Z);
         }
 
         [Given(@"computations.EyeVector ← Vector\((.*), (.*), (.*)\)")]
@@ -51,6 +63,12 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void Given_Position_Of_Computations_Is_Point(float x, float y, float z)
         {
             _computationsContext.Computations.Position = new RtPoint(x, y, z);
+        }
+
+        [Given(@"computations\.EyeVector ← Normalize\(eye - pt\)")]
+        public void Given_EyeVector_Of_Computations_Is_Normalize_Position_Subtract_Eye()
+        {
+            _computationsContext.Computations.EyeVector = (_pointsContext.Eye - _computationsContext.Computations.Position).Normalize();
         }
 
 

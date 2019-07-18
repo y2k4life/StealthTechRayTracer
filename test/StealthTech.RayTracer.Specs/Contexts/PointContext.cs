@@ -32,5 +32,7 @@ namespace StealthTech.RayTracer.Specs.Contexts
         public RtPoint LightPosition { get; set; }
 
         public RtPoint Corner { get; set; }
+
+        public RtPoint Eye { get; set; }
     }
 }

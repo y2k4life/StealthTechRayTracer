@@ -119,17 +119,10 @@ namespace StealthTech.RayTracer.Specs.Steps
             _rayContext.Ray = new Ray(_pointsContext.Origin, _vectorsContext.Direction);
         }
 
-        [When(@"ray ← camera\.RayForPixel\((.*), (.*)\)")]
-        public void When_ray_Is_RayForPixel_Of_Canvas_At_x_y(double x, double y)
-        {
-            _rayContext.Ray = _cameraContext.Camera.RayForPixel(x, y);
-        }
-
         [When(@"ray2 ← transform\(r, transform\)")]
         public void WhenRTransformRM()
         {
             _rayContext.Ray2 = _rayContext.Ray.Transform(_transformationsContext.Transform.Matrix);
         }
-
     }
 }

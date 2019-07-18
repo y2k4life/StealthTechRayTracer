@@ -21,14 +21,16 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly TransformationsContext _transformationContext;
         readonly VectorsContext _vectorsContext;
         readonly WorldContext _worldContext;
+        readonly RayContext _rayContext;
 
         public CameraSteps(CameraContext cameraContext,
             TransformationsContext transformationContext,
             WorldContext worldContext,
             PointsContext pointsContext,
-            VectorsContext vectorsContext
-            )
+            VectorsContext vectorsContext,
+            RayContext rayContext)
         {
+            _rayContext = rayContext;
             _vectorsContext = vectorsContext;
             _pointsContext = pointsContext;
             _worldContext = worldContext;
@@ -84,6 +86,12 @@ namespace StealthTech.RayTracer.Specs.Steps
                 .Translation(x, y, z)
                 .RotateY(Math.PI / 4);
 
+        }
+
+        [When(@"ray ← camera\.RayForPixel\((.*), (.*)\)")]
+        public void When_ray_Is_RayForPixel_Of_Canvas_At_x_y(double x, double y)
+        {
+            _rayContext.Ray = _cameraContext.Camera.RayForPixel(x, y);
         }
 
         [When(@"image ← render\(c, w\)")]

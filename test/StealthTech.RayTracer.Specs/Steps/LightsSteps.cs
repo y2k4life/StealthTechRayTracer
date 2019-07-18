@@ -56,7 +56,7 @@ namespace StealthTech.RayTracer.Specs.Steps
                 new RtColor(red, green, blue));
         }
 
-        [Given(@"areaLight ← AreaLight\(corner, vector1, (.*), vector2, (.*), color\((.*), (.*), (.*)\)\)")]
+        [Given(@"areaLight ← AreaLight\(corner, vector1, (.*), vector2, (.*), Color\((.*), (.*), (.*)\)\)")]
         public void Given_areaLight_Is_AreaLight(int uSteps, int vSteps, float red, float green, float blue)
         {
             _lightsContext.AreaLight = new AreaLight(
@@ -68,13 +68,25 @@ namespace StealthTech.RayTracer.Specs.Steps
                 new RtColor(red, green, blue));
         }
 
+        [Given(@"areaLight\.JitterBy ← Sequence\((.*), (.*)\)")]
+        public void Given_JitterBy_Of_Light_Is_Sequence(double n1, double n2)
+        {
+            _lightsContext.AreaLight.JitterBy = new DeterministicSequence(n1, n2);
+        }
+
+        [Given(@"areaLight\.JitterBy ← Sequence\((.*), (.*), (.*), (.*), (.*)\)")]
+        public void Given_JitterBy_Of_Light_Is_Sequence(double n1, double n2, double n3, double n4, double n5)
+        {
+            _lightsContext.AreaLight.JitterBy = new DeterministicSequence(n1, n2, n3, n4, n5);
+        }
+
         [When(@"point ← areaLight\.PointOnLight\((.*), (.*)\)")]
         public void When_point_Is_PointOnLight(int u, int v)
         {
             _pointsContext.Point = _lightsContext.AreaLight.PointOnLight(u, v);
         }
 
-        [When(@"areaLight ← AreaLight\(corner, vector1, (.*), vector2, (.*), color\((.*), (.*), (.*)\)\)")]
+        [When(@"areaLight ← AreaLight\(corner, vector1, (.*), vector2, (.*), Color\((.*), (.*), (.*)\)\)")]
         public void When_light_Is_AreaLight(int uSteps, int vSteps, float red, float green, float blue)
         {
             _lightsContext.AreaLight = new AreaLight(
@@ -96,6 +108,12 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void When_intensityAt_Is_The_Result_Of_IntensityAtPointWorld_Of_Light()
         {
             _lightsContext.IntensityAt = _lightsContext.Light.IntensityAt(_pointsContext.Point, _worldContext.World);
+        }
+
+        [When(@"intensityAt ← areaLight\.IntensityAt\(point, world\)")]
+        public void When_intensityAt_Is_The_Result_Of_IntensityAtPointWorld_Of_AreaLight()
+        {
+            _lightsContext.IntensityAt = _lightsContext.AreaLight.IntensityAt(_pointsContext.Point, _worldContext.World);
         }
 
         [Then(@"light\.position = position")]

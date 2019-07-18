@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
@@ -15,6 +16,7 @@ namespace StealthTech.RayTracer.Library
         {
             Position = position;
             Intensity = color;
+            Samples = 1;
         }
 
         public override int GetHashCode()
@@ -53,6 +55,12 @@ namespace StealthTech.RayTracer.Library
             {
                 return 1.0;
             }
+        }
+
+        public override IEnumerable<RtPoint> GetSamples()
+        {
+            var smaples = new List<RtPoint>(new RtPoint[] { Position });
+            return smaples;
         }
     }
 }

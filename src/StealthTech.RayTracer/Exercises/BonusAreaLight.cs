@@ -1,15 +1,53 @@
-﻿using StealthTech.RayTracer.Library;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="BonusAreaLight.cs" company="StealthTech">
+//     Author: Guy Boicey
+//     Copyright (c) 2019 Guy Boicey
+// </copyright>
+//-----------------------------------------------------------------------
+
+using StealthTech.RayTracer.Library;
 
 namespace StealthTech.RayTracer.Exercises
 {
     public class BonusAreaLight
     {
+        private Animation _animation;
+
+        public BonusAreaLight(Animation animation)
+        {
+            _animation = animation;
+
+
+        }
+
+        public BonusAreaLight()
+        {
+        }
+
+        public Canvas Animate()
+        {
+            var offset = _animation.Offset(0, 400, 0, 360);
+
+            var angle = offset * System.Math.PI / 180;
+            var x = 3 * System.Math.Cos(angle);
+            var z = 3 * System.Math.Sin(angle);
+
+            var camera = new Camera(1920, 1080, 0.7854)
+            {
+                ViewTransform = new ViewTransform(
+                    new RtPoint(x, 1, z),
+                    new RtPoint(0, 0.5, 0),
+                    new RtVector(0, 1, 0))
+            };
+
+            World world = BuildWorld();
+
+            return camera.Render(world);
+        }
+
         public Canvas Run()
         {
-            var camera = new Camera(400, 160, 0.7854)
+            var camera = new Camera(800, 600, 0.7854)
             {
                 ViewTransform = new ViewTransform(
                     new RtPoint(-3, 1, 2.5),
@@ -17,15 +55,25 @@ namespace StealthTech.RayTracer.Exercises
                     new RtVector(0, 1, 0))
             };
 
+            World world = BuildWorld();
+
+            return camera.Render(world);
+        }
+
+        private static World BuildWorld()
+        {
             var world = new World();
 
-            world.Lights.Add(new AreaLight(
+            var areaLight = new AreaLight(
                 new RtPoint(-1, 2, 4),
-                new RtVector(2, 0, 0),
-                10,
-                new RtVector(0, 2, 0),
-                10,
-                new RtColor(1.5, 1.5, 1.5)));
+                new RtVector(4, 0, 0),
+                20,
+                new RtVector(0, 4, 0),
+                20,
+                new RtColor(1.5, 1.5, 1.5));
+            areaLight.JitterBy = new NoneDeterministicSequence();
+
+            world.Lights.Add(areaLight);
 
             world.Shapes.Add(new Plane
             {
@@ -82,8 +130,7 @@ namespace StealthTech.RayTracer.Exercises
                     Reflective = 0.3
                 }
             });
-
-            return camera.Render(world);
+            return world;
         }
     }
 }

@@ -79,6 +79,12 @@ namespace StealthTech.RayTracer.Specs.Steps
             _pointsContext.Corner = new RtPoint(x, y, z);
         }
 
+        [Given(@"eye ← Point\((.*), (.*), (.*)\)")]
+        public void Given_Eye_Is_Point(double x, double y, double z)
+        {
+            _pointsContext.Eye = new RtPoint(x, y, z);
+        }
+
         [Then(@"point1 - point2 = Vector\((.*), (.*), (.*)\)")]
         public void Then_point1_Minus_point2_Should_Equal_Vector(float x, float y, float z)
         {

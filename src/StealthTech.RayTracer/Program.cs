@@ -7,6 +7,7 @@
 
 using StealthTech.RayTracer.Library;
 using StealthTech.RayTracer.PerformanceTuning;
+using System;
 using System.Runtime.Intrinsics.X86;
 
 namespace StealthTech.RayTracer
@@ -15,10 +16,22 @@ namespace StealthTech.RayTracer
     {
         static void Main(string[] args)
         {
-            if (args.Length > 0 && args[0] == "-t")
+            if (args.Length > 0 && args[0] == "-a")
             {
+                int start = 0;
+                int end = 0;
+                if (args.Length > 1)
+                {
+                    start = Convert.ToInt32(args[1]);
+                }
+
+                if (args.Length > 2)
+                {
+                    end = Convert.ToInt32(args[2]);
+                }
+
                 var tuning = new RenderingTuning();
-                tuning.RunChapter7();
+                tuning.AnimateAreaLight(start, end);
                 return;
             }
 

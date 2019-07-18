@@ -1,10 +1,13 @@
 ﻿using StealthTech.RayTracer.Library;
 using System;
+using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
     public class AreaLight : Light
     {
+        private Animation animation;
+
         public AreaLight(RtPoint corner, RtVector uVector, int uSteps, RtVector vVector, int vSteps, RtColor intensity)
         {
             Corner = corner;
@@ -29,7 +32,7 @@ namespace StealthTech.RayTracer.Library
         
         public double VSteps { get; }
 
-        public double Samples { get; }
+        public ISequence JitterBy { get; set; } = new DeterministicSequence(0.5);
 
         public override double IntensityAt(RtPoint point, World world)
         {
@@ -50,11 +53,22 @@ namespace StealthTech.RayTracer.Library
             return results;
         }
 
+        public override IEnumerable<RtPoint> GetSamples()
+        {
+            for (int v = 0; v < VSteps; v++)
+            {
+                for (int u = 0; u < USteps; u++)
+                {
+                    yield return PointOnLight(u, v);
+                }
+            }
+        }
+
         public RtPoint PointOnLight(double u, double v)
         {
             return Corner +
-                UVector * (u + 0.5) +
-                VVector * (v + 0.5);
+                UVector * (u + JitterBy.Next()) +
+                VVector * (v + JitterBy.Next());
         }
     }
 }
