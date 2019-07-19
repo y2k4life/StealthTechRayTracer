@@ -92,6 +92,8 @@ namespace StealthTech.RayTracer.Library
             0, 0, 0, 1
         );
 
+        private static readonly bool useIntrinsics = true;
+        
         public static RtMatrix Identity
         {
             get { return _identity; }
@@ -127,7 +129,7 @@ namespace StealthTech.RayTracer.Library
         {
             RtMatrix result = new RtMatrix();
 
-            if (Avx.IsSupported)
+            if (Avx2.IsSupported && useIntrinsics)
             {
                 var row1 = Avx.LoadVector256(&matrix.M11);
                 var row2 = Avx.LoadVector256(&matrix.M21);
@@ -170,7 +172,7 @@ namespace StealthTech.RayTracer.Library
 
         public static unsafe RtMatrix operator *(RtMatrix value1, RtMatrix value2)
         {
-            if (Avx.IsSupported)
+            if (Avx2.IsSupported && useIntrinsics)
             {
                 var row = Avx.LoadVector256(&value1.M11);
                 Avx.Store(&value1.M11,
@@ -236,7 +238,7 @@ namespace StealthTech.RayTracer.Library
 
         public static unsafe RtVector operator *(RtMatrix left, RtVector right)
         {
-            if (Sse.IsSupported)
+            if (Avx.IsSupported && useIntrinsics)
             {
                 var results = new RtMatrix();
 
@@ -254,7 +256,7 @@ namespace StealthTech.RayTracer.Library
 
                 var c1 = (left.M11 * right.X) + (left.M12 * right.Y) + (left.M13 * right.Z) + (left.M14 * right.W);
                 var c2 = (left.M21 * right.X) + (left.M22 * right.Y) + (left.M23 * right.Z) + (left.M24 * right.W);
-                var c3 = (left.M31 * right.X) + (left.M32 * right.Y) + (left.M23 * right.Z) + (left.M24 * right.W);
+                var c3 = (left.M31 * right.X) + (left.M32 * right.Y) + (left.M33 * right.Z) + (left.M34 * right.W);
 
                 return new RtVector(c1, c2, c3);
             }
@@ -262,7 +264,7 @@ namespace StealthTech.RayTracer.Library
 
         public static unsafe RtPoint operator *(RtMatrix left, RtPoint right)
         {
-            if (Sse.IsSupported)
+            if (Avx.IsSupported && useIntrinsics)
             {
                 var results = new RtMatrix();
 
@@ -443,7 +445,7 @@ namespace StealthTech.RayTracer.Library
         /// <returns>True if the given matrices are equal; False otherwise.</returns>
         public static unsafe bool operator ==(RtMatrix value1, RtMatrix value2)
         {
-            if (Sse.IsSupported)
+            if (Avx.IsSupported && useIntrinsics)
             {
                 return
                     Equal(Avx.LoadVector256(&value1.M11), Avx.LoadVector256(&value2.M11)) &&
@@ -466,7 +468,7 @@ namespace StealthTech.RayTracer.Library
         /// <returns>True if the given matrices are not equal; False if they are equal.</returns>
         public static unsafe bool operator !=(RtMatrix value1, RtMatrix value2)
         {
-            if (Sse.IsSupported)
+            if (Avx.IsSupported && useIntrinsics)
             {
                 return
                     NotEqual(Avx.LoadVector256(&value1.M11), Avx.LoadVector256(&value2.M11)) ||
