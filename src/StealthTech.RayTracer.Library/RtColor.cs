@@ -8,8 +8,14 @@
 namespace StealthTech.RayTracer.Library
 {
     using System;
-    public class RtColor : IEquatable<RtColor>
+    public struct RtColor : IEquatable<RtColor>
     {
+        public double Red { get; set; }
+
+        public double Green { get; set; }
+
+        public double Blue { get; set; }
+
         public static readonly RtColor Black = new RtColor(0, 0, 0);
 
         public static readonly RtColor White = new RtColor(1, 1, 1);
@@ -20,13 +26,6 @@ namespace StealthTech.RayTracer.Library
             Green = green;
             Blue = blue;
         }
-
-        public double Red { get; set; }
-        
-        public double Green { get; set; }
-        
-        public double Blue { get; set; }
-        
 
         static public RtColor operator +(RtColor left, RtColor right)
         {
@@ -69,6 +68,11 @@ namespace StealthTech.RayTracer.Library
             return left * multiplier;
         }
 
+        static public RtColor operator /(RtColor left, int divisor)
+        {
+            return new RtColor(left.Red / divisor, left.Green / divisor, left.Blue / divisor);
+        }
+
         public string ToRGB()
         {
             return $"{Normalize(Red)} {Normalize(Green)} {Normalize(Blue)}";
@@ -94,7 +98,7 @@ namespace StealthTech.RayTracer.Library
 
         public override string ToString()
         {
-            return $"{Normalize(Red)}, {Normalize(Green)}, {Normalize(Blue)}";
+            return $"{Red}, {Green}, {Blue}";
         }
 
         public override int GetHashCode()
@@ -104,12 +108,7 @@ namespace StealthTech.RayTracer.Library
 
         public override bool Equals(object obj)
         {
-            if (obj is null)
-            {
-                return false;
-            }
-
-            RtColor other = obj as RtColor;
+            RtColor other = (RtColor)obj;
             return (other.Red.ApproximateEquals(Red)
                 && other.Green.ApproximateEquals(Green)
                 && other.Blue.ApproximateEquals(Blue));
@@ -117,11 +116,6 @@ namespace StealthTech.RayTracer.Library
 
         public bool Equals(RtColor other)
         {
-            if (other is null)
-            {
-                return false;
-            }
-
             return (other.Red.ApproximateEquals(Red)
                 && other.Green.ApproximateEquals(Green)
                 && other.Blue.ApproximateEquals(Blue));

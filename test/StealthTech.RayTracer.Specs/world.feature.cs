@@ -107,23 +107,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.Given("light ← PointLight(Point(-10, 10, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table63 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.color",
                         "(0.8, 1.0, 0.6)"});
-            table63.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "material.diffuse",
                         "0.7"});
-            table63.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "material.specular",
                         "0.2"});
 #line 10
- testRunner.And("sphere1 ← sphere() with:", ((string)(null)), table63, "And ");
+ testRunner.And("sphere1 ← sphere() with:", ((string)(null)), table16, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table64 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "scaling(0.5, 0.5, 0.5)"});
 #line 14
- testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table64, "And ");
+ testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table17, "And ");
 #line 16
  testRunner.When("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
@@ -292,82 +292,6 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="There is no shadow when nothing is collinear with point and light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when nothing is collinear with point and light")]
-        public virtual void ThereIsNoShadowWhenNothingIsCollinearWithPointAndLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when nothing is collinear with point and light", null, ((string[])(null)));
-#line 72
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 73
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 74
- testRunner.And("point ← Point(0, 10, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 75
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="The shadow when an object is between the point and the light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "The shadow when an object is between the point and the light")]
-        public virtual void TheShadowWhenAnObjectIsBetweenThePointAndTheLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The shadow when an object is between the point and the light", null, ((string[])(null)));
-#line 77
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 78
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
- testRunner.And("point ← Point(10, -10, 10)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 80
- testRunner.Then("is_shadowed(w, p) is true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the light")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the light")]
-        public virtual void ThereIsNoShadowWhenAnObjectIsBehindTheLight()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the light", null, ((string[])(null)));
-#line 82
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 83
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 84
- testRunner.And("point ← Point(-20, 20, -20)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 85
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.FactAttribute(DisplayName="There is no shadow when an object is behind the point")]
-        [Xunit.TraitAttribute("FeatureTitle", "world")]
-        [Xunit.TraitAttribute("Description", "There is no shadow when an object is behind the point")]
-        public virtual void ThereIsNoShadowWhenAnObjectIsBehindThePoint()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("There is no shadow when an object is behind the point", null, ((string[])(null)));
-#line 87
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 88
- testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 89
- testRunner.And("point ← Point(-2, 2, -2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 90
- testRunner.Then("is_shadowed(w, p) is false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
         [Xunit.FactAttribute(DisplayName="shade_hit() is given an intersection in shadow")]
         [Xunit.TraitAttribute("FeatureTitle", "world")]
         [Xunit.TraitAttribute("Description", "shade_hit() is given an intersection in shadow")]
@@ -386,11 +310,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 96
  testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table65 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "translation(0, 0, 10)"});
 #line 97
- testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table65, "And ");
+ testRunner.And("sphere2 ← sphere() with:", ((string)(null)), table18, "And ");
 #line 99
  testRunner.And("sphere2 is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 100
@@ -448,14 +372,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 117
  testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table66 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.reflective",
                         "0.5"});
-            table66.AddRow(new string[] {
+            table19.AddRow(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
 #line 118
- testRunner.And("plane ← Plane() with:", ((string)(null)), table66, "And ");
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table19, "And ");
 #line 121
  testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 122
@@ -484,14 +408,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 129
  testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table67 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.reflective",
                         "0.5"});
-            table67.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
 #line 130
- testRunner.And("plane ← Plane() with:", ((string)(null)), table67, "And ");
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table20, "And ");
 #line 133
  testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 134
@@ -522,25 +446,25 @@ this.ScenarioInitialize(scenarioInfo);
 #line 142
  testRunner.And("light ← PointLight(Point(0, 0, 0), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table68 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.reflective",
                         "1"});
-            table68.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
 #line 143
- testRunner.And("lowerPlane ← Plane() with:", ((string)(null)), table68, "And ");
+ testRunner.And("lowerPlane ← Plane() with:", ((string)(null)), table21, "And ");
 #line 146
  testRunner.And("lowerPlane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table69 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.reflective",
                         "1"});
-            table69.AddRow(new string[] {
+            table22.AddRow(new string[] {
                         "transform",
                         "translation(0, 1, 0)"});
 #line 147
- testRunner.And("upperPlane ← Plane() with:", ((string)(null)), table69, "And ");
+ testRunner.And("upperPlane ← Plane() with:", ((string)(null)), table22, "And ");
 #line 150
  testRunner.And("upperPlane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 151
@@ -563,14 +487,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 155
  testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table70 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.reflective",
                         "0.5"});
-            table70.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
 #line 156
- testRunner.And("plane ← Plane() with:", ((string)(null)), table70, "And ");
+ testRunner.And("plane ← Plane() with:", ((string)(null)), table23, "And ");
 #line 159
  testRunner.And("plane is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 160
@@ -630,14 +554,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 178
  testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table71 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.transparency",
                         "1.0"});
-            table71.AddRow(new string[] {
+            table24.AddRow(new string[] {
                         "material.RefractiveIndex",
                         "1.5"});
 #line 179
- testRunner.And("sphere1 has:", ((string)(null)), table71, "And ");
+ testRunner.And("sphere1 has:", ((string)(null)), table24, "And ");
 #line 182
  testRunner.And("ray ← Ray(Point(0, 0, -5), Vector(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 183
@@ -668,14 +592,14 @@ this.ScenarioInitialize(scenarioInfo);
 #line 191
  testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table72 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.transparency",
                         "1.0"});
-            table72.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "material.RefractiveIndex",
                         "1.5"});
 #line 192
- testRunner.And("sphere1 has:", ((string)(null)), table72, "And ");
+ testRunner.And("sphere1 has:", ((string)(null)), table25, "And ");
 #line 195
  testRunner.And("ray ← Ray(Point(0, 0, √2/2), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 196
@@ -706,25 +630,25 @@ this.ScenarioInitialize(scenarioInfo);
 #line 206
  testRunner.And("sphere1 ← the first shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table73 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.pattern",
                         "TestPatter()"});
-            table73.AddRow(new string[] {
+            table26.AddRow(new string[] {
                         "material.Ambient",
                         "1.0"});
 #line 207
- testRunner.And("sphere1 has:", ((string)(null)), table73, "And ");
+ testRunner.And("sphere1 has:", ((string)(null)), table26, "And ");
 #line 210
  testRunner.And("sphere2 ← the second shape in world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table74 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.Transparency",
                         "1.0"});
-            table74.AddRow(new string[] {
+            table27.AddRow(new string[] {
                         "material.RefractiveIndex",
                         "1.5"});
 #line 211
- testRunner.And("sphere2 has:", ((string)(null)), table74, "And ");
+ testRunner.And("sphere2 has:", ((string)(null)), table27, "And ");
 #line 214
  testRunner.And("ray ← Ray(Point(0, 0, 0.1), Vector(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 215
@@ -757,31 +681,31 @@ this.ScenarioInitialize(scenarioInfo);
 #line 224
  testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table75 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
-            table75.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "material.Transparency",
                         "0.5"});
-            table75.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "material.RefractiveIndex",
                         "1.5"});
 #line 225
- testRunner.And("floor ← Plane() with:", ((string)(null)), table75, "And ");
+ testRunner.And("floor ← Plane() with:", ((string)(null)), table28, "And ");
 #line 229
  testRunner.And("floor is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table76 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.color",
                         "(1, 0, 0)"});
-            table76.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "material.Ambient",
                         "0.5"});
-            table76.AddRow(new string[] {
+            table29.AddRow(new string[] {
                         "transform",
                         "translation(0, -3.5, -0.5)"});
 #line 230
- testRunner.And("sphere ← Sphere() with:", ((string)(null)), table76, "And ");
+ testRunner.And("sphere ← Sphere() with:", ((string)(null)), table29, "And ");
 #line 234
  testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 235
@@ -812,34 +736,34 @@ this.ScenarioInitialize(scenarioInfo);
 #line 243
  testRunner.And("ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table77 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         "transform",
                         "translation(0, -1, 0)"});
-            table77.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "material.reflective",
                         "0.5"});
-            table77.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "material.Transparency",
                         "0.5"});
-            table77.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "material.RefractiveIndex",
                         "1.5"});
 #line 244
- testRunner.And("floor ← Plane() with:", ((string)(null)), table77, "And ");
+ testRunner.And("floor ← Plane() with:", ((string)(null)), table30, "And ");
 #line 249
  testRunner.And("floor is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table78 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
                         "material.color",
                         "(1, 0, 0)"});
-            table78.AddRow(new string[] {
+            table31.AddRow(new string[] {
                         "material.Ambient",
                         "0.5"});
-            table78.AddRow(new string[] {
+            table31.AddRow(new string[] {
                         "transform",
                         "translation(0, -3.5, -0.5)"});
 #line 250
- testRunner.And("sphere ← Sphere() with:", ((string)(null)), table78, "And ");
+ testRunner.And("sphere ← Sphere() with:", ((string)(null)), table31, "And ");
 #line 254
  testRunner.And("sphere is added to world", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 255
@@ -850,6 +774,31 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("color ← world.ShadeHit(computations, 5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 258
  testRunner.Then("color = Color(0.93391, 0.69643, 0.69243)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="is_shadow tests for occlusion between two points")]
+        [Xunit.TraitAttribute("FeatureTitle", "world")]
+        [Xunit.TraitAttribute("Description", "is_shadow tests for occlusion between two points")]
+        [Xunit.InlineDataAttribute("Point(-10, -10, 10)", "false", new string[0])]
+        [Xunit.InlineDataAttribute("Point(10, 10, 10)", "true", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-20, -20, -20)", "false", new string[0])]
+        [Xunit.InlineDataAttribute("Point(-5, -5, -5)", "false", new string[0])]
+        public virtual void Is_ShadowTestsForOcclusionBetweenTwoPoints(string point, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("is_shadow tests for occlusion between two points", null, exampleTags);
+#line 260
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 261
+ testRunner.Given("world ← default_world()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 262
+ testRunner.And("light_position ← Point(-10, -10, -10)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 263
+ testRunner.And(string.Format("point ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 264
+ testRunner.Then(string.Format("is_shadowed(w, light_position, point) is {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

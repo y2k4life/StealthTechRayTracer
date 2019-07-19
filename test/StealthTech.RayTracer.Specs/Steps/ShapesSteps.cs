@@ -133,7 +133,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"shape\.Transform = identityMatrix")]
         public void Then_s_Transform_Equals_Identity_Matrix()
         {
-            var expectedMatrix = new RtMatrix(4, 4).Identity();
+            var expectedMatrix = RtMatrix.Identity;
 
             var actualMatrix = _shapesContext.TestShape.Transform.Matrix;
 

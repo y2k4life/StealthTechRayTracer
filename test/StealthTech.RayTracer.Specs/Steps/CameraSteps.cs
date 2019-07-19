@@ -21,14 +21,16 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly TransformationsContext _transformationContext;
         readonly VectorsContext _vectorsContext;
         readonly WorldContext _worldContext;
+        readonly RayContext _rayContext;
 
         public CameraSteps(CameraContext cameraContext,
             TransformationsContext transformationContext,
             WorldContext worldContext,
             PointsContext pointsContext,
-            VectorsContext vectorsContext
-            )
+            VectorsContext vectorsContext,
+            RayContext rayContext)
         {
+            _rayContext = rayContext;
             _vectorsContext = vectorsContext;
             _pointsContext = pointsContext;
             _worldContext = worldContext;
@@ -86,6 +88,12 @@ namespace StealthTech.RayTracer.Specs.Steps
 
         }
 
+        [When(@"ray ← camera\.RayForPixel\((.*), (.*)\)")]
+        public void When_ray_Is_RayForPixel_Of_Canvas_At_x_y(double x, double y)
+        {
+            _rayContext.Ray = _cameraContext.Camera.RayForPixel(x, y);
+        }
+
         [When(@"image ← render\(c, w\)")]
         public void When_image_Is_Assigned_Camera_Render_Of_world()
         {
@@ -111,7 +119,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"camera\.Transform = identityMatrix")]
         public void Then_Transform_Of_camera_Should_Equal_identityMatrix()
         {
-            var expectedTransform = new RtMatrix(4, 4).Identity();
+            var expectedTransform = RtMatrix.Identity;
 
             var actualTransform = _cameraContext.Camera.ViewTransform.Matrix;
 

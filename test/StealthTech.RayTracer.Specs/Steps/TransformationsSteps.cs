@@ -206,7 +206,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"transform = identity_matrix")]
         public void Then_transform_Equals_Identity_Matrix()
         {
-            var expectedMatrix = new RtMatrix(4, 4).Identity();
+            var expectedMatrix = RtMatrix.Identity;
 
             var actualMatrix = _transformationsContext.Transform.Matrix;
 

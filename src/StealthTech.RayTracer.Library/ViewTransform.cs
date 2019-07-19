@@ -23,17 +23,17 @@ namespace StealthTech.RayTracer.Library
             var upNormalized = Up.Normalize();
             Left = Forward.Cross(upNormalized);
             var trueUp = Left.Cross(Forward);
-            var orientation = new RtMatrix(4, 4).Identity();
+            var orientation = RtMatrix.Identity;
 
-            orientation[0, 0] = Left.X;
-            orientation[0, 1] = Left.Y;
-            orientation[0, 2] = Left.Z;
-            orientation[1, 0] = trueUp.X;
-            orientation[1, 1] = trueUp.Y;
-            orientation[1, 2] = trueUp.Z;
-            orientation[2, 0] = -Forward.X;
-            orientation[2, 1] = -Forward.Y;
-            orientation[2, 2] = -Forward.Z;
+            orientation.M11 = Left.X;
+            orientation.M12 = Left.Y;
+            orientation.M13 = Left.Z;
+            orientation.M21 = trueUp.X;
+            orientation.M22 = trueUp.Y;
+            orientation.M23 = trueUp.Z;
+            orientation.M31 = -Forward.X;
+            orientation.M32 = -Forward.Y;
+            orientation.M33 = -Forward.Z;
 
             Matrix = orientation * Translation(-from.X, -from.Y, -from.Z).Matrix;
         }

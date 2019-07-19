@@ -15,6 +15,10 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtPoint Position { get; set; }
 
-        public PointLight Light { get; set; }
+        public Light Light { get; set; }
+
+        public AreaLight AreaLight { get; set; }
+
+        public double IntensityAt { get; set; }
     }
 }

@@ -1,8 +1,7 @@
 {
   "profiles": {
     "StealthTech.RayTracer": {
-      "commandName": "Project",
-      "commandLineArgs": "-t"
+      "commandName": "Project"
     }
   }
 }

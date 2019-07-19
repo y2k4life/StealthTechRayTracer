@@ -26,49 +26,67 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"point ← Point\((.*), (.*), (.*)\)")]
-        public void Given_p_Is_Point(double x, double y, double z)
+        public void Given_p_Is_Point(float x, float y, float z)
         {
             _pointsContext.Point = new RtPoint(x, y, z);
         }
 
         [Given(@"point1 ← Point\((.*), (.*), (.*)\)")]
-        public void Given_point1_Is_Point(double x, double y, double z)
+        public void Given_point1_Is_Point(float x, float y, float z)
         {
             _pointsContext.Point1 = new RtPoint(x, y, z);
         }
 
         [Given(@"point2 ← Point\((.*), (.*), (.*)\)")]
-        public void Given_point2_Is_Point(double x, double y, double z)
+        public void Given_point2_Is_Point(float x, float y, float z)
         {
             _pointsContext.Point2 = new RtPoint(x, y, z);
         }
 
         [Given(@"position ← Point\((.*), (.*), (.*)\)")]
-        public void Given_Position_Point(double x, double y, double z)
+        public void Given_Position_Point(float x, float y, float z)
         {
             _pointsContext.Position = new RtPoint(x, y, z);
         }
 
         [Given(@"origin ← Point\((.*), (.*), (.*)\)")]
-        public void Given_Origin_As_Point(double x, double y, double z)
+        public void Given_Origin_As_Point(float x, float y, float z)
         {
             _pointsContext.Origin = new RtPoint(x, y, z);
         }
 
         [Given(@"from ← Point\((.*), (.*), (.*)\)")]
-        public void Given_from_Is_Point(double x, double y, double z)
+        public void Given_from_Is_Point(float x, float y, float z)
         {
             _pointsContext.From = new RtPoint(x, y, z);
         }
 
         [Given(@"to ← Point\((.*), (.*), (.*)\)")]
-        public void Given_to_Is_Point(double x, double y, double z)
+        public void Given_to_Is_Point(float x, float y, float z)
         {
             _pointsContext.To = new RtPoint(x, y, z);
         }
 
+        [Given(@"light_position ← Point\((.*), (.*), (.*)\)")]
+        public void Given_light_position_Is_Point(float x, float y, float z)
+        {
+            _pointsContext.LightPosition = new RtPoint(x, y, z);
+        }
+
+        [Given(@"corner ← Point\((.*), (.*), (.*)\)")]
+        public void Given_corner_Is_Point(float x, float y, float z)
+        {
+            _pointsContext.Corner = new RtPoint(x, y, z);
+        }
+
+        [Given(@"eye ← Point\((.*), (.*), (.*)\)")]
+        public void Given_Eye_Is_Point(double x, double y, double z)
+        {
+            _pointsContext.Eye = new RtPoint(x, y, z);
+        }
+
         [Then(@"point1 - point2 = Vector\((.*), (.*), (.*)\)")]
-        public void Then_point1_Minus_point2_Should_Equal_Vector(double x, double y, double z)
+        public void Then_point1_Minus_point2_Should_Equal_Vector(float x, float y, float z)
         {
             var expectedVector = new RtVector(x, y, z);
 
@@ -78,7 +96,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"point = tuple\((.*), (.*), (.*), (.*)\)")]
-        public void Then_point_Should_Equal_Tuple(double x, double y, double z, double w)
+        public void Then_point_Should_Equal_Tuple(float x, float y, float z, float w)
         {
             var expectedTuple = new RtTuple(x, y, z, w);
             var actualTuple = _pointsContext.Point;
@@ -89,21 +107,13 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"point - vector = Point\((.*), (.*), (.*)\)")]
-        public void Then_point_Minus_vector_Should_Equal_Point(double x, double y, double z)
+        public void Then_point_Minus_vector_Should_Equal_Point(float x, float y, float z)
         {
             var expectedTuple = new RtPoint(x, y, z);
 
             RtPoint actualPoint = _pointsContext.Point - _vectorContext.Vector;
 
             Assert.Equal(expectedTuple, actualPoint);
-        }
-
-        [Then(@"point1 = Point\((.*), (.*), (.*)\)")]
-        public void Then_point1_Equals_Point(string x, string y, string z)
-        {
-            var expectedPoint = new RtPoint(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
-
-            Assert.Equal(expectedPoint, _pointsContext.Point1);
         }
 
         [Then(@"point2 = Point\((.*), (.*), (.*)\)")]
@@ -129,5 +139,14 @@ namespace StealthTech.RayTracer.Specs.Steps
 
             Assert.Equal(expectedPoint, _pointsContext.Point4);
         }
+
+        [Then(@"point = Point\((.*), (.*), (.*)\)")]
+        public void Then_point_Equals_Point(float x, float y, float z)
+        {
+            var expectedPoint = new RtPoint(x, y, z);
+
+            Assert.Equal(expectedPoint, _pointsContext.Point);
+        }
+
     }
 }

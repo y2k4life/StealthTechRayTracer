@@ -12,16 +12,16 @@ namespace StealthTech.RayTracer.Exercises
 {
     public class ChapterNine
     {
-        // readonly Animation _animation;
+        //readonly Animation _animation;
 
         public ChapterNine(Animation animation)
         {
-           // _animation = animation;
+            //_animation = animation;
         }
 
-        public ChapterNine()
-        {
-        }
+        //public ChapterNine()
+        //{
+        //}
 
         public void Run()
         {
@@ -36,8 +36,8 @@ namespace StealthTech.RayTracer.Exercises
 
             // var world = World.DefaultWorld();
 
-            int width = 1920;
-            int height = 1080;
+            int width = 640;
+            int height = 480;
 
             //int width = 960;
             //int height = 540;
@@ -71,10 +71,6 @@ namespace StealthTech.RayTracer.Exercises
 
         private Camera InTheGroundCamera(int width, int height)
         {
-            //var camerYValue = _animation.Offset(1, 100, 0, 0.7457627118644068);
-
-            //var camerYPoint = _animation.Offset(1, 70, 1.0, 1.5);
-
             return new Camera(width, height, Math.PI / 2)
             {
                 ViewTransform = new ViewTransform(
@@ -215,12 +211,12 @@ namespace StealthTech.RayTracer.Exercises
         {
             var world = new World();
 
-            // var waterY = _animation.Offset(120, 300, 1.75, .1);
+            //var waterY = _animation.Offset(120, 300, 1.75, .1);
 
             var water = new Plane()
             {
                 Transform = new Transform()
-                    .Translation(0, 1, 0),
+                    .Translation(0, .5, 0),
                 CastShadow = false,
                 Material = new Material()
                 {
@@ -235,9 +231,11 @@ namespace StealthTech.RayTracer.Exercises
                 }
             };
 
+            world.Shapes.Add(water);
+
             //if (_animation.CurrentFrame < 295)
             //{
-            //    world.Shapes.Add(water);
+            //
             //}
 
             // Floor
@@ -358,7 +356,15 @@ namespace StealthTech.RayTracer.Exercises
                 }
             });
 
-            world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            //world.Lights.Add(new PointLight(new RtPoint(-15, 30, -15), new RtColor(1, 1, 1)));
+            world.Lights.Add(new AreaLight(
+                new RtPoint(-15, 30, -15),
+                new RtVector(2, 0, 0),
+                10,
+                new RtVector(0, 2, 0),
+                10,
+                new RtColor(1.5, 1.5, 1.5)));
+
             return world;
         }
 

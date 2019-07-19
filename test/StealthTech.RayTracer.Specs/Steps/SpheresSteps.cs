@@ -21,13 +21,19 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly IntersectionsContext _intersectionsContext;
         readonly MaterialsContext _materialsContext;
         readonly VectorsContext _vectorsContext;
+        readonly ComputationsContext _computationsContext;
+        readonly WorldContext _worldContext;
 
         public SpheresSteps(SphereContext sphereContext,
             RayContext rayContext,
             IntersectionsContext intersectionsContext,
             MaterialsContext materialsContext,
-            VectorsContext vectorsContext)
+            VectorsContext vectorsContext,
+            ComputationsContext computationsContext,
+            WorldContext worldContext)
         {
+            _worldContext = worldContext;
+            _computationsContext = computationsContext;
             _vectorsContext = vectorsContext;
             _materialsContext = materialsContext;
             _intersectionsContext = intersectionsContext;
@@ -73,6 +79,25 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _sphereContext.Sphere.Material.Ambient = ambient;
         }
+
+        [Given(@"sphere\.Material\.Diffuse ← (.*)")]
+        public void Given_Diffuse_Of_Material_Of_sphere_Is(double diffuse)
+        {
+            _sphereContext.Sphere.Material.Diffuse = diffuse;
+        }
+
+        [Given(@"sphere\.Material\.Specular ← (.*)")]
+        public void Given_Specular_Of_Material_Of_sphere_Is(double specular)
+        {
+            _sphereContext.Sphere.Material.Specular = specular;
+        }
+
+        [Given(@"sphere\.Material\.Color ← Color\((.*), (.*), (.*)\)")]
+        public void Given_Color_Of_Material_Sphere_Is_Color(double red, double green, double blue)
+        {
+            _sphereContext.Sphere.Material.Color = new RtColor(red, green, blue);
+        }
+
 
         [Given(@"sphere ← GlassSphere\(\)")]
         public void Given_sphere_Is_GlassSphere()
@@ -129,7 +154,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"sphere\.Transform = identityMatrix")]
         public void Then_Transform_Of_sphere_Should_Equal_identityMatrix()
         {
-            var expectedMatrix = new RtMatrix(4, 4).Identity();
+            var expectedMatrix = RtMatrix.Identity;
 
             Assert.Equal(expectedMatrix, _sphereContext.Sphere.Transform.Matrix);
         }
@@ -145,6 +170,8 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             Assert.Equal(expectedRefractiveIndex, _sphereContext.Sphere.Material.RefractiveIndex);
         }
+
+
 
 
     }

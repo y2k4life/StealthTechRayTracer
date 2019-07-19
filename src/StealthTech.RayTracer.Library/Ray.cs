@@ -31,5 +31,10 @@ namespace StealthTech.RayTracer.Library
 
             return new Ray(newOrigin, newDirection);
         }
+
+        public override string ToString()
+        {
+            return $"O: {Origin.X.ToString("####.#0000")}, {Origin.Y.ToString("####.#0000")}, {Origin.Z.ToString("####.#0000")} D: {Direction.X.ToString("####.#0000")}, {Direction.Y.ToString("####.#0000")}, {Direction.Z.ToString("####.#0000")}";
+        }
     }
 }

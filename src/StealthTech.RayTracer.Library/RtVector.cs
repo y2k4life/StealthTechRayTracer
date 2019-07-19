@@ -9,25 +9,41 @@ using System;
 
 namespace StealthTech.RayTracer.Library
 {
-    public class RtVector : RtBaseTuple, IEquatable<RtVector>
+    public struct RtVector : IEquatable<RtVector>
     {
+        public double X;
+
+        public double Y;
+
+        public double Z;
+
+        public double W;
+        
         public static readonly RtVector ZeroVector = new RtVector(0, 0, 0);
 
         public RtVector(double x, double y, double z)
-            : base(x, y, z, 0)
         {
+            X = x;
+            Y = y;
+            Z = z;
+            W = 0;
         }
 
-        public RtVector(RtBaseTuple tuple)
-            : base(tuple.X, tuple.Y, tuple.Z, 0)
+        public double Magnitude() => Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2) + Math.Pow(W, 2));
+
+        public double Dot(RtVector other)
         {
+            return
+                X * other.X +
+                Y * other.Y +
+                Z * other.Z +
+                W * other.W;
         }
 
         public RtVector Reflect(RtVector normal)
         {
             return this - normal * 2 * Dot(normal);
         }
-
 
         public RtVector Normalize() => this / Magnitude();
 
@@ -51,16 +67,6 @@ namespace StealthTech.RayTracer.Library
 
         static public bool operator ==(RtVector left, RtVector right)
         {
-            if (left is null)
-            {
-                if (right is null)
-                {
-                    return true;
-                }
-
-                return false;
-            }
-
             return left.Equals(right);
         }
 
@@ -81,21 +87,21 @@ namespace StealthTech.RayTracer.Library
                 return false;
             }
 
-            RtVector other = obj as RtVector;
+            RtVector other = (RtVector)obj;
             return Equals(other);
         }
 
         public bool Equals(RtVector other)
         {
-            if (other is null)
-            {
-                return false;
-            }
-
-            return (other.X.ApproximateEquals(X)
+             return (other.X.ApproximateEquals(X)
                 && other.Y.ApproximateEquals(Y)
                 && other.Z.ApproximateEquals(Z)
                 && other.W.ApproximateEquals(W));
+        }
+
+        public override string ToString()
+        {
+            return $"({X.ToString("#####0.000")}, {Y.ToString("#####0.000")}, {Z.ToString("#####0.000")}, {W})";
         }
     }
 }

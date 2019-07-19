@@ -25,7 +25,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
         {
             var test = new ChapterSeven();
 
-            test.Render(false);
+            test.Render(true);
         }
 
         public void RunChapterNine()
@@ -39,7 +39,7 @@ namespace StealthTech.RayTracer.PerformanceTuning
             //    FrameCount = 300,
             //    StartFrame = 1
             //};
-
+                        
             //var tuning = new ChapterNine(animation);
 
 
@@ -50,6 +50,51 @@ namespace StealthTech.RayTracer.PerformanceTuning
 
             //    PpmOutput.WriteToFile($"world{x}.ppm", canvas.GetPPMContent(), false);
             //}
+
+            //var canvas = tuning.Reference(-Math.PI / 2);
+            //PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());
+
+        }
+
+        public void AnimateAreaLight(int start, int end)
+        {
+            
+            var animation = new Animation()
+            {
+                FrameCount = 400,
+            };
+
+            start = start == 0 ? 1 : start;
+            end = end == 0 ? animation.FrameCount : end;
+
+            var tuning = new BonusAreaLight(animation);
+
+            for (int x = start; x < end + 1; x++)
+            {
+                animation.CurrentFrame = x;
+                var canvas = tuning.Animate();
+
+                PpmOutput.WriteToFile($"world{x}.ppm", canvas.GetPPMContent(), false);
+            }
+        }
+
+        public void RunChapterTwelve()
+        {
+            var animation = new Animation()
+            {
+                FrameCount = 13,
+                StartFrame = 1
+            };
+
+            var tuning = new ChapterTwelve(animation);
+
+            for (int x = animation.StartFrame; x < animation.FrameCount + 1; x++)
+            {
+                animation.CurrentFrame = x;
+                var canvas = tuning.Render();
+
+                PpmOutput.WriteToFile($"world-twelve{x}.ppm", canvas.GetPPMContent(), true);
+            }
 
             //var canvas = tuning.Reference(-Math.PI / 2);
             //PpmOutput.WriteToFile($"world1.ppm", canvas.GetPPMContent());

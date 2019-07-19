@@ -69,25 +69,25 @@ Scenario: The color with an intersection behind the ray
 	When color ← color_at(w, r)
 	Then color = inner.Material.Color
 
-Scenario: There is no shadow when nothing is collinear with point and light
-	Given world ← default_world()
-	And point ← Point(0, 10, 0)
-	Then is_shadowed(w, p) is false
-
-Scenario: The shadow when an object is between the point and the light
-	Given world ← default_world()
-	And point ← Point(10, -10, 10)
-	Then is_shadowed(w, p) is true
-
-Scenario: There is no shadow when an object is behind the light
-	Given world ← default_world()
-	And point ← Point(-20, 20, -20)
-	Then is_shadowed(w, p) is false
-
-Scenario: There is no shadow when an object is behind the point
-	Given world ← default_world()
-	And point ← Point(-2, 2, -2)
-	Then is_shadowed(w, p) is false
+#Scenario: There is no shadow when nothing is collinear with point and light
+#	Given world ← default_world()
+#	And point ← Point(0, 10, 0)
+#	Then is_shadowed(w, p) is false
+#
+#Scenario: The shadow when an object is between the point and the light
+#	Given world ← default_world()
+#	And point ← Point(10, -10, 10)
+#	Then is_shadowed(w, p) is true
+#
+#Scenario: There is no shadow when an object is behind the light
+#	Given world ← default_world()
+#	And point ← Point(-20, 20, -20)
+#	Then is_shadowed(w, p) is false
+#
+#Scenario: There is no shadow when an object is behind the point
+#	Given world ← default_world()
+#	And point ← Point(-2, 2, -2)
+#	Then is_shadowed(w, p) is false
 
 Scenario: shade_hit() is given an intersection in shadow
 	Given world ← World()
@@ -242,10 +242,10 @@ Scenario: shade_hit() with a reflective, transparent material
 	Given world ← default_world()
 	And ray ← Ray(Point(0, 0, -3), Vector(0, -√2/2, √2/2))
 	And floor ← Plane() with:
-		| transform                 | translation(0, -1, 0) |
-		| material.reflective       | 0.5                   |
-		| material.Transparency     | 0.5                   |
-		| material.RefractiveIndex  | 1.5                   |
+		| transform                | translation(0, -1, 0) |
+		| material.reflective      | 0.5                   |
+		| material.Transparency    | 0.5                   |
+		| material.RefractiveIndex | 1.5                   |
 	And floor is added to world
 	And sphere ← Sphere() with:
 		| material.color   | (1, 0, 0)                  |
@@ -256,3 +256,16 @@ Scenario: shade_hit() with a reflective, transparent material
 	When computations ← intersections[0].PrepareComputations(ray, intersections)
 	And color ← world.ShadeHit(computations, 5)
 	Then color = Color(0.93391, 0.69643, 0.69243)
+
+Scenario Outline: is_shadow tests for occlusion between two points
+	Given world ← default_world()
+	And light_position ← Point(-10, -10, -10)
+	And point ← <point>
+	Then is_shadowed(w, light_position, point) is <result>
+
+	Examples:
+		| point                | result |
+		| Point(-10, -10, 10)  | false  |
+		| Point(10, 10, 10)    | true   |
+		| Point(-20, -20, -20) | false  |
+		| Point(-5, -5, -5)    | false  |

@@ -81,7 +81,7 @@ namespace StealthTech.RayTracer.Library
                 && other.Transparency.ApproximateEquals(Transparency));
         }
 
-        public RtColor Lighting(Computations computations, PointLight light, bool inShadow = false)
+        public RtColor Lighting(Computations computations, Light light, double intensity)
         {
             var color = Color;
 
@@ -91,39 +91,33 @@ namespace StealthTech.RayTracer.Library
             }
             
             var effectiveColor = color * light.Intensity;
-            var lightVector = (light.Position - computations.Position).Normalize();
-            
-            var lightDotNormal = lightVector.Dot(computations.NormalVector);
-
             var ambient = effectiveColor * Ambient;
 
-            RtColor diffuse;
-            RtColor specular;
+            // var lightPosition = light.Position;
 
-            if (lightDotNormal < 0 || inShadow)
+            RtColor sum = RtColor.Black;
+
+            foreach (var lightPosition in light.GetSamples())
             {
-                diffuse = RtColor.Black;
-                specular = RtColor.Black;
-            }
-            else
-            {
-                diffuse = effectiveColor * Diffuse * lightDotNormal;
+                var lightVector = (lightPosition - computations.Position).Normalize();
+                var lightDotNormal = lightVector.Dot(computations.NormalVector);
+
+                if (lightDotNormal < 0 || intensity == 0)
+                    continue;
+
+                sum += effectiveColor * Diffuse * lightDotNormal;
 
                 var reflectVector = lightVector.Negate().Reflect(computations.NormalVector);
                 var reflectDotEye = reflectVector.Dot(computations.EyeVector);
                 
-                if (reflectDotEye <= 0)
-                {
-                    specular = RtColor.Black;
-                }
-                else
+                if (reflectDotEye > 0)
                 {
                     var factor = Math.Pow(reflectDotEye, Shininess);
-                    specular = light.Intensity * Specular * factor;
+                    sum += light.Intensity * Specular * factor;
                 }
             }
 
-            var results = ambient + diffuse + specular;
+            var results = ambient + (sum / light.Samples) * intensity;
             return results;
         }
     }

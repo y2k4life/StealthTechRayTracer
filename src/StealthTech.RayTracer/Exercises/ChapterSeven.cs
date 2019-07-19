@@ -26,6 +26,7 @@ namespace StealthTech.RayTracer.Exercises
 
             var floor = new Sphere()
             {
+                Name = "Floor",
                 Transform = new Transform().Scaling(10, 0.01, 10),
                 Material = new Material()
                 {
@@ -36,8 +37,34 @@ namespace StealthTech.RayTracer.Exercises
 
             world.Shapes.Add(floor);
 
+            //var scalling = new Transform()
+            //    .Scaling(10f, 0.01f, 10f);
+            //Console.WriteLine(scalling.ToString());
+
+            //var rotatingY = new Transform()
+            //    .RotateY(-MathF.PI / 4f);
+            //Console.WriteLine(rotatingY.ToString());
+
+            //var rotatingX = new Transform()
+            //    .RotateX(MathF.PI / 2f);
+            //Console.WriteLine(rotatingX.ToString());
+
+            //var translation = new Transform()
+            //    .Translation(0, 0, 5);
+            //Console.WriteLine(translation.ToString());
+
+            //var t1 = translation * rotatingY;
+            //Console.WriteLine(t1.ToString());
+
+            //var t2 = t1 * rotatingX;
+            //Console.WriteLine(t2.ToString());
+
+            //var t3 = t2 * scalling;
+            //Console.WriteLine(t3.ToString());
+
             var leftWall = new Sphere()
             {
+                Name = "Left Wall",
                 Transform = new Transform()
                     .Scaling(10, 0.01, 10)
                     .RotateX(Math.PI / 2)
@@ -50,10 +77,13 @@ namespace StealthTech.RayTracer.Exercises
                 }
             };
 
+            Console.Write(leftWall.ToString());
+
             world.Shapes.Add(leftWall);
 
             var rightWall = new Sphere()
             {
+                Name = "Right Wall",
                 Transform = new Transform()
                     .Scaling(10, 0.01, 10)
                     .RotateX(Math.PI / 2)
@@ -66,6 +96,7 @@ namespace StealthTech.RayTracer.Exercises
 
             var middle = new Sphere()
             {
+                Name = "Middle Ball",
                 Transform = new Transform()
                     .Translation(-0.5, 1, 0.5),
                 Material = new Material()
@@ -80,6 +111,7 @@ namespace StealthTech.RayTracer.Exercises
 
             var right = new Sphere()
             {
+                Name = "Right Ball",
                 Transform = new Transform()
                     .Scaling(0.5, 0.5, 0.5)
                     .Translation(1.5, 0.5, -0.5),
@@ -95,6 +127,7 @@ namespace StealthTech.RayTracer.Exercises
 
             var left = new Sphere()
             {
+                Name = "Left Ball",
                 Transform = new Transform()
                     .Scaling(0.33, 0.33, 0.33)
                     .Translation(-1.5, 0.33, -0.75),
@@ -110,7 +143,7 @@ namespace StealthTech.RayTracer.Exercises
 
             world.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(1, 1, 1)));
 
-            var camera = new Camera(800, 400, Math.PI / 2)
+            var camera = new Camera(1920, 1080, Math.PI / 2)
             {
                 ViewTransform = new ViewTransform(
                 new RtPoint(0, 1.5, -5),
@@ -118,7 +151,8 @@ namespace StealthTech.RayTracer.Exercises
                 new RtVector(0, 1, 0))
             };
 
-            return camera.Render(world, parallel);
+            return camera.Render(world);
+            // return camera.Render(world, 94, 18, 1, 1);
         }
     }
 }

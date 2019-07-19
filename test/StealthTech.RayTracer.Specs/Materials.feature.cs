@@ -344,6 +344,94 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
+        [Xunit.TheoryAttribute(DisplayName="lighting() uses light intensity to attenuate color")]
+        [Xunit.TraitAttribute("FeatureTitle", "Materials")]
+        [Xunit.TraitAttribute("Description", "lighting() uses light intensity to attenuate color")]
+        [Xunit.InlineDataAttribute("1.0", "Color(1, 1, 1)", new string[0])]
+        [Xunit.InlineDataAttribute("0.5", "Color(0.55, 0.55, 0.55)", new string[0])]
+        [Xunit.InlineDataAttribute("0.0", "Color(0.1, 0.1, 0.1)", new string[0])]
+        public virtual void LightingUsesLightIntensityToAttenuateColor(string intensity, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("lighting() uses light intensity to attenuate color", null, exampleTags);
+#line 81
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 82
+ testRunner.Given("light ← PointLight(Point(0, 0, -10), Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 83
+ testRunner.And("material ← Material()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 84
+ testRunner.And("material.Ambient ← 0.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 85
+ testRunner.And("material.Diffuse ← 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 86
+ testRunner.And("material.Specular ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 87
+ testRunner.And("material.Color ← Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 88
+ testRunner.And("computations.Position ← Point(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 89
+ testRunner.And("computations.EyeVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 90
+ testRunner.And("computations.NormalVector ← Vector(0, 0, -1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 91
+ testRunner.When(string.Format("result ← material.lighting(computations, light, {0})", intensity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 92
+ testRunner.Then(string.Format("result = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="lighting() samples the area light")]
+        [Xunit.TraitAttribute("FeatureTitle", "Materials")]
+        [Xunit.TraitAttribute("Description", "lighting() samples the area light")]
+        [Xunit.InlineDataAttribute("Point(0, 0, -1)", "Color(0.9965, 0.9965, 0.9965)", new string[0])]
+        [Xunit.InlineDataAttribute("Point(0, 0.7071, -0.7071)", "Color(0.6232, 0.6232, 0.6232)", new string[0])]
+        public virtual void LightingSamplesTheAreaLight(string point, string result, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("lighting() samples the area light", null, exampleTags);
+#line 100
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 101
+ testRunner.Given("corner ← Point(-0.5, -0.5, -5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 102
+ testRunner.And("vector1 ← Vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 103
+ testRunner.And("vector2 ← Vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 104
+ testRunner.And("areaLight ← AreaLight(corner, vector1, 2, vector2, 2, Color(1, 1, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 105
+ testRunner.And("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 106
+ testRunner.And("sphere.Material.Ambient ← 0.1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 107
+ testRunner.And("sphere.Material.Diffuse ← 0.9", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 108
+ testRunner.And("sphere.Material.Specular ← 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.And("sphere.Material.Color ← Color(1, 1, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.And("eye ← Point(0, 0, -5)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 111
+ testRunner.And(string.Format("computations.Position ← {0}", point), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.And("computations.EyeVector ← Normalize(eye - pt)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 113
+ testRunner.And("computations.NormalVector ← Vector(computations.Position.X, computations.Position" +
+                    ".Y, computations.Position.Z)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 114
+ testRunner.When("result ← sphere.Material.lighting(computations, areaLight, 1.0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 115
+ testRunner.Then(string.Format("result = {0}", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

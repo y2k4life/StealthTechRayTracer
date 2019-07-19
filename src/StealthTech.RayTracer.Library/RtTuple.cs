@@ -90,11 +90,6 @@ namespace StealthTech.RayTracer.Library
 
         public bool Equals(RtVector other)
         {
-            if (other is null)
-            {
-                return false;
-            }
-
             return (other.X.ApproximateEquals(X)
                 && other.Y.ApproximateEquals(Y)
                 && other.Z.ApproximateEquals(Z)
@@ -103,11 +98,6 @@ namespace StealthTech.RayTracer.Library
 
         public bool Equals(RtPoint other)
         {
-            if (other is null)
-            {
-                return false;
-            }
-
             return (other.X.ApproximateEquals(X)
                 && other.Y.ApproximateEquals(Y)
                 && other.Z.ApproximateEquals(Z)

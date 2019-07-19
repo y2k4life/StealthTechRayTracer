@@ -525,50 +525,6 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="An arbitrary view transformation")]
-        [Xunit.TraitAttribute("FeatureTitle", "Transformations")]
-        [Xunit.TraitAttribute("Description", "An arbitrary view transformation")]
-        public virtual void AnArbitraryViewTransformation()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("An arbitrary view transformation", null, ((string[])(null)));
-#line 136
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 137
- testRunner.Given("from ← Point(1, 3, 2)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 138
- testRunner.And("to ← Point(4, -2, 8)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 139
- testRunner.And("up ← Vector(1, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 140
- testRunner.When("transform ← ViewTransform(from, to, up)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table62 = new TechTalk.SpecFlow.Table(new string[] {
-                        "-0.50709",
-                        "0.50709",
-                        "0.67612",
-                        "-2.36643"});
-            table62.AddRow(new string[] {
-                        "0.76772",
-                        "0.60609",
-                        "0.12122",
-                        "-2.82843"});
-            table62.AddRow(new string[] {
-                        "-0.35857",
-                        "0.59761",
-                        "-0.71714",
-                        "0.00000"});
-            table62.AddRow(new string[] {
-                        "0.00000",
-                        "0.00000",
-                        "0.00000",
-                        "1.00000"});
-#line 141
- testRunner.Then("t is the following matrix:", ((string)(null)), table62, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

@@ -50,7 +50,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"outerShape\.Material\.Ambient ← (.*)")]
-        public void Given_Ambient_Material_Of_outerShape_Is(double ambient)
+        public void Given_Ambient_Material_Of_outerShape_Is(float ambient)
         {
             _worldContext.OuterShape.Material.Ambient = ambient;
         }
@@ -60,7 +60,6 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             _worldContext.Inner = (Sphere)_worldContext.World.Shapes[1];
         }
-
 
         [Given(@"outerShape ← the first shape in world")]
         public void Given_outerShape_Is_The_First_Object_In_world()
@@ -105,7 +104,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"world\.Light ← PointLight\(Point\((.*), (.*), (.*)\), Color\((.*), (.*), (.*)\)\)")]
-        public void Given_w_Light_Is_Point_Light_With_Point_Color(double x, double y, double z, double red, double green, double blue)
+        public void Given_w_Light_Is_Point_Light_With_Point_Color(float x, float y, float z, float red, float green, float blue)
         {
             _worldContext.World.Lights.Clear();
             _worldContext.World.Lights.Add(new PointLight(new RtPoint(x, y, z), new RtColor(red, green, blue)));
@@ -124,12 +123,10 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"inner\.material\.ambient ← (.*)")]
-        public void GivenInner_Material_Ambient(double ambient)
+        public void GivenInner_Material_Ambient(float ambient)
         {
             _worldContext.Inner.Material.Ambient = ambient;
         }
-
-
 
         [Given(@"plane is added to world")]
         public void Given_plane_Is_Added_To_World()
@@ -153,6 +150,12 @@ namespace StealthTech.RayTracer.Specs.Steps
         public void Given_floor_Is_Added_To_world()
         {
             _worldContext.World.Shapes.Add(_planesContext.Floor);
+        }
+
+        [Given(@"light ← world\.Light")]
+        public void Given_light_Is_Light_of_world()
+        {
+            _lightsContext.Light = _worldContext.World.Lights[0];
         }
 
 
@@ -200,20 +203,12 @@ namespace StealthTech.RayTracer.Specs.Steps
             _colorContext.Color1 = _worldContext.Inner.Material.Color;
         }
 
-        [Then(@"is_shadowed\(w, p\) is false")]
-        public void Then_Is_Shadowed_Point_Is_False()
+        [Then(@"is_shadowed\(w, light_position, point\) is (.*)")]
+        public void Then_Is_Shadowed_Of_world_Should_Be(bool expectedResults)
         {
-            var actualResults = _worldContext.World.IsShadowed(_pointsContext.Point, _worldContext.World.Lights[0]);
+            var actualResults = _worldContext.World.IsShadowed(_pointsContext.LightPosition, _pointsContext.Point);
 
-            Assert.False(actualResults);
-        }
-
-        [Then(@"is_shadowed\(w, p\) is true")]
-        public void Then_Is_Shadowed_Point_Is_True()
-        {
-            var actualResults = _worldContext.World.IsShadowed(_pointsContext.Point, _worldContext.World.Lights[0]);
-
-            Assert.True(actualResults);
+            Assert.Equal(expectedResults, actualResults);
         }
 
         [Then(@"world contains no shapes")]

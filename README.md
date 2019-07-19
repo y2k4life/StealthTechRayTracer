@@ -12,6 +12,8 @@ I want to give a shout out to [The Morning Brew](http://blog.cwa.me.uk/) for hav
 
 **Tools** [CodeRush](https://www.devexpress.com/Products/CodeRush/) for refactoring and code clean. [NCrunch](https://www.ncrunch.net/) to automate running test and to provide information relating to code coverage.
 
+* Using .Net 3.0 I was able to implements Intel Intrinsics. I rewrote the Matrix4x4 to use `double` instead of `float`
+
 ## Resources
 
 * [Linear Algebra from MIT](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/) Quality is bad, but great videos and it is MIT need I say more. I pulled to test for Matrices from here.
