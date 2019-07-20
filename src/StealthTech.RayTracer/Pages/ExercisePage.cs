@@ -68,6 +68,14 @@ namespace StealthTech.RayTracer.Pages
                 Program.NavigateTo<ExercisePage>();
             }));
 
+            AddOption(new Option("Chapter Thirteen", () =>
+            {
+                var chapter = new ChapterThirteen();
+                chapter.Run();
+                Input.ReadString("Press [Enter] to navigate home");
+                Program.NavigateTo<ExercisePage>();
+            }));
+
             AddOption(new Option("Bonus - Area Light", () =>
             {
                 var bonus = new BonusAreaLight();

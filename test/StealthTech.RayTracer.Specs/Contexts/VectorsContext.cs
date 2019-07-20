@@ -27,13 +27,11 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtVector NormalVector3 { get; set; }
 
-        public RtVector Director { get; set; }
-
         public RtVector Reflect { get; set; }
 
         public RtVector Up { get; set; }
 
-        public RtVector Direction { get; }
+        public RtVector Direction { get; set; }
 
         public RtVector NormalVector { get; set; }
     }

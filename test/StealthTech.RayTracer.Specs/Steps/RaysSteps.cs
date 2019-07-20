@@ -44,7 +44,13 @@ namespace StealthTech.RayTracer.Specs.Steps
                 new RtVector(dX.EvaluateExpression(), dY.EvaluateExpression(), dZ.EvaluateExpression()));
         }
 
-          [Then(@"ray\.Origin = origin")]
+        [Given(@"ray ← Ray\(Point\((.*), (.*), (.*)\), direction\)")]
+        public void Given_ray_Is_Ray_With_Point_And_direction(double x, double y, double z)
+        {
+            _rayContext.Ray = new Ray(new RtPoint(x, y, z), _vectorsContext.Direction);
+        }
+
+        [Then(@"ray\.Origin = origin")]
         public void Then_Origin_Of_ray_Should_Equal_Origin()
         {
             var expectedOrigin = _pointsContext.Origin;

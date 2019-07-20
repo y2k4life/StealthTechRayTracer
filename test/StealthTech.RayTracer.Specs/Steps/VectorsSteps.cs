@@ -28,7 +28,13 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Given(@"direction ← Vector\((.*), (.*), (.*)\)")]
         public void Given_direction_As_Vector(double x, double y, double z)
         {
-            _vectorsContext.Director = new RtVector(x, y, z);
+            _vectorsContext.Direction = new RtVector(x, y, z);
+        }
+
+        [Given(@"direction ← Vector\((.*), (.*), (.*)\)\.Normalize\(\)")]
+        public void Given_direction_As_Normalize_Of_Vector(double x, double y, double z)
+        {
+            _vectorsContext.Direction = new RtVector(x, y, z).Normalize();
         }
 
         [Given(@"normalVector ← Vector\((.*), (.*), (.*)\)")]

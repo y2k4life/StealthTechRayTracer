@@ -21,4 +21,28 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\StealthTech.RayTracer.Library\StealthTech.RayTracer.Library.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Cones.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Cones.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Cylinders.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Cylinders.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Cones.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Cones.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Cylinders.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Cylinders.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
 </Project>

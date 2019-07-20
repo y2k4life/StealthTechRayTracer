@@ -28,7 +28,14 @@ namespace StealthTech.RayTracer.Specs
                 }
                 else
                 {
-                    return Math.Sqrt(Convert.ToDouble(expression));
+                    if (negate)
+                    {
+                        return -Math.Sqrt(Convert.ToDouble(expression));
+                    }
+                    else
+                    {
+                        return Math.Sqrt(Convert.ToDouble(expression));
+                    }
                 }
             }
 

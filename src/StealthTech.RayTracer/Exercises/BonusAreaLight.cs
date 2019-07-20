@@ -47,7 +47,7 @@ namespace StealthTech.RayTracer.Exercises
 
         public Canvas Run()
         {
-            var camera = new Camera(800, 600, 0.7854)
+            var camera = new Camera(800, 400, 0.7854)
             {
                 ViewTransform = new ViewTransform(
                     new RtPoint(-3, 1, 2.5),
@@ -66,9 +66,9 @@ namespace StealthTech.RayTracer.Exercises
 
             var areaLight = new AreaLight(
                 new RtPoint(-1, 2, 4),
-                new RtVector(4, 0, 0),
+                new RtVector(8, 0, 0),
                 20,
-                new RtVector(0, 4, 0),
+                new RtVector(0, 8, 0),
                 20,
                 new RtColor(1.5, 1.5, 1.5));
             areaLight.JitterBy = new NoneDeterministicSequence();

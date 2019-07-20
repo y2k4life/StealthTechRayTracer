@@ -15,8 +15,7 @@ namespace StealthTech.RayTracer.Library
 
         public double Next()
         {
-            var number = _random.NextDouble();
-            return number;
+            return _random.NextDouble();
         }
     }
 }

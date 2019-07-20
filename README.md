@@ -21,3 +21,5 @@ I want to give a shout out to [The Morning Brew](http://blog.cwa.me.uk/) for hav
 ## Images
 
 ![alt text](https://raw.githubusercontent.com/y2k4life/StealthTechRayTracer/master/Images/multi-lights.png "Chapter 7 & 8 With Multi-Lights")
+
+![alt text](https://raw.githubusercontent.com/y2k4life/StealthTechRayTracer/master/Images/chapter13.png "Chapter 13")

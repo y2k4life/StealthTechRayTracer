@@ -243,7 +243,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"intersections\[(.*)]\.Time = (.*)")]
         public void Then_xs_Time(int index, double expectedTime)
         {
-            Assert.Equal(_intersectionsContext.Intersections[index].Time, expectedTime);
+            AssertDouble.Equals(_intersectionsContext.Intersections[index].Time, expectedTime);
         }
 
         [Then(@"computations\.OverPoint\.Z < -EPSILON/2")]
