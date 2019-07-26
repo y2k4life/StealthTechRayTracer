@@ -311,5 +311,11 @@ namespace StealthTech.RayTracer.Specs.Steps
             bool lessThan = _computationsContext.Computations.Position.Z < _computationsContext.Computations.UnderPosition.Z;
             Assert.True(lessThan);
         }
+
+        [Then(@"intersections\[(.*)]\.Shape = sphere(.*)")]
+        public void Then_Shape_Of_IntersectionsN_Should_Be_shapeN(int intersectionIndex, int sphereIndex)
+        {
+            Assert.Equal(_sphereContext.Spheres[sphereIndex], _intersectionsContext.Intersections[intersectionIndex].Shape);
+        }
     }
 }

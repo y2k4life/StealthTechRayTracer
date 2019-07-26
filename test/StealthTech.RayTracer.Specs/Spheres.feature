@@ -48,27 +48,27 @@ Scenario: Intersect sets the object on the intersection
 
 Scenario: The normal on a sphere at a point on the x axis
 	Given sphere ← Sphere()
-	When normalVector ← normal_at(sphere, Point(1, 0, 0))
+	When normalVector ← sphere.LocalNormalAt(Point(1, 0, 0))
 	Then normalVector = Vector(1, 0, 0)
 
 Scenario: The normal on a sphere at a point on the y axis
 	Given sphere ← Sphere()
-	When normalVector ← normal_at(sphere, Point(0, 1, 0))
+	When normalVector ← sphere.LocalNormalAt(Point(0, 1, 0))
 	Then normalVector = Vector(0, 1, 0)
 
 Scenario: The normal on a sphere at a point on the z axis
 	Given sphere ← Sphere()
-	When normalVector ← normal_at(sphere, Point(0, 0, 1))
+	When normalVector ← sphere.LocalNormalAt(Point(0, 0, 1))
 	Then normalVector = Vector(0, 0, 1)
 
 Scenario: The normal on a sphere at a nonaxial point
 	Given sphere ← Sphere()
-	When normalVector ← normal_at(sphere, Point(√3/3, √3/3, √3/3))
+	When normalVector ← sphere.LocalNormalAt(Point(√3/3, √3/3, √3/3))
 	Then normalVector = Vector(√3/3, √3/3, √3/3)
 
 Scenario: The normal is a normalized vector
 	Given sphere ← Sphere()
-	When normalVector ← normal_at(sphere, Point(√3/3, √3/3, √3/3))
+	When normalVector ← sphere.LocalNormalAt(Point(√3/3, √3/3, √3/3))
 	Then normalVector = normalize(normalVector)
 
 Scenario: A helper for producing a sphere with a glassy material

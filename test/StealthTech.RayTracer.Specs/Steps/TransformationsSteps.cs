@@ -206,11 +206,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Then(@"transform = identity_matrix")]
         public void Then_transform_Equals_Identity_Matrix()
         {
-            var expectedMatrix = RtMatrix.Identity;
-
-            var actualMatrix = _transformationsContext.Transform.Matrix;
-
-            Assert.Equal(expectedMatrix, actualMatrix);
+            Assert.True(_transformationsContext.Transform.Equals(RtMatrix.Identity));
         }
 
         [Then(@"transform \* point = Point\((.*), (.*), (.*)\)")]
@@ -263,15 +259,13 @@ namespace StealthTech.RayTracer.Specs.Steps
             Assert.Equal(expectedMatrix, actualMatrix);
         }
 
-        [Then(@"t is the following matrix:")]
-        public void Then_transform_Should_Following_Matrix(Table table)
-        {
-            var expectedMatrix = table.ToMatrix();
+        //[Then(@"t is the following matrix:")]
+        //public void Then_transform_Should_Following_Matrix(Table table)
+        //{
+        //    var expectedMatrix = table.ToMatrix();
 
-            var actualMatrix = _transformationsContext.Transform.Matrix;
-
-            Assert.Equal(expectedMatrix, actualMatrix);
-        }
+        //    Assert.True(_transformationsContext.Transform.Equals(expectedMatrix));
+        //}
 
         [Then(@"transformT \* point = Point\((.*), (.*), (.*)\)")]
         public void Then_transformT_Is_Multiplied_By_point_Equals_Point(string x, string y, string z)

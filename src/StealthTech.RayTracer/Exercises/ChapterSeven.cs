@@ -37,31 +37,6 @@ namespace StealthTech.RayTracer.Exercises
 
             world.Shapes.Add(floor);
 
-            //var scalling = new Transform()
-            //    .Scaling(10f, 0.01f, 10f);
-            //Console.WriteLine(scalling.ToString());
-
-            //var rotatingY = new Transform()
-            //    .RotateY(-MathF.PI / 4f);
-            //Console.WriteLine(rotatingY.ToString());
-
-            //var rotatingX = new Transform()
-            //    .RotateX(MathF.PI / 2f);
-            //Console.WriteLine(rotatingX.ToString());
-
-            //var translation = new Transform()
-            //    .Translation(0, 0, 5);
-            //Console.WriteLine(translation.ToString());
-
-            //var t1 = translation * rotatingY;
-            //Console.WriteLine(t1.ToString());
-
-            //var t2 = t1 * rotatingX;
-            //Console.WriteLine(t2.ToString());
-
-            //var t3 = t2 * scalling;
-            //Console.WriteLine(t3.ToString());
-
             var leftWall = new Sphere()
             {
                 Name = "Left Wall",
@@ -76,8 +51,6 @@ namespace StealthTech.RayTracer.Exercises
                     Specular = 0
                 }
             };
-
-            Console.Write(leftWall.ToString());
 
             world.Shapes.Add(leftWall);
 

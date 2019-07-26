@@ -35,7 +35,12 @@ namespace StealthTech.RayTracer.Library
             orientation.M32 = -Forward.Y;
             orientation.M33 = -Forward.Z;
 
-            Matrix = orientation * Translation(-from.X, -from.Y, -from.Z).Matrix;
+            var translation = RtMatrix.Identity;
+            translation.M14 = -from.X;
+            translation.M24 = -from.Y;
+            translation.M34 = -from.Z;
+
+            Matrix = orientation * translation;
         }
 
         public RtVector Forward { get; }

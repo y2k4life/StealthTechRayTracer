@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Specs.Contexts
     {
         public Transform Transform { get; set; } = new Transform();
             
-        public Transform InverseTransform { get; set; }
+        public RtMatrix InverseTransform { get; set; }
         
         public Transform HalfQuarter { get; set; }
         

@@ -10,8 +10,8 @@ namespace StealthTech.RayTracer.Library
 
         public RtColor PatternAtShape(Shape shape, RtPoint worldPoint)
         {
-            var shapePoint = shape.Transform.Matrix.Inverse() * worldPoint;
-            var patterPoint = Transform.Matrix.Inverse() * shapePoint;
+            var shapePoint = shape.Transform.Inverse() * worldPoint;
+            var patterPoint = Transform.Inverse() * shapePoint;
 
             return PatternAt(patterPoint);
         }

@@ -23,6 +23,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         readonly VectorsContext _vectorsContext;
         readonly ComputationsContext _computationsContext;
         readonly WorldContext _worldContext;
+        readonly PointsContext _pointsContext;
 
         public SpheresSteps(SphereContext sphereContext,
             RayContext rayContext,
@@ -30,8 +31,10 @@ namespace StealthTech.RayTracer.Specs.Steps
             MaterialsContext materialsContext,
             VectorsContext vectorsContext,
             ComputationsContext computationsContext,
-            WorldContext worldContext)
+            WorldContext worldContext,
+            PointsContext pointsContext)
         {
+            _pointsContext = pointsContext;
             _worldContext = worldContext;
             _computationsContext = computationsContext;
             _vectorsContext = vectorsContext;
@@ -74,6 +77,18 @@ namespace StealthTech.RayTracer.Specs.Steps
             _sphereContext.Sphere.Transform = new Transform().Scaling(x, y, z);
         }
 
+        [Given(@"sphere(.*)\.Transform ← translation\((.*), (.*), (.*)\)")]
+        public void Given_Transform_Of_sphereN_Is_translation(int sphereIndex, double x, double y, double z)
+        {
+            _sphereContext.Spheres[sphereIndex].Transform = new Transform().Translation(x, y, z);
+        }
+
+        [Given(@"sphere\.Transform ← translation\((.*), (.*), (.*)\)")]
+        public void Given_Transform_Of_sphere_Is_translation(double x, double y, double z)
+        {
+            _sphereContext.Sphere.Transform = new Transform().Translation(x, y, z);
+        }
+
         [Given(@"sphere\.Material\.Ambient ← (.*)")]
         public void Given_Ambient_Of_Material_Of_sphere_Is(double ambient)
         {
@@ -98,7 +113,6 @@ namespace StealthTech.RayTracer.Specs.Steps
             _sphereContext.Sphere.Material.Color = new RtColor(red, green, blue);
         }
 
-
         [Given(@"sphere ← GlassSphere\(\)")]
         public void Given_sphere_Is_GlassSphere()
         {
@@ -111,6 +125,16 @@ namespace StealthTech.RayTracer.Specs.Steps
             var sphere = new GlassSphere();
             sphere.Name = index.ToString();
             table.SetShapePropertiesFromTable(sphere);
+            _sphereContext.Spheres[index] = sphere;
+        }
+
+        [Given(@"sphere(.*) ← Sphere\(\)")]
+        public void Given_sphereN_Is_Sphere(int index)
+        {
+            var sphere = new Sphere()
+            {
+                Name = $"Shape{index}"
+            };
             _sphereContext.Spheres[index] = sphere;
         }
 
@@ -143,20 +167,38 @@ namespace StealthTech.RayTracer.Specs.Steps
             _intersectionsContext.Intersections = _sphereContext.Sphere.LocalIntersect(_rayContext.Ray);
         }
 
-        [When(@"normalVector ← normal_at\(sphere, Point\((.*), (.*), (.*)\)\)")]
-        public void When_normalVector_Is_Normal_At(string x, string y, string z)
+        [When(@"normalVector ← sphere.LocalNormalAt\(Point\((.*), (.*), (.*)\)\)")]
+        public void When_normalVector_Is_LocalNormal_At(string x, string y, string z)
         {
             _vectorsContext.NormalVector = _sphereContext.Sphere.LocalNormalAt(new RtPoint(x.EvaluateExpression(),
                                                                                  y.EvaluateExpression(),
                                                                                  z.EvaluateExpression()));
         }
 
+        [When(@"normalVector ← sphere.NormalAt\(Point\((.*), (.*), (.*)\)\)")]
+        public void When_normalVector_Is_Normal_At(string x, string y, string z)
+        {
+            _vectorsContext.NormalVector = _sphereContext.Sphere.NormalAt(new RtPoint(x.EvaluateExpression(),
+                                                                                 y.EvaluateExpression(),
+                                                                                 z.EvaluateExpression()));
+        }
+
+        [When(@"point ← sphere\.WorldToShape\(Point\((.*), (.*), (.*)\)\)")]
+        public void When_point_Is_WorldToShape_Of_Sphere_With_Point(double x, double y, double z)
+        {
+            _pointsContext.Point = _sphereContext.Sphere.WorldToShape(new RtPoint(x, y, z));
+        }
+
+        [When(@"normalVector ← sphere\.NormalToWorld\(Vector\((.*), (.*), (.*)\)\)")]
+        public void When_normalVector_Is_NormalToWorld_Of_Sphere_With_Vector(string x, string y, string z)
+        {
+            _vectorsContext.NormalVector = _sphereContext.Sphere.NormalToWorld(new RtVector(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression()));
+        }
+
         [Then(@"sphere\.Transform = identityMatrix")]
         public void Then_Transform_Of_sphere_Should_Equal_identityMatrix()
         {
-            var expectedMatrix = RtMatrix.Identity;
-
-            Assert.Equal(expectedMatrix, _sphereContext.Sphere.Transform.Matrix);
+            Assert.True(_sphereContext.Sphere.Transform.Equals(RtMatrix.Identity));
         }
 
         [Then(@"sphere\.Material\.Transparency = (.*)")]

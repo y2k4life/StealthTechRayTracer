@@ -5,17 +5,36 @@ namespace StealthTech.RayTracer.Library
 {
     public abstract class Shape : IEquatable<Shape>
     {
+        Material _material = new Material();
+        
         public Transform Transform { get; set; } = new Transform();
+        
+        public bool InheritMaterial { get; set; }
+        
+        public Material Material
+        {
+            get
+            {
+                if (InheritMaterial && Parent != null)
+                {
+                    return Parent.Material;
+                }
 
-        public Material Material { get; set; } = new Material();
-
+                return _material;
+            }
+            set
+            {
+                _material = value;
+            }
+        }
         public bool CastShadow { get; set; } = true;
         
         public string Name { get; set; } = string.Empty;
+        public Shape Parent { get; set; }
 
         public IntersectionList Intersect(Ray ray)
         {
-            var transformInverse = Transform.Matrix.Inverse();
+            var transformInverse = Transform.Inverse();
             var transformedRay = ray.Transform(transformInverse);
 
             return LocalIntersect(transformedRay);
@@ -23,11 +42,34 @@ namespace StealthTech.RayTracer.Library
 
         public RtVector NormalAt(RtPoint worldPoint)
         {
-            var shapePoint = Transform.Matrix.Inverse() * worldPoint;
-            var shapeNormal = LocalNormalAt(shapePoint);
-            var worldNormal = RtMatrix.Transpose(Transform.Matrix.Inverse()) * shapeNormal;
+            var localPoint = WorldToShape(worldPoint);
+            var localNormal = LocalNormalAt(localPoint);
+            var worldNormal = NormalToWorld(localNormal);
 
-            return worldNormal.Normalize();
+            return worldNormal;
+        }
+
+        public RtPoint WorldToShape(RtPoint worldPoint)
+        {
+            if (Parent != null)
+            {
+                worldPoint = Parent.WorldToShape(worldPoint);
+            }
+
+            return Transform.Inverse() * worldPoint;
+        }
+
+        public RtVector NormalToWorld(RtVector normal)
+        {
+            normal = RtMatrix.Transpose(Transform.Inverse()) * normal;
+            normal = normal.Normalize();
+
+            if (Parent != null)
+            {
+                normal = Parent.NormalToWorld(normal);
+            }
+
+            return normal;
         }
 
         public abstract IntersectionList LocalIntersect(Ray ray);
@@ -68,7 +110,7 @@ namespace StealthTech.RayTracer.Library
             buffer.AppendLine($"Transform");
             buffer.AppendLine(Transform.ToString());
 
-            var transformInverse = Transform.Matrix.Inverse();
+            var transformInverse = Transform.Inverse();
             buffer.AppendLine($"Inverse Transform");
             buffer.AppendLine(transformInverse.ToString());
 

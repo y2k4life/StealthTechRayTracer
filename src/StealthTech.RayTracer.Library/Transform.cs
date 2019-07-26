@@ -11,7 +11,9 @@ namespace StealthTech.RayTracer.Library
 {
     public class Transform : IEquatable<Transform>
     {
-        public RtMatrix Matrix { get; protected set; } = RtMatrix.Identity;
+        protected RtMatrix Matrix = RtMatrix.Identity;
+
+        private RtMatrix _inverseMatrix = RtMatrix.Identity;
 
         public Transform()
         {
@@ -79,7 +81,7 @@ namespace StealthTech.RayTracer.Library
             var rotateY = RtMatrix.Identity;
             rotateY.M11 = Math.Cos(radians);
             rotateY.M13 = Math.Sin(radians);
-            rotateY.M31 = Math.Sin(radians) * -1;
+            rotateY.M31 = -Math.Sin(radians);
             rotateY.M33 = Math.Cos(radians);
 
             return new Transform(rotateY * Matrix);
@@ -89,11 +91,11 @@ namespace StealthTech.RayTracer.Library
         {
             var rotateZ = RtMatrix.Identity;
             rotateZ.M11 = Math.Cos(radians);
-            rotateZ.M12 = Math.Sin(radians) * -1;
+            rotateZ.M12 = -Math.Sin(radians);
             rotateZ.M21 = Math.Sin(radians);
             rotateZ.M22 = Math.Cos(radians);
 
-            return new Transform(Matrix * rotateZ);
+            return new Transform(rotateZ * Matrix);
         }
 
         public Transform Shearing(double xy, double xz, double yx, double yz, double zx, double zy)
@@ -109,11 +111,16 @@ namespace StealthTech.RayTracer.Library
             return new Transform(Matrix * shearing);
         }
 
-        public Transform Inverse()
+        public RtMatrix Inverse()
         {
-            Matrix = Matrix.Inverse();
+            if (_inverseMatrix != RtMatrix.Identity)
+            {
+                return _inverseMatrix;
+            }
 
-            return this;
+            _inverseMatrix = Matrix.Inverse();
+
+            return _inverseMatrix;
         }
 
         public override int GetHashCode()
@@ -140,6 +147,11 @@ namespace StealthTech.RayTracer.Library
             }
 
             return Matrix.Equals(other.Matrix);
+        }
+
+        public bool Equals(RtMatrix other)
+        {
+            return Matrix.Equals(other);
         }
 
         public override string ToString()

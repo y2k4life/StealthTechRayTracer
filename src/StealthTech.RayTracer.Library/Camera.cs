@@ -56,8 +56,8 @@ namespace StealthTech.RayTracer.Library
             var worldX = HalfWidth - offsetX;
             var worldY = HalfHeight - offsetY;
 
-            var pixel = ViewTransform.Matrix.Inverse() * new RtPoint(worldX, worldY, -1);
-            var origin = ViewTransform.Matrix.Inverse().MultipliedByPointOrigin();
+            var pixel = ViewTransform.Inverse() * new RtPoint(worldX, worldY, -1);
+            var origin = ViewTransform.Inverse().MultipliedByPointOrigin();
             var direction = (pixel - origin).Normalize();
 
             return new Ray(origin, direction);

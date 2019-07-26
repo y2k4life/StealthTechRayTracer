@@ -38,14 +38,14 @@ namespace StealthTech.RayTracer.Specs.Steps
             _shapesContext = shapesContext;
         }
 
-        [Given(@"shape ← test_shape\(\)")]
+        [Given(@"testShape ← TestShape\(\)")]
         public void Given_shape_Is_Test_Shape()
         {
             _shapesContext.TestShape = new TestShape();
         }
 
-        [When(@"material ← shape\.material")]
-        public void When_m_Is_s_Material()
+        [When(@"material ← testShape\.material")]
+        public void When_material_Is_Material_Of_TestShape()
         {
             _materialsContext.Material = _shapesContext.TestShape.Material;
         }
@@ -62,14 +62,14 @@ namespace StealthTech.RayTracer.Specs.Steps
             _shapesContext.TestShape.Transform = new Transform().Scaling(x, y, z);
         }
 
-        [When(@"set_transform\(s, translation\((.*), (.*), (.*)\)\)")]
-        public void When_Set_Transform_s_To_Translation(double x, double y, double z)
+        [When(@"testShape\.Transform ← Translation\((.*), (.*), (.*)\)")]
+        public void When_Transform_Of_testShape_Is_Translation(double x, double y, double z)
         {
             _shapesContext.TestShape.Transform = new Transform().Translation(x, y, z);
         }
 
-        [When(@"set_transform\(shape, transformation\)")]
-        public void When_Set_Transform_Of_shape_To_Transformation()
+        [When(@"testShape\.Transform ← transformation")]
+        public void When_Transform_Of_testShape_Is_transformation()
         {
             _shapesContext.TestShape.Transform = _transformationsContext.Transform;
         }
@@ -82,16 +82,16 @@ namespace StealthTech.RayTracer.Specs.Steps
             {
                 _intersectionsContext.Intersections.AddRange(intersections);
             }
-        }
-
+        }   
+                
         [When(@"normalVector ← normal_at\(s, point\((.*), √2/2, -√2/2\)")]
         public void When_normalVector_Is_Normal_At(double x)
         {
             _vectorsContext.NormalVector = _shapesContext.TestShape.NormalAt(new RtPoint(x, Math.Sqrt(2) / 2 , Math.Sqrt(2) / 2));
         }
 
-        [When(@"normalVector ← normal_at\(s, Point\((.*), (.*), (.*)\)\)")]
-        public void When_normalVector_Is_Normal_At(string x, string y, string z)
+        [When(@"normalVector ← testShape.NormalAt\(Point\((.*), (.*), (.*)\)\)")]
+        public void When_normalVector_Is_NormalAt_Of_testShape(string x, string y, string z)
         {
             _vectorsContext.NormalVector = _shapesContext.TestShape.NormalAt(new RtPoint(x.EvaluateExpression(),
                                                                                  y.EvaluateExpression(),
@@ -107,8 +107,6 @@ namespace StealthTech.RayTracer.Specs.Steps
 
             Assert.Equal(expectedMaterial, actualMaterial);
         }
-
-
 
         [Then(@"shape\.SavedRay\.Direction = Vector\((.*), (.*), (.*)\)")]
         public void Then_Direction_Of_SavedRay_Of_shape_Should_Equal_Vector(double x, double y, double z)
@@ -130,18 +128,14 @@ namespace StealthTech.RayTracer.Specs.Steps
             Assert.Equal(expectedOrigin, actualOrigin);
         }
 
-        [Then(@"shape\.Transform = identityMatrix")]
-        public void Then_s_Transform_Equals_Identity_Matrix()
+        [Then(@"testShape\.Transform = identityMatrix")]
+        public void Then_Transform_Of_testShape_Equals_Identity_Matrix()
         {
-            var expectedMatrix = RtMatrix.Identity;
-
-            var actualMatrix = _shapesContext.TestShape.Transform.Matrix;
-
-            Assert.Equal(expectedMatrix, actualMatrix);
+            Assert.True(_shapesContext.TestShape.Transform.Equals(RtMatrix.Identity));
         }
 
-        [Then(@"shape\.Transform = Translation\((.*), (.*), (.*)\)")]
-        public void Then_s_Transform_Equals_Translation(double x, double y, double z)
+        [Then(@"testShape\.Transform = Translation\((.*), (.*), (.*)\)")]
+        public void Then_Transform_Of_testShape_Should_Equals_Translation(double x, double y, double z)
         {
             var expectedTransform = new Transform().Translation(x, y, z);
 
@@ -150,6 +144,11 @@ namespace StealthTech.RayTracer.Specs.Steps
             Assert.Equal(expectedTransform, acutalTransform);
         }
 
+        [Then(@"shape\.Parent is nothing")]
+        public void Then_Parent_shape_Is_Nothing()
+        {
+            Assert.Null(_shapesContext.TestShape.Parent);
+        }
 
 
     }

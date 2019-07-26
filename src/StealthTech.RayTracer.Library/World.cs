@@ -74,7 +74,7 @@ namespace StealthTech.RayTracer.Library
                 var intensity = light.IntensityAt(computations.OverPosition, this);
                 var surface = computations.Shape.Material.Lighting(
                     computations,
-                    Lights[0],
+                    light,
                     intensity);
 
                 var reflected = ReflectedColor(computations, remaining);

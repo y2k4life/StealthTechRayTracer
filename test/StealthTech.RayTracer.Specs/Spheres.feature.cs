@@ -234,7 +234,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 50
  testRunner.Given("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 51
- testRunner.When("normalVector ← normal_at(sphere, Point(1, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("normalVector ← sphere.LocalNormalAt(Point(1, 0, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 52
  testRunner.Then("normalVector = Vector(1, 0, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -253,7 +253,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 55
  testRunner.Given("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 56
- testRunner.When("normalVector ← normal_at(sphere, Point(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("normalVector ← sphere.LocalNormalAt(Point(0, 1, 0))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 57
  testRunner.Then("normalVector = Vector(0, 1, 0)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -272,7 +272,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 60
  testRunner.Given("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 61
- testRunner.When("normalVector ← normal_at(sphere, Point(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("normalVector ← sphere.LocalNormalAt(Point(0, 0, 1))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 62
  testRunner.Then("normalVector = Vector(0, 0, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -291,7 +291,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 65
  testRunner.Given("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 66
- testRunner.When("normalVector ← normal_at(sphere, Point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("normalVector ← sphere.LocalNormalAt(Point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 67
  testRunner.Then("normalVector = Vector(√3/3, √3/3, √3/3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -310,7 +310,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 70
  testRunner.Given("sphere ← Sphere()", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 71
- testRunner.When("normalVector ← normal_at(sphere, Point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("normalVector ← sphere.LocalNormalAt(Point(√3/3, √3/3, √3/3))", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 72
  testRunner.Then("normalVector = normalize(normalVector)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

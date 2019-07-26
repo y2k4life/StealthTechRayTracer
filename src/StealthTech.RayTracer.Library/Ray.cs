@@ -5,6 +5,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace StealthTech.RayTracer.Library
 {
     public class Ray
@@ -24,10 +26,18 @@ namespace StealthTech.RayTracer.Library
             return Origin + Direction * time;
         }
 
-        public Ray Transform(RtMatrix tranformMatrix)
+        public Ray Transform(RtMatrix tranformation)
         {
-            var newOrigin = tranformMatrix * Origin;
-            var newDirection = tranformMatrix * Direction;
+            var newOrigin = tranformation * Origin;
+            var newDirection = tranformation * Direction;
+
+            return new Ray(newOrigin, newDirection);
+        }
+
+        public Ray Transform(Transform transform)
+        {
+            var newOrigin = transform * Origin;
+            var newDirection = transform * Direction;
 
             return new Ray(newOrigin, newDirection);
         }
@@ -36,5 +46,7 @@ namespace StealthTech.RayTracer.Library
         {
             return $"O: {Origin.X.ToString("####.#0000")}, {Origin.Y.ToString("####.#0000")}, {Origin.Z.ToString("####.#0000")} D: {Direction.X.ToString("####.#0000")}, {Direction.Y.ToString("####.#0000")}, {Direction.Z.ToString("####.#0000")}";
         }
+
+
     }
 }

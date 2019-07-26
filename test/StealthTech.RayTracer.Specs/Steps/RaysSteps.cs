@@ -128,7 +128,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"ray2 ← transform\(r, transform\)")]
         public void WhenRTransformRM()
         {
-            _rayContext.Ray2 = _rayContext.Ray.Transform(_transformationsContext.Transform.Matrix);
+            _rayContext.Ray2 = _rayContext.Ray.Transform(_transformationsContext.Transform);
         }
     }
 }
