@@ -19,26 +19,17 @@ namespace StealthTech.RayTracer.Specs.Steps
         private readonly RayContext _rayContext;
         readonly SphereContext _sphereContext;
         readonly IntersectionsContext _intersectionsContext;
-        readonly MaterialsContext _materialsContext;
         readonly VectorsContext _vectorsContext;
-        readonly ComputationsContext _computationsContext;
-        readonly WorldContext _worldContext;
         readonly PointsContext _pointsContext;
 
         public SpheresSteps(SphereContext sphereContext,
             RayContext rayContext,
             IntersectionsContext intersectionsContext,
-            MaterialsContext materialsContext,
             VectorsContext vectorsContext,
-            ComputationsContext computationsContext,
-            WorldContext worldContext,
             PointsContext pointsContext)
         {
             _pointsContext = pointsContext;
-            _worldContext = worldContext;
-            _computationsContext = computationsContext;
             _vectorsContext = vectorsContext;
-            _materialsContext = materialsContext;
             _intersectionsContext = intersectionsContext;
             _sphereContext = sphereContext;
             _rayContext = rayContext;
@@ -122,8 +113,10 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Given(@"sphere(.*) ← GlassSphere\(\) with:")]
         public void Given_sphere_Is_GlassSphere_With(int index, Table table)
         {
-            var sphere = new GlassSphere();
-            sphere.Name = index.ToString();
+            var sphere = new GlassSphere
+            {
+                Name = index.ToString()
+            };
             table.SetShapePropertiesFromTable(sphere);
             _sphereContext.Spheres[index] = sphere;
         }
@@ -170,17 +163,17 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← sphere.LocalNormalAt\(Point\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_LocalNormal_At(string x, string y, string z)
         {
-            _vectorsContext.NormalVector = _sphereContext.Sphere.LocalNormalAt(new RtPoint(x.EvaluateExpression(),
+            _vectorsContext.Normal = _sphereContext.Sphere.LocalNormalAt(new RtPoint(x.EvaluateExpression(),
                                                                                  y.EvaluateExpression(),
-                                                                                 z.EvaluateExpression()));
+                                                                                 z.EvaluateExpression()), null);
         }
 
         [When(@"normalVector ← sphere.NormalAt\(Point\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_Normal_At(string x, string y, string z)
         {
-            _vectorsContext.NormalVector = _sphereContext.Sphere.NormalAt(new RtPoint(x.EvaluateExpression(),
+            _vectorsContext.Normal = _sphereContext.Sphere.NormalAt(new RtPoint(x.EvaluateExpression(),
                                                                                  y.EvaluateExpression(),
-                                                                                 z.EvaluateExpression()));
+                                                                                 z.EvaluateExpression()), null);
         }
 
         [When(@"point ← sphere\.WorldToShape\(Point\((.*), (.*), (.*)\)\)")]
@@ -192,7 +185,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← sphere\.NormalToWorld\(Vector\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_NormalToWorld_Of_Sphere_With_Vector(string x, string y, string z)
         {
-            _vectorsContext.NormalVector = _sphereContext.Sphere.NormalToWorld(new RtVector(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression()));
+            _vectorsContext.Normal = _sphereContext.Sphere.NormalToWorld(new RtVector(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression()));
         }
 
         [Then(@"sphere\.Transform = identityMatrix")]

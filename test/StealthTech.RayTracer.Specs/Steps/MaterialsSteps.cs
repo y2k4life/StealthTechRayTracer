@@ -16,16 +16,12 @@ namespace StealthTech.RayTracer.Specs.Steps
     public class MaterialsSteps
     {
         readonly MaterialsContext _materialsContext;
-        readonly PointsContext _pointsContext;
-        readonly VectorsContext _vectorsContext;
         readonly LightsContext _lightsContext;
         readonly ColorsContext _colorsContext;
         readonly ComputationsContext _computationsContext;
         public SphereContext _sphereContext;
 
         public MaterialsSteps(MaterialsContext materialsContext, 
-            PointsContext pointsContext, 
-            VectorsContext vectorsContext,
             LightsContext lightsContext,
             ColorsContext colorContext,
             ComputationsContext computationsContext,
@@ -35,25 +31,23 @@ namespace StealthTech.RayTracer.Specs.Steps
             _sphereContext = sphereContext;
             _colorsContext = colorContext;
             _lightsContext = lightsContext;
-            _vectorsContext = vectorsContext;
-            _pointsContext = pointsContext;
             _materialsContext = materialsContext;
         }
 
         [Given(@"material\.Ambient ← (.*)")]
-        public void Given_Ambient_Of_material(float ambient)
+        public void Given_Ambient_Of_material(double ambient)
         {
             _materialsContext.Material.Ambient = ambient;
         }
 
         [Given(@"material\.Diffuse ← (.*)")]
-        public void Given_Diffuse_Of_material(float diffuse)
+        public void Given_Diffuse_Of_material(double diffuse)
         {
             _materialsContext.Material.Diffuse = diffuse;
         }
 
         [Given(@"material\.Specular ← (.*)")]
-        public void Given_Specular_Of_material(float specular)
+        public void Given_Specular_Of_material(double specular)
         {
             _materialsContext.Material.Specular = specular;
         }
@@ -65,7 +59,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"material\.Color ← Color\((.*), (.*), (.*)\)")]
-        public void Given_Color_Of_Material_Of_sphere_Is(float red, float green, float blue)
+        public void Given_Color_Of_Material_Of_sphere_Is(double red, double green, double blue)
         {
             _materialsContext.Material.Color = new RtColor(red, green, blue);
         }
@@ -77,8 +71,8 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Given(@"material\.Pattern ← StripePattern\(color\((.*), (.*), (.*)\), color\((.*), (.*), (.*)\)\)")]
-        public void Given_Pattern_Of_material_Is_StripePattern(float colorARed, 
-            float colorAGreen, float colorABlue, float colorBRed, float colorBGreen, float colorBBlue)
+        public void Given_Pattern_Of_material_Is_StripePattern(double colorARed, 
+            double colorAGreen, double colorABlue, double colorBRed, double colorBGreen, double colorBBlue)
         {
             _materialsContext.Material.Pattern = new StripePattern(
                 new RtColor(colorARed, colorAGreen, colorABlue),
@@ -86,13 +80,13 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"material\.Transparency = (.*)")]
-        public void Then_Transparency_Of_Material_Should_Equal(float expectedTransparency)
+        public void Then_Transparency_Of_Material_Should_Equal(double expectedTransparency)
         {
             Assert.Equal(expectedTransparency, _materialsContext.Material.Transparency);
         }
 
         [Then(@"material\.RefractiveIndex = (.*)")]
-        public void Then_RefractiveIndex_Of_Material_Should_Equal(float expectedRefractiveIndex)
+        public void Then_RefractiveIndex_Of_Material_Should_Equal(double expectedRefractiveIndex)
         {
             Assert.Equal(expectedRefractiveIndex, _materialsContext.Material.RefractiveIndex);
         }
@@ -108,7 +102,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [When(@"color1 ← lighting\(m, light, Point\((.*), (.*), (.*)\), eyeVector, normalVector, false\)")]
-        public void When_color1_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(float x, float y, float z)
+        public void When_color1_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(double x, double y, double z)
         {
             _computationsContext.Computations.Position = new RtPoint(x, y, z);
             _colorsContext.Color1 = _materialsContext.Material.Lighting(
@@ -118,7 +112,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [When(@"color2 ← lighting\(m, light, Point\((.*), (.*), (.*)\), eyeVector, normalVector, false\)")]
-        public void When_color2_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(float x, float y, float z)
+        public void When_color2_Equals_Lighting_With_Light_Position_EyeVector_NormalVector_InShadow(double x, double y, double z)
         {
             _computationsContext.Computations.Position = new RtPoint(x, y, z);
             _colorsContext.Color2 = _materialsContext.Material.Lighting(
@@ -137,7 +131,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [When(@"result ← material\.lighting\(computations, light, (.*)\)")]
-        public void WhenResultSphere_Material_LightingWorld_LightPointEyeVectorNormalVector(float intensity)
+        public void WhenResultSphere_Material_LightingWorld_LightPointEyeVectorNormalVector(double intensity)
         {
             _materialsContext.Results = _materialsContext.Material.Lighting(
                 _computationsContext.Computations, 
@@ -165,13 +159,13 @@ namespace StealthTech.RayTracer.Specs.Steps
 
 
         [Then(@"material\.Ambient = (.*)")]
-        public void Then_Ambient_Of_material_Should_Equal(float expectedAmbient)
+        public void Then_Ambient_Of_material_Should_Equal(double expectedAmbient)
         {
             AssertDouble.ApproximateEquals(expectedAmbient, _materialsContext.Material.Ambient);
         }
 
         [Then(@"material\.Color = Color\((.*), (.*), (.*)\)")]
-        public void Then_Color_Of_material_Should_Equal_Color(float red, float green, float blue)
+        public void Then_Color_Of_material_Should_Equal_Color(double red, double green, double blue)
         {
             var expectedColor = new RtColor(red, green, blue);
 
@@ -179,7 +173,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"material\.Diffuse = (.*)")]
-        public void Then_Diffuse_Of_Material_Should_Equal(float expectedDiffuse)
+        public void Then_Diffuse_Of_Material_Should_Equal(double expectedDiffuse)
         {
             AssertDouble.ApproximateEquals(expectedDiffuse, _materialsContext.Material.Diffuse);
         }
@@ -195,26 +189,26 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
         [Then(@"material\.Shininess = (.*)")]
-        public void Then_Shininess_Of_Material_Should_Equal(float expectedShininess)
+        public void Then_Shininess_Of_Material_Should_Equal(double expectedShininess)
         {
             Assert.Equal(expectedShininess, _materialsContext.Material.Shininess);
         }
 
         [Then(@"material\.Specular = (.*)")]
-        public void Then_Specular_Of_material_Should_Equal(float expectedSpecular)
+        public void Then_Specular_Of_material_Should_Equal(double expectedSpecular)
         {
             AssertDouble.ApproximateEquals(expectedSpecular, _materialsContext.Material.Specular);
         }
 
         [Then(@"result = Color\((.*), (.*), (.*)\)")]
-        public void Then_result_Should_Equal_Color(float red, float green, float blue)
+        public void Then_result_Should_Equal_Color(double red, double green, double blue)
         {
             var expectedColor = new RtColor(red, green, blue);
             Assert.Equal(expectedColor, _materialsContext.Results);
         }
 
         [Then(@"material\.Reflective = (.*)")]
-        public void Then_Reflective_Of_material_Should_Equal(float expectedReflective)
+        public void Then_Reflective_Of_material_Should_Equal(double expectedReflective)
         {
             Assert.Equal(expectedReflective, _materialsContext.Material.Reflective);
         }

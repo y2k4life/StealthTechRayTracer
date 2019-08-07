@@ -87,15 +87,15 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← normal_at\(s, point\((.*), √2/2, -√2/2\)")]
         public void When_normalVector_Is_Normal_At(double x)
         {
-            _vectorsContext.NormalVector = _shapesContext.TestShape.NormalAt(new RtPoint(x, Math.Sqrt(2) / 2 , Math.Sqrt(2) / 2));
+            _vectorsContext.Normal = _shapesContext.TestShape.NormalAt(new RtPoint(x, Math.Sqrt(2) / 2 , Math.Sqrt(2) / 2), null);
         }
 
         [When(@"normalVector ← testShape.NormalAt\(Point\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_NormalAt_Of_testShape(string x, string y, string z)
         {
-            _vectorsContext.NormalVector = _shapesContext.TestShape.NormalAt(new RtPoint(x.EvaluateExpression(),
+            _vectorsContext.Normal = _shapesContext.TestShape.NormalAt(new RtPoint(x.EvaluateExpression(),
                                                                                  y.EvaluateExpression(),
-                                                                                 z.EvaluateExpression()));
+                                                                                 z.EvaluateExpression()), null);
         }
 
         [Then(@"shape\.Material = m")]

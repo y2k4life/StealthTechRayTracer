@@ -38,7 +38,7 @@ namespace StealthTech.RayTracer.Library
             return intersections;
         }
 
-        public override RtVector LocalNormalAt(RtPoint shapePoint)
+        public override RtVector LocalNormalAt(RtPoint shapePoint, Intersection hit)
         {
             return shapePoint.DistanceFromZero();
         }

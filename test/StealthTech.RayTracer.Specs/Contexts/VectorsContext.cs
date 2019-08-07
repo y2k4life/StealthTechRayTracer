@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using StealthTech.RayTracer.Library;
+using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Specs.Contexts
 {
@@ -21,11 +22,11 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtVector NormalizedVector { get; set; }
 
-        public RtVector NormalVector1 { get; set; }
+        //public RtVector NormalVector1 { get; set; }
 
-        public RtVector NormalVector2 { get; set; }
+        //public RtVector NormalVector2 { get; set; }
 
-        public RtVector NormalVector3 { get; set; }
+        //public RtVector NormalVector3 { get; set; }
 
         public RtVector Reflect { get; set; }
 
@@ -33,6 +34,9 @@ namespace StealthTech.RayTracer.Specs.Contexts
 
         public RtVector Direction { get; set; }
 
-        public RtVector NormalVector { get; set; }
+        public RtVector Normal { get; set; }
+
+        public RtVector[] Normals { get; set; } = new RtVector[5];
+
     }
 }

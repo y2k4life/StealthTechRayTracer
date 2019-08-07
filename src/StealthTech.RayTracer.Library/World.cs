@@ -33,7 +33,7 @@ namespace StealthTech.RayTracer.Library
             };
             defaultWorld.Shapes.Add(shape2);
 
-            defaultWorld.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), new RtColor(1, 1, 1)));
+            defaultWorld.Lights.Add(new PointLight(new RtPoint(-10, 10, -10), RtColor.White));
 
             return defaultWorld;
         }

@@ -49,7 +49,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← cube\.LocalNormalAt\(point\)")]
         public void When_normal_Is_The_Results_Of_Cube_LocalNormalAt_point()
         {
-            _vectorsContext.NormalVector = _cubesContext.Cubes[0].LocalNormalAt(_pointsContext.Point);
+            _vectorsContext.Normal = _cubesContext.Cubes[0].LocalNormalAt(_pointsContext.Point, null);
         }
 
     }

@@ -10,8 +10,8 @@ namespace StealthTech.RayTracer.Library
     public class DeterministicSequence : ISequence
     {
         private int _index;
-        private double[] _numbers;
-        private object lockObject = new object();
+        private readonly double[] _numbers;
+        private readonly object lockObject = new object();
         
         public DeterministicSequence(params double[] numbers)
         {

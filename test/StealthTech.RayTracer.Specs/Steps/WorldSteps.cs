@@ -16,9 +16,7 @@ namespace StealthTech.RayTracer.Specs.Steps
     public class WorldSteps
     {
         readonly ColorsContext _colorContext;
-        readonly IntersectionsContext _intersectionsContext;
         readonly LightsContext _lightsContext;
-        readonly MaterialsContext _materialsContext;
         readonly PointsContext _pointsContext;
         readonly RayContext _rayContext;
         readonly SphereContext _sphereContext;
@@ -28,9 +26,7 @@ namespace StealthTech.RayTracer.Specs.Steps
 
         public WorldSteps(WorldContext worldContext,
             SphereContext sphereContext,
-            MaterialsContext materialsContext,
             RayContext rayContext,
-            IntersectionsContext intersectionsContext,
             ColorsContext colorContext,
             PointsContext pointsContext,
             LightsContext lightsContext,
@@ -42,10 +38,8 @@ namespace StealthTech.RayTracer.Specs.Steps
             _lightsContext = lightsContext;
             _pointsContext = pointsContext;
             _colorContext = colorContext;
-            _intersectionsContext = intersectionsContext;
             _rayContext = rayContext;
             _sphereContext = sphereContext;
-            _materialsContext = materialsContext;
             _worldContext = worldContext;
         }
 

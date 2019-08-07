@@ -40,10 +40,10 @@ namespace StealthTech.RayTracer.Library
             return LocalIntersect(transformedRay);
         }
 
-        public RtVector NormalAt(RtPoint worldPoint)
+        public RtVector NormalAt(RtPoint worldPoint, Intersection hit)
         {
             var localPoint = WorldToShape(worldPoint);
-            var localNormal = LocalNormalAt(localPoint);
+            var localNormal = LocalNormalAt(localPoint, hit);
             var worldNormal = NormalToWorld(localNormal);
 
             return worldNormal;
@@ -74,7 +74,7 @@ namespace StealthTech.RayTracer.Library
 
         public abstract IntersectionList LocalIntersect(Ray ray);
 
-        public abstract RtVector LocalNormalAt(RtPoint point);
+        public abstract RtVector LocalNormalAt(RtPoint point, Intersection hit);
 
         public override int GetHashCode()
         {

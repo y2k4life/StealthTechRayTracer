@@ -55,13 +55,13 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Given(@"black ← Color\(0, 0, 0\)")]
         public void Given_black_Is_Color()
         {
-            _colorContext.Black = new RtColor(0, 0, 0);
+            _colorContext.Black = RtColor.Black;
         }
 
         [Given(@"white ← Color\(1, 1, 1\)")]
         public void Given_white_Is_Color()
         {
-            _colorContext.White = new RtColor(1, 1, 1);
+            _colorContext.White = RtColor.White;
         }
 
         [Then(@"color \* (.*) = Color\((.*), (.*), (.*)\)")]

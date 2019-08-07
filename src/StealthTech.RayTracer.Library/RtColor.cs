@@ -16,15 +16,22 @@ namespace StealthTech.RayTracer.Library
 
         public double Blue { get; set; }
 
-        public static readonly RtColor Black = new RtColor(0, 0, 0);
+        public static readonly RtColor Black = new RtColor(0.0, 0.0, 0.0);
 
-        public static readonly RtColor White = new RtColor(1, 1, 1);
+        public static readonly RtColor White = new RtColor(1.0, 1.0, 1.0);
+
+        public double Magnitude => Math.Sqrt(Math.Pow(Red, 2) + Math.Pow(Green, 2) + Math.Pow(Blue, 2));
 
         public RtColor(double red, double green, double blue)
         {
             Red = red;
             Green = green;
             Blue = blue;
+        }
+
+        public static RtColor FromRGB(int red, int green, int blue)
+        {
+            return new RtColor((red * 1.0) / 255, (green * 1.0) / 255, (blue * 1.0) / 255);
         }
 
         static public RtColor operator +(RtColor left, RtColor right)

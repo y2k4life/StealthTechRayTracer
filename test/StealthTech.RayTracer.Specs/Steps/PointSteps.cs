@@ -31,16 +31,10 @@ namespace StealthTech.RayTracer.Specs.Steps
             _pointsContext.Point = new RtPoint(x, y, z);
         }
 
-        [Given(@"point1 ← Point\((.*), (.*), (.*)\)")]
-        public void Given_point1_Is_Point(float x, float y, float z)
+        [Given(@"point(.*) ← Point\((.*), (.*), (.*)\)")]
+        public void Given_pointN_Is_Point(int pointIndex, float x, float y, float z)
         {
-            _pointsContext.Point1 = new RtPoint(x, y, z);
-        }
-
-        [Given(@"point2 ← Point\((.*), (.*), (.*)\)")]
-        public void Given_point2_Is_Point(float x, float y, float z)
-        {
-            _pointsContext.Point2 = new RtPoint(x, y, z);
+            _pointsContext.Points[pointIndex] = new RtPoint(x, y, z);
         }
 
         [Given(@"position ← Point\((.*), (.*), (.*)\)")]
@@ -85,12 +79,12 @@ namespace StealthTech.RayTracer.Specs.Steps
             _pointsContext.Eye = new RtPoint(x, y, z);
         }
 
-        [Then(@"point1 - point2 = Vector\((.*), (.*), (.*)\)")]
-        public void Then_point1_Minus_point2_Should_Equal_Vector(float x, float y, float z)
+        [Then(@"point(.*) - point(.*) = Vector\((.*), (.*), (.*)\)")]
+        public void Then_point1_Minus_point2_Should_Equal_Vector(int firstPointIndex, int secondPointIndex, float x, float y, float z)
         {
             var expectedVector = new RtVector(x, y, z);
 
-            var actualVector = _pointsContext.Point1 - _pointsContext.Point2;
+            var actualVector = _pointsContext.Points[firstPointIndex] - _pointsContext.Points[secondPointIndex];
 
             Assert.Equal(expectedVector, actualVector);
         }
@@ -116,28 +110,12 @@ namespace StealthTech.RayTracer.Specs.Steps
             Assert.Equal(expectedTuple, actualPoint);
         }
 
-        [Then(@"point2 = Point\((.*), (.*), (.*)\)")]
-        public void Then_point2_Equals_Point(string x, string y, string z)
+        [Then(@"point(.*) = Point\((.*), (.*), (.*)\)")]
+        public void Then_pointN_Equals_Point(int pointIndex, string x, string y, string z)
         {
             var expectedPoint = new RtPoint(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
 
-            Assert.Equal(expectedPoint, _pointsContext.Point2);
-        }
-
-        [Then(@"point3 = Point\((.*), (.*), (.*)\)")]
-        public void Then_point3_Equals_Point(string x, string y, string z)
-        {
-            var expectedPoint = new RtPoint(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
-
-            Assert.Equal(expectedPoint, _pointsContext.Point3);
-        }
-
-        [Then(@"point4 = Point\((.*), (.*), (.*)\)")]
-        public void Then_point4_Equals_Point(string x, string y, string z)
-        {
-            var expectedPoint = new RtPoint(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
-
-            Assert.Equal(expectedPoint, _pointsContext.Point4);
+            Assert.Equal(expectedPoint, _pointsContext.Points[pointIndex]);
         }
 
         [Then(@"point = Point\((.*), (.*), (.*)\)")]

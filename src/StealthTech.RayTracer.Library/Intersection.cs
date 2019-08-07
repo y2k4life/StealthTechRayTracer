@@ -13,15 +13,30 @@ namespace StealthTech.RayTracer.Library
 {
     public class Intersection : IEquatable<Intersection>
     {
+        public Intersection()
+        {
+        }
+
         public Intersection(double time, Shape item)
         {
             Shape = item;
             Time = time;
         }
 
+        public Intersection(double time, Shape shape, double u, double v)
+            : this (time, shape)
+        {
+            U = u;
+            V = v;
+        }
+
         public double Time { get; set; }
 
         public Shape Shape { get; set; }
+
+        public double U { get; set; }
+
+        public double V { get; set; }
 
         public Computations PrepareComputations(Ray ray, IntersectionList intersections)
         {
@@ -33,7 +48,7 @@ namespace StealthTech.RayTracer.Library
                 EyeVector = ray.Direction.Negate(),
             };
 
-            computations.NormalVector = Shape.NormalAt(computations.Position);
+            computations.NormalVector = Shape.NormalAt(computations.Position, this);
 
             if(computations.NormalVector.Dot(computations.EyeVector) < 0)
             {

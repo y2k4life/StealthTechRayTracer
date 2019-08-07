@@ -10,13 +10,14 @@ namespace StealthTech.RayTracer
             File.WriteAllText(fileName, ppmContent);
             if (showAfter)
             {
-                new Process
+                using var process = new Process
                 {
                     StartInfo = new ProcessStartInfo(fileName)
                     {
                         UseShellExecute = true
                     }
-                }.Start();
+                };
+                process.Start();
             }
         }
     }

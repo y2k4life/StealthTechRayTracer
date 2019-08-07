@@ -90,7 +90,7 @@ namespace StealthTech.RayTracer.Library
             return hit;
         }
 
-        public override RtVector LocalNormalAt(RtPoint point)
+        public override RtVector LocalNormalAt(RtPoint point, Intersection hit)
         {
             var distance = Math.Pow(point.X, 2) + Math.Pow(point.Z, 2);
 

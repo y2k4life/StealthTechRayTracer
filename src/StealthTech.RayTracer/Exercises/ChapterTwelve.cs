@@ -38,9 +38,9 @@ namespace StealthTech.RayTracer.Exercises
 
         private Camera InTheGroundCameraAnim(int width, int height)
         {
-            //var camerYValue = _animation.Offset(1, 300, .25, 0.7457627118644068);
+            //var cameraYValue = _animation.Offset(1, 300, .25, 0.7457627118644068);
 
-            //var camerYPoint = _animation.Offset(1, 210, 1.0, 1.5);
+            //var cameraYPoint = _animation.Offset(1, 210, 1.0, 1.5);
 
             return new Camera(width, height, Math.PI / 2)
             {

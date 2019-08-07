@@ -57,7 +57,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← cone\.LocalNormalAt\(Point\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_LocalNormalAt_Cone(double x, double y, double z)
         {
-            _vectorsContext.NormalVector = _conesContext.Cone.LocalNormalAt(new RtPoint(x, y, z));
+            _vectorsContext.Normal = _conesContext.Cone.LocalNormalAt(new RtPoint(x, y, z), null);
         }
 
     }

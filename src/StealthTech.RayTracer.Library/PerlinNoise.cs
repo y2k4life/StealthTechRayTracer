@@ -4,7 +4,6 @@ namespace StealthTech.RayTracer.Library
 {
     public class PerlinNoise
     {
-
         public int repeat;
 
         public PerlinNoise(int repeat = -1)
@@ -65,9 +64,9 @@ namespace StealthTech.RayTracer.Library
         {
             if (repeat > 0)
             {                                   // If we have any repeat on, change the coordinates to their "local" repetitions
-                x = x % repeat;
-                y = y % repeat;
-                z = z % repeat;
+                x %= repeat;
+                y %= repeat;
+                z %= repeat;
             }
 
             int xi = (int)x & 255;                              // Calculate the "unit cube" that the point asked will be located in
@@ -92,19 +91,19 @@ namespace StealthTech.RayTracer.Library
             bbb = p[p[p[Inc(xi)] + Inc(yi)] + Inc(zi)];
 
             double x1, x2, y1, y2;
-            x1 = Lerp(grad(aaa, xf, yf, zf),                // The gradient function calculates the dot product between a pseudorandom
-                        grad(baa, xf - 1, yf, zf),              // gradient vector and the vector from the input coordinate to the 8
+            x1 = Lerp(Grad(aaa, xf, yf, zf),                // The gradient function calculates the dot product between a pseudo random
+                        Grad(baa, xf - 1, yf, zf),              // gradient vector and the vector from the input coordinate to the 8
                         u);                                     // surrounding points in its unit cube.
-            x2 = Lerp(grad(aba, xf, yf - 1, zf),                // This is all then lerped together as a sort of weighted average based on the faded (u,v,w)
-                        grad(bba, xf - 1, yf - 1, zf),              // values we made earlier.
-                          u);
+            x2 = Lerp(Grad(aba, xf, yf - 1, zf),                // This is all then linear interpolation together as a sort of weighted 
+                        Grad(bba, xf - 1, yf - 1, zf),              // average based on the faded (u,v,w)
+                          u);                               // values we made earlier.
             y1 = Lerp(x1, x2, v);
 
-            x1 = Lerp(grad(aab, xf, yf, zf - 1),
-                        grad(bab, xf - 1, yf, zf - 1),
+            x1 = Lerp(Grad(aab, xf, yf, zf - 1),
+                        Grad(bab, xf - 1, yf, zf - 1),
                         u);
-            x2 = Lerp(grad(abb, xf, yf - 1, zf - 1),
-                          grad(bbb, xf - 1, yf - 1, zf - 1),
+            x2 = Lerp(Grad(abb, xf, yf - 1, zf - 1),
+                          Grad(bbb, xf - 1, yf - 1, zf - 1),
                           u);
             y2 = Lerp(x1, x2, v);
 
@@ -119,7 +118,7 @@ namespace StealthTech.RayTracer.Library
             return num;
         }
 
-        public static double grad(int hash, double x, double y, double z)
+        public static double Grad(int hash, double x, double y, double z)
         {
             int h = hash & 15;                                  // Take the hashed value and take the first 4 bits of it (15 == 0b1111)
             double u = h < 8 /* 0b1000 */ ? x : y;              // If the most significant bit (MSB) of the hash is 0 then set u = x.  Otherwise y.
@@ -191,24 +190,27 @@ namespace StealthTech.RayTracer.Library
             x -= Math.Floor(x);                                // FIND RELATIVE X,Y,Z
             y -= Math.Floor(y);                                // OF POINT IN CUBE.
             z -= Math.Floor(z);
-            double u = fade(x),                                // COMPUTE FADE CURVES
-                   v = fade(y),                                // FOR EACH OF X,Y,Z.
-                   w = fade(z);
+            double u = Fade(x),                                // COMPUTE FADE CURVES
+                   v = Fade(y),                                // FOR EACH OF X,Y,Z.
+                   w = Fade(z);
             int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,      // HASH COORDINATES OF
                 B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;      // THE 8 CUBE CORNERS,
 
-            return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z),  // AND ADD
-                                           grad(p[BA], x - 1, y, z)), // BLENDED
-                                   lerp(u, grad(p[AB], x, y - 1, z),  // RESULTS
-                                           grad(p[BB], x - 1, y - 1, z))),// FROM  8
-                           lerp(v, lerp(u, grad(p[AA + 1], x, y, z - 1),  // CORNERS
-                                           grad(p[BA + 1], x - 1, y, z - 1)), // OF CUBE
-                                   lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
-                                           grad(p[BB + 1], x - 1, y - 1, z - 1))));
+            return Lerp(w, Lerp(v, Lerp(u, Grad(p[AA], x, y, z),  // AND ADD
+                                           Grad(p[BA], x - 1, y, z)), // BLENDED
+                                   Lerp(u, Grad(p[AB], x, y - 1, z),  // RESULTS
+                                           Grad(p[BB], x - 1, y - 1, z))),// FROM  8
+                           Lerp(v, Lerp(u, Grad(p[AA + 1], x, y, z - 1),  // CORNERS
+                                           Grad(p[BA + 1], x - 1, y, z - 1)), // OF CUBE
+                                   Lerp(u, Grad(p[AB + 1], x, y - 1, z - 1),
+                                           Grad(p[BB + 1], x - 1, y - 1, z - 1))));
         }
-        static double fade(double t) { return t * t * t * (t * (t * 6 - 15) + 10); }
-        static double lerp(double t, double a, double b) { return a + t * (b - a); }
-        static double grad(int hash, double x, double y, double z)
+
+        static double Fade(double t) => t * t * t * (t * (t * 6 - 15) + 10);
+
+        static double Lerp(double t, double a, double b) => a + t * (b - a);
+
+        static double Grad(int hash, double x, double y, double z)
         {
             int h = hash & 15;                      // CONVERT LO 4 BITS OF HASH CODE
             double u = h < 8 ? x : y,                 // INTO 12 GRADIENT DIRECTIONS.

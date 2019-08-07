@@ -138,7 +138,7 @@ namespace StealthTech.RayTracer.Exercises
 
                         computations.Shape = intersection.Shape;
                         computations.Position = ray.Position(intersection.Time);
-                        computations.NormalVector = shape.NormalAt(computations.Position);
+                        computations.NormalVector = shape.NormalAt(computations.Position, null);
                         computations.EyeVector = ray.Direction.Negate();
                         
                         var color = shape.Material.Lighting(computations, light, 1);

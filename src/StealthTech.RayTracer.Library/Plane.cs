@@ -21,7 +21,7 @@ namespace StealthTech.RayTracer.Library
             return intersecitons;
         }
 
-        public override RtVector LocalNormalAt(RtPoint point)
+        public override RtVector LocalNormalAt(RtPoint point, Intersection hit)
         {
             return new RtVector(0, 1, 0);
         }

@@ -157,8 +157,10 @@ namespace StealthTech.RayTracer.Exercises
                     .Translation(0, 1, 0),
                 Material = new Material
                 {
-                    Pattern = new PerturbedStripePattern(new RtColor(.90, 0, 0), new RtColor(.99, .99, .99))
+                    Pattern = new StripePattern(new RtColor(.90, 0, 0), new RtColor(.99, .99, .99))
                     {
+                        IsPerturbed = true,
+                        PerturbBy = new PerlinPerturb(1),
                         Transform = new Transform()
                             .Scaling(.25, .25, .25)
                             .RotateZ(Math.PI / 3)
@@ -278,8 +280,10 @@ namespace StealthTech.RayTracer.Exercises
                     .Translation(.5, 0.75, 0),
                 Material = new Material()
                 {
-                    Pattern = new PerturbedStripePattern(new RtColor(1, 0, 0), new RtColor(1, 1, 1))
+                    Pattern = new StripePattern(new RtColor(1, 0, 0), new RtColor(1, 1, 1))
                     {
+                        IsPerturbed = true,
+                        PerturbBy = new PerlinPerturb(1),
                         Transform = new Transform()
                             .Scaling(0.25, 0.25, 0.25)
                             .RotateZ(Math.PI / 3.2)

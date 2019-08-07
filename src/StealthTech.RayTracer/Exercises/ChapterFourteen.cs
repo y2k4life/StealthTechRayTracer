@@ -66,7 +66,11 @@ namespace StealthTech.RayTracer.Exercises
             var hexagon = Hexagon();
             hexagon.Material = new Material
             {
-                Pattern = new PerturbedStripePattern(new RtColor(0, .9, 0), new RtColor(.1, .3, .1))
+                Pattern = new StripePattern(new RtColor(0, .9, 0), new RtColor(.1, .3, .1))
+                {
+                    IsPerturbed = true,
+                    PerturbBy = new PerlinPerturb(1)
+                }
             };
 
             hexagon.Transform = new Transform()

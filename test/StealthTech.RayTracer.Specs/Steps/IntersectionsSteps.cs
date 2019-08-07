@@ -317,5 +317,18 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             Assert.Equal(_sphereContext.Spheres[sphereIndex], _intersectionsContext.Intersections[intersectionIndex].Shape);
         }
+
+        [Then(@"intersections\[(.*)]\.U = (.*)")]
+        public void Then_U_Of_intersectionN_Should_Equal(int indexOfIntersection, double expectedU)
+        {
+            AssertDouble.ApproximateEquals(expectedU, _intersectionsContext.Intersections[indexOfIntersection].U);
+        }
+
+        [Then(@"intersections\[(.*)]\.V = (.*)")]
+        public void Then_V_Of_intersectionN_Should_Equal(int indexOfIntersection, double expectedU)
+        {
+            AssertDouble.ApproximateEquals(expectedU, _intersectionsContext.Intersections[indexOfIntersection].V);
+        }
+
     }
 }

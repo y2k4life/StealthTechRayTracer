@@ -70,8 +70,7 @@ namespace StealthTech.RayTracer.Library
             return intersections;
         }
 
-
-        public override RtVector LocalNormalAt(RtPoint point)
+        public override RtVector LocalNormalAt(RtPoint point, Intersection hit)
         {
             var maxC = (new double[] { Math.Abs(point.X), Math.Abs(point.Y), Math.Abs(point.Z) }).Max();
 

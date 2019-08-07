@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Specs
             return null;
         }
 
-        public override RtVector LocalNormalAt(RtPoint point)
+        public override RtVector LocalNormalAt(RtPoint point, Intersection hit)
         {
             return new RtVector(point.X, point.Y, point.Z);
         }

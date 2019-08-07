@@ -1,13 +1,16 @@
-﻿using StealthTech.RayTracer.Library;
-using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AreaLight.cs" company="StealthTech">
+//     Author: Guy Boicey
+//     Copyright (c) 2019 Guy Boicey
+// </copyright>
+//-----------------------------------------------------------------------
+
 using System.Collections.Generic;
 
 namespace StealthTech.RayTracer.Library
 {
     public class AreaLight : Light
     {
-        private Animation animation;
-
         public AreaLight(RtPoint corner, RtVector uVector, int uSteps, RtVector vVector, int vSteps, RtColor intensity)
         {
             Corner = corner;
@@ -23,13 +26,13 @@ namespace StealthTech.RayTracer.Library
         }
 
         public RtPoint Corner { get; }
-        
+
         public RtVector UVector { get; }
-        
+
         public double USteps { get; }
-        
+
         public RtVector VVector { get; }
-        
+
         public double VSteps { get; }
 
         public ISequence JitterBy { get; set; } = new DeterministicSequence(0.5);
@@ -42,7 +45,7 @@ namespace StealthTech.RayTracer.Library
                 for (int u = 0; u < USteps; u++)
                 {
                     var lightPosition = PointOnLight(u, v);
-                    if(!world.IsShadowed(lightPosition, point))
+                    if (!world.IsShadowed(lightPosition, point))
                     {
                         total += 1.0;
                     }

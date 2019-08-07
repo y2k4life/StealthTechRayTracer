@@ -8,10 +8,10 @@ namespace StealthTech.RayTracer.Library
 
         public RtColor ColorB { get; }
 
-        public RingPattern(RtColor white, RtColor black)
+        public RingPattern(RtColor colorA, RtColor colorB)
         {
-            ColorA = white;
-            ColorB = black;
+            ColorA = colorA;
+            ColorB = colorB;
         }
 
         public override RtColor PatternAt(RtPoint point)

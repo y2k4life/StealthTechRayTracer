@@ -67,22 +67,10 @@ namespace StealthTech.RayTracer.Specs.Steps
         }
 
 
-        [When(@"normalVector1 ← plane\.LocalNormalAt\(point\((.*), (.*), (.*)\)\)")]
-        public void When_normal1_Is_The_Results_Of_plane_LocalNormalAt(double x, double y, double z)
+        [When(@"normalVector(.*) ← plane\.LocalNormalAt\(point\((.*), (.*), (.*)\)\)")]
+        public void When_normalN_Is_The_Results_Of_plane_LocalNormalAt(int indexOfNormal, double x, double y, double z)
         {
-            _vectorsContext.NormalVector1 = _planesContext.Plane.LocalNormalAt(new RtPoint(x, y, z));
-        }
-
-        [When(@"normalVector2 ← plane\.LocalNormalAt\(point\((.*), (.*), (.*)\)\)")]
-        public void When_normal2_Is_The_Results_Of_plane_LocalNormalAt(double x, double y, double z)
-        {
-            _vectorsContext.NormalVector2 = _planesContext.Plane.LocalNormalAt(new RtPoint(x, y, z));
-        }
-
-        [When(@"normalVector3 ← plane\.LocalNormalAt\(point\((.*), (.*), (.*)\)\)")]
-        public void When_normal3_Is_The_Results_Of_plane_LocalNormalAt(double x, double y, double z)
-        {
-            _vectorsContext.NormalVector3 = _planesContext.Plane.LocalNormalAt(new RtPoint(x, y, z));
+            _vectorsContext.Normals[indexOfNormal] = _planesContext.Plane.LocalNormalAt(new RtPoint(x, y, z), null);
         }
 
         [When(@"intersections ← plane\.LocalIntersect\(ray\)")]

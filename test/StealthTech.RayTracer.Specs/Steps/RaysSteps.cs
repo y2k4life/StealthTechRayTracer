@@ -16,15 +16,13 @@ namespace StealthTech.RayTracer.Specs.Steps
     [Binding]
     public class RaysSteps
     {
-        readonly CameraContext _cameraContext;
         readonly PointsContext _pointsContext;
         readonly RayContext _rayContext;
         readonly VectorsContext _vectorsContext;
         readonly TransformationsContext _transformationsContext;
 
-        public RaysSteps(TupleContext tupleContext,
+        public RaysSteps(
             RayContext rayContext,
-            CameraContext cameraContext,
             PointsContext pointsContext,
             VectorsContext vectorsContext,
             TransformationsContext transformationsContext)
@@ -32,7 +30,6 @@ namespace StealthTech.RayTracer.Specs.Steps
             _transformationsContext = transformationsContext;
             _vectorsContext = vectorsContext;
             _pointsContext = pointsContext;
-            _cameraContext = cameraContext;
             _rayContext = rayContext;
         }
 

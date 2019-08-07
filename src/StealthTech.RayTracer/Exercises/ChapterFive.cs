@@ -70,7 +70,7 @@ namespace StealthTech.RayTracer.Exercises
         {
             var rayOrigin = new RtPoint(0, 0, -5);
             var wallZ = 10;
-            var color = new RtColor(1, 0, 0);
+            var color = new RtColor(1.0, 0, 0);
 
             var wallSize = 7.0;
             var canvasSize = 800;

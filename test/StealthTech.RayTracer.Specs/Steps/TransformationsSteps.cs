@@ -125,19 +125,19 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"point2 ← transformA \* point")]
         public void When_point2_Is_transformA_Multiplied_By_point()
         {
-            _pointsContext.Point2 = _transformationsContext.TransformA * _pointsContext.Point;
+            _pointsContext.Points[2] = _transformationsContext.TransformA * _pointsContext.Point;
         }
 
         [When(@"point3 ← transformB \* point2")]
         public void When_point3_Is_transformB_Multiplied_By_point2()
         {
-            _pointsContext.Point3 = _transformationsContext.TransformB * _pointsContext.Point2;
+            _pointsContext.Points[3] = _transformationsContext.TransformB * _pointsContext.Points[2];
         }
 
         [When(@"point4 ← transformC \* point3")]
         public void When_point4_Is_transformC_Multiplied_By_point3()
         {
-            _pointsContext.Point4 = _transformationsContext.TransformC * _pointsContext.Point3;
+            _pointsContext.Points[4] = _transformationsContext.TransformC * _pointsContext.Points[3];
         }
 
         [When(@"transform ← ViewTransform\(from, to, up\)")]

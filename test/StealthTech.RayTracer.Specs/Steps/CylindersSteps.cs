@@ -59,7 +59,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"normalVector ← cylinder\.LocalNormalAt\(Point\((.*), (.*), (.*)\)\)")]
         public void When_normalVector_Is_LocalNormalAt_Of_Cylinder(double x, double y, double z)
         {
-            _vectorsContext.NormalVector = _cylindersContext.Cylinder.LocalNormalAt(new RtPoint(x, y, z));
+            _vectorsContext.Normal = _cylindersContext.Cylinder.LocalNormalAt(new RtPoint(x, y, z), null);
         }
 
         [When(@"intersections ← cylinder\.LocalIntersect\(ray\)")]

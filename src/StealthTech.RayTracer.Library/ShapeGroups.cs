@@ -13,7 +13,7 @@ namespace StealthTech.RayTracer.Library
 {
     public class ShapeGroup : Shape
     {
-        private List<Shape> _shapes = new List<Shape>();
+        private readonly List<Shape> _shapes = new List<Shape>();
         
         public IEnumerable<Shape> Shapes
         {
@@ -38,10 +38,11 @@ namespace StealthTech.RayTracer.Library
             return intersections;
         }
 
-        public override RtVector LocalNormalAt(RtPoint point)
+        public override RtVector LocalNormalAt(RtPoint point, Intersection hit)
         {
             throw new System.NotImplementedException();
         }
+
         public void AddChild(Shape shape)
         {
             shape.Parent = this;

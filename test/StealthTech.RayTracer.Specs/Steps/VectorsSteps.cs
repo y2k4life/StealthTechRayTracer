@@ -17,11 +17,8 @@ namespace StealthTech.RayTracer.Specs.Steps
     public class VectorsSteps
     {
         readonly VectorsContext _vectorsContext;
-        readonly ComputationsContext _computationsContext;
-
-        public VectorsSteps(VectorsContext vectorContext, ComputationsContext computationsContext)
+        public VectorsSteps(VectorsContext vectorContext)
         {
-            _computationsContext = computationsContext;
             _vectorsContext = vectorContext;
         }
 
@@ -40,7 +37,13 @@ namespace StealthTech.RayTracer.Specs.Steps
         [Given(@"normalVector ← Vector\((.*), (.*), (.*)\)")]
         public void Given_normalVector_Is_Vector(double x, double y, double z)
         {
-            _vectorsContext.NormalVector = new RtVector(x, y, z);
+            _vectorsContext.Normal = new RtVector(x, y, z);
+        }
+
+        [Given(@"normal(.*) ← Vector\((.*), (.*), (.*)\)")]
+        public void Given_normalN_Is_Vector(int indexOfNormal, double x, double y, double z)
+        {
+            _vectorsContext.Normals[indexOfNormal] = new RtVector(x, y, z);
         }
 
         [Given(@"up ← Vector\((.*), (.*), (.*)\)")]
@@ -73,6 +76,14 @@ namespace StealthTech.RayTracer.Specs.Steps
             _vectorsContext.ZeroVector = RtVector.ZeroVector;
         }
 
+        [Then(@"normal(.*) ← Vector\((.*), (.*), (.*)\)")]
+        public void Give_normalN_Should_Equal_Vector(int indexOfNormal, double x, double y, double z)
+        {
+            var expectedVector = new RtVector(x, y, z);
+
+            Assert.Equal(expectedVector, _vectorsContext.Normals[indexOfNormal]);
+        }
+
         [When(@"normalizedVector ← normalize\(v\)")]
         public void When_normalizedVector_Is_Normalize_Of_vector()
         {
@@ -82,7 +93,7 @@ namespace StealthTech.RayTracer.Specs.Steps
         [When(@"reflect ← reflect\(v, n\)")]
         public void When_reflect_Is_Reflect_Of_normal()
         {
-            _vectorsContext.Reflect = _vectorsContext.Vector.Reflect(_vectorsContext.NormalVector);
+            _vectorsContext.Reflect = _vectorsContext.Vector.Reflect(_vectorsContext.Normal);
         }
 
         [Then(@"cross\(vector1, vector2\) = Vector\((.*), (.*), (.*)\)")]
@@ -191,39 +202,31 @@ namespace StealthTech.RayTracer.Specs.Steps
         {
             var expectedVector = new RtVector(x.EvaluateExpression(), y.EvaluateExpression(), z.EvaluateExpression());
 
-            Assert.Equal(expectedVector, _vectorsContext.NormalVector);
+            Assert.Equal(expectedVector, _vectorsContext.Normal);
         }
 
         [Then(@"normalVector = normalize\(normalVector\)")]
         public void Then_normalVector_Should_Equal_normalVector_Normalize()
         {
-            var expectedVector = _vectorsContext.NormalVector.Normalize();
+            var expectedVector = _vectorsContext.Normal.Normalize();
 
-            Assert.Equal(expectedVector, _vectorsContext.NormalVector);
+            Assert.Equal(expectedVector, _vectorsContext.Normal);
         }
 
-        [Then(@"normal1 = Vector\((.*), (.*), (.*)\)")]
-        public void Then_normaVector1_Should_Equal_Vector(double x, double y, double z)
+        [Then(@"normal(.*) = Vector\((.*), (.*), (.*)\)")]
+        public void Then_normalN_Should_Equal_Vector(int indexOfNormal, double x, double y, double z)
         {
             var expectedVector = new RtVector(x, y, z);
 
-            Assert.Equal(expectedVector, _vectorsContext.NormalVector1);
+            Assert.Equal(expectedVector, _vectorsContext.Normals[indexOfNormal]);
         }
 
-        [Then(@"normal2 = Vector\((.*), (.*), (.*)\)")]
-        public void Then_normaVector2_Should_Equal_Vector(double x, double y, double z)
+        [Then(@"normal = Vector\((.*), (.*), (.*)\)")]
+        public void Then_normal_Should_Equal_Vector(double x, double y, double z)
         {
             var expectedVector = new RtVector(x, y, z);
 
-            Assert.Equal(expectedVector, _vectorsContext.NormalVector2);
-        }
-
-        [Then(@"normal3 = Vector\((.*), (.*), (.*)\)")]
-        public void Then_normaVector3_Should_Equal_Vector(double x, double y, double z)
-        {
-            var expectedVector = new RtVector(x, y, z);
-
-            Assert.Equal(expectedVector, _vectorsContext.NormalVector3);
+            Assert.Equal(expectedVector, _vectorsContext.Normal);
         }
     }
 }

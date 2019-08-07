@@ -11,7 +11,7 @@ namespace StealthTech.RayTracer.Library
 {
     public class NoneDeterministicSequence : ISequence
     {
-        private Random _random = new Random();
+        private readonly Random _random = new Random();
 
         public double Next()
         {
